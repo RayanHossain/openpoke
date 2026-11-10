@@ -146,3 +146,20 @@ def test_create_rejects_empty_label(sb):
     with pytest.raises(ValueError):
         reg.create_agent("   ")
     assert reg.count() == 0
+
+
+def test_close_key_applies_to_all_owners_and_is_sticky(sb):
+    a = reg.create_agent("drafter").agent_id
+    b = reg.create_agent("sender").agent_id
+    draft = KeyRef("draft", "r-1")
+    reg.add_key(a, draft)
+    reg.add_key(a, KeyRef("thread", "th-1"))
+    reg.add_key(b, draft)
+
+    sb.registry.close_key(draft)
+    assert sb.registry.open_keys(a) == [KeyRef("thread", "th-1")]
+    assert sb.registry.open_keys(b) == []
+    reg.add_key(a, draft)  # re-claiming does not reopen
+    assert draft not in sb.registry.open_keys(a)
+    assert reg.agents_for_keys({draft}) == [b, a]  # closed keys still route
+    sb.registry.close_key(KeyRef("draft", "never-seen"))  # no-op

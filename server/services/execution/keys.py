@@ -45,6 +45,7 @@ _GMAIL_WRITE_TOOLS = {
     "gmail_reply_to_thread",
     "gmail_forward_email",
 }
+_DRAFT_CLOSING_TOOLS = {"gmail_execute_draft", "gmail_delete_draft"}
 _TRIGGER_TOOLS = {"createTrigger", "updateTrigger", "listTriggers"}
 _SEARCH_TOOLS = {"task_email_search"}
 
@@ -209,6 +210,17 @@ def extract_from_tool_call(tool: str, args: Dict[str, Any], result: Any) -> Set[
     return keys
 
 
+def extract_closed_from_tool_call(tool: str, args: Dict[str, Any], result: Any) -> Set[KeyRef]:
+    """Keys a *successful* tool call finished: a sent or deleted draft."""
+
+    args = args if isinstance(args, dict) else {}
+    if tool not in _DRAFT_CLOSING_TOOLS or _is_failure(_coerce_result(result)):
+        return set()
+    if v := _scalar(args.get("draft_id")):
+        return {KeyRef("draft", v)}
+    return set()
+
+
 def extract_aliases(tool: str, args: Dict[str, Any], result: Any) -> Set[Tuple[str, str]]:
     """(address, display name) pairs seen in a tool call, for ``registry.add_alias``.
 
@@ -260,6 +272,7 @@ def _name_variants(address: str, name: str) -> Set[Tuple[str, str]]:
 
 __all__ = [
     "extract_aliases",
+    "extract_closed_from_tool_call",
     "extract_from_text",
     "extract_from_tool_call",
 ]

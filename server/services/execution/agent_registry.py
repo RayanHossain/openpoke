@@ -7,7 +7,10 @@ human-readable ``label`` is display-only and plays no part in routing.
 Tables (SQLite at ``data/execution_agents/registry.db``):
 
 * ``agents``      one row per agent: label, brief, status, timestamps
-* ``agent_keys``  what an agent owns (addresses, threads, drafts, triggers)
+* ``agent_keys``  what an agent owns (addresses, threads, drafts, triggers);
+                  ``closed_at`` is set once the thing is finished (e.g. a draft
+                  was sent or deleted). Closed keys still route, but are not
+                  "open items".
 * ``people``      address <-> display-name aliases used to resolve names in text
 * ``agent_id_seq`` AUTOINCREMENT counter backing ``agent_id`` (never reset)
 """
@@ -112,6 +115,7 @@ class AgentRegistry:
                     CHECK (key_type IN ('address', 'thread', 'draft', 'trigger')),
                 key_value TEXT NOT NULL,
                 created_at TEXT NOT NULL,
+                closed_at TEXT,
                 UNIQUE (agent_id, key_type, key_value)
             );
             """,
@@ -252,12 +256,36 @@ class AgentRegistry:
                 (agent_id, canonical.type, canonical.value, self._now().isoformat()),
             )
 
+    def close_key(self, key: KeyRef) -> None:
+        """Mark ``key`` finished for every agent that owns it (first close wins)."""
+
+        canonical = normalize_key(key)
+        with self._lock, self._connect() as conn:
+            conn.execute(
+                "UPDATE agent_keys SET closed_at = ?"
+                " WHERE key_type = ? AND key_value = ? AND closed_at IS NULL",
+                (self._now().isoformat(), canonical.type, canonical.value),
+            )
+
     def keys_for(self, agent_id: str) -> Set[KeyRef]:
+        """Every key the agent owns, open or closed."""
+
         with self._lock, self._connect() as conn:
             rows = conn.execute(
                 "SELECT key_type, key_value FROM agent_keys WHERE agent_id = ?", (agent_id,)
             ).fetchall()
         return {KeyRef(row["key_type"], row["key_value"]) for row in rows}
+
+    def open_keys(self, agent_id: str) -> List[KeyRef]:
+        """Keys not yet closed, oldest first."""
+
+        with self._lock, self._connect() as conn:
+            rows = conn.execute(
+                "SELECT key_type, key_value FROM agent_keys"
+                " WHERE agent_id = ? AND closed_at IS NULL ORDER BY rowid",
+                (agent_id,),
+            ).fetchall()
+        return [KeyRef(row["key_type"], row["key_value"]) for row in rows]
 
     def match_values(self, values: Set[str], key_types: Set[str]) -> Set[KeyRef]:
         """Stored keys of ``key_types`` whose value is exactly one of ``values``."""
