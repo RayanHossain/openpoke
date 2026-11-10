@@ -5,6 +5,7 @@ from typing import List, Optional, Dict, Any
 
 from ...services.execution import get_execution_agent_logs
 from ...logging_config import logger
+from .report import REPORT_FORMAT
 
 
 # Load system prompt template from file
@@ -16,6 +17,7 @@ else:
     SYSTEM_PROMPT_TEMPLATE = """You are an execution agent responsible for completing specific tasks using available tools.
 
 Agent Name: {agent_name}
+Agent ID: {agent_id}
 Purpose: {agent_purpose}
 
 Instructions:
@@ -26,7 +28,9 @@ You have access to Gmail tools to help complete your tasks. When given instructi
 2. Use the appropriate tools to complete the task
 3. Provide clear status updates on your actions
 
-Be thorough, accurate, and efficient in your execution."""
+Be thorough, accurate, and efficient in your execution.
+
+{report_format}"""
 
 
 class ExecutionAgent:
@@ -61,7 +65,9 @@ class ExecutionAgent:
 
         return SYSTEM_PROMPT_TEMPLATE.format(
             agent_name=self.name,
-            agent_purpose=agent_purpose
+            agent_id=self.agent_id or "(unregistered)",
+            agent_purpose=agent_purpose,
+            report_format=REPORT_FORMAT,
         )
 
     # Combine base system prompt with conversation history, applying conversation limits
