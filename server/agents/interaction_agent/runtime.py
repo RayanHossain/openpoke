@@ -2,7 +2,7 @@
 
 import json
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 from .agent import build_system_prompt, prepare_message_with_history
 from .tools import ToolResult, get_tool_schemas, handle_tool_call
@@ -163,7 +163,31 @@ class InteractionAgentRuntime:
             if not parsed_tool_calls:
                 break
 
+            seen_in_turn: Set[Tuple[str, str]] = set()
             for tool_call in parsed_tool_calls:
+                dedup_key = self._dedup_key(tool_call)
+                if dedup_key in seen_in_turn:
+                    # Identical call already ran in this reply: running it again would
+                    # double-dispatch (e.g. two runs of the same agent task). Still answer
+                    # the tool_call_id so the message sequence stays valid for the API.
+                    logger.warning(
+                        "Dropping duplicate tool call in the same model turn",
+                        extra={"tool": tool_call.name, "tool_call_id": tool_call.identifier},
+                    )
+                    messages.append({
+                        "role": "tool",
+                        "tool_call_id": tool_call.identifier or tool_call.name,
+                        "content": self._format_tool_result(
+                            tool_call,
+                            ToolResult(
+                                success=False,
+                                payload={"error": "Duplicate of an identical tool call earlier in this turn; skipped."},
+                            ),
+                        ),
+                    })
+                    continue
+                seen_in_turn.add(dedup_key)
+
                 summary.tool_names.append(tool_call.name)
 
                 result = self._execute_tool(tool_call)
@@ -229,6 +253,11 @@ class InteractionAgentRuntime:
         return message
 
     # Convert raw LLM tool calls into structured _ToolCall objects with validation
+    @staticmethod
+    def _dedup_key(tool_call: _ToolCall) -> Tuple[str, str]:
+        """Identity of a call within one turn; sort_keys makes key order irrelevant."""
+        return tool_call.name, json.dumps(tool_call.arguments, sort_keys=True, default=str)
+
     def _parse_tool_calls(self, raw_tool_calls: List[Dict[str, Any]]) -> List[_ToolCall]:
         """Normalize tool call payloads from the LLM."""
 
