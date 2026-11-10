@@ -102,8 +102,8 @@ def test_F37_fast_result_reaches_interaction_agent_only_when_batch_drains(sb, ru
     (dispatch,) = sb.interaction_llm.calls
     assert done[FAST] - t0 < BLOCK / 5                      # FAST itself finished quickly...
     assert dispatch.started_at - t0 >= BLOCK                # ...but was delivered after SLOW  # FLIPS
-    assert "[SUCCESS] Email to Alice: Draft created." in dispatch.last_user_content
-    assert "[SUCCESS] Weather check: It's sunny." in dispatch.last_user_content
+    assert "[SUCCESS] ea_1 (Email to Alice): Draft created." in dispatch.last_user_content
+    assert "[SUCCESS] ea_2 (Weather check): It's sunny." in dispatch.last_user_content
 
 
 @pytest.mark.finding("F37")
@@ -162,7 +162,7 @@ def test_F37_timeout_cannot_interrupt_blocking_gmail_call(sb, run, monkeypatch):
     t0 = run(go, drain=False)
     assert done[SLOW] - t0 >= 0.6                              # FLIPS: deadline was 0.2 s
     assert [c.tool_name for c in sb.gmail.calls] == ["GMAIL_CREATE_EMAIL_DRAFT"]
-    assert "[FAILED] Email to Alice: Execution timed out" in sb.interaction_llm.calls[0].last_user_content
+    assert "[FAILED] ea_1 (Email to Alice): Execution timed out" in sb.interaction_llm.calls[0].last_user_content
 
 
 @pytest.mark.finding("F31")
@@ -192,4 +192,4 @@ def test_F31_timeout_after_send_leaves_side_effect_and_no_final_log_entry(sb, ru
     assert sb.log_tags(SLOW) == ["agent_request", "agent_action", "tool_response"]  # FLIPS: no agent_response
     assert "Sent the email" not in sb.log_text(SLOW)
     told = sb.interaction_llm.calls[0].last_user_content
-    assert "[FAILED] Email to Alice: Execution timed out after 0.3 seconds" in told  # FLIPS
+    assert "[FAILED] ea_1 (Email to Alice): Execution timed out after 0.3 seconds" in told  # FLIPS

@@ -83,6 +83,7 @@ class ExecutionBatchManager:
             logger.info(f"[{agent_name}] Execution finished: {status}")
         except asyncio.TimeoutError:
             logger.error(f"[{agent_name}] Execution timed out after {self.timeout_seconds}s")
+            logger.warning(f"[{agent_name}] No end-of-run report (timeout); keeping previous brief")
             result = ExecutionResult(
                 agent_name=agent_name,
                 agent_id=agent_id,
@@ -194,7 +195,8 @@ class ExecutionBatchManager:
         for result in results:
             status = "SUCCESS" if result.success else "FAILED"
             response_text = (result.response or "(no response provided)").strip()
-            entries.append(f"[{status}] {result.agent_name}: {response_text}")
+            who = f"{result.agent_id} ({result.agent_name})" if result.agent_id else result.agent_name
+            entries.append(f"[{status}] {who}: {response_text}")
         return "\n".join(entries)
 
     # Forward combined execution results to interaction agent for user response generation

@@ -6,6 +6,7 @@ from typing import Dict, Any, List, Optional, Tuple
 from dataclasses import dataclass
 
 from .agent import ExecutionAgent
+from .report import ParsedResponse, parse_report
 from .tools import get_tool_schemas, get_tool_registry
 from ...config import get_settings
 from ...openrouter_client import request_chat_completion
@@ -131,12 +132,14 @@ class ExecutionAgentRuntime:
             if final_response is None:
                 raise RuntimeError("LLM did not return a final response")
 
-            self.agent.record_response(final_response)
+            parsed = parse_report(final_response)
+            self._apply_report(parsed)
+            self.agent.record_response(final_response)  # own journal keeps the report
 
             return ExecutionResult(
                 agent_name=self.agent.name,
                 success=True,
-                response=final_response,
+                response=parsed.text or "No action required.",
                 tools_executed=tools_executed,
                 agent_id=self.agent_id,
             )
@@ -146,6 +149,8 @@ class ExecutionAgentRuntime:
             error_msg = str(e)
             failure_text = f"Failed to complete task: {error_msg}"
             self.agent.record_response(f"Error: {error_msg}")
+            if self.agent_id:
+                logger.warning(f"[{self.agent.name}] Run failed before reporting; keeping previous brief")
 
             return ExecutionResult(
                 agent_name=self.agent.name,
@@ -154,6 +159,24 @@ class ExecutionAgentRuntime:
                 error=error_msg,
                 agent_id=self.agent_id,
             )
+
+    # Store the end-of-run report as the agent's card brief/status (D-004)
+    def _apply_report(self, parsed: ParsedResponse) -> None:
+        """Never raises. Without a valid report the previous brief and status stay."""
+        if not self.agent_id:
+            return
+        if parsed.report is None:
+            logger.warning(
+                f"[{self.agent.name}] No valid end-of-run report ({parsed.problem}); keeping previous brief",
+                extra={"agent_id": self.agent_id},
+            )
+            return
+        if parsed.problem:
+            logger.warning(f"[{self.agent.name}] End-of-run report adjusted: {parsed.problem}")
+        try:
+            get_agent_registry().set_report(self.agent_id, parsed.report.brief, parsed.report.status)
+        except Exception as exc:
+            logger.warning(f"[{self.agent.name}] Failed to store end-of-run report: {exc}")
 
     # Record what a successful tool call made this agent own (registry keys + aliases)
     def _record_ownership(self, tool_name: str, arguments: Dict[str, Any], result: Any) -> None:
