@@ -259,6 +259,22 @@ class AgentRegistry:
             ).fetchall()
         return {KeyRef(row["key_type"], row["key_value"]) for row in rows}
 
+    def match_values(self, values: Set[str], key_types: Set[str]) -> Set[KeyRef]:
+        """Stored keys of ``key_types`` whose value is exactly one of ``values``."""
+
+        types = [t for t in key_types if t in KEY_TYPES]
+        vals = [v for v in values if v]
+        if not types or not vals:
+            return set()
+        sql = (
+            "SELECT DISTINCT key_type, key_value FROM agent_keys"
+            f" WHERE key_type IN ({','.join('?' * len(types))})"
+            f" AND key_value IN ({','.join('?' * len(vals))})"
+        )
+        with self._lock, self._connect() as conn:
+            rows = conn.execute(sql, [*types, *vals]).fetchall()
+        return {KeyRef(row["key_type"], row["key_value"]) for row in rows}
+
     def agents_for_keys(self, keys: Set[KeyRef]) -> List[str]:
         """Agents owning any of ``keys``, done agents included, most recently active first."""
 
