@@ -118,6 +118,7 @@ from server.agents.interaction_agent import tools as _ia_tools  # noqa: E402
 from server.services.conversation.log import get_conversation_log  # noqa: E402
 from server.services.conversation.summarization.working_memory_log import get_working_memory_log  # noqa: E402
 from server.services.execution import get_agent_roster, get_execution_agent_logs  # noqa: E402
+from server.services.execution.agent_registry import get_agent_registry  # noqa: E402
 from server.services.timezone_store import get_timezone_store  # noqa: E402
 from server.services.triggers import get_trigger_service  # noqa: E402
 
@@ -302,6 +303,10 @@ class Sandbox:
         return get_agent_roster()
 
     @property
+    def registry(self):
+        return get_agent_registry()
+
+    @property
     def logs(self):
         return get_execution_agent_logs()
 
@@ -355,6 +360,9 @@ def open_sandbox(data_dir: Path) -> Sandbox:
     # (e.g. ``_LOG_STORE = get_execution_agent_logs()``) follows along.
     _retarget(st, get_execution_agent_logs(), _base_dir=exec_dir, _locks={})
     _retarget(st, get_agent_roster(), _roster_path=exec_dir / "roster.json", _agents=[])
+    registry = get_agent_registry()
+    _retarget(st, registry, _db_path=exec_dir / "registry.db", _last_ts=None)
+    registry._ensure_schema()
     trigger_store = get_trigger_service()._store
     _retarget(st, trigger_store, _db_path=data_dir / "triggers.db")
     trigger_store._ensure_schema()
