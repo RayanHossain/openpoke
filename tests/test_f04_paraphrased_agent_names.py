@@ -90,6 +90,7 @@ def test_F4_second_agent_prompt_has_none_of_first_agents_history(sb, run):
 
 
 @pytest.mark.finding("F4")
+@pytest.mark.control
 def test_F4_control_exact_name_reuse_does_carry_history(sb, run):
     """Control for F4: with the identical string, history IS loaded. Isolates the cause to naming."""
     _script_first_agent(sb)

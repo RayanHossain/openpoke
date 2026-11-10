@@ -11,12 +11,7 @@ import asyncio
 import pytest
 
 import harness  # noqa: F401  (side effect: sandboxed import of `server`)
-
-
-def pytest_configure(config):
-    config.addinivalue_line(
-        "markers", "finding(fid): links a test to an F-ID in claude/openpoke-findings.md"
-    )
+from routing_summary import pytest_configure  # noqa: F401  (markers + end-of-run summary)
 
 
 @pytest.fixture

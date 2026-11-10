@@ -10,6 +10,8 @@ import pytest
 
 import harness
 
+pytestmark = pytest.mark.harness
+
 
 def test_server_package_is_sandbox_copy_not_repo():
     loaded = Path(sys.modules["server"].__file__).resolve()

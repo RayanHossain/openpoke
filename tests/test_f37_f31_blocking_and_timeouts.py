@@ -78,6 +78,7 @@ def test_F37_blocking_gmail_call_delays_unrelated_fast_agent(sb, run, monkeypatc
 
 
 @pytest.mark.finding("F37")
+@pytest.mark.control
 def test_F37_control_nonblocking_gmail_fast_agent_finishes_immediately(sb, run, monkeypatch):
     """Control for F37: same scenario, Gmail returns at once -> FAST finishes in well under BLOCK."""
     _script_slow_and_fast(sb)
@@ -106,6 +107,7 @@ def test_F37_fast_result_reaches_interaction_agent_only_when_batch_drains(sb, ru
 
 
 @pytest.mark.finding("F37")
+@pytest.mark.control
 def test_F37_timeout_default_is_90s(sb):
     """F37 context: the per-run timeout for user-routed and trigger runs."""
     from server.agents.execution_agent.batch_manager import ExecutionBatchManager
@@ -115,6 +117,7 @@ def test_F37_timeout_default_is_90s(sb):
 
 
 @pytest.mark.finding("F37")
+@pytest.mark.control
 def test_F37_timeout_fires_on_time_when_agent_is_awaiting(sb, run, monkeypatch):
     """F37: the timeout CAN fire, on schedule, if the run is suspended at an await (LLM call)."""
     monkeypatch.setattr(sb.batch_manager, "timeout_seconds", 0.2)

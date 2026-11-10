@@ -74,6 +74,7 @@ def test_F23_callers_log_gets_truncated_copy(sb, run):
     assert tool_resp.startswith("gmail_create_draft: ")
 
 
+@pytest.mark.finding("log-roundtrip")
 def test_incidental_log_roundtrip_rewrites_escaped_newlines(sb):
     """Incidental (no F-ID): log_store.py:27-36 encodes real newlines as the two characters
     backslash-n, and decodes ANY backslash-n back into a newline. JSON tool args contain

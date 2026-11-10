@@ -17,6 +17,8 @@ def test_F4_e2e_paraphrased_route_loses_thread(tmp_path):
     assert r["final_reply"].startswith("I have no record")  # FLIPS
 
 
+@pytest.mark.finding("F4")
+@pytest.mark.control
 def test_e2e_control_exact_name_keeps_thread(tmp_path):
     trace = demo.Trace(out=lambda _line: None)
     r = demo.run_scenario("Email to Alice", tmp_path / "b", trace)

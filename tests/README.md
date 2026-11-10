@@ -43,6 +43,58 @@ a fix should break. When a fix lands, invert those lines into spec assertions.
 `*_control_*` tests show that the mechanism works when the agent name matches
 exactly, which rules out the harness as the cause.
 
+### Reading the output
+
+Because these are characterization tests, **"N passed" does not mean OpenPoke
+works**. For most tests, a pass means the bug reproduced. Every run therefore
+ends with a summary (`tests/routing_summary.py`):
+
+```
+F4             BUG REPRODUCED   4/4
+F7             BUG REPRODUCED   10/10   (1 also tagged F33)
+...
+controls OK 5/5 | harness OK 4/4
+```
+
+* `BUG REPRODUCED`: every bug test for that F-ID still shows the faulty behaviour.
+* `CHANGED, check # FLIPS lines (fixed?)`: at least one bug test failed. Either a
+  fix landed (good: turn the `# FLIPS` lines into spec assertions) or something
+  else changed.
+* `controls FAILED` / `HARNESS BROKEN`: don't trust the bug results until these
+  are green again.
+
+A test tagged with two F-IDs counts under both. Tests filtered out with `-k`/`-m`
+aren't counted. Roles come from markers: `@pytest.mark.harness`,
+`@pytest.mark.control`, otherwise `@pytest.mark.finding(...)` = bug reproduction.
+
+| Kind | Count | A pass means |
+|---|---|---|
+| Bug reproductions | 26 | the faulty behaviour happened as described |
+| Controls / context | 5 | the mechanism works normally when the cause is removed (exact-name reuse loads history; non-blocking Gmail lets the fast agent finish; timeout fires while awaiting the model; default timeout is 90 s) |
+| Harness sanity | 4 | sandboxed import, temp-dir stores, network blocked, unscripted model calls fail loudly |
+
+`test_01_summary_report.py` (2 tests) checks the summary itself, using pytester.
+
+**What a pass does not show:** how *often* a real model misnames an agent (the
+F4 paraphrase is scripted), real latency (F37/F31 timings are scaled down and
+Gmail blocking is a `time.sleep` stub), or real Composio/OpenRouter behaviour.
+
+### Results by finding (at 5b5f635)
+
+| F-ID | Result | Where the behaviour comes from |
+|---|---|---|
+| F4 | Confirmed: a paraphrased name creates a new roster entry and log; the new agent's prompt has none of the first agent's history (control: the exact name does get it) | `interaction_agent/tools.py:116-120`, `execution/roster.py:63-67` |
+| F7 | Confirmed, and wider than noted: case/punctuation variants share one log, and so do unrelated names (`C++`/`C#` → `c-job-offer.log`; punctuation-only names → `agent.log`) | `execution/log_store.py:19-24` |
+| F33 | Confirmed: another agent's `listTriggers` is empty and `updateTrigger` returns "not found"; the trigger still fires | `triggers/store.py:70-102` |
+| F33×F7 | Confirmed: a case-variant agent sees `trigger_id=1` in the shared log but can't list or update it | as above |
+| F34 | Confirmed: a firing logs only `agent_response`; the trigger ID and payload are never saved | `trigger_scheduler.py:92-96` (skips `tools.py:122`) |
+| F23 | Correction confirmed: the full Gmail record goes to `gmail-execution-agent.log` with no caller name; the caller keeps args[:200] / result[:500] | `tools/gmail.py:11, 325-344`; `execution_agent/agent.py:119-123` |
+| F37 | Confirmed: a blocking Gmail call stalls other agents; the timeout fires only at an await (on time while waiting on the model, late during a blocking call); a fast result waits for the slowest agent in its batch | `execution_agent/runtime.py:230-233`, `batch_manager.py:63-66, 137-144` |
+| F31/L22 | Confirmed: after a timeout, the side effect remains, the log has no `agent_response`, and the assistant is told FAILED | `execution_agent/runtime.py:138` |
+| log-roundtrip | New: the log store turns `\n` in saved JSON back into real newlines | `execution/log_store.py:27-36` |
+
+### Files
+
 | File | Findings |
 |---|---|
 | `test_f04_paraphrased_agent_names.py` | F4 |
