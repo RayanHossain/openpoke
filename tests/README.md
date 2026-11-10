@@ -39,7 +39,10 @@ uv pip install -p .venv-test/bin/python -r server/requirements.txt -r tests/requ
 Each test asserts what OpenPoke does **today** and passes while the bug
 exists. Tests are named `test_F<id>_...`, tagged `@pytest.mark.finding("F<id>")`,
 and their docstrings cite file:line. Lines marked `# FLIPS` are the assertions
-a fix should break. When a fix lands, invert those lines into spec assertions.
+a fix should break. When a fix lands, invert those lines into spec assertions
+and swap the test's `finding(...)` marker for `@pytest.mark.fixed("F<id>")`, so the
+summary reports `F<id> FIXED n/n` (a pass now means the fix holds) instead of
+`BUG REPRODUCED`. New-behaviour tests for D-004 live in `test_spec_*.py`.
 `*_control_*` tests show that the mechanism works when the agent name matches
 exactly, which rules out the harness as the cause.
 

@@ -55,7 +55,7 @@ def test_F4_paraphrased_name_creates_second_roster_entry_and_log(sb, run):
     assert r1.payload["new_agent_created"] is True
     assert r2.payload["new_agent_created"] is True  # FLIPS: should resolve to FIRST
     assert sb.roster.get_agents() == [FIRST, PARAPHRASE]  # FLIPS
-    assert sb.log_files() == ["alice-lunch-email.log", "email-to-alice.log", "gmail-execution-agent.log"]
+    assert sb.log_files() == ["ea_1.log", "ea_2.log", "gmail-execution-agent.log"]
 
 
 @pytest.mark.finding("F4")

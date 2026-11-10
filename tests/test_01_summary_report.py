@@ -64,3 +64,31 @@ def test_bug():
         "F1 * BUG REPRODUCED   1/1",
         "*harness FAILED 0/1",
     ])
+
+
+def test_summary_reports_fixed_and_regressed(pytester):
+    pytester.makeconftest("from routing_summary import pytest_configure  # noqa: F401\n")
+    pytester.makepyfile(test_fake='''
+import pytest
+
+@pytest.mark.fixed("F3")
+def test_fix_holds():
+    pass
+
+@pytest.mark.fixed("F4")
+def test_fix_regressed():
+    assert False
+
+@pytest.mark.finding("F4")
+def test_other_part_of_f4_still_reproduces():
+    pass
+''')
+    result = pytester.runpytest_inprocess("-p", "no:cacheprovider", "-p", "no:asyncio")
+    result.assert_outcomes(passed=2, failed=1)
+    result.stdout.fnmatch_lines([
+        "F4 * BUG REPRODUCED   1/1",
+        "F3 * FIXED            1/1",
+        "F4 * FIX REGRESSED    0/1 hold",
+        "Bug reproductions * 1 *",
+        "Fixed (spec) * 2 *",
+    ])

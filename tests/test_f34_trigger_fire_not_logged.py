@@ -67,15 +67,15 @@ def test_F34_trigger_firing_records_response_without_request(sb, run, monkeypatc
     assert "Trigger ID: 1" not in log  # FLIPS
 
     # The trigger itself advanced (one-shot -> completed), so the scheduler side is fine.
-    (rec,) = sb.triggers.list_triggers(agent_name=OWNER)
+    (rec,) = sb.triggers.list_triggers(agent_id=sb.agent_id(OWNER))
     assert rec.status == "completed"
 
 
 @pytest.mark.finding("F34")
 def test_F34_next_invocation_sees_orphan_response(sb, run, monkeypatch):
     """F34 consequence: the agent's next prompt shows a reply with no visible cause."""
-    sb.roster.add_agent(OWNER)
-    sb.triggers.create_trigger(agent_name=OWNER, payload="Tell the user: lunch at 1pm.",
+    owner = sb.roster.add_agent(OWNER)
+    sb.triggers.create_trigger(agent_id=owner, payload="Tell the user: lunch at 1pm.",
                                start_time=REMIND_AT.isoformat(), timezone_name="UTC")
 
     from server.services import trigger_scheduler as ts

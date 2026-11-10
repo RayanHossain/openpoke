@@ -18,6 +18,7 @@ class PendingExecution:
 
     request_id: str
     agent_name: str
+    agent_id: str
     instructions: str
     batch_id: str
     created_at: datetime = field(default_factory=datetime.now)
@@ -49,17 +50,25 @@ class ExecutionBatchManager:
         agent_name: str,
         instructions: str,
         request_id: Optional[str] = None,
+        *,
+        agent_id: str,
     ) -> ExecutionResult:
-        """Execute an agent asynchronously and buffer the result for batch dispatch."""
+        """Execute an agent asynchronously and buffer the result for batch dispatch.
+
+        ``agent_id`` is the agent's identity (logs, triggers, keys); ``agent_name``
+        is its display label, used in prompts and the batch summary.
+        """
 
         if not request_id:
             request_id = str(uuid.uuid4())
 
-        batch_id = await self._register_pending_execution(agent_name, instructions, request_id)
+        batch_id = await self._register_pending_execution(
+            agent_name, agent_id, instructions, request_id
+        )
 
         try:
             logger.info(f"[{agent_name}] Execution started")
-            runtime = ExecutionAgentRuntime(agent_name=agent_name)
+            runtime = ExecutionAgentRuntime(agent_name=agent_name, agent_id=agent_id)
             result = await asyncio.wait_for(
                 runtime.execute(instructions),
                 timeout=self.timeout_seconds,
@@ -70,6 +79,7 @@ class ExecutionBatchManager:
             logger.error(f"[{agent_name}] Execution timed out after {self.timeout_seconds}s")
             result = ExecutionResult(
                 agent_name=agent_name,
+                agent_id=agent_id,
                 success=False,
                 response=f"Execution timed out after {self.timeout_seconds} seconds",
                 error="Timeout",
@@ -78,6 +88,7 @@ class ExecutionBatchManager:
             logger.exception(f"[{agent_name}] Execution failed unexpectedly")
             result = ExecutionResult(
                 agent_name=agent_name,
+                agent_id=agent_id,
                 success=False,
                 response=f"Execution failed: {exc}",
                 error=str(exc),
@@ -92,6 +103,7 @@ class ExecutionBatchManager:
     async def _register_pending_execution(
         self,
         agent_name: str,
+        agent_id: str,
         instructions: str,
         request_id: str,
     ) -> str:
@@ -108,6 +120,7 @@ class ExecutionBatchManager:
             self._pending[request_id] = PendingExecution(
                 request_id=request_id,
                 agent_name=agent_name,
+                agent_id=agent_id,
                 instructions=instructions,
                 batch_id=batch_id,
             )
@@ -151,6 +164,7 @@ class ExecutionBatchManager:
             {
                 "request_id": pending.request_id,
                 "agent_name": pending.agent_name,
+                "agent_id": pending.agent_id,
                 "batch_id": pending.batch_id,
                 "created_at": pending.created_at.isoformat(),
                 "elapsed_seconds": (datetime.now() - pending.created_at).total_seconds(),

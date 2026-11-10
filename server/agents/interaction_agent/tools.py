@@ -111,22 +111,24 @@ _EXECUTION_BATCH_MANAGER = ExecutionBatchManager()
 # Create or reuse execution agent and dispatch instructions asynchronously
 def send_message_to_agent(agent_name: str, instructions: str) -> ToolResult:
     """Send instructions to an execution agent."""
+    # Interim bridge (D-004 step 4): the label still selects the agent, but the
+    # agent's identity is its registry agent_id. Step 6 replaces name routing.
     roster = get_agent_roster()
-    roster.load()
-    existing_agents = set(roster.get_agents())
-    is_new = agent_name not in existing_agents
+    agent_id = roster.resolve(agent_name)
+    is_new = agent_id is None
+    if agent_id is None:
+        agent_id = roster.add_agent(agent_name)
 
-    if is_new:
-        roster.add_agent(agent_name)
-
-    get_execution_agent_logs().record_request(agent_name, instructions)
+    get_execution_agent_logs().record_request(agent_id, instructions)
 
     action = "Created" if is_new else "Reused"
-    logger.info(f"{action} agent: {agent_name}")
+    logger.info(f"{action} agent: {agent_name} ({agent_id})")
 
     async def _execute_async() -> None:
         try:
-            result = await _EXECUTION_BATCH_MANAGER.execute_agent(agent_name, instructions)
+            result = await _EXECUTION_BATCH_MANAGER.execute_agent(
+                agent_name, instructions, agent_id=agent_id
+            )
             status = "SUCCESS" if result.success else "FAILED"
             logger.info(f"Agent '{agent_name}' completed: {status}")
         except Exception as exc:  # pragma: no cover - defensive
@@ -145,6 +147,7 @@ def send_message_to_agent(agent_name: str, instructions: str) -> ToolResult:
         payload={
             "status": "submitted",
             "agent_name": agent_name,
+            "agent_id": agent_id,
             "new_agent_created": is_new,
         },
     )

@@ -34,6 +34,12 @@ AgentStatus = Literal["active", "waiting_user", "waiting_external", "done"]
 AGENT_STATUSES: frozenset[str] = frozenset(get_args(AgentStatus))
 
 AGENT_ID_PREFIX = "ea_"
+_AGENT_ID_RE = re.compile(r"ea_[1-9][0-9]*")
+
+
+def is_agent_id(value: object) -> bool:
+    """True for registry-issued IDs such as ``ea_17`` (shape only, not existence)."""
+    return isinstance(value, str) and _AGENT_ID_RE.fullmatch(value) is not None
 
 
 @dataclass(frozen=True)
@@ -188,6 +194,28 @@ class AgentRegistry:
         with self._lock, self._connect() as conn:
             row = conn.execute("SELECT * FROM agents WHERE agent_id = ?", (agent_id,)).fetchone()
         return self._row_to_record(row) if row else None
+
+    def find_by_label(self, label: str) -> Optional[str]:
+        """Newest agent whose label equals ``label`` exactly (after trimming), if any.
+
+        Legacy bridge for name-based callers (the roster shim); routing must not
+        use it once dispatch is by ``agent_id``.
+        """
+
+        clean_label = (label or "").strip()
+        with self._lock, self._connect() as conn:
+            row = conn.execute(
+                "SELECT agent_id FROM agents WHERE label = ? ORDER BY created_at DESC LIMIT 1",
+                (clean_label,),
+            ).fetchone()
+        return row["agent_id"] if row else None
+
+    def list_records(self) -> List[AgentRecord]:
+        """Every agent in creation order."""
+
+        with self._lock, self._connect() as conn:
+            rows = conn.execute("SELECT * FROM agents ORDER BY created_at").fetchall()
+        return [self._row_to_record(row) for row in rows]
 
     def all_ids(self) -> List[str]:
         """Every agent, most recently active first."""
@@ -420,6 +448,7 @@ __all__ = [
     "create_agent",
     "get",
     "get_agent_registry",
+    "is_agent_id",
     "normalize_key",
     "recent",
     "resolve_alias",

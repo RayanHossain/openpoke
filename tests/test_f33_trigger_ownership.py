@@ -67,7 +67,7 @@ def test_F33_other_agent_cannot_list_or_update_and_trigger_keeps_firing(sb, run,
 
     run(go)
 
-    (trigger,) = sb.triggers.list_triggers(agent_name=OWNER)
+    (trigger,) = sb.triggers.list_triggers(agent_id=sb.agent_id(OWNER))
     assert trigger.id == 1
 
     other_calls = sb.execution_llm.calls_for(OTHER)
@@ -81,10 +81,10 @@ def test_F33_other_agent_cannot_list_or_update_and_trigger_keeps_firing(sb, run,
     assert update_result["result"] == {"error": "Trigger 1 not found"}  # FLIPS
 
     # Unchanged in the store, and still due.
-    (still,) = sb.triggers.list_triggers(agent_name=OWNER)
+    (still,) = sb.triggers.list_triggers(agent_id=sb.agent_id(OWNER))
     assert still.status == "active"  # FLIPS
     due = sb.triggers.get_due_triggers(before=REMIND_AT + timedelta(minutes=1))
-    assert [(t.id, t.agent_name) for t in due] == [(1, OWNER)]
+    assert [(t.id, t.agent_id) for t in due] == [(1, sb.agent_id(OWNER))]
 
     # And the scheduler really does fire it under the owner.
     from server.services import trigger_scheduler as ts
@@ -105,18 +105,23 @@ def test_F33_other_agent_cannot_list_or_update_and_trigger_keeps_firing(sb, run,
 @pytest.mark.finding("F33")
 def test_F33_store_level_update_by_wrong_agent_is_noop(sb):
     """F33 (store level): knowing the id is not enough; ownership is the name string."""
-    rec = sb.triggers.create_trigger(agent_name=OWNER, payload="ping",
+    owner, other = sb.roster.add_agent(OWNER), sb.roster.add_agent(OTHER)
+    rec = sb.triggers.create_trigger(agent_id=owner, payload="ping",
                                      start_time=REMIND_AT.isoformat(), timezone_name="UTC")
-    assert sb.triggers.list_triggers(agent_name=OTHER) == []  # FLIPS
-    assert sb.triggers.update_trigger(rec.id, agent_name=OTHER, status="paused") is None  # FLIPS
-    assert sb.triggers.list_triggers(agent_name=OWNER)[0].status == "active"
+    assert sb.triggers.list_triggers(agent_id=other) == []  # FLIPS
+    assert sb.triggers.update_trigger(rec.id, agent_id=other, status="paused") is None  # FLIPS
+    assert sb.triggers.list_triggers(agent_id=owner)[0].status == "active"
 
 
-@pytest.mark.finding("F33")
-@pytest.mark.finding("F7")
-def test_F33_x_F7_case_variant_sees_trigger_in_history_but_cannot_touch_it(sb, run):
-    """F33 x F7: 'email-to-alice' shares 'Email to Alice''s log, so its prompt
-    says 'createTrigger succeeded | trigger_id=1', yet list/update fail for it."""
+@pytest.mark.fixed("F7")
+def test_F33_x_F7_case_variant_no_longer_sees_owners_trigger(sb, run):
+    """F33 x F7, F7 half FIXED by D-004 step 4: 'email-to-alice' used to share
+    'Email to Alice''s log, so its prompt said 'createTrigger succeeded |
+    trigger_id=1' for a trigger it could not touch. Now it is a separate agent
+    with its own journal, and ownership is strictly by agent_id (spec: a trigger
+    created by ea_1 is listable/updatable by ea_1 and by no other agent).
+    Reaching the owner with "cancel my reminder" is F33 proper, fixed by routing
+    (step 6); see the F33 tests above, which still reproduce."""
     owner, variant = "Email to Alice", "email-to-alice"
     _script_owner_creates_trigger(sb, owner=owner)
     _script_other_tries_to_cancel(sb, other=variant)
@@ -130,8 +135,8 @@ def test_F33_x_F7_case_variant_sees_trigger_in_history_but_cannot_touch_it(sb, r
     run(go)
 
     first_variant_call = sb.execution_llm.calls_for(variant)[0]
-    assert "createTrigger succeeded | trigger_id=1" in first_variant_call.system
+    assert "trigger_id=1" not in first_variant_call.system
     calls = sb.execution_llm.calls_for(variant)
-    assert _tool_results(calls[1])[-1]["result"] == {"triggers": []}  # FLIPS
-    assert _tool_results(calls[2])[-1]["result"] == {"error": "Trigger 1 not found"}  # FLIPS
-    assert sb.triggers.list_triggers(agent_name=owner)[0].status == "active"
+    assert _tool_results(calls[1])[-1]["result"] == {"triggers": []}
+    assert _tool_results(calls[2])[-1]["result"] == {"error": "Trigger 1 not found"}
+    assert sb.triggers.list_triggers(agent_id=sb.agent_id(owner))[0].status == "active"

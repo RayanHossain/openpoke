@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable, Dict, List
+from typing import Any, Callable, Dict, List, Optional
 
 from . import gmail, triggers
 from ..tasks import get_task_registry, get_task_schemas
@@ -20,13 +20,17 @@ def get_tool_schemas() -> List[Dict[str, Any]]:
 
 
 # Return Python callables for executing tools by name
-def get_tool_registry(agent_name: str) -> Dict[str, Callable[..., Any]]:
-    """Return Python callables for executing tools by name."""
+def get_tool_registry(agent_name: str, agent_id: Optional[str] = None) -> Dict[str, Callable[..., Any]]:
+    """Return Python callables for executing tools by name.
+
+    Trigger tools are bound to ``agent_id`` (falling back to ``agent_name`` only
+    for legacy direct runtimes that have no registry identity).
+    """
 
     registry: Dict[str, Callable[..., Any]] = {}
     registry.update(gmail.build_registry(agent_name))
     registry.update(get_task_registry(agent_name))
-    registry.update(triggers.build_registry(agent_name))
+    registry.update(triggers.build_registry(agent_id or agent_name))
     return registry
 
 

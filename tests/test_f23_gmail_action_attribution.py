@@ -39,7 +39,7 @@ def _run_draft(sb, run, result=None):
 
 
 def _entries(sb, name, tag):
-    return [p for t, _, p in sb.logs.iter_entries(name) if t == tag]
+    return [p for t, _, p in sb.logs.iter_entries(sb.log_key(name)) if t == tag]
 
 
 @pytest.mark.finding("F23")
@@ -47,7 +47,7 @@ def test_F23_full_gmail_record_lives_in_pseudo_agent_log_without_caller(sb, run)
     """F23: the complete action record is in gmail-execution-agent.log and does not name the caller."""
     _run_draft(sb, run)
 
-    assert sb.log_files() == ["email-to-alice.log", "gmail-execution-agent.log"]
+    assert sb.log_files() == ["ea_1.log", "gmail-execution-agent.log"]
     (gmail_action,) = _entries(sb, "gmail-execution-agent", "agent_action")
     assert gmail_action.startswith("GMAIL_CREATE_EMAIL_DRAFT succeeded | args=")
     assert "Can you do lunch Thursday?" in gmail_action        # full body kept here

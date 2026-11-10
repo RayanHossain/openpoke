@@ -33,8 +33,8 @@ def _timed_batch(sb, monkeypatch):
     done = {}
     original = sb.batch_manager.execute_agent
 
-    async def timed(agent_name, instructions, request_id=None):
-        result = await original(agent_name, instructions, request_id)
+    async def timed(agent_name, instructions, request_id=None, **kwargs):
+        result = await original(agent_name, instructions, request_id, **kwargs)
         done[agent_name] = time.monotonic()
         return result
 

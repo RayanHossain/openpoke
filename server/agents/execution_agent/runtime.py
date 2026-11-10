@@ -22,6 +22,7 @@ class ExecutionResult:
     response: str
     error: Optional[str] = None
     tools_executed: List[str] = None
+    agent_id: Optional[str] = None
 
 
 class ExecutionAgentRuntime:
@@ -32,11 +33,11 @@ class ExecutionAgentRuntime:
     # Initialize execution agent runtime with settings, tools, and agent instance
     def __init__(self, agent_name: str, agent_id: Optional[str] = None):
         settings = get_settings()
-        self.agent = ExecutionAgent(agent_name)
+        self.agent = ExecutionAgent(agent_name, agent_id=agent_id)
         self.agent_id = agent_id
         self.api_key = settings.openrouter_api_key
         self.model = settings.execution_agent_model
-        self.tool_registry = get_tool_registry(agent_name=agent_name)
+        self.tool_registry = get_tool_registry(agent_name=agent_name, agent_id=agent_id)
         self.tool_schemas = get_tool_schemas()
 
         if not self.api_key:
@@ -136,7 +137,8 @@ class ExecutionAgentRuntime:
                 agent_name=self.agent.name,
                 success=True,
                 response=final_response,
-                tools_executed=tools_executed
+                tools_executed=tools_executed,
+                agent_id=self.agent_id,
             )
 
         except Exception as e:
@@ -149,7 +151,8 @@ class ExecutionAgentRuntime:
                 agent_name=self.agent.name,
                 success=False,
                 response=failure_text,
-                error=error_msg
+                error=error_msg,
+                agent_id=self.agent_id,
             )
 
     # Record what a successful tool call made this agent own (registry keys + aliases)

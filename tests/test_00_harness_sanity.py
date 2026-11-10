@@ -21,7 +21,7 @@ def test_server_package_is_sandbox_copy_not_repo():
 
 def test_stores_point_at_test_tmpdir(sb):
     assert sb.logs._base_dir == sb.data_dir / "execution_agents"
-    assert sb.roster._roster_path.parent == sb.data_dir / "execution_agents"
+    assert sb.registry._db_path.parent == sb.data_dir / "execution_agents"
     assert sb.triggers._store._db_path == sb.data_dir / "triggers.db"
     assert sb.conversation._path.parent == sb.data_dir / "conversation"
 

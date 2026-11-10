@@ -8,6 +8,8 @@ Roles come from markers:
   @pytest.mark.harness      harness sanity (isolation, stubs)
   @pytest.mark.control      control/context: mechanism works when the cause is removed
   @pytest.mark.finding(id)  anything else with a finding marker = bug reproduction
+  @pytest.mark.fixed(id)    a finding whose fix landed: its # FLIPS lines were inverted
+                            into spec assertions, so a PASS means the fix holds
 """
 
 from __future__ import annotations
@@ -19,6 +21,7 @@ ROLE_ROWS = [
     ("bug", "Bug reproductions", "the faulty behaviour happened as described"),
     ("control", "Controls / context", "the mechanism works normally when the cause is removed"),
     ("harness", "Harness sanity", "isolation and stubs can be trusted"),
+    ("fixed", "Fixed (spec)", "the finding's fix holds"),
 ]
 
 
@@ -37,12 +40,15 @@ class RoutingSummary:
     # Only selected (run) items reach setup, so -k / -m filtering is respected.
     def pytest_runtest_setup(self, item) -> None:
         fids = []
-        for mark in item.iter_markers("finding"):
+        markers = list(item.iter_markers("fixed")) or list(item.iter_markers("finding"))
+        for mark in markers:
             fid = str(mark.args[0]) if mark.args else "?"
             if fid not in fids:
                 fids.append(fid)
         if item.get_closest_marker("harness"):
             role = "harness"
+        elif item.get_closest_marker("fixed"):
+            role = "fixed"
         elif item.get_closest_marker("control"):
             role = "control"
         elif fids:
@@ -79,7 +85,8 @@ class RoutingSummary:
 
         bug_ids = self._ids("bug")
         all_fids = sorted({f for n in bug_ids for f in self.meta[n][1]}, key=_fid_sort_key)
-        width = max([len(f) for f in all_fids] + [5])
+        fixed_fids = {f for n in self._ids("fixed") for f in self.meta[n][1]}
+        width = max([len(f) for f in [*all_fids, *fixed_fids]] + [5])
         for fid in all_fids:
             tagged = [n for n in bug_ids if fid in self.meta[n][1]]
             passed, failed, total = self._tally(tagged)
@@ -91,6 +98,14 @@ class RoutingSummary:
                 tr.write_line(f"{fid:<{width}}  {status}{note}", yellow=True)
             else:
                 tr.write_line(f"{fid:<{width}}  BUG REPRODUCED   {passed}/{total}{note}")
+
+        fixed_ids = self._ids("fixed")
+        for fid in sorted({f for n in fixed_ids for f in self.meta[n][1]}, key=_fid_sort_key):
+            passed, failed, total = self._tally([n for n in fixed_ids if fid in self.meta[n][1]])
+            if failed:
+                tr.write_line(f"{fid:<{width}}  FIX REGRESSED    {passed}/{total} hold", red=True)
+            else:
+                tr.write_line(f"{fid:<{width}}  FIXED            {passed}/{total}", green=True)
 
         c_pass, c_fail, c_total = self._tally(self._ids("control"))
         c_text = (f"controls FAILED {c_pass}/{c_total}: bug results may not mean what they say"
@@ -111,5 +126,6 @@ def pytest_configure(config) -> None:
     config.addinivalue_line("markers", "finding(fid): links a test to an F-ID in claude/openpoke-findings.md")
     config.addinivalue_line("markers", "control: control/context test; passes when the mechanism works normally")
     config.addinivalue_line("markers", "harness: harness sanity check (isolation, stubs)")
+    config.addinivalue_line("markers", "fixed(fid): spec assertion for a finding whose fix landed")
     if not config.pluginmanager.has_plugin("routing-summary"):
         config.pluginmanager.register(RoutingSummary(), "routing-summary")

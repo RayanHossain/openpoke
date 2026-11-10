@@ -2,11 +2,11 @@
 
 Why a sandbox copy of ``server/``
 ---------------------------------
-Every OpenPoke store (agent roster, execution logs, trigger DB, conversation
+Every OpenPoke store (agent registry, execution logs, trigger DB, conversation
 log, timezone) is a module-level singleton whose path is computed at import
 time as ``Path(__file__).resolve().parent... / "data"``. Simply importing
 ``server`` from the repo would therefore create or open files in the real
-``server/data/`` (e.g. ``AgentRoster.load()`` writes ``roster.json``,
+``server/data/`` (e.g. ``AgentRegistry`` creates ``registry.db``,
 ``TriggerStore`` runs ``PRAGMA journal_mode=WAL`` on ``triggers.db``).
 
 To guarantee we never touch real data, the harness copies ``server/``
@@ -325,11 +325,23 @@ class Sandbox:
     def log_files(self) -> List[str]:
         return sorted(p.name for p in (self.data_dir / "execution_agents").glob("*.log"))
 
+    def agent_id(self, label: str) -> str:
+        """Registry ID of the agent with exactly this label (raises if none)."""
+        agent_id = get_agent_registry().find_by_label(label)
+        if agent_id is None:
+            raise KeyError(f"no agent labelled {label!r}")
+        return agent_id
+
+    def log_key(self, name: str) -> str:
+        # Agent labels resolve to their agent_id; pseudo-agent journals
+        # (e.g. "gmail-execution-agent") are addressed by name.
+        return get_agent_registry().find_by_label(name) or name
+
     def log_tags(self, agent_name: str) -> List[str]:
-        return [tag for tag, _, _ in self.logs.iter_entries(agent_name)]
+        return [tag for tag, _, _ in self.logs.iter_entries(self.log_key(agent_name))]
 
     def log_text(self, agent_name: str) -> str:
-        return self.logs.load_transcript(agent_name)
+        return self.logs.load_transcript(self.log_key(agent_name))
 
     # ---- lifecycle --------------------------------------------------------
     def close(self) -> None:
@@ -359,7 +371,6 @@ def open_sandbox(data_dir: Path) -> Sandbox:
     # Re-point singletons in place so every captured reference
     # (e.g. ``_LOG_STORE = get_execution_agent_logs()``) follows along.
     _retarget(st, get_execution_agent_logs(), _base_dir=exec_dir, _locks={})
-    _retarget(st, get_agent_roster(), _roster_path=exec_dir / "roster.json", _agents=[])
     registry = get_agent_registry()
     _retarget(st, registry, _db_path=exec_dir / "registry.db", _last_ts=None)
     registry._ensure_schema()
