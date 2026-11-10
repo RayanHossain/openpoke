@@ -166,12 +166,12 @@ class InteractionAgentRuntime:
             for tool_call in parsed_tool_calls:
                 summary.tool_names.append(tool_call.name)
 
-                if tool_call.name == "send_message_to_agent":
-                    agent_name = tool_call.arguments.get("agent_name")
-                    if isinstance(agent_name, str) and agent_name:
-                        summary.execution_agents.add(agent_name)
-
                 result = self._execute_tool(tool_call)
+
+                if tool_call.name in {"send_message_to_agent", "create_agent"} and result.success:
+                    agent_id = (result.payload or {}).get("agent_id")
+                    if isinstance(agent_id, str) and agent_id:
+                        summary.execution_agents.add(agent_id)
 
                 if result.user_message:
                     summary.user_messages.append(result.user_message)

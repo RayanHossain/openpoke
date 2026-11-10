@@ -3,8 +3,8 @@
 The JSON roster of bare names is retired (D-004): agent identity now lives in
 ``agent_registry`` as code-assigned ``agent_id``s. This shim keeps the old
 ``AgentRoster`` surface for callers that still speak in names
-(``routes/chat.py``, the test harness, and, until dispatch moves to IDs, the
-interaction agent's ``send_message_to_agent``).
+(``routes/chat.py`` and the test harness). Routing never uses it: the
+interaction agent dispatches by ``agent_id`` only.
 """
 
 from __future__ import annotations

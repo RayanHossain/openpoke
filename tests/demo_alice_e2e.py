@@ -14,6 +14,13 @@ The scripted execution agent decides how to answer "did Alice reply?" only from
 what is in its prompt: it reports the thread if 'thread-alice-1' is in its
 Execution History, and says it has no record otherwise. So the difference between
 the two runs comes from OpenPoke's state, not from the script.
+
+Since D-004 the interaction agent routes by agent_id from code-backed cards.
+Scenario A replays the old failure mode: on turn 2 the router writes a
+paraphrased *name* where an agent_id belongs. Before D-004 that silently created
+a second, history-less agent (F4); now the tool rejects it, and the scripted
+router falls back on the card that shows Alice's address. Scenario B reads the
+card straight away.
 """
 
 from __future__ import annotations
@@ -24,7 +31,7 @@ import sys
 import tempfile
 import textwrap
 from pathlib import Path
-from typing import Callable, Dict, List
+from typing import Callable, Dict, List, Optional
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -67,37 +74,61 @@ def _fmt_args(args: Dict) -> str:
 # Scripted models
 # --------------------------------------------------------------------------- #
 
-def make_interaction_model(second_name: str, trace: Trace):
-    """Plays the interaction agent. Turn 2 routes to `second_name`."""
+def _last_tool_result(call: LLMCall) -> Dict:
+    msg = call.messages[-1]
+    return json.loads(msg["content"]) if msg.get("role") == "tool" else {}
+
+
+def _card_id_for(content: str, needle: str) -> str:
+    block = content.split("<active_agents>")[1].split("</active_agents>")[0]
+    return next(line.split(" | ")[0] for line in block.strip().splitlines() if needle in line)
+
+
+def make_interaction_model(first_try: Optional[str], trace: Trace):
+    """Plays the interaction agent. On turn 2 it first writes `first_try` as the
+    agent_id (a paraphrased name, as a model might); None = read the card directly."""
+
+    first_instructions = "Email alice@example.com asking if she's free for lunch Thursday."
+    follow_up = "Check whether Alice has replied to the lunch email."
 
     def respond(call: LLMCall):
-        if call.messages[-1].get("role") == "tool":
-            return reply("")  # tools done; end this loop iteration
         content = call.last_user_content
         turn = content.split("<new_", 1)[1]
+        last = _last_tool_result(call)
+        calls: List[Dict] = []
 
         if turn.startswith("user_message>") and "email Alice" in turn:
-            calls = [
-                tool_call("send_message_to_user", message="On it, I'll email Alice about lunch."),
-                tool_call("send_message_to_agent", agent_name=FIRST_NAME,
-                          instructions="Email alice@example.com asking if she's free for lunch Thursday."),
-            ]
+            if not last:
+                calls = [
+                    tool_call("send_message_to_user", message="On it, I'll email Alice about lunch."),
+                    tool_call("create_agent", label=FIRST_NAME, instructions=first_instructions),
+                ]
+            elif last["tool"] == "create_agent" and last["result"]["status"] == "confirmation_required":
+                trace("OBSERVED", "create_agent(confirm=false)",
+                      f"existing owners: {last['result']['existing_owners'] or 'none'}")
+                calls = [tool_call("create_agent", label=FIRST_NAME, instructions=first_instructions,
+                                   confirm=True)]
         elif turn.startswith("user_message>") and "Did Alice reply" in turn:
-            active = content.split("<active_agents>")[1].split("</active_agents>")[0].strip()
-            trace("OBSERVED", "interaction prompt", f"<active_agents> shows: {active}")
-            calls = [
-                tool_call("send_message_to_user", message="Let me check."),
-                tool_call("send_message_to_agent", agent_name=second_name,
-                          instructions="Check whether Alice has replied to the lunch email."),
-            ]
-        elif turn.startswith("agent_message>"):
+            if not last:
+                active = content.split("<active_agents>")[1].split("</active_agents>")[0].strip()
+                trace("OBSERVED", "interaction prompt", f"<active_agents> shows: {active}")
+                target = first_try or _card_id_for(content, "alice@example.com")
+                calls = [
+                    tool_call("send_message_to_user", message="Let me check."),
+                    tool_call("send_message_to_agent", agent_id=target, instructions=follow_up),
+                ]
+            elif last["status"] == "error":
+                trace("OBSERVED", "send_message_to_agent", f"rejected: {last['error']['error']}")
+                calls = [tool_call("send_message_to_agent", agent_id=_card_id_for(content, "alice@example.com"),
+                                   instructions=follow_up)]
+        elif turn.startswith("agent_message>") and not last:
             result = turn.split(">", 1)[1].split("</new_agent_message>")[0].strip()
             trace("OBSERVED", "batch -> interaction", result)
             text = result.split(": ", 1)[1] if ": " in result else result
             calls = [tool_call("send_message_to_user", message=text)]
-        else:  # pragma: no cover
-            raise AssertionError(f"unexpected interaction turn: {turn[:80]}")
 
+        if not calls:
+            return reply("")  # tools done; end this loop iteration
         for c in calls:
             fn = c["function"]
             trace("SCRIPTED", "interaction model", f"{fn['name']}({_fmt_args(json.loads(fn['arguments']))})")
@@ -149,12 +180,12 @@ def make_execution_model(trace: Trace):
 # Scenario
 # --------------------------------------------------------------------------- #
 
-def run_scenario(second_name: str, data_dir: Path, trace: Trace) -> Dict:
+def run_scenario(first_try: Optional[str], data_dir: Path, trace: Trace) -> Dict:
     from server.agents.interaction_agent.runtime import InteractionAgentRuntime
 
     sb = harness.open_sandbox(data_dir)
     try:
-        sb.interaction_llm.fallback = make_interaction_model(second_name, trace)
+        sb.interaction_llm.fallback = make_interaction_model(first_try, trace)
         sb.execution_llm.fallback = make_execution_model(trace)
 
         async def user_turn(text: str):
@@ -174,10 +205,10 @@ def run_scenario(second_name: str, data_dir: Path, trace: Trace) -> Dict:
 
         asyncio.run(main())
 
-        second_call = [c for c in sb.execution_llm.calls_for(second_name)][-1]
+        second_call = [c for c in sb.execution_llm.calls_for(FIRST_NAME)][-1]
         replies = [p for t, _, p in sb.conversation.iter_entries() if t == "poke_reply"]
         return {
-            "second_name": second_name,
+            "first_try": first_try,
             "roster": sb.roster.get_agents(),
             "log_files": sb.log_files(),
             "second_prompt_has_thread": THREAD in second_call.system,
@@ -192,17 +223,17 @@ def main() -> int:
     trace = Trace()
     results = []
     with tempfile.TemporaryDirectory(prefix="openpoke-demo-") as tmp:
-        for label, name in [("A: paraphrased name (the bug)", "Alice lunch email"),
-                            ("B: control, exact name reused", FIRST_NAME)]:
+        for label, first_try in [("A: router writes a paraphrased name (old F4 trigger)", "Alice lunch email"),
+                                 ("B: router reads the card", None)]:
             print()
             trace.rule(f"SCENARIO {label}")
-            results.append((label, run_scenario(name, Path(tmp) / name.replace(" ", "_"), trace)))
+            results.append((label, run_scenario(first_try, Path(tmp) / label[0], trace)))
 
     print()
     trace.rule("SUMMARY")
     for label, r in results:
         print(f"{label}")
-        print(f"   turn-2 agent name ............ {r['second_name']!r}")
+        print(f"   turn-2 first agent_id tried .. {r['first_try']!r}")
         print(f"   roster ....................... {r['roster']}")
         print(f"   first agent's log has thread . {r['first_log_has_thread']}")
         print(f"   turn-2 agent saw thread ...... {r['second_prompt_has_thread']}")

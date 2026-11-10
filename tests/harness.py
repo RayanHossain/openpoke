@@ -423,9 +423,18 @@ async def drain(timeout: float = 10.0) -> None:
         await asyncio.wait(pending, timeout=remaining)
 
 
-def send_message_to_agent(agent_name: str, instructions: str):
-    """Call the interaction agent's real tool (must run inside an event loop)."""
-    return _ia_tools.send_message_to_agent(agent_name, instructions)
+def send_message_to_agent(label: str, instructions: str):
+    """Test shortcut for "the router chose the agent labelled ``label``".
+
+    Uses the interaction agent's real tools (must run inside an event loop):
+    an existing label dispatches by its agent_id (``send_message_to_agent``);
+    otherwise the agent is created and dispatched (``create_agent(confirm=True)``).
+    Tests of the routing interface itself call ``_ia_tools`` directly.
+    """
+    agent_id = get_agent_registry().find_by_label(label)
+    if agent_id is not None:
+        return _ia_tools.send_message_to_agent(agent_id, instructions)
+    return _ia_tools.create_agent(label, instructions, confirm=True)
 
 
 def ack_batch_dispatch(sb: Sandbox, times: int = 1) -> None:

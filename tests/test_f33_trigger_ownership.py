@@ -1,18 +1,20 @@
-"""F33 - a trigger is owned by the exact agent_name that created it.
+"""F33 (FIXED by D-004 steps 4-6) - "cancel my reminder" could not reach the trigger's owner.
 
-Another agent (a misroute, a paraphrase, or a case variant) cannot list it and
-cannot update it, so "cancel my reminder" sent to the wrong agent leaves the
-reminder firing.
+Before: a trigger was owned by the exact agent_name that created it, and the
+router picked agents by free-text name, so a cancel sent to "Reminders" (or a
+case variant) made a new agent that could not list or update the trigger, and
+the reminder kept firing.
 
-Code path:
-  server/agents/execution_agent/tools/triggers.py:236-243  tools bound to agent_name via partial()
-  server/services/triggers/store.py:70-76    fetch_one   WHERE id = ? AND agent_name = ?
-  server/services/triggers/store.py:78-94    update      WHERE id = ? AND agent_name = ?
-  server/services/triggers/store.py:96-102   list        WHERE agent_name = ?
-  server/agents/execution_agent/tools/triggers.py:199-200  -> {"error": "Trigger N not found"}
-  server/services/trigger_scheduler.py:68-78  poller fires every due trigger regardless of agent
+After: ownership is the registry agent_id (strict: a trigger created by ea_1
+is listable/updatable by ea_1 and by no other agent), and routing is by that
+ID. The trigger is a key on its owner's card ("open: trigger t_1"), a request
+mentioning it pulls the owner's card in even when the owner has left the hot
+set, and create_agent(confirm=False) points at the owner instead of creating a
+stranger.
 
-CHARACTERIZATION TESTS (green while the bug exists; ``# FLIPS`` marks what a fix changes).
+SPEC TESTS: the former ``# FLIPS`` assertions, inverted. The residual risk that
+D-004 accepts (no key in the request, owner outside the hot set) is
+characterized separately as ``F33-residual``.
 """
 
 from __future__ import annotations
@@ -22,7 +24,8 @@ from datetime import datetime, timedelta, timezone
 
 import pytest
 
-from harness import ack_batch_dispatch, drain, reply, send_message_to_agent, tool_call
+from harness import _ia_tools, ack_batch_dispatch, drain, reply, send_message_to_agent, tool_call
+from server.services.execution import agent_registry as reg
 
 OWNER = "Lunch reminder"
 OTHER = "Reminders"  # plausible destination for "cancel my reminder"
@@ -53,63 +56,101 @@ def _script_other_tries_to_cancel(sb, other=OTHER):
     )
 
 
-@pytest.mark.finding("F33")
-def test_F33_other_agent_cannot_list_or_update_and_trigger_keeps_firing(sb, run, monkeypatch):
-    """F33: misrouted cancel -> listTriggers empty, update 'not found', trigger still fires."""
+def _owner_plus_newer_agents(sb, run, newer=9):
+    """Owner creates trigger 1, then `newer` agents become more recently active."""
     _script_owner_creates_trigger(sb)
-    _script_other_tries_to_cancel(sb)
-    ack_batch_dispatch(sb, times=2)
+    ack_batch_dispatch(sb)
 
     async def go():
         send_message_to_agent(OWNER, "Remind me about lunch with Alice at 1pm.")
         await drain()
-        send_message_to_agent(OTHER, "Cancel the user's lunch reminder (trigger 1).")
 
     run(go)
+    for i in range(newer):
+        sb.roster.add_agent(f"filler {i}")
+    owner = sb.agent_id(OWNER)
+    assert owner not in reg.recent(5)  # owner has left the hot set
+    return owner
 
-    (trigger,) = sb.triggers.list_triggers(agent_id=sb.agent_id(OWNER))
-    assert trigger.id == 1
 
-    other_calls = sb.execution_llm.calls_for(OTHER)
-    list_result = _tool_results(other_calls[1])[-1]
-    update_result = _tool_results(other_calls[2])[-1]
-    assert list_result["tool"] == "listTriggers"
-    assert list_result["result"] == {"triggers": []}  # FLIPS
-    assert update_result["tool"] == "updateTrigger"
-    # Reported as success at the tool layer, with an error payload inside:
-    assert update_result["status"] == "success"
-    assert update_result["result"] == {"error": "Trigger 1 not found"}  # FLIPS
+def _active_block(text):
+    from server.agents.interaction_agent.agent import prepare_message_with_history
 
-    # Unchanged in the store, and still due.
-    (still,) = sb.triggers.list_triggers(agent_id=sb.agent_id(OWNER))
-    assert still.status == "active"  # FLIPS
-    due = sb.triggers.get_due_triggers(before=REMIND_AT + timedelta(minutes=1))
-    assert [(t.id, t.agent_id) for t in due] == [(1, sb.agent_id(OWNER))]
+    (msg,) = prepare_message_with_history(text, transcript="", message_type="user")
+    return msg["content"].split("<active_agents>")[1].split("</active_agents>")[0]
 
-    # And the scheduler really does fire it under the owner.
+
+@pytest.mark.fixed("F33")
+def test_F33_cancel_mentioning_trigger_reaches_owner_and_stops_it(sb, run, monkeypatch):
+    """F33 fixed: the trigger key surfaces the owner; dispatch by ID pauses the reminder."""
+    owner = _owner_plus_newer_agents(sb, run)
+    request = "Cancel the user's lunch reminder (trigger 1)."
+
+    block = _active_block(request)
+    owner_line = next(line for line in block.splitlines() if line.startswith(f"{owner} |"))
+    assert "open: trigger t_1" in owner_line
+
+    async def dry_run():
+        return _ia_tools.create_agent(OTHER, request)
+
+    r = run(dry_run)
+    assert [c.split(" | ")[0] for c in r.payload["existing_owners"]] == [owner]
+    count_before = reg.count()
+
+    sb.execution_llm.script(
+        OWNER,
+        reply("", tool_call("listTriggers")),
+        reply("", tool_call("updateTrigger", trigger_id=1, status="paused")),
+        reply("Paused trigger 1."),
+    )
+    ack_batch_dispatch(sb)
+
+    async def cancel():
+        _ia_tools.send_message_to_agent(owner, request)
+        await drain()
+
+    run(cancel)
+    calls = sb.execution_llm.calls_for(OWNER)
+    assert [t["id"] for t in _tool_results(calls[-2])[-1]["result"]["triggers"]] == [1]
+    assert _tool_results(calls[-1])[-1]["result"]["status"] == "paused"
+    assert reg.count() == count_before
+
+    (still,) = sb.triggers.list_triggers(agent_id=owner)
+    assert still.status == "paused"
+    assert sb.triggers.get_due_triggers(before=REMIND_AT + timedelta(minutes=1)) == []
+
     from server.services import trigger_scheduler as ts
 
     monkeypatch.setattr(ts, "_utc_now", lambda: REMIND_AT + timedelta(seconds=5))
-    sb.execution_llm.script(OWNER, reply("Reminder: lunch with Alice at 1pm."))
-    ack_batch_dispatch(sb)
+    n_calls = len(sb.execution_llm.calls)
 
     async def fire():
         await ts.TriggerScheduler()._poll_once()
 
     run(fire)
-    fired = sb.execution_llm.calls_for(OWNER)[-1]
-    assert "Trigger ID: 1" in fired.last_user_content
-    assert "lunch with Alice" in fired.last_user_content
+    assert len(sb.execution_llm.calls) == n_calls  # paused: nothing fires
 
 
-@pytest.mark.finding("F33")
-def test_F33_store_level_update_by_wrong_agent_is_noop(sb):
-    """F33 (store level): knowing the id is not enough; ownership is the name string."""
+@pytest.mark.finding("F33-residual")
+def test_F33_residual_cancel_without_key_misses_owner_outside_hot_set(sb, run):
+    """Accepted risk (D-004 "known accepted risk"): with N > 8 agents and no key in
+    the request, an owner outside the hot set is not shown, so the router may
+    create a new agent that cannot touch the trigger. To be measured, not fixed here."""
+    owner = _owner_plus_newer_agents(sb, run)
+    block = _active_block("Cancel my lunch reminder.")
+    assert f"{owner} |" not in block
+
+
+@pytest.mark.fixed("F33")
+def test_F33_store_level_ownership_is_strictly_by_agent_id(sb):
+    """F33 spec (store level): knowing the id is not enough; the owner is the agent_id.
+    (At 5b5f635 these lines were marked # FLIPS; under D-004 strict ownership is the
+    intended behaviour, and the owner is made reachable by routing instead.)"""
     owner, other = sb.roster.add_agent(OWNER), sb.roster.add_agent(OTHER)
     rec = sb.triggers.create_trigger(agent_id=owner, payload="ping",
                                      start_time=REMIND_AT.isoformat(), timezone_name="UTC")
-    assert sb.triggers.list_triggers(agent_id=other) == []  # FLIPS
-    assert sb.triggers.update_trigger(rec.id, agent_id=other, status="paused") is None  # FLIPS
+    assert sb.triggers.list_triggers(agent_id=other) == []
+    assert sb.triggers.update_trigger(rec.id, agent_id=other, status="paused") is None
     assert sb.triggers.list_triggers(agent_id=owner)[0].status == "active"
 
 

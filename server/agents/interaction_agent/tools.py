@@ -7,7 +7,10 @@ from typing import Any, Optional
 
 from ...logging_config import logger
 from ...services.conversation import get_conversation_log
-from ...services.execution import get_agent_roster, get_execution_agent_logs
+from ...services.execution import get_execution_agent_logs
+from ...services.execution.agent_registry import get_agent_registry
+from ...services.execution.keys import extract_from_text
+from ...services.execution.routing_cards import MAX_CARDS, render_card
 from ..execution_agent.batch_manager import ExecutionBatchManager
 
 
@@ -26,17 +29,40 @@ TOOL_SCHEMAS = [
         "type": "function",
         "function": {
             "name": "send_message_to_agent",
-            "description": "Deliver instructions to a specific execution agent. Creates a new agent if the name doesn't exist in the roster, or reuses an existing one.",
+            "description": "Deliver instructions to an EXISTING execution agent, chosen by its agent_id from the agent cards. Never creates an agent; an unknown agent_id returns an error and does nothing.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "agent_name": {
+                    "agent_id": {
                         "type": "string",
-                        "description": "Human-readable agent name describing its purpose (e.g., 'Vercel Job Offer', 'Email to Sharanjeet'). This name will be used to identify and potentially reuse the agent."
+                        "description": "ID of an existing agent exactly as shown on its card (e.g. 'ea_17').",
                     },
                     "instructions": {"type": "string", "description": "Instructions for the agent to execute."},
                 },
-                "required": ["agent_name", "instructions"],
+                "required": ["agent_id", "instructions"],
+                "additionalProperties": False,
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "create_agent",
+            "description": "Start a NEW execution agent for work no existing card owns. First call with confirm=false: it creates nothing and returns any agents that already own the people, threads, drafts or triggers in the request. If one of them fits, use send_message_to_agent instead; otherwise call again with confirm=true to create the agent and dispatch the instructions.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "type": "string",
+                        "description": "Short human-readable label for the new agent (display only; e.g. 'Alice lunch').",
+                    },
+                    "instructions": {"type": "string", "description": "Instructions for the new agent to execute."},
+                    "confirm": {
+                        "type": "boolean",
+                        "description": "false (default): check for existing owners, create nothing. true: create and dispatch.",
+                    },
+                },
+                "required": ["label", "instructions"],
                 "additionalProperties": False,
             },
         },
@@ -108,47 +134,95 @@ TOOL_SCHEMAS = [
 _EXECUTION_BATCH_MANAGER = ExecutionBatchManager()
 
 
-# Create or reuse execution agent and dispatch instructions asynchronously
-def send_message_to_agent(agent_name: str, instructions: str) -> ToolResult:
-    """Send instructions to an execution agent."""
-    # Interim bridge (D-004 step 4): the label still selects the agent, but the
-    # agent's identity is its registry agent_id. Step 6 replaces name routing.
-    roster = get_agent_roster()
-    agent_id = roster.resolve(agent_name)
-    is_new = agent_id is None
-    if agent_id is None:
-        agent_id = roster.add_agent(agent_name)
-
+def _dispatch(agent_id: str, label: str, instructions: str) -> None:
+    """Record the request in the agent's log and run it in the background."""
     get_execution_agent_logs().record_request(agent_id, instructions)
-
-    action = "Created" if is_new else "Reused"
-    logger.info(f"{action} agent: {agent_name} ({agent_id})")
 
     async def _execute_async() -> None:
         try:
-            result = await _EXECUTION_BATCH_MANAGER.execute_agent(
-                agent_name, instructions, agent_id=agent_id
-            )
+            result = await _EXECUTION_BATCH_MANAGER.execute_agent(label, instructions, agent_id=agent_id)
             status = "SUCCESS" if result.success else "FAILED"
-            logger.info(f"Agent '{agent_name}' completed: {status}")
+            logger.info(f"Agent {agent_id} ('{label}') completed: {status}")
         except Exception as exc:  # pragma: no cover - defensive
-            logger.error(f"Agent '{agent_name}' failed: {str(exc)}")
+            logger.error(f"Agent {agent_id} ('{label}') failed: {str(exc)}")
 
+    asyncio.get_running_loop().create_task(_execute_async())
+
+
+def _has_event_loop() -> bool:
     try:
-        loop = asyncio.get_running_loop()
+        asyncio.get_running_loop()
+        return True
     except RuntimeError:
         logger.error("No running event loop available for async execution")
+        return False
+
+
+# Dispatch instructions to an existing execution agent by its registry ID
+def send_message_to_agent(agent_id: str, instructions: str) -> ToolResult:
+    """Send instructions to an existing execution agent. Never creates one."""
+    record = get_agent_registry().get(agent_id) if isinstance(agent_id, str) else None
+    if record is None:
+        logger.info(f"Rejected dispatch to unknown agent_id {agent_id!r}")
+        return ToolResult(
+            success=False,
+            payload={
+                "error": (
+                    f"Unknown agent_id {agent_id!r}. Use an agent_id exactly as shown on a card, "
+                    "or create_agent if no existing agent owns this work."
+                )
+            },
+        )
+    if not _has_event_loop():
         return ToolResult(success=False, payload={"error": "No event loop available"})
 
-    loop.create_task(_execute_async())
-
+    _dispatch(record.agent_id, record.label, instructions)
+    logger.info(f"Dispatched to agent {record.agent_id} ('{record.label}')")
     return ToolResult(
         success=True,
         payload={
             "status": "submitted",
-            "agent_name": agent_name,
-            "agent_id": agent_id,
-            "new_agent_created": is_new,
+            "agent_id": record.agent_id,
+            "label": record.label,
+            "new_agent_created": False,
+        },
+    )
+
+
+# Create a new execution agent (two-phase: check owners, then confirm)
+def create_agent(label: str, instructions: str, confirm: bool = False) -> ToolResult:
+    """confirm=False: report existing owners, create nothing. confirm=True: create and dispatch."""
+    clean_label = (label or "").strip() if isinstance(label, str) else ""
+    if not clean_label:
+        return ToolResult(success=False, payload={"error": "label must be a non-empty string"})
+
+    if confirm is not True:
+        owners = get_agent_registry().agents_for_keys(extract_from_text(f"{clean_label}\n{instructions}"))
+        return ToolResult(
+            success=True,
+            payload={
+                "status": "confirmation_required",
+                "existing_owners": [render_card(agent_id) for agent_id in owners[:MAX_CARDS]],
+                "next_step": (
+                    "If an existing owner fits, use send_message_to_agent with its agent_id. "
+                    "Otherwise call create_agent again with confirm=true."
+                ),
+            },
+        )
+
+    if not _has_event_loop():
+        return ToolResult(success=False, payload={"error": "No event loop available"})
+
+    record = get_agent_registry().create_agent(clean_label)
+    _dispatch(record.agent_id, record.label, instructions)
+    logger.info(f"Created agent {record.agent_id} ('{record.label}')")
+    return ToolResult(
+        success=True,
+        payload={
+            "status": "submitted",
+            "agent_id": record.agent_id,
+            "label": record.label,
+            "new_agent_created": True,
         },
     )
 
@@ -230,6 +304,8 @@ def handle_tool_call(name: str, arguments: Any) -> ToolResult:
 
         if name == "send_message_to_agent":
             return send_message_to_agent(**args)
+        if name == "create_agent":
+            return create_agent(**args)
         if name == "send_message_to_user":
             return send_message_to_user(**args)
         if name == "send_draft":
