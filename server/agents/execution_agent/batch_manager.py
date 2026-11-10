@@ -10,6 +10,7 @@ from typing import Dict, List, Optional
 
 from .runtime import ExecutionAgentRuntime, ExecutionResult
 from ...logging_config import logger
+from ...services.execution.agent_registry import get_agent_registry
 
 
 @dataclass
@@ -65,6 +66,11 @@ class ExecutionBatchManager:
         batch_id = await self._register_pending_execution(
             agent_name, agent_id, instructions, request_id
         )
+
+        try:
+            get_agent_registry().touch(agent_id)  # activity drives the routing hot set
+        except KeyError:
+            logger.warning(f"[{agent_name}] Unknown agent_id {agent_id!r}; not touched")
 
         try:
             logger.info(f"[{agent_name}] Execution started")

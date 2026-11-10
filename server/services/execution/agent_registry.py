@@ -332,7 +332,10 @@ class AgentRegistry:
         return {KeyRef(row["key_type"], row["key_value"]) for row in rows}
 
     def agents_for_keys(self, keys: Set[KeyRef]) -> List[str]:
-        """Agents owning any of ``keys``, done agents included, most recently active first."""
+        """Agents owning any of ``keys``, done agents included.
+
+        Ranked by how many of ``keys`` they own, then most recently active first.
+        """
 
         canonical: Set[KeyRef] = set()
         for key in keys:
@@ -347,9 +350,10 @@ class AgentRegistry:
         for key in canonical:
             params.extend([key.type, key.value])
         sql = (
-            "SELECT DISTINCT a.agent_id, a.last_active_at FROM agents a"
+            "SELECT a.agent_id, COUNT(*) AS matched, a.last_active_at FROM agents a"
             " JOIN agent_keys k ON k.agent_id = a.agent_id"
-            f" WHERE {clauses} ORDER BY a.last_active_at DESC"
+            f" WHERE {clauses}"
+            " GROUP BY a.agent_id ORDER BY matched DESC, a.last_active_at DESC"
         )
         with self._lock, self._connect() as conn:
             rows = conn.execute(sql, params).fetchall()
