@@ -64,6 +64,7 @@ Haiku = passes out of 3 runs. Sonnet = ✅/❌ for one run, with `*` meaning the
 | Pilot comparison run | ✅ ran, then discarded | The scenario used past dates and had no timezone; kept in `evaluation-data/haiku-pilot-discarded/` |
 | Fix for unrequested reminders | ❌ not applied | Cause found (no notes tool, so agents store notes as reminders); fix proposed, not applied or measured |
 | Fixes for over-asking and first-name resolution | ❌ not applied | Proposed only (section 6 of the full write-up) |
+| Reminders owned by the task's agent | ❌ not applied | Design principle: a task's reminders belong to the agent running that task, so the reminder fires with full context. The model put the invoice chase on a separate reminder agent in 7 of 8 runs; the fix is one router-prompt line (section 6 of the full write-up) |
 | Real Gmail, web UI, live server | ❌ not run, by design | Fake Gmail keeps both versions identical and sends no real mail |
 
 ## 5. Where the details are

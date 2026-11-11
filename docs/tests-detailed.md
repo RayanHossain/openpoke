@@ -162,8 +162,33 @@ The whole comparison cost about **$1.60** on Haiku, including the pilot and smok
 | Asks too often ("Which Alice?") | The new prompt's ASK rule ("ask if two cards could plausibly own the request") is broad, and with two Alices on the cards the model plays safe. That's prompt design, not identity. | Narrow the ASK rule: a just-arrived email's sender is the default "her/him", and cosmetic questions shouldn't block an explicit send. |
 | "Lunch with bob" goes to the wrong Bob | Cards only know people the system has already dealt with. Bob Lee had never been emailed, so the cards showed one Bob, and evidence-based routing turned an ambiguous name into a confident wrong answer. | Don't resolve a bare first name from cards alone: check contacts and ask if several people match. |
 | Unrequested reminders | See "Why unrequested reminders appear" below. It's an original OpenPoke gap; D-004 neither introduced nor fixes it. | Prompt-only fix proposed below (not yet applied or measured). |
-| Reminders pile onto one agent | A reminder agent's card attracts later reminder requests (in 2 of 3 runs the venue agent also took the invoice chase). Harmless, but the card's label becomes misleading. | Optional: one agent per task, or relabel from the brief. |
+| Reminders land on the wrong agent | The router places a new reminder on whichever agent looks like a "reminder agent", not on the agent that owns the task. The invoice chase went to the venue-reminder agent in 7 of 8 runs. The new design still finds and cancels it, but when it fires it wakes an agent with none of the task's context. See "Reminders belong to the task's agent" below. | One line of router guidance: attach a reminder to the agent that owns the related person or task (not yet applied or measured). |
 | A model timeout drops a turn | The app's model client has a 60-second timeout, no retry, and an empty error message. | Retry once and include the error type (logged in `CODE_ISSUES_AND_FIXES.md`; not changed). |
+
+### Reminders belong to the task's agent
+
+**The principle:** the agent in charge of a task should also own that task's reminders. For example, the Bob Ruiz invoice agent should own "chase Bob on Friday", not a separate reminder agent.
+
+**Why:**
+- **When a reminder fires, OpenPoke wakes its owner** (`trigger_scheduler.py` runs the owning agent with the reminder's payload). The task's agent wakes up with the thread, the draft and everything that has happened. A separate reminder agent wakes up with one line of text and has to reconstruct the context from the inbox.
+- **The reason to change a reminder arrives on the same task.** Bob's "paid" email matches the invoice agent's keys (his address, the invoice thread), so the router's key matching leads to the agent that also holds the reminder.
+- **Cards stay accurate.** In the Sonnet run, one "Tahoe venue reminder" card ended up holding the venue, invoice-chase, dentist and call reminders. The label no longer described what the agent owned.
+
+**Why a separate reminder agent made sense before:** in the old version, only a reminder's creator could see it, so one central reminder agent was the only way "cancel my reminder" could reliably find it. With D-004, every card lists that agent's open reminders and the router can reach any of them by owner, so that workaround is no longer needed.
+
+**What the runs show:** the model grouped reminders by type, not by task.
+
+| Run | Owner of the invoice-chase reminder |
+|---|---|
+| Haiku old, runs 1-3 | the venue-reminder agent (3/3) |
+| Haiku new, runs 1 and 3 | the venue-reminder agent |
+| Haiku new, run 2 | **the Bob Ruiz invoice agent** (task-scoped) |
+| Sonnet old and new | the venue-reminder agent |
+
+- **Old version:** the misplacement caused the failure. The cancel went to Bob's agent by name, and Bob's agent couldn't see a reminder owned by the venue agent (the run 2 example: the user was then told, falsely, that no reminders existed).
+- **New version:** cancelling still worked in 3 of 3 runs, because the router found the reminder on its owner's card. But had the reminder fired, the venue agent would have woken without the invoice context.
+
+**Proposed fix (prompt-only):** add one line to the interaction agent prompt: *"Attach a reminder to the agent that owns the related person or task, not to another reminder agent."* Not yet applied or measured.
 
 ### Why unrequested reminders appear
 
