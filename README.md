@@ -148,6 +148,12 @@ python -m pytest
   - **Vague follow-ups:** a follow-up that mentions no person, thread, draft or reminder (e.g. "the budget thing" weeks later) may not find the original agent and can create a duplicate.
   - **A new task for a person who already has an agent:** in the live check ("draft a new email to bob about the offsite"), it reused Bob's existing agent in 1 of 3 cases and asked you in the other 2 (once after checking for existing agents). It never started a new agent.
 
+### Next steps (proposed prompt changes, not applied)
+- **Ask less often:** right after Alice Park's email arrived, the new version asked "Which Alice?" for "reply to her" in 2 of 3 runs, and once held an explicit "send" to ask about the email's signature.
+- **Don't guess a bare first name:** "set up lunch with bob tomorrow?" was drafted to Bob Ruiz, the only Bob the system had met, in 2 of 3 runs of the new version and 3 of 3 of the original, although the contacts also had Bob Lee.
+- **No reminders nobody asked for:** "keep track of the C++ offer… deadline is Friday" produced a reminder in 2 of 3 runs of the new version (1 of 3 of the original). Agents have no other place to store a note, and once the assistant itself asked for a reminder.
+- **Put a reminder on the agent running that task:** the "chase Bob about the invoice" reminder ended up on the venue-reminder agent in 7 of 8 runs, so when it fires, the agent that wakes up has none of the invoice's context.
+
 ## Project Layout
 - `server/` – FastAPI application and agents
 - `web/` – Next.js app
