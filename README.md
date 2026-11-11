@@ -73,6 +73,71 @@ OpenPoke is a simplified, open-source take on [Interaction Company’s](https://
 
 The web app proxies API calls to the Python server using the values in `.env`, so keeping both processes running is required for end-to-end flows.
 
+## What's new: smarter agent routing
+
+### What was added
+- **Every agent now has a permanent ID** (like `ea_17`) instead of being identified by a name the assistant makes up each time.
+- **The system keeps a record of what each agent is working on:** the people it emailed, its email threads, its drafts and its reminders. These are recorded automatically from the agent's actual actions (the emails it drafts or sends and the reminders it sets), not from what it says.
+- **Before handing off a request, the assistant sees a short card for each relevant agent** and picks the right one by its ID. On each card:
+  - the ID, people, threads, drafts, reminders and last-active time come from those records
+  - the agent's name and its short summary of progress are written by the AI itself
+- **Starting a new agent takes two steps.** The system first shows whether an existing agent already handles that person, thread or reminder, then a second step creates the agent. This makes accidental duplicates less likely, but doesn't rule them out (see the limitations below).
+- **The same action repeated twice in one reply only runs once.** For example, the same task won't be handed to the same agent twice.
+- **The default AI model was updated.** The original default (`anthropic/claude-sonnet-4`) has been retired, so the app now uses `anthropic/claude-sonnet-5.5`. Each model can be changed with an `OPENPOKE_*_MODEL` environment variable, e.g. `OPENPOKE_INTERACTION_AGENT_MODEL`.
+
+### What this improves
+- **Follow-ups reach the right agent when they mention something recorded,** such as a person, an email thread, a draft or a reminder. "Did Alice reply?" goes back to the agent that emailed Alice, even if you word it differently. Before, rewording often created a brand-new agent that knew nothing about the earlier email. A vague follow-up that mentions none of these can still miss.
+- **Separate tasks stay separate.** Two tasks with similar names (like "C++ job offer" and "C# job offer") no longer share one memory.
+- **Reminders can be changed or cancelled.** Before, "cancel the reminder" could end up with an agent that couldn't see that reminder, so it kept firing. Now the request goes to the agent that owns it.
+- **Fewer wasted agents.** In one recorded conversation of 32 requests, run once on each version with Claude Haiku 5.5, the new version created 9 agents to the original's 12. None of the new version's agents sat idle; 4 of the original's were created and never did anything. That conversation is shown step by step in [`docs/demo-old-vs-new.md`](docs/demo-old-vs-new.md).
+
+### What hasn't changed
+- **Setup and running the app are the same:** follow the Quickstart above.
+- **The web app, the Gmail connection and how reminders fire** all work as before.
+- **If you already ran an older copy:** delete `server/data/triggers.db` once before starting the server. **This deletes any reminders you had saved**, because reminders are now stored by agent ID in a new format. You'll need to set them up again.
+
+## Running the tests
+
+```bash
+pip install -r tests/requirements.txt
+python -m pytest
+```
+
+- It takes a few seconds and needs **no API keys or internet**.
+- The AI model and Gmail are replaced with stand-ins that give fixed answers, so the results are the same on every machine.
+- Everything runs in a temporary folder, so your own data isn't touched.
+- At the end you'll see a summary by problem. The problems this update set out to fix show as **FIXED** (e.g. `reworded follow-ups: FIXED`). Known issues left as they were show as **still present**.
+
+### What the tests check
+- **The original problems are fixed:**
+  - a reworded follow-up reaches the original agent instead of creating a new, empty one
+  - tasks with similar names keep separate memories
+  - cancelling or changing a reminder reaches the agent that owns it, and the reminder stops
+- **Each new piece works on its own:**
+  - agent IDs are unique and never reused
+  - people, threads, drafts and reminders are recorded from the agent's real actions
+  - the assistant is shown the right agent cards for each request
+  - sending to an agent that doesn't exist is refused and does nothing
+  - a new agent is only created after an explicit confirm
+  - each agent leaves a short summary of its work, and a broken summary never causes a crash
+  - the same action repeated twice in one reply only runs once
+- **Things that weren't meant to change still behave the same:** for example, slow email calls and timeouts. The tests keep these visible rather than hiding them.
+
+### See the old and new versions side by side
+[`docs/demo-old-vs-new.md`](docs/demo-old-vs-new.md) shows one recorded conversation of 32 requests, run through both the original and the updated version with a real AI model (Claude Haiku 5.5). It lists every request, then shows only the ones where the two versions behaved differently: what each one did, and what should have happened.
+
+- Short summary of every test and its result: [`docs/tests-summary.md`](docs/tests-summary.md)
+- Full write-up of the method: [`docs/tests-detailed.md`](docs/tests-detailed.md)
+- Optional, needs an OpenRouter key and costs a few cents: re-run the live comparison yourself with `python tests/compare/run_live_comparison.py --env-file .env --out /tmp/compare`
+
+## Known limitations and what hasn't been measured yet
+- **The offline tests script the AI's choices.** They show the new mechanism works, but not that a real AI model routes requests better. The side-by-side demo is the real-model evidence.
+- **Routing as agents pile up hasn't been measured.** It's not yet known whether routing gets worse as the number of agents grows, or whether this change fixes that.
+- **The live check of the new interface is small:** 9 cases, one model (Claude Haiku 5.5). It checks whether the AI uses the new steps (picking by ID, checking before creating, asking when unsure), not whether it's more accurate than the original. It checked before creating in only 1 of 3 cases.
+- **Known gaps:**
+  - **Vague follow-ups:** a follow-up that mentions no person, thread, draft or reminder (e.g. "the budget thing" weeks later) may not find the original agent and can create a duplicate.
+  - **A new task for a person who already has an agent:** it can be sent to that person's existing agent instead of starting a new one. In the live check this happened in 1 of 3 cases; in the other 2, the assistant asked you first.
+
 ## Project Layout
 - `server/` – FastAPI application and agents
 - `web/` – Next.js app
