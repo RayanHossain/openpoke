@@ -1,6 +1,6 @@
-# Test breakdown: what ran, what it checked, what we hoped to see
+# Tests Summary
 
-Short version for presenting. Full explanation: [`routing-evaluation.md`](routing-evaluation.md). Raw reports, transcripts and evidence: [`evaluation-data/`](evaluation-data/).
+What ran, what each test checked, and what we hoped to see. Short version for presenting. Full explanation: [Tests Detailed](tests-detailed.md). Raw reports, transcripts and evidence: [`evaluation-data/`](evaluation-data/).
 
 **Old** = original OpenPoke (`63d7a37`, name-based routing). **New** = D-004 ID-based routing (`c3ca784`).
 
@@ -70,7 +70,7 @@ Haiku = passes out of 3 runs. Sonnet = ✅/❌ for one run, with `*` meaning the
 
 | Need | File |
 |---|---|
-| Why the old design failed, how the new one fixes it, and the full method | [`routing-evaluation.md`](routing-evaluation.md) |
+| Why the old design failed, how the new one fixes it, and the full method | [Tests Detailed](tests-detailed.md) |
 | Haiku 3-run report, per-run transcripts, raw evidence | `evaluation-data/haiku-3-runs/` (`report.md`, `run*/transcript.md`, `run*/evidence.json`) |
 | Sonnet spot check | `evaluation-data/sonnet-spot-check/` |
 | Discarded pilot and the smoke run | `evaluation-data/haiku-pilot-discarded/`, `evaluation-data/haiku-smoke/` |

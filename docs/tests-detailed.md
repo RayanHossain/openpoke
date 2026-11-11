@@ -1,11 +1,13 @@
-# How we tested OpenPoke's agent routing, what we found, and why the fix works
+# Tests Detailed
+
+How we tested OpenPoke's agent routing, what we found, and why the fix works.
 
 This document explains how the change from name-based routing to ID-based routing (decision D-004) was tested, what the tests caught, why those problems existed in the original design, and how the new design removes them. It also says what the new design does **not** fix.
 
 - **Old version:** `63d7a37` (OpenPoke as originally written)
 - **New version:** `c3ca784` on `feat/registry-routing` (D-004 steps 1-8 plus one follow-up fix)
 - **Tooling:** `tests/` (deterministic suites) and `tests/compare/` (live comparison), on `compare/live-busy-week`
-- **Short version:** [`test-breakdown.md`](test-breakdown.md). **Raw reports, transcripts and evidence:** [`evaluation-data/`](evaluation-data/)
+- **Short version:** [Tests Summary](tests-summary.md). **Raw reports, transcripts and evidence:** [`evaluation-data/`](evaluation-data/)
 
 ## 1. The problem in one paragraph
 
