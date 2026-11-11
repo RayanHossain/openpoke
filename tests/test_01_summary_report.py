@@ -35,13 +35,13 @@ def test_summary_reports_reproduced_changed_and_counts(pytester):
 
     result.assert_outcomes(passed=3, failed=1)
     result.stdout.fnmatch_lines([
-        "*Routing baseline (characterization: PASS = bug still present)*",
-        "F1 * BUG REPRODUCED   1/1",
-        "F2 * CHANGED, check # FLIPS lines (fixed?)  0/1 still reproduce",
+        "*Results by problem (FIXED = no longer happens; still present = known issue, left as is)*",
+        "F1: * still present (known issue)  1/1",  # unmapped IDs fall back to the ID itself
+        "F2: * CHANGED, check # FLIPS lines (fixed?)  0/1 still reproduce",
         "controls OK 1/1 | harness OK 1/1",
-        "Bug reproductions * 2 *",
-        "Controls / context * 1 *",
-        "Harness sanity * 1 *",
+        "Known issues * 2 *",
+        "Controls * 1 *",
+        "Harness checks * 1 *",
     ])
 
 
@@ -61,7 +61,7 @@ def test_bug():
     result = pytester.runpytest_inprocess("-p", "no:cacheprovider", "-p", "no:asyncio")
     result.stdout.fnmatch_lines([
         "HARNESS BROKEN (1/1 failed): results below are not trustworthy",
-        "F1 * BUG REPRODUCED   1/1",
+        "F1: * still present (known issue)  1/1",
         "*harness FAILED 0/1",
     ])
 
@@ -86,9 +86,9 @@ def test_other_part_of_f4_still_reproduces():
     result = pytester.runpytest_inprocess("-p", "no:cacheprovider", "-p", "no:asyncio")
     result.assert_outcomes(passed=2, failed=1)
     result.stdout.fnmatch_lines([
-        "F4 * BUG REPRODUCED   1/1",
-        "F3 * FIXED            1/1",
-        "F4 * FIX REGRESSED    0/1 hold",
-        "Bug reproductions * 1 *",
-        "Fixed (spec) * 2 *",
+        "reworded follow-ups: * still present (known issue)  1/1",  # F4 is printed by its plain name
+        "F3: * FIXED  1/1",
+        "reworded follow-ups: * FIX REGRESSED  0/1 hold",
+        "Known issues * 1 *",
+        "Fixed problems * 2 *",
     ])

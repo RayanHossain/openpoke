@@ -227,6 +227,23 @@ The whole comparison cost about **$1.60** on Haiku, including the pilot and smok
 - **Soft checkpoints depend on wording,** so they're reported separately and not mixed into the hard score.
 - **Moving dates:** dates are computed from the run date, so results from different days use different dates, but always the same ones for both versions within a run.
 
+## Problem names in the test output
+
+The test summary prints plain names; the test files tag the same problems with finding IDs (`@pytest.mark.finding(...)` / `@pytest.mark.fixed(...)`). The mapping is defined in `tests/routing_summary.py` (`PLAIN_NAMES`).
+
+| Printed as | ID | The problem | Status |
+|---|---|---|---|
+| reworded follow-ups | F4 | A follow-up worded differently created a new, empty agent instead of reaching the original | FIXED |
+| similar names sharing memory | F7 | Agents whose names differed only in case or punctuation, or that slugged alike ("C++"/"C#"), wrote one shared log | FIXED |
+| reminders only reachable by their creator | F33 | Only the agent that created a reminder could list or change it, so "cancel my reminder" sent elsewhere failed and the reminder kept firing | FIXED |
+| vague follow-ups with many agents | F33-residual | With more than 8 agents, a follow-up with no address, thread or reminder in it can miss an older agent | known issue |
+| Gmail actions logged apart from the agent | F23 | The full Gmail action record goes to a shared log that doesn't name the agent; the agent's own log keeps a shortened copy | known issue |
+| timeout leaves no final answer in the log | F31 | After a timeout, the agent's log has no final answer | known issue |
+| timeout reported as failed after sending | L22 | A run that already sent an email but then timed out is reported to the assistant as failed | known issue |
+| reminder firings missing from agent history | F34 | When a reminder fires, the request isn't saved in the agent's history, only its reply | known issue |
+| slow Gmail call blocks other agents | F37 | A blocking Gmail call stalls other agents, and the timeout can't interrupt it | known issue |
+| agent log alters line breaks | log-roundtrip | The log store turns `\n` inside saved data into real line breaks | known issue |
+
 ## 9. How to reproduce
 
 ```bash

@@ -41,40 +41,43 @@ exists. Tests are named `test_F<id>_...`, tagged `@pytest.mark.finding("F<id>")`
 and their docstrings cite file:line. Lines marked `# FLIPS` are the assertions
 a fix should break. When a fix lands, invert those lines into spec assertions
 and swap the test's `finding(...)` marker for `@pytest.mark.fixed("F<id>")`, so the
-summary reports `F<id> FIXED n/n` (a pass now means the fix holds) instead of
-`BUG REPRODUCED`. New-behaviour tests for D-004 live in `test_spec_*.py`.
+summary reports `<problem name>: FIXED n/n` (a pass now means the fix holds) instead of
+`still present (known issue)`. New-behaviour tests for D-004 live in `test_spec_*.py`.
 `*_control_*` tests show that the mechanism works when the agent name matches
 exactly, which rules out the harness as the cause.
 
 ### Reading the output
 
-Because these are characterization tests, **"N passed" does not mean OpenPoke
-works**. For most tests, a pass means the bug reproduced. Every run therefore
-ends with a summary (`tests/routing_summary.py`):
+For the known-issue tests, a pass means the old behaviour still happens, so
+**"N passed" alone doesn't say what works**. Every run therefore ends with a
+summary by problem (`tests/routing_summary.py`), using plain names:
 
 ```
-F4             BUG REPRODUCED   4/4
-F7             BUG REPRODUCED   10/10   (1 also tagged F33)
+reminder firings missing from agent history:  still present (known issue)  2/2
 ...
+reworded follow-ups:                          FIXED  6/6
+similar names sharing memory:                 FIXED  10/10
+reminders only reachable by their creator:    FIXED  2/2
 controls OK 5/5 | harness OK 4/4
 ```
 
-* `BUG REPRODUCED`: every bug test for that F-ID still shows the faulty behaviour.
-* `CHANGED, check # FLIPS lines (fixed?)`: at least one bug test failed. Either a
-  fix landed (good: turn the `# FLIPS` lines into spec assertions) or something
-  else changed.
-* `controls FAILED` / `HARNESS BROKEN`: don't trust the bug results until these
-  are green again.
+* `FIXED`: the problem no longer happens (these tests assert the new behaviour).
+* `still present (known issue)`: the old behaviour still happens. It's left as is on purpose and kept visible.
+* `CHANGED, check # FLIPS lines (fixed?)`: a known-issue test failed. Either it was fixed
+  (turn its `# FLIPS` lines into assertions and mark it `fixed`) or something else changed.
+* `FIX REGRESSED`: a fixed problem came back.
+* `controls FAILED` / `HARNESS BROKEN`: don't trust the other results until these are green again.
 
-A test tagged with two F-IDs counts under both. Tests filtered out with `-k`/`-m`
-aren't counted. Roles come from markers: `@pytest.mark.harness`,
-`@pytest.mark.control`, otherwise `@pytest.mark.finding(...)` = bug reproduction.
+Each plain name maps to a finding ID used in the test markers; the table is in
+[`docs/tests-detailed.md`](../docs/tests-detailed.md) ("Problem names in the test output").
+A test tagged with two problems counts under both. Tests filtered out with `-k`/`-m` aren't counted.
 
-| Kind | Count | A pass means |
-|---|---|---|
-| Bug reproductions | 26 | the faulty behaviour happened as described |
-| Controls / context | 5 | the mechanism works normally when the cause is removed (exact-name reuse loads history; non-blocking Gmail lets the fast agent finish; timeout fires while awaiting the model; default timeout is 90 s) |
-| Harness sanity | 4 | sandboxed import, temp-dir stores, network blocked, unscripted model calls fail loudly |
+| Kind | A pass means |
+|---|---|
+| Known issues | the old behaviour still happens (left as is on purpose) |
+| Controls | the normal path works when the cause is removed (same-agent reuse loads history; non-blocking Gmail lets the fast agent finish; timeout fires while awaiting the model; default timeout is 90 s) |
+| Harness checks | sandboxed import, temp-dir stores, network blocked, unscripted model calls fail loudly |
+| Fixed problems | the fix holds |
 
 `test_01_summary_report.py` (2 tests) checks the summary itself, using pytester.
 

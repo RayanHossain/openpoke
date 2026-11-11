@@ -17,11 +17,31 @@ from __future__ import annotations
 import re
 from typing import Dict, List, Optional, Tuple
 
+# Plain names printed in the summary instead of finding IDs.
+# The same table, with what each problem was, is in docs/tests-detailed.md.
+PLAIN_NAMES: Dict[str, str] = {
+    "F4": "reworded follow-ups",
+    "F7": "similar names sharing memory",
+    "F33": "reminders only reachable by their creator",
+    "F33-residual": "vague follow-ups with many agents",
+    "F23": "Gmail actions logged apart from the agent",
+    "F31": "timeout leaves no final answer in the log",
+    "L22": "timeout reported as failed after sending",
+    "F34": "reminder firings missing from agent history",
+    "F37": "slow Gmail call blocks other agents",
+    "log-roundtrip": "agent log alters line breaks",
+}
+
+
+def plain(fid: str) -> str:
+    return PLAIN_NAMES.get(fid, fid)
+
+
 ROLE_ROWS = [
-    ("bug", "Bug reproductions", "the faulty behaviour happened as described"),
-    ("control", "Controls / context", "the mechanism works normally when the cause is removed"),
-    ("harness", "Harness sanity", "isolation and stubs can be trusted"),
-    ("fixed", "Fixed (spec)", "the finding's fix holds"),
+    ("bug", "Known issues", "the old behaviour still happens (left as is on purpose)"),
+    ("control", "Controls", "the normal path works when the cause is removed"),
+    ("harness", "Harness checks", "the test setup is isolated and its stand-ins behave"),
+    ("fixed", "Fixed problems", "the fix holds"),
 ]
 
 
@@ -77,7 +97,7 @@ class RoutingSummary:
         if not self.meta:
             return
         tr = terminalreporter
-        tr.write_sep("=", "Routing baseline (characterization: PASS = bug still present)")
+        tr.write_sep("=", "Results by problem (FIXED = no longer happens; still present = known issue, left as is)")
 
         h_pass, h_fail, h_total = self._tally(self._ids("harness"))
         if h_fail:
@@ -86,26 +106,28 @@ class RoutingSummary:
         bug_ids = self._ids("bug")
         all_fids = sorted({f for n in bug_ids for f in self.meta[n][1]}, key=_fid_sort_key)
         fixed_fids = {f for n in self._ids("fixed") for f in self.meta[n][1]}
-        width = max([len(f) for f in [*all_fids, *fixed_fids]] + [5])
+        width = max([len(plain(f)) + 1 for f in [*all_fids, *fixed_fids]] + [6])
         for fid in all_fids:
             tagged = [n for n in bug_ids if fid in self.meta[n][1]]
             passed, failed, total = self._tally(tagged)
             others = sorted({f for n in tagged for f in self.meta[n][1] if f != fid}, key=_fid_sort_key)
             cross = [n for n in tagged if len(self.meta[n][1]) > 1]
-            note = f"   ({len(cross)} also tagged {', '.join(others)})" if cross else ""
+            note = f"   ({len(cross)} also counted under: {', '.join(plain(o) for o in others)})" if cross else ""
+            label = f"{plain(fid)}:"
             if failed:
                 status = f"CHANGED, check # FLIPS lines (fixed?)  {passed}/{total} still reproduce"
-                tr.write_line(f"{fid:<{width}}  {status}{note}", yellow=True)
+                tr.write_line(f"{label:<{width}}  {status}{note}", yellow=True)
             else:
-                tr.write_line(f"{fid:<{width}}  BUG REPRODUCED   {passed}/{total}{note}")
+                tr.write_line(f"{label:<{width}}  still present (known issue)  {passed}/{total}{note}")
 
         fixed_ids = self._ids("fixed")
         for fid in sorted({f for n in fixed_ids for f in self.meta[n][1]}, key=_fid_sort_key):
             passed, failed, total = self._tally([n for n in fixed_ids if fid in self.meta[n][1]])
+            label = f"{plain(fid)}:"
             if failed:
-                tr.write_line(f"{fid:<{width}}  FIX REGRESSED    {passed}/{total} hold", red=True)
+                tr.write_line(f"{label:<{width}}  FIX REGRESSED  {passed}/{total} hold", red=True)
             else:
-                tr.write_line(f"{fid:<{width}}  FIXED            {passed}/{total}", green=True)
+                tr.write_line(f"{label:<{width}}  FIXED  {passed}/{total}", green=True)
 
         c_pass, c_fail, c_total = self._tally(self._ids("control"))
         c_text = (f"controls FAILED {c_pass}/{c_total}: bug results may not mean what they say"
@@ -119,7 +141,7 @@ class RoutingSummary:
             tr.write_line(f"{label:<20} {len(self._ids(role)):>5}   {meaning}")
         other = len(self._ids("other"))
         if other:
-            tr.write_line(f"(+{other} unclassified test(s), e.g. the summary's own self-test)")
+            tr.write_line(f"(+{other} other tests: the new building blocks, and this summary's own self-test)")
 
 
 def pytest_configure(config) -> None:
