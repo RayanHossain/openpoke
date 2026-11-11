@@ -1,10 +1,14 @@
 """In-turn tool-call deduplication in the interaction-agent runtime.
 
-Found by tests/eval_routing_compliance.py: Claude Haiku 5.5 emitted the same
-send_message_to_agent call twice in one reply, which would dispatch the same
-task to the same agent twice. Identical (name, args) calls within ONE model
+A precaution, not a fix for an observed failure. The interaction-agent loop
+executes every tool call in a model reply, so a reply that repeated the same
+send_message_to_agent call would dispatch the same task to the same agent
+twice. (This was first attributed to a Claude Haiku 5.5 eval run; that was a
+misread of the eval's console output, and no model reply in the recorded runs
+contains a duplicate call.) Identical (name, args) calls within ONE model
 reply now run once; the duplicate gets a "skipped" tool result (every
-tool_call_id must be answered) and a warning is logged.
+tool_call_id must be answered) and a warning is logged. The first test below
+fails against the code before the guard (two dispatches instead of one).
 
 SPEC TESTS.
 """
