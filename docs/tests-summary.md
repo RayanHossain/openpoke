@@ -11,10 +11,11 @@ What ran, what each test checked, and what we hoped to see. Short version for pr
 | 1 | Characterization suite (37 tests, stubbed model) | That the routing bugs F4, F7, F33 (and others) really happen in the old code | Every bug reproduces | ✅ | 26 bug tests reproduce; controls and harness checks pass |
 | 2 | Spec and regression suite (165 tests) | Each build step works; nothing else breaks | F4, F7, F33 flip to fixed; other findings unchanged | ✅ | 165/165; F4, F7, F33 fixed; F23, F31, F34, F37 unchanged |
 | 3 | Original tests run against new code | Every change to an old test was a real fix or a mechanical rename | No unexplained failures | ✅ | All failures were fixes or renames |
-| 4 | Real-model routing eval (Haiku 5.5, 3 scenarios × 3) | The model follows the new rules: route by key, check before creating, ask | All three behaviours | ✅ | Route by key 3/3 · Ask 3/3 · New task for an existing person: dry run first 1/3; reused the existing agent 1/3, asked you 2/3 (once after a dry run), created a new agent 0/3 |
+| 4 | Real-model routing eval (Haiku 5.5, 3 scenarios × 3) | The model follows the new rules: route by key, check before creating, ask | All three behaviours | ✅ | **Before the token prompt line:** route by key 3/3 · ask 3/3 · new task for an existing person: asked 2/3 (once after a dry run), reused the existing agent 1/3. **After it:** route by key 3/3 · ask 2/3 (the miss asked in plain text, not through the tool) · new task for an existing person: reused the existing agent 3/3, no dry run. Neither run created an agent. 3 runs each can't separate the effect of the prompt line from run-to-run variation. |
 | 5 | Live old vs new comparison (Haiku 5.5, 3 runs each) | The same 32-step busy week from empty; graded on what actually happened | New makes fewer wrong or duplicate actions | ✅ | Three runs of one scenario on Haiku 5.5: hard checkpoints 30/39 new vs 26/39 old; agents per run 8–9 vs 11–12; blind reminder lookups 0 vs 7 (section 3) |
 | 6 | Live comparison (Sonnet 5.5, 1 run each) | Whether the gap holds with a stronger model | Same direction | ⚠️ partly | 12–14 steps per version failed on OpenRouter's 20-a-minute cap. Same direction: 0 clean failures new vs 2 old |
 | 7 | Grader self-check (33 cases) | The graders catch what they claim and pass a correct run | All pass | ✅ | 33/33 |
+| 8 | Live token-rule check (Haiku 5.5, a brand-new contact and task, 3 runs, real runtime) | A real model completes a create under the token rule | dry run → token → confirm → agent created | ✅ | Token rule checked live: 2 of 2 create attempts completed (dry run → token → confirm), no refusals. In 1 of 3 runs the assistant drafted the email itself without delegating, which the original version also did. |
 
 ## 2. Live comparison checkpoints (17)
 
@@ -76,5 +77,6 @@ Haiku = passes out of 3 runs. Sonnet = ✅/❌ for one run, with `*` meaning the
 | Haiku 3-run report, per-run transcripts, raw evidence | `evaluation-data/haiku-3-runs/` (`report.md`, `run*/transcript.md`, `run*/evidence.json`) |
 | Sonnet spot check | `evaluation-data/sonnet-spot-check/` |
 | Discarded pilot and the smoke run | `evaluation-data/haiku-pilot-discarded/`, `evaluation-data/haiku-smoke/` |
-| Real-model routing eval results | `evaluation-data/compliance-eval-*.json` (run 1 used the earlier "draft email to bob" wording) |
+| Real-model routing eval results | `evaluation-data/compliance-eval-*.json` (run 1 used the earlier "draft email to bob" wording; `run3-token-rule` is after the token prompt line) |
+| Live token-rule check | `evaluation-data/token-create-check/` |
 | Test code | `tests/test_f*.py`, `tests/test_spec_*.py`, `tests/eval_routing_compliance.py`, `tests/compare/` |

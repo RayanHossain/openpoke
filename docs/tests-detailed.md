@@ -62,6 +62,8 @@ The common thread: **identity, memory and ownership all hung on model-written te
   - **Ask when ambiguous** ("cancel my reminder" with no matching key): 3/3.
   - **New task for an existing person** ("draft a new email to bob about the offsite", when Bob already has an agent): dry run first 1/3. In the other two it reused Bob's existing agent once, and asked you once without a dry run. Overall it **never created a new agent (0/3)**: it reused the existing agent 1/3 and asked you 2/3 (once after its dry run).
 - **Lesson:** the dry-run rule and the prompt's "prefer the existing agent" rule pull in different directions. The eval surfaced a prompt-design tension rather than a code bug.
+- **Rerun after the token prompt line (9 runs, `evaluation-data/compliance-eval-run3-token-rule.json`):** route by key 3/3; ask when ambiguous 2/3 (the miss asked in plain text, not through the tool); new task for an existing person: reused Bob's existing agent 3/3, with no dry run. No `create_agent` calls at all. With 3 runs per scenario, this can't separate the effect of the prompt line from run-to-run variation.
+- **Live token-rule check (`evaluation-data/token-create-check/`):** a brand-new contact and task ("Email Alice Chen … to propose the Acme offsite"), real runtime, 3 runs. Token rule checked live: 2 of 2 create attempts completed (dry run → token → confirm), no refusals. In 1 of 3 runs the assistant drafted the email itself without delegating, which the original version also did.
 
 ### Layer 4: old vs new, live, on the same demanding conversation (`tests/compare/`)
 
