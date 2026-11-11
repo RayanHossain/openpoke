@@ -20,6 +20,8 @@ from __future__ import annotations
 import argparse
 import io
 import json
+import os
+import re
 import subprocess
 import sys
 import tarfile
@@ -36,8 +38,26 @@ sys.path.insert(0, str(HERE))
 from graders import CHECKPOINTS, grade_run  # noqa: E402
 from scenario_busy_week import TIMEZONE  # noqa: E402
 
+# Two config.py shapes exist: the original hard-codes each model default; later
+# commits read OPENPOKE_*_MODEL env vars with a fallback default. Both are patched
+# to the same model so the comparison stays like for like.
 RETIRED_DEFAULT = 'default="anthropic/claude-sonnet-4"'
+ENV_MODEL_DEFAULT = re.compile(r'(os\.getenv\("OPENPOKE_\w+_MODEL", )"[^"]*"\)')
 THRESHOLD_DEFAULT = "conversation_summary_threshold: int = Field(default=100)"
+
+
+def clean_env() -> Dict[str, str]:
+    """Child environment without OPENPOKE_*_MODEL overrides: the original config ignores them,
+    so leaving them set would change the model for one version only."""
+    return {k: v for k, v in os.environ.items() if not (k.startswith("OPENPOKE_") and k.endswith("_MODEL"))}
+
+
+def patch_models(text: str, model: str, ref: str) -> str:
+    if text.count(RETIRED_DEFAULT) == 5:
+        return text.replace(RETIRED_DEFAULT, f'default="{model}"')
+    if len(ENV_MODEL_DEFAULT.findall(text)) == 5:
+        return ENV_MODEL_DEFAULT.sub(lambda m: f'{m.group(1)}"{model}")', text)
+    raise SystemExit(f"{ref}: config.py model defaults not recognised; refusing to patch")
 
 
 def export(ref: str, dest: Path, model: str, threshold: int) -> List[str]:
@@ -47,9 +67,9 @@ def export(ref: str, dest: Path, model: str, threshold: int) -> List[str]:
         tar.extractall(dest)
     config = dest / "server" / "config.py"
     text = config.read_text(encoding="utf-8")
-    if text.count(RETIRED_DEFAULT) != 5 or text.count(THRESHOLD_DEFAULT) != 1:
-        raise SystemExit(f"{ref}: config.py does not look like the expected base; refusing to patch")
-    text = text.replace(RETIRED_DEFAULT, f'default="{model}"')
+    if text.count(THRESHOLD_DEFAULT) != 1:
+        raise SystemExit(f"{ref}: config.py summarization threshold not recognised; refusing to patch")
+    text = patch_models(text, model, ref)
     text = text.replace(THRESHOLD_DEFAULT, f"conversation_summary_threshold: int = Field(default={threshold})")
     config.write_text(text, encoding="utf-8")
     data = dest / "server" / "data"
@@ -107,7 +127,8 @@ def main() -> int:
     parser.add_argument("--model", default="anthropic/claude-haiku-5.5")
     parser.add_argument("--repeat", type=int, default=1)
     parser.add_argument("--old-ref", default="63d7a37")
-    parser.add_argument("--new-ref", default="c3ca784")
+    parser.add_argument("--new-ref", default="c3ca784",
+                        help="any commit, branch or HEAD; c3ca784 is the routing change as tested in docs/")
     parser.add_argument("--versions", default="old,new")
     parser.add_argument("--only-steps", type=int, default=0, help="run only the first N steps (smoke test)")
     parser.add_argument("--summary-threshold", type=int, default=40)
@@ -153,7 +174,7 @@ def main() -> int:
                     [sys.executable, str(HERE / "live_runner.py"), "--server-root", str(root),
                      "--out", str(evidence_path), "--env-file", str(args.env_file),
                      "--only-steps", str(args.only_steps)],
-                    stdout=subprocess.PIPE, stderr=log, text=True, timeout=7200,
+                    stdout=subprocess.PIPE, stderr=log, text=True, timeout=7200, env=clean_env(),
                 )
             print(proc.stdout, end="", flush=True)
             if not evidence_path.exists():
