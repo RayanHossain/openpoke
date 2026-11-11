@@ -15,7 +15,7 @@ A **recorded live run** (run 2 of 3). Both versions started empty, got the ident
 | Agents created | 12 | 9 |
 | Blind reminder lookups | 2 | 0 |
 
-Across all 3 runs: hard checkpoints **26/39 old vs 30/39 new**; blind reminder lookups **7 vs 0**. See [`tests-summary.md`](tests-summary.md).
+Across all three runs of this one scenario (Haiku 5.5): hard checkpoints 26/39 old vs 30/39 new; agents created per run 11–12 vs 8–9; blind reminder lookups 7 vs 0. See [`tests-summary.md`](tests-summary.md).
 
 ## 1. All prompts, in order
 
@@ -55,6 +55,36 @@ Across all 3 runs: hard checkpoints **26/39 old vs 30/39 new**; blind reminder l
 | U28 | You: yes, send it to dana | same |
 
 ## 2. Where the versions behaved differently
+
+U17 (the cancelled reminder) comes first; the others follow in scenario order.
+
+### U17
+
+**Prompt:** great, cancel the reminder to chase him
+
+**Ideal:** Cancel only the invoice-chase reminder and confirm it won't fire.
+
+**Why it differs:** **F33.** Old sent the cancel to Bob's email agent by name, but the reminder was owned by the venue agent, and old agents can only see their own reminders. It then created another agent that also saw nothing, and told you none of your reminders existed. All three were still set, and the chase still fires. New routed to the reminder's owner from its state descriptor and closed it.
+
+```diff
+- OLD  router → "Email to Bob Ruiz"
+-      router → "Reminder System Check" **(new agent created; it never did anything)**
+-      "Email to Bob Ruiz" updateTrigger #2 → **not found**
+-      "Email to Bob Ruiz" listTriggers → 0 reminder(s) ← **can't see the reminders that exist**
+-      "Reminder System Check" listTriggers → 0 reminder(s) ← **can't see the reminders that exist**
+-      Gmail/reminders: no change
+-      told you: "Cancelling the Friday 10am chase reminder for Bob now. The other reminders stay as they are. / Heads up, I didn't cancel Bob's chase reminder. The system says it can't find it, and I can't confirm any of the reminders are still active. I'm asking for a direct check of the reminder system now. … / Bad news: none of the reminders made it into the system. The dentist reminder for 3pm tomorrow, the Tahoe venue reminder, and Bob's chase reminder are all missing, so none of them will fire. I should…"
+-      reminders still set: venue booking (Thu Nov 12 9AM), chase Bob (invoice) (Fri Nov 13 10AM), dentist (Thu Nov 12 3PM)
+-      verdict: CP08 ❌
+
++ NEW  router → ea_3 "Bob Ruiz invoice overdue note"
++      "Bob Ruiz invoice overdue note" updateTrigger #2 → status completed
++      "Bob Ruiz invoice overdue note" listTriggers → 1 reminder(s)
++      Reminder [chase Bob (invoice)]: paused → completed
++      told you: "On it. Removing the Bob Ruiz chase reminder completely so it can't fire. / The Bob Ruiz chase reminder is marked completed, so it won't fire Friday at 10am. I can't fully delete it with the tools I have, so it will stay in your list as completed."
++      reminders still set: venue booking (Thu Nov 12 9AM), unrequested: Reminder: Respond to the Gamma Labs C++… (Fri Nov 13 9AM), dentist (Thu Nov 12 3PM)
++      verdict: CP08 ✅
+```
 
 ### U7
 
@@ -146,34 +176,6 @@ Across all 3 runs: hard checkpoints **26/39 old vs 30/39 new**; blind reminder l
 +      Reminder [chase Bob (invoice)]: active → paused
 +      told you: "Good news: Bob Ruiz says invoice #4471 is paid. I'm cancelling the Friday 10am chase reminder since it's no longer needed. No email goes to Bob. / Bob's invoice reminder is off. It's paused, not deleted, so it won't fire Friday at 10am. Say the word if you want it removed entirely."
 +      reminders still set: venue booking (Thu Nov 12 9AM), unrequested: Reminder: Respond to the Gamma Labs C++… (Fri Nov 13 9AM), dentist (Thu Nov 12 3PM)
-```
-
-### U17
-
-**Prompt:** great, cancel the reminder to chase him
-
-**Ideal:** Cancel only the invoice-chase reminder and confirm it won't fire.
-
-**Why it differs:** **F33.** Old sent the cancel to Bob's email agent by name, but the reminder was owned by the venue agent, and old agents can only see their own reminders. It then created another agent that also saw nothing, and told you none of your reminders existed. All three were still set, and the chase still fires. New routed to the reminder's owner from its state descriptor and closed it.
-
-```diff
-- OLD  router → "Email to Bob Ruiz"
--      router → "Reminder System Check" **(new agent created; it never did anything)**
--      "Email to Bob Ruiz" updateTrigger #2 → **not found**
--      "Email to Bob Ruiz" listTriggers → 0 reminder(s) ← **can't see the reminders that exist**
--      "Reminder System Check" listTriggers → 0 reminder(s) ← **can't see the reminders that exist**
--      Gmail/reminders: no change
--      told you: "Cancelling the Friday 10am chase reminder for Bob now. The other reminders stay as they are. / Heads up, I didn't cancel Bob's chase reminder. The system says it can't find it, and I can't confirm any of the reminders are still active. I'm asking for a direct check of the reminder system now. … / Bad news: none of the reminders made it into the system. The dentist reminder for 3pm tomorrow, the Tahoe venue reminder, and Bob's chase reminder are all missing, so none of them will fire. I should…"
--      reminders still set: venue booking (Thu Nov 12 9AM), chase Bob (invoice) (Fri Nov 13 10AM), dentist (Thu Nov 12 3PM)
--      verdict: CP08 ❌
-
-+ NEW  router → ea_3 "Bob Ruiz invoice overdue note"
-+      "Bob Ruiz invoice overdue note" updateTrigger #2 → status completed
-+      "Bob Ruiz invoice overdue note" listTriggers → 1 reminder(s)
-+      Reminder [chase Bob (invoice)]: paused → completed
-+      told you: "On it. Removing the Bob Ruiz chase reminder completely so it can't fire. / The Bob Ruiz chase reminder is marked completed, so it won't fire Friday at 10am. I can't fully delete it with the tools I have, so it will stay in your list as completed."
-+      reminders still set: venue booking (Thu Nov 12 9AM), unrequested: Reminder: Respond to the Gamma Labs C++… (Fri Nov 13 9AM), dentist (Thu Nov 12 3PM)
-+      verdict: CP08 ✅
 ```
 
 ### U22

@@ -56,6 +56,8 @@ NOTES_RUN2 = {
            "has all three right, but also fires the unrequested C++-offer reminder it created in U9.",
 }
 
+LEAD_STEPS = {"U17"}
+
 WRITES = {"gmail_create_draft", "gmail_execute_draft", "gmail_delete_draft", "gmail_reply_to_thread",
           "gmail_forward_email", "createTrigger", "updateTrigger"}
 
@@ -233,6 +235,8 @@ def render(old: Run, new: Run, run_no: int, data: Path) -> str:
     order = new.order
     same = [s for s in order if old.signature(s) == new.signature(s)]
     diff = [s for s in order if s not in same]
+    # Lead with the cancelled-reminder example (U17) when it differs; the rest keep scenario order.
+    diff = sorted(diff, key=lambda s: (s not in LEAD_STEPS, order.index(s)))
     hard = lambda r: (sum(c["passed"] is True for c in r.graded["checkpoints"] if c["kind"] == "hard"),  # noqa: E731
                       sum(c["passed"] is not None for c in r.graded["checkpoints"] if c["kind"] == "hard"))
     oh, nh = hard(old), hard(new)
@@ -257,8 +261,8 @@ def render(old: Run, new: Run, run_no: int, data: Path) -> str:
         f"| Agents created | {sum(old.new_agents(s) for s in order)} | {sum(new.new_agents(s) for s in order)} |",
         f"| Blind reminder lookups | {sum(len(v) for v in old.blind.values())} | {sum(len(v) for v in new.blind.values())} |",
         "",
-        "Across all 3 runs: hard checkpoints **26/39 old vs 30/39 new**; blind reminder lookups **7 vs 0**. "
-        "See [`tests-summary.md`](tests-summary.md).",
+        "Across all three runs of this one scenario (Haiku 5.5): hard checkpoints 26/39 old vs 30/39 new; "
+        "agents created per run 11–12 vs 8–9; blind reminder lookups 7 vs 0. See [`tests-summary.md`](tests-summary.md).",
         "",
         "## 1. All prompts, in order",
         "",
@@ -271,7 +275,8 @@ def render(old: Run, new: Run, run_no: int, data: Path) -> str:
         mark = "same" if s in same else f"**different**, [see below](#{s.lower()})"
         L.append(f"| {s} | {who}: {short(step['text'], 120)} | {mark} |")
 
-    L += ["", "## 2. Where the versions behaved differently", ""]
+    L += ["", "## 2. Where the versions behaved differently", "",
+          "U17 (the cancelled reminder) comes first; the others follow in scenario order.", ""]
     for s in diff:
         step = new.steps[s]
         L += [f"### {s}", "", f"**Prompt:** {step['text']}", "", f"**Ideal:** {IDEAL.get(s, '')}", ""]

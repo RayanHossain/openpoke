@@ -99,6 +99,11 @@ The web app proxies API calls to the Python server using the values in `.env`, s
 
   Run 2 is shown step by step in [`docs/demo-old-vs-new.md`](docs/demo-old-vs-new.md).
 
+  Totals across the three runs of this one scenario (Claude Haiku 5.5):
+  - **Checkpoints passed:** 26/39 original vs 30/39 new.
+  - **Agents created per run:** 11–12 vs 8–9.
+  - **Blind reminder lookups** (an agent looked for reminders and couldn't see ones that existed): 7 vs 0.
+
   We also ran the same comparison once on each version with Claude Sonnet 5.5, but hit blockers. OpenRouter limits new accounts to 20 requests a minute for that model, so 12–14 of the 32 steps per version failed with rate-limit errors. Some steps also stopped at the assistant's step limit, which hadn't happened on Haiku. Because so many steps failed, those runs aren't counted in the results above. On the steps that did run, the pattern matched the Haiku runs. Details are in [`docs/tests-detailed.md`](docs/tests-detailed.md).
 
 ### What hasn't changed

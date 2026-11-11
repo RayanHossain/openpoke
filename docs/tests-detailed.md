@@ -102,13 +102,13 @@ The common thread: **identity, memory and ownership all hung on model-written te
   6. An early send to the right person was failing a checkpoint and also counted as an invariant violation. It now counts once, as the violation.
 - **Transient model timeouts are retried by the harness,** identically for both versions, and counted. Otherwise a timeout would skip a whole turn and look like a routing failure.
 
-## 5. Results (Claude Haiku 5.5, 3 runs per version)
+## 5. Results (three runs of one scenario per version, Claude Haiku 5.5)
 
 | | Old | New |
 |---|---|---|
 | Hard checkpoints passed | **26/39 (67%)** | **30/39 (77%)** |
 | Soft checkpoints passed | 12/12 | 12/12 |
-| Agents created per run | 11.3 | 8.7 |
+| Agents created per run | 11–12 | 8–9 |
 | **Blind reminder lookups** | **7** (5 at cancel/move/create steps) | **0** |
 | **Agents that never acted** | **6** | **1** (a legitimate lookup) |
 | Cross-agent actions | 2 | 0 |
@@ -221,7 +221,7 @@ The whole comparison cost about **$1.60** on Haiku, including the pilot and smok
 - **Model:** Claude 3.5 Haiku was requested for the compliance eval but has been retired and is no longer on OpenRouter. Claude Haiku 5.5 was used instead.
 
 ## 8. Limitations
-- **Small sample:** 3 runs per version on one scenario. A 4-checkpoint difference is a consistent direction, not a statistically strong result. The routing signals (7 vs 0 blind lookups, 6 vs 1 idle agents) are the clearest evidence.
+- **Small sample:** 3 runs per version of one scenario, on one model (Haiku 5.5). The results are 26/39 vs 30/39 hard checkpoints, 11–12 vs 8–9 agents per run, 7 vs 0 blind reminder lookups and 6 vs 1 agents that never acted. That's a consistent direction in these runs, not a statistical result.
 - **One model, mostly:** cheaper models make more mistakes on both sides. The single Sonnet run per version was degraded by rate limiting (above), so it shows a direction, not a measurement.
 - **Forgiving fake Gmail:** its search is more lenient than real Gmail, so it doesn't fail for reasons unrelated to routing. It's identical for both versions.
 - **Soft checkpoints depend on wording,** so they're reported separately and not mixed into the hard score.
