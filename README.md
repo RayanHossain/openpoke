@@ -147,7 +147,7 @@ python -m pytest
 
 ## Known limitations and what hasn't been measured yet
 - **The offline tests script the AI's choices.** They show the new mechanism works, but not that a real AI model routes requests better. The side-by-side demo is the real-model evidence.
-- **Routing as agents pile up hasn't been measured.** It's not yet known whether routing gets worse as the number of agents grows, or whether this change fixes that.
+- **Routing has only been measured up to about 9 agents.** In the live runs, the original version reached 11–12 agents and the new version 8–9. So whether routing gets worse as agents accumulate, and whether this change fixes that, is still untested. The offline tests check which agents are shown with up to 30 agents, but with scripted choices, not a real model.
 - **The live check of the new interface is small:** 9 cases, one model (Claude Haiku 5.5). It checks whether the AI uses the new steps (picking by ID, checking before creating, asking when unsure), not whether it's more accurate than the original.
 - **Known gaps:**
   - **Vague follow-ups:** a follow-up that mentions no person, thread, draft or reminder (e.g. "the budget thing" weeks later) may not find the original agent and can create a duplicate.
