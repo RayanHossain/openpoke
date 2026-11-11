@@ -34,7 +34,7 @@ The common thread: **identity, memory and ownership all hung on model-written te
 | **Ownership keys** (`keys.py`, recorded at the tool-dispatch point in `execution_agent/runtime.py`) | Every successful tool call records what the agent now owns, as one of four key types (`address`, `thread`, `draft`, `trigger`; a sent or deleted draft is marked closed). In Haiku run 2 the new version recorded 6 addresses, 8 threads, 8 drafts and 5 reminders. | Gives the router evidence instead of names |
 | **Agent state descriptors** (`routing_cards.py`; the code and the interaction-agent prompt still call them "cards", and the recorded runs used that prompt) | The router sees one line per agent, its *state descriptor*: ID, label, address, open drafts and reminders, status, and a short brief. With 8 agents or fewer (N ≤ 8), it sees every agent. Above 8, it sees agents whose keys the request mentions plus the 5 most recent, **capped at 10 state descriptors**. The cap is an addition beyond the D-004 spec, which set no limit; it keeps the prompt bounded when one address matches many agents. | The router chooses on evidence; a request naming a reminder brings back its owner |
 | **ID-only dispatch** (`send_message_to_agent(agent_id)`) | An unknown or paraphrased ID is rejected and nothing happens. | F4: a paraphrase can't silently create an agent |
-| **Two-step creation** (`create_agent(confirm=false)` first) | The dry run lists agents that already own the request's people, threads, drafts or reminders. Only `confirm=true` creates an agent. | Duplicate agents for work that already has an owner |
+| **Two-step creation** (`create_agent(confirm=false)` first) | The dry run lists agents that already own the request's people, threads, drafts or reminders, and returns a single-use `dry_run_token` bound to the label. Only `confirm=true` with that token, in the same turn, creates an agent; anything else is refused with a fresh dry run (`tools.py` `turn_scope`/`_token_problem`; tests in `test_spec_10_create_token.py`). The recorded live runs never skipped the dry run (0 times); this enforcement came after them. | Duplicate agents for work that already has an owner |
 | **Logs and reminders keyed by `agent_id`** | `ea_17.log`; reminders owned by the ID. | F7, F33 |
 | **End-of-run report** (`execution_agent/report.py`) | Each agent ends with a 2-sentence brief and a status, which goes into its state descriptor. | State descriptors stay current |
 | **In-turn duplicate guard** (`interaction_agent/runtime.py`) | An identical tool call repeated in one model reply runs once. | Double dispatch (a precaution; see section 7) |
@@ -48,7 +48,7 @@ The common thread: **identity, memory and ownership all hung on model-written te
 
 ### Layer 2: prove each step of the fix (spec and regression tests)
 - **One commit per step**, each with its own spec tests (`tests/test_spec_01` … `test_spec_09`).
-- **The full suite after every step:** 37 tests became **158**, all passing.
+- **The full suite after every step:** 37 tests became **158** after the build steps, and **165** with the dry-run enforcement, all passing.
 - **Turning a characterization test into a spec test:** when a fix broke one, its `# FLIPS` lines were inverted into spec assertions and the test was re-tagged `@pytest.mark.fixed(...)`. The end-of-run summary then reports `F4 FIXED 6/6` rather than "passed", which here would have meant "bug present".
 - **Cross-check:**
   - The **original, unmodified** baseline tests were run against the new code, and every failure was classified as either a real fix or a mechanical change (file names like `ea_1.log`, the trigger keyword renamed to `agent_id`).
@@ -249,7 +249,7 @@ The test summary prints plain names; the test files tag the same problems with f
 
 ```bash
 # deterministic suites (no network, seconds)
-.venv/bin/python -m pytest -q                       # 158 tests, findings summary at the end
+.venv/bin/python -m pytest -q                       # 165 tests, findings summary at the end
 .venv/bin/python -m pytest -q tests/compare/check_graders.py   # grader self-check (33)
 
 # real-model compliance eval (OpenRouter, cents)

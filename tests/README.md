@@ -12,7 +12,7 @@ From the repo root, in the virtualenv from the main README's Quickstart:
 ```bash
 pip install -r server/requirements.txt -r tests/requirements.txt
 
-python -m pytest                    # whole suite (158 tests, a few seconds)
+python -m pytest                    # whole suite (165 tests, a few seconds)
 python -m pytest -k F33             # one problem (tests are named by finding ID)
 python tests/demo_alice_e2e.py      # readable end-to-end trace (add 2>/dev/null to hide server logs)
 ```

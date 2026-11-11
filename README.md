@@ -82,6 +82,8 @@ The web app proxies API calls to the Python server using the values in `.env`, s
   - the ID, people, threads, drafts, reminders and last-active time come from those records
   - the agent's name and its short summary of progress are written by the AI itself
 - **Starting a new agent takes two steps.** The system first shows whether an existing agent already handles that person, thread or reminder, then a second step creates the agent. This makes accidental duplicates less likely, but doesn't rule them out (see the limitations below).
+  - **In the live runs the AI never skipped the first step:** 0 times across all runs.
+  - **It's now also enforced in code, as a safeguard.** The create step is refused unless it carries the one-time token from a check made earlier in the same request, for the same agent name. A refused create does nothing and returns a fresh check, so the assistant can carry on.
 - **The same action repeated twice in one reply only runs once.** For example, the same task won't be handed to the same agent twice.
 - **The default AI model was updated.** The original default (`anthropic/claude-sonnet-4`) has been retired. The app now defaults to Claude Haiku 5.5 (`anthropic/claude-haiku-5.5`), because the live results below were run on it; runs with Claude Sonnet 5.5 had problems through OpenRouter (rate limits on a new account). Each model can be changed with an `OPENPOKE_*_MODEL` environment variable, e.g. `OPENPOKE_INTERACTION_AGENT_MODEL=anthropic/claude-sonnet-5.5`.
 
@@ -138,7 +140,7 @@ python -m pytest
   - people, threads, drafts and reminders are recorded from the agent's real actions
   - the assistant is shown the right agent state descriptors for each request
   - sending to an agent that doesn't exist is refused and does nothing
-  - a new agent is only created after an explicit confirm
+  - a new agent is only created with the one-time token from a check earlier in the same request, for the same name. A missing token, an old or used one, or one for a different name is refused and changes nothing.
   - each agent leaves a short summary of its work, and a broken summary never causes a crash
   - the same action repeated twice in one reply only runs once
 - **Things that weren't meant to change still behave the same:** for example, slow email calls and timeouts. The tests keep these visible rather than hiding them.

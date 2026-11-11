@@ -9,7 +9,7 @@ What ran, what each test checked, and what we hoped to see. Short version for pr
 | # | Test | What it checks | Hoped to see | Ran? | Result |
 |---|---|---|---|---|---|
 | 1 | Characterization suite (37 tests, stubbed model) | That the routing bugs F4, F7, F33 (and others) really happen in the old code | Every bug reproduces | ✅ | 26 bug tests reproduce; controls and harness checks pass |
-| 2 | Spec and regression suite (158 tests) | Each build step works; nothing else breaks | F4, F7, F33 flip to fixed; other findings unchanged | ✅ | 158/158; F4, F7, F33 fixed; F23, F31, F34, F37 unchanged |
+| 2 | Spec and regression suite (165 tests) | Each build step works; nothing else breaks | F4, F7, F33 flip to fixed; other findings unchanged | ✅ | 165/165; F4, F7, F33 fixed; F23, F31, F34, F37 unchanged |
 | 3 | Original tests run against new code | Every change to an old test was a real fix or a mechanical rename | No unexplained failures | ✅ | All failures were fixes or renames |
 | 4 | Real-model routing eval (Haiku 5.5, 3 scenarios × 3) | The model follows the new rules: route by key, check before creating, ask | All three behaviours | ✅ | Route by key 3/3 · Ask 3/3 · New task for an existing person: dry run first 1/3; reused the existing agent 1/3, asked you 2/3 (once after a dry run), created a new agent 0/3 |
 | 5 | Live old vs new comparison (Haiku 5.5, 3 runs each) | The same 32-step busy week from empty; graded on what actually happened | New makes fewer wrong or duplicate actions | ✅ | Three runs of one scenario on Haiku 5.5: hard checkpoints 30/39 new vs 26/39 old; agents per run 8–9 vs 11–12; blind reminder lookups 0 vs 7 (section 3) |
