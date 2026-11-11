@@ -15,8 +15,8 @@ OpenPoke is a simplified, open-source take on [Interaction Company’s](https://
 ## Quickstart
 1. **Clone and enter the repo.**
    ```bash
-   git clone https://github.com/shlokkhemani/OpenPoke
-   cd OpenPoke
+   git clone https://github.com/RayanHossain/openpoke
+   cd openpoke
    ```
 2. **Create a shared env file.** Copy the template and open it in your editor:
    ```bash
