@@ -89,7 +89,15 @@ The web app proxies API calls to the Python server using the values in `.env`, s
 - **Follow-ups reach the right agent when they mention something recorded,** such as a person, an email thread, a draft or a reminder. "Did Alice reply?" goes back to the agent that emailed Alice, even if you word it differently. Before, rewording often created a brand-new agent that knew nothing about the earlier email. A vague follow-up that mentions none of these can still miss.
 - **Separate tasks stay separate.** Two tasks with similar names (like "C++ job offer" and "C# job offer") no longer share one memory.
 - **Reminders can be changed or cancelled.** Before, "cancel the reminder" could end up with an agent that couldn't see that reminder, so it kept firing. Now the request goes to the agent that owns it.
-- **Fewer wasted agents.** In one recorded conversation of 32 requests, run once on each version with Claude Haiku 5.5, the new version created 9 agents to the original's 12. None of the new version's agents sat idle; 4 of the original's were created and never did anything. That conversation is shown step by step in [`docs/demo-old-vs-new.md`](docs/demo-old-vs-new.md).
+- **Fewer wasted agents.** The same 32-request conversation was run three times on each version with Claude Haiku 5.5, and all six runs completed:
+
+  | Run | Original: agents created / never did anything | New: agents created / never did anything |
+  |---|---|---|
+  | 1 | 11 / 1 | 9 / 1 |
+  | 2 | 12 / 4 | 9 / 0 |
+  | 3 | 11 / 1 | 8 / 0 |
+
+  Run 2 is shown step by step in [`docs/demo-old-vs-new.md`](docs/demo-old-vs-new.md).
 
 ### What hasn't changed
 - **Setup and running the app are the same:** follow the Quickstart above.
@@ -124,7 +132,7 @@ python -m pytest
 - **Things that weren't meant to change still behave the same:** for example, slow email calls and timeouts. The tests keep these visible rather than hiding them.
 
 ### See the old and new versions side by side
-[`docs/demo-old-vs-new.md`](docs/demo-old-vs-new.md) shows one recorded conversation of 32 requests, run through both the original and the updated version with a real AI model (Claude Haiku 5.5). It lists every request, then shows only the ones where the two versions behaved differently: what each one did, and what should have happened.
+[`docs/demo-old-vs-new.md`](docs/demo-old-vs-new.md) shows one recorded conversation of 32 requests (run 2 of the three runs above), run through both the original and the updated version with a real AI model (Claude Haiku 5.5). It lists every request, then shows only the ones where the two versions behaved differently: what each one did, and what should have happened.
 
 - Short summary of every test and its result: [`docs/tests-summary.md`](docs/tests-summary.md)
 - Full write-up of the method: [`docs/tests-detailed.md`](docs/tests-detailed.md)
