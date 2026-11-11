@@ -1,9 +1,12 @@
 """Tool definitions for interaction agent."""
 
 import asyncio
+import contextlib
+import contextvars
 import json
-from dataclasses import dataclass
-from typing import Any, Optional
+import secrets
+from dataclasses import dataclass, field
+from typing import Any, Dict, Iterator, Optional
 
 from ...logging_config import logger
 from ...services.conversation import get_conversation_log
@@ -48,7 +51,7 @@ TOOL_SCHEMAS = [
         "type": "function",
         "function": {
             "name": "create_agent",
-            "description": "Start a NEW execution agent for work no existing card owns. First call with confirm=false: it creates nothing and returns any agents that already own the people, threads, drafts or triggers in the request. If one of them fits, use send_message_to_agent instead; otherwise call again with confirm=true to create the agent and dispatch the instructions.",
+            "description": "Start a NEW execution agent for work no existing card owns. First call with confirm=false: it creates nothing and returns any agents that already own the people, threads, drafts or triggers in the request, plus a dry_run_token. If one of them fits, use send_message_to_agent instead; otherwise call again with confirm=true, the same label and that dry_run_token to create the agent and dispatch the instructions. The token is single use and only valid during the current turn; a create without a valid token is refused and returns a fresh dry run.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -60,6 +63,10 @@ TOOL_SCHEMAS = [
                     "confirm": {
                         "type": "boolean",
                         "description": "false (default): check for existing owners, create nothing. true: create and dispatch.",
+                    },
+                    "dry_run_token": {
+                        "type": "string",
+                        "description": "Required with confirm=true: the dry_run_token returned by the confirm=false call for this label in this turn.",
                     },
                 },
                 "required": ["label", "instructions"],
@@ -189,30 +196,92 @@ def send_message_to_agent(agent_id: str, instructions: str) -> ToolResult:
     )
 
 
-# Create a new execution agent (two-phase: check owners, then confirm)
-def create_agent(label: str, instructions: str, confirm: bool = False) -> ToolResult:
-    """confirm=False: report existing owners, create nothing. confirm=True: create and dispatch."""
+# --- Dry-run tokens --------------------------------------------------------------
+# A confirmed create must carry the token a dry run issued earlier in the SAME
+# interaction-agent turn, for the SAME label (case and spacing ignored). Tokens
+# are single use and live only in memory for the turn; the runtime opens a
+# turn_scope() around each turn, so a token from another turn is never valid.
+@dataclass
+class _TurnState:
+    tokens: Dict[str, str] = field(default_factory=dict)  # token -> normalized label
+
+
+_TURN: contextvars.ContextVar[Optional[_TurnState]] = contextvars.ContextVar("ia_turn_state", default=None)
+
+
+@contextlib.contextmanager
+def turn_scope() -> Iterator[None]:
+    """One interaction-agent turn: dry-run tokens issued inside expire when it ends."""
+    reset = _TURN.set(_TurnState())
+    try:
+        yield
+    finally:
+        _TURN.reset(reset)
+
+
+def _normalize_label(label: str) -> str:
+    return " ".join(label.lower().split())
+
+
+def _dry_run_payload(clean_label: str, instructions: str) -> Dict[str, Any]:
+    owners = get_agent_registry().agents_for_keys(extract_from_text(f"{clean_label}\n{instructions}"))
+    payload: Dict[str, Any] = {
+        "status": "confirmation_required",
+        "existing_owners": [render_card(agent_id) for agent_id in owners[:MAX_CARDS]],
+        "next_step": (
+            "If an existing owner fits, use send_message_to_agent with its agent_id. Otherwise call "
+            "create_agent again with confirm=true, the same label and this dry_run_token "
+            "(single use, valid only during this turn)."
+        ),
+    }
+    state = _TURN.get()
+    if state is not None:
+        token = f"dr_{secrets.token_hex(4)}"
+        state.tokens[token] = _normalize_label(clean_label)
+        payload["dry_run_token"] = token
+    return payload
+
+
+def _token_problem(clean_label: str, dry_run_token: Any) -> Optional[str]:
+    """Why a confirm can't proceed, or None if the token is valid for this label in this turn."""
+    state = _TURN.get()
+    if state is None:
+        return "confirm=true can only be used during an interaction turn"
+    if not isinstance(dry_run_token, str) or not dry_run_token:
+        return "confirm=true needs the dry_run_token from a dry run earlier in this turn"
+    issued_for = state.tokens.get(dry_run_token)
+    if issued_for is None:
+        return "that dry_run_token isn't valid in this turn (already used, or from another turn)"
+    if issued_for != _normalize_label(clean_label):
+        return f"that dry_run_token was issued for a different label ({issued_for!r})"
+    return None
+
+
+# Create a new execution agent (two-phase: check owners, then confirm with the dry-run token)
+def create_agent(
+    label: str, instructions: str, confirm: bool = False, dry_run_token: Optional[str] = None
+) -> ToolResult:
+    """confirm=False: report existing owners and issue a token; create nothing.
+    confirm=True + that token (same turn, same label): create and dispatch. Anything else is
+    refused with a fresh dry run, so the model can check the owners and try again."""
     clean_label = (label or "").strip() if isinstance(label, str) else ""
     if not clean_label:
         return ToolResult(success=False, payload={"error": "label must be a non-empty string"})
 
     if confirm is not True:
-        owners = get_agent_registry().agents_for_keys(extract_from_text(f"{clean_label}\n{instructions}"))
-        return ToolResult(
-            success=True,
-            payload={
-                "status": "confirmation_required",
-                "existing_owners": [render_card(agent_id) for agent_id in owners[:MAX_CARDS]],
-                "next_step": (
-                    "If an existing owner fits, use send_message_to_agent with its agent_id. "
-                    "Otherwise call create_agent again with confirm=true."
-                ),
-            },
-        )
+        return ToolResult(success=True, payload=_dry_run_payload(clean_label, instructions))
+
+    problem = _token_problem(clean_label, dry_run_token)
+    if problem:
+        logger.info(f"Refused create_agent('{clean_label}'): {problem}")
+        refused = _dry_run_payload(clean_label, instructions)
+        refused.update({"status": "refused_no_dry_run", "reason": problem})
+        return ToolResult(success=False, payload=refused)
 
     if not _has_event_loop():
         return ToolResult(success=False, payload={"error": "No event loop available"})
 
+    _TURN.get().tokens.pop(dry_run_token, None)  # single use
     record = get_agent_registry().create_agent(clean_label)
     _dispatch(record.agent_id, record.label, instructions)
     logger.info(f"Created agent {record.agent_id} ('{record.label}')")

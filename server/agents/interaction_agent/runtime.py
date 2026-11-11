@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 from .agent import build_system_prompt, prepare_message_with_history
-from .tools import ToolResult, get_tool_schemas, handle_tool_call
+from .tools import ToolResult, get_tool_schemas, handle_tool_call, turn_scope
 from ...config import get_settings
 from ...services.conversation import get_conversation_log, get_working_memory_log
 from ...openrouter_client import request_chat_completion
@@ -133,6 +133,16 @@ class InteractionAgentRuntime:
 
     # Core interaction loop that handles LLM calls and tool executions until completion
     async def _run_interaction_loop(
+        self,
+        system_prompt: str,
+        messages: List[Dict[str, Any]],
+    ) -> _LoopSummary:
+        """One interaction turn. Dry-run tokens issued by create_agent are valid only inside it."""
+
+        with turn_scope():
+            return await self._run_turn(system_prompt, messages)
+
+    async def _run_turn(
         self,
         system_prompt: str,
         messages: List[Dict[str, Any]],

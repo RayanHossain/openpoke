@@ -428,13 +428,22 @@ def send_message_to_agent(label: str, instructions: str):
 
     Uses the interaction agent's real tools (must run inside an event loop):
     an existing label dispatches by its agent_id (``send_message_to_agent``);
-    otherwise the agent is created and dispatched (``create_agent(confirm=True)``).
+    otherwise it is created the way the router must: a dry run, then
+    ``create_agent(confirm=True)`` with that dry run's token, inside one turn.
     Tests of the routing interface itself call ``_ia_tools`` directly.
     """
     agent_id = get_agent_registry().find_by_label(label)
     if agent_id is not None:
         return _ia_tools.send_message_to_agent(agent_id, instructions)
-    return _ia_tools.create_agent(label, instructions, confirm=True)
+    return create_confirmed(label, instructions)
+
+
+def create_confirmed(label: str, instructions: str):
+    """Dry run then confirm with its token, in one turn (as the router must)."""
+    with _ia_tools.turn_scope():
+        dry = _ia_tools.create_agent(label, instructions)
+        return _ia_tools.create_agent(label, instructions, confirm=True,
+                                      dry_run_token=dry.payload["dry_run_token"])
 
 
 def ack_batch_dispatch(sb: Sandbox, times: int = 1) -> None:

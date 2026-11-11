@@ -7,9 +7,9 @@ with none of the first one's history.
 
 After: ``send_message_to_agent(agent_id, ...)`` only reaches an existing agent
 and never creates one; an unknown or paraphrased ID is an error with no side
-effects. The only way to add an agent is ``create_agent(..., confirm=True)``,
-and ``confirm=False`` first surfaces agents that already own the request's
-keys. The router chooses from code-backed cards instead of bare names.
+effects. The only way to add an agent is ``create_agent(..., confirm=True)``
+carrying the token from a ``confirm=False`` dry run earlier in the same turn,
+and that dry run first surfaces agents that already own the request's keys. The router chooses from code-backed cards instead of bare names.
 
 SPEC TESTS (verification 6): the former ``# FLIPS`` assertions, inverted.
 """
@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import pytest
 
-from harness import _ia_tools, ack_batch_dispatch, drain, reply, send_message_to_agent, tool_call
+from harness import _ia_tools, ack_batch_dispatch, create_confirmed, drain, reply, send_message_to_agent, tool_call
 from server.services.execution import agent_registry as reg
 
 FIRST = "Email to Alice"
@@ -46,8 +46,7 @@ def _create_first(sb, run):
     ack_batch_dispatch(sb)
 
     async def go():
-        r = _ia_tools.create_agent(FIRST, "Email alice@example.com asking if she's free for lunch Thursday.",
-                                   confirm=True)
+        r = create_confirmed(FIRST, "Email alice@example.com asking if she's free for lunch Thursday.")
         await drain()
         return r
 
@@ -93,7 +92,8 @@ def test_F4_create_agent_without_confirm_creates_nothing_and_surfaces_owner(sb, 
 
 @pytest.mark.fixed("F4")
 def test_F4_only_confirmed_create_agent_increases_count(sb, run):
-    """F4 fixed: across every interaction-agent tool, only create_agent(confirm=True) adds an agent."""
+    """F4 fixed: across every interaction-agent tool, only create_agent(confirm=True) with a valid
+    dry-run token adds an agent."""
     _create_first(sb, run)
     sb.execution_llm.script("Brand new", reply("ok"))
     ack_batch_dispatch(sb)
@@ -107,15 +107,20 @@ def test_F4_only_confirmed_create_agent_increases_count(sb, run):
         ("create_agent", {"label": "Brand new", "instructions": "x", "confirm": False}),
         ("create_agent", {"label": "Brand new", "instructions": "x", "confirm": "true"}),  # not a bool
         ("create_agent", {"label": "   ", "instructions": "x", "confirm": True}),
+        ("create_agent", {"label": "Brand new", "instructions": "x", "confirm": True}),  # no token
+        ("create_agent", {"label": "Brand new", "instructions": "x", "confirm": True, "dry_run_token": "dr_bogus"}),
     ]
 
     async def go():
         counts = []
-        for name, args in calls:
-            _ia_tools.handle_tool_call(name, args)
+        with _ia_tools.turn_scope():
+            for name, args in calls:
+                _ia_tools.handle_tool_call(name, args)
+                counts.append(reg.count())
+            dry = _ia_tools.handle_tool_call("create_agent", {"label": "Brand new", "instructions": "x"})
+            _ia_tools.handle_tool_call("create_agent", {"label": "Brand new", "instructions": "x", "confirm": True,
+                                                        "dry_run_token": dry.payload["dry_run_token"]})
             counts.append(reg.count())
-        _ia_tools.handle_tool_call("create_agent", {"label": "Brand new", "instructions": "x", "confirm": True})
-        counts.append(reg.count())
         await drain()
         return counts
 

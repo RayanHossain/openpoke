@@ -243,7 +243,9 @@ SCENARIOS = [
 # --------------------------------------------------------------------------- #
 # Simulated tools (same payloads/error text as interaction_agent/tools.py)
 # --------------------------------------------------------------------------- #
-def simulate(scenario: Scenario, name: str, args: Dict[str, Any]) -> Tuple[bool, Any]:
+def simulate(scenario: Scenario, name: str, args: Dict[str, Any],
+             tokens: Optional[Dict[str, str]] = None) -> Tuple[bool, Any]:
+    tokens = {} if tokens is None else tokens  # dry-run tokens issued this turn: token -> label
     if name == "send_message_to_user":
         return True, {"status": "delivered"}
     if name == "send_draft":
@@ -258,12 +260,28 @@ def simulate(scenario: Scenario, name: str, args: Dict[str, Any]) -> Tuple[bool,
         return False, {"error": (f"Unknown agent_id {agent_id!r}. Use an agent_id exactly as shown on a card, "
                                  "or create_agent if no existing agent owns this work.")}
     if name == "create_agent":
+        # Mirrors interaction_agent/tools.py: a confirm needs the single-use token a dry run issued
+        # in this turn for the same label; otherwise it is refused with a fresh dry run.
+        label = " ".join(str(args.get("label") or "").lower().split())
+
+        def dry_run(status: str = "confirmation_required", reason: Optional[str] = None) -> Dict[str, Any]:
+            token = f"dr_sim{len(tokens) + 1}"
+            tokens[token] = label
+            out = {"status": status, "existing_owners": scenario.owners_for_dry_run, "dry_run_token": token,
+                   "next_step": ("If an existing owner fits, use send_message_to_agent with its agent_id. Otherwise "
+                                 "call create_agent again with confirm=true, the same label and this dry_run_token "
+                                 "(single use, valid only during this turn).")}
+            if reason:
+                out["reason"] = reason
+            return out
+
         if args.get("confirm") is True:
-            return True, {"status": "submitted", "agent_id": "ea_100",
-                          "label": args.get("label"), "new_agent_created": True}
-        return True, {"status": "confirmation_required", "existing_owners": scenario.owners_for_dry_run,
-                      "next_step": ("If an existing owner fits, use send_message_to_agent with its agent_id. "
-                                    "Otherwise call create_agent again with confirm=true.")}
+            if tokens.get(args.get("dry_run_token")) == label:
+                tokens.pop(args["dry_run_token"])
+                return True, {"status": "submitted", "agent_id": "ea_100",
+                              "label": args.get("label"), "new_agent_created": True}
+            return False, dry_run("refused_no_dry_run", "confirm=true needs a valid dry_run_token from this turn")
+        return True, dry_run()
     return False, {"error": f"Unknown tool: {name}"}
 
 
@@ -294,6 +312,7 @@ def run_scenario(client, key, model, system, tools, scenario: Scenario) -> Dict[
         {"role": "user", "content": render_user_message(scenario.history, scenario.cards, scenario.user_text)}
     ]
     calls: List[Call] = []
+    tokens: Dict[str, str] = {}  # one scenario run = one turn
     usage = {"prompt_tokens": 0, "completion_tokens": 0}
     final_text = ""
     for _ in range(MAX_ITERATIONS):
@@ -316,7 +335,7 @@ def run_scenario(client, key, model, system, tools, scenario: Scenario) -> Dict[
                 args = {"__invalid_arguments__": fn.get("arguments")}
             call = Call(fn.get("name", ""), args)
             calls.append(call)
-            ok, result = simulate(scenario, call.name, args)
+            ok, result = simulate(scenario, call.name, args, tokens)
             messages.append({
                 "role": "tool",
                 "tool_call_id": tc.get("id") or call.name,

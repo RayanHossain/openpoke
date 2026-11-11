@@ -107,7 +107,7 @@ def make_interaction_model(first_try: Optional[str], trace: Trace):
                 trace("OBSERVED", "create_agent(confirm=false)",
                       f"existing owners: {last['result']['existing_owners'] or 'none'}")
                 calls = [tool_call("create_agent", label=FIRST_NAME, instructions=first_instructions,
-                                   confirm=True)]
+                                   confirm=True, dry_run_token=last["result"]["dry_run_token"])]
         elif turn.startswith("user_message>") and "Did Alice reply" in turn:
             if not last:
                 active = content.split("<active_agents>")[1].split("</active_agents>")[0].strip()
