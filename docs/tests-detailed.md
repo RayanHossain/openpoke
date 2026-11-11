@@ -32,11 +32,11 @@ The common thread: **identity, memory and ownership all hung on model-written te
 |---|---|---|
 | **Agent registry** (`services/execution/agent_registry.py`) | Every agent gets a code-assigned ID (`ea_17`) that is never reused. The label is display text only. | F4, F7: identity no longer depends on wording |
 | **Ownership keys** (`keys.py`, recorded at the tool-dispatch point in `execution_agent/runtime.py`) | Every successful tool call records what the agent now owns, as one of four key types (`address`, `thread`, `draft`, `trigger`; a sent or deleted draft is marked closed). In Haiku run 2 the new version recorded 6 addresses, 8 threads, 8 drafts and 5 reminders. | Gives the router evidence instead of names |
-| **Routing cards** (`routing_cards.py`) | The router sees one line per agent: ID, label, address, open drafts and reminders, status, and a short brief. With 8 agents or fewer (N ≤ 8), it sees every agent. Above 8, it sees agents whose keys the request mentions plus the 5 most recent, **capped at 10 cards**. The cap is an addition beyond the D-004 spec, which set no limit; it keeps the prompt bounded when one address matches many agents. | The router chooses on evidence; a request naming a reminder brings back its owner |
+| **Agent state descriptors** (`routing_cards.py`; the code and the interaction-agent prompt still call them "cards", and the recorded runs used that prompt) | The router sees one line per agent, its *state descriptor*: ID, label, address, open drafts and reminders, status, and a short brief. With 8 agents or fewer (N ≤ 8), it sees every agent. Above 8, it sees agents whose keys the request mentions plus the 5 most recent, **capped at 10 state descriptors**. The cap is an addition beyond the D-004 spec, which set no limit; it keeps the prompt bounded when one address matches many agents. | The router chooses on evidence; a request naming a reminder brings back its owner |
 | **ID-only dispatch** (`send_message_to_agent(agent_id)`) | An unknown or paraphrased ID is rejected and nothing happens. | F4: a paraphrase can't silently create an agent |
 | **Two-step creation** (`create_agent(confirm=false)` first) | The dry run lists agents that already own the request's people, threads, drafts or reminders. Only `confirm=true` creates an agent. | Duplicate agents for work that already has an owner |
 | **Logs and reminders keyed by `agent_id`** | `ea_17.log`; reminders owned by the ID. | F7, F33 |
-| **End-of-run report** (`execution_agent/report.py`) | Each agent ends with a 2-sentence brief and a status, which goes onto its card. | Cards stay current |
+| **End-of-run report** (`execution_agent/report.py`) | Each agent ends with a 2-sentence brief and a status, which goes into its state descriptor. | State descriptors stay current |
 | **In-turn duplicate guard** (`interaction_agent/runtime.py`) | An identical tool call repeated in one model reply runs once. | Double dispatch (a precaution; see section 7) |
 
 ## 4. How we tested: four layers
@@ -58,9 +58,9 @@ The common thread: **identity, memory and ownership all hung on model-written te
 ### Layer 3: does a real model follow the new protocol? (`tests/eval_routing_compliance.py`)
 - **Setup:** the real interaction agent prompt and tool schemas, real Claude Haiku 5.5 via OpenRouter, simulated tool results, three scenarios.
 - **Results (9 runs):**
-  - **Route by key** (only Alice's card shows her address): 3/3.
+  - **Route by key** (only Alice's agent state descriptor shows her address): 3/3.
   - **Ask when ambiguous** ("cancel my reminder" with no matching key): 3/3.
-  - **Dry run before creating, when the person is already owned by a card:** 1/3. The prompt itself tells the model to prefer the existing owner of a person, so it usually routed to Bob's existing agent or asked instead of dry-running.
+  - **Dry run before creating, when the person is already owned by an agent:** 1/3. The prompt itself tells the model to prefer the existing owner of a person, so it usually routed to Bob's existing agent or asked instead of dry-running.
 - **Lesson:** the dry-run rule and the "prefer the existing agent" rule pull in different directions. The eval surfaced a prompt-design tension rather than a code bug.
 
 ### Layer 4: old vs new, live, on the same demanding conversation (`tests/compare/`)
@@ -124,7 +124,7 @@ The whole comparison cost about **$1.60** on Haiku, including the pilot and smok
   - creating the call reminder: 3/3 vs 2/3
   - forwarding the agenda: 3/3 vs 2/3
 
-  In the old version a follow-up often reached a new or wrong agent that can't see reminders it doesn't own. Examples: "Dentist Reminder Canceller" (an agent created only to cancel another agent's reminder, which found nothing), "Reminder System Check", and a call reminder created by the "Dentist Reminder" agent. In the new version the reminder is a key on its owner's card, the router sends the request to that ID, and the owner can act on it.
+  In the old version a follow-up often reached a new or wrong agent that can't see reminders it doesn't own. Examples: "Dentist Reminder Canceller" (an agent created only to cancel another agent's reminder, which found nothing), "Reminder System Check", and a call reminder created by the "Dentist Reminder" agent. In the new version the reminder is a key in its owner's state descriptor, the router sends the request to that ID, and the owner can act on it.
 - **Fewer, and no useless, agents:** about 2.6 fewer per run, and no agents that start and do nothing. In runs 2 and 3 the old version answered "did bob lee reply?" by creating a new "Bob Lee Lunch Reply Check" agent instead of going back to the agent that had sent the invite. That new agent had none of the invite's history.
 - **No early sends.** The old version once sent a reply before the user said "send".
 
@@ -160,8 +160,8 @@ The whole comparison cost about **$1.60** on Haiku, including the pilot and smok
 
 | Remaining issue | Why the new design doesn't fix it | What would |
 |---|---|---|
-| Asks too often ("Which Alice?") | The new prompt's ASK rule ("ask if two cards could plausibly own the request") is broad, and with two Alices on the cards the model plays safe. That's prompt design, not identity. | Narrow the ASK rule: a just-arrived email's sender is the default "her/him", and cosmetic questions shouldn't block an explicit send. |
-| "Lunch with bob" goes to the wrong Bob | Cards only know people the system has already dealt with. Bob Lee had never been emailed, so the cards showed one Bob, and evidence-based routing turned an ambiguous name into a confident wrong answer. | Don't resolve a bare first name from cards alone: check contacts and ask if several people match. |
+| Asks too often ("Which Alice?") | The new prompt's ASK rule (ask when two agents' state descriptors could plausibly own the request) is broad, and with two Alices among the state descriptors the model plays safe. That's prompt design, not identity. | Narrow the ASK rule: a just-arrived email's sender is the default "her/him", and cosmetic questions shouldn't block an explicit send. |
+| "Lunch with bob" goes to the wrong Bob | State descriptors only list people the system has already dealt with. Bob Lee had never been emailed, so the state descriptors showed one Bob, and evidence-based routing turned an ambiguous name into a confident wrong answer. | Don't resolve a bare first name from state descriptors alone: check contacts and ask if several people match. |
 | Unrequested reminders | See "Why unrequested reminders appear" below. It's an original OpenPoke gap; D-004 neither introduced nor fixes it. | Prompt-only fix proposed below (not yet applied or measured). |
 | Reminders land on the wrong agent | The router places a new reminder on whichever agent looks like a "reminder agent", not on the agent that owns the task. The invoice chase went to the venue-reminder agent in 7 of 8 runs. The new design still finds and cancels it, but when it fires it wakes an agent with none of the task's context. See "Reminders belong to the task's agent" below. | One line of router guidance: attach a reminder to the agent that owns the related person or task (not yet applied or measured). |
 | A model timeout drops a turn | The app's model client has a 60-second timeout, no retry, and an empty error message. | Retry once and include the error type (logged in `CODE_ISSUES_AND_FIXES.md`; not changed). |
@@ -173,9 +173,9 @@ The whole comparison cost about **$1.60** on Haiku, including the pilot and smok
 **Why:**
 - **When a reminder fires, OpenPoke wakes its owner** (`trigger_scheduler.py` runs the owning agent with the reminder's payload). The task's agent wakes up with the thread, the draft and everything that has happened. A separate reminder agent wakes up with one line of text and has to reconstruct the context from the inbox.
 - **The reason to change a reminder arrives on the same task.** Bob's "paid" email matches the invoice agent's keys (his address, the invoice thread), so the router's key matching leads to the agent that also holds the reminder.
-- **Cards stay accurate.** In the Sonnet run, one "Tahoe venue reminder" card ended up holding the venue, invoice-chase, dentist and call reminders. The label no longer described what the agent owned.
+- **State descriptors stay accurate.** In the Sonnet run, one "Tahoe venue reminder" state descriptor ended up holding the venue, invoice-chase, dentist and call reminders. The label no longer described what the agent owned.
 
-**Why a separate reminder agent made sense before:** in the old version, only a reminder's creator could see it, so one central reminder agent was the only way "cancel my reminder" could reliably find it. With D-004, every card lists that agent's open reminders and the router can reach any of them by owner, so that workaround is no longer needed.
+**Why a separate reminder agent made sense before:** in the old version, only a reminder's creator could see it, so one central reminder agent was the only way "cancel my reminder" could reliably find it. With D-004, every agent state descriptor lists that agent's open reminders and the router can reach any of them by owner, so that workaround is no longer needed.
 
 **What the runs show:** the model grouped reminders by type, not by task.
 
@@ -187,7 +187,7 @@ The whole comparison cost about **$1.60** on Haiku, including the pilot and smok
 | Sonnet old and new | the venue-reminder agent |
 
 - **Old version:** the misplacement caused the failure. The cancel went to Bob's agent by name, and Bob's agent couldn't see a reminder owned by the venue agent (the run 2 example: the user was then told, falsely, that no reminders existed).
-- **New version:** cancelling still worked in 3 of 3 runs, because the router found the reminder on its owner's card. But had the reminder fired, the venue agent would have woken without the invoice context.
+- **New version:** cancelling still worked in 3 of 3 runs, because the router found the reminder in its owner's state descriptor. But had the reminder fired, the venue agent would have woken without the invoice context.
 
 **Proposed fix (prompt-only):** add one line to the interaction agent prompt: *"Attach a reminder to the agent that owns the related person or task, not to another reminder agent."* Not yet applied or measured.
 
@@ -207,7 +207,7 @@ The whole comparison cost about **$1.60** on Haiku, including the pilot and smok
 
 **Why it matters:**
 - At the deadline, the scheduler fires the "note" and runs the agent with it as instructions, so the user gets an action or message they never asked for.
-- The agent's card shows `open: trigger t_N`, so it looks like it's waiting on something.
+- The agent's state descriptor shows `open: trigger t_N`, so it looks like it's waiting on something.
 
 **Proposed fix (prompt-only, fits the existing design):**
 - **Execution agent prompt:** its history persists between runs. To record something, state it in its final message and end-of-run report. Never use reminders as storage; create one only when asked to remind the user at a time.

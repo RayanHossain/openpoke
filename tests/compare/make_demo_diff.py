@@ -43,7 +43,7 @@ NOTES_RUN2 = {
     "U17": "**F33.** Old sent the cancel to Bob's email agent by name, but the reminder was owned by the venue agent, "
            "and old agents can only see their own reminders. It then created another agent that also saw nothing, and "
            "told you none of your reminders existed. All three were still set, and the chase still fires. New routed "
-           "to the reminder's owner from its card and closed it.",
+           "to the reminder's owner from its state descriptor and closed it.",
     "U22": "New's miss: it held an explicit \"send\" to ask about the email signature.",
     "U23": "**F33 knock-on.** Old now believes your reminders don't exist (from U17) and refuses to move one that is "
            "still active. New moves it.",
@@ -244,7 +244,7 @@ def render(old: Run, new: Run, run_no: int, data: Path) -> str:
         "Everything below is read from what actually happened: tool calls, Gmail actions and reminder records.",
         "",
         "- **Old:** original OpenPoke `63d7a37`, agents picked by name",
-        "- **New:** D-004 `c3ca784`, agents picked by ID from evidence cards",
+        "- **New:** D-004 `c3ca784`, agents picked by ID from agent state descriptors",
         "- In the diffs, `-` lines are the old version and `+` lines the new one; ✅/❌ are judged against the ideal "
         "behaviour shown first.",
         "",

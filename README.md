@@ -78,7 +78,7 @@ The web app proxies API calls to the Python server using the values in `.env`, s
 ### What was added
 - **Every agent now has a permanent ID** (like `ea_17`) instead of being identified by a name the assistant makes up each time.
 - **The system keeps a record of what each agent is working on:** the people it emailed, its email threads, its drafts and its reminders. These are recorded automatically from the agent's actual actions (the emails it drafts or sends and the reminders it sets), not from what it says.
-- **Before handing off a request, the assistant sees a short card for each relevant agent** and picks the right one by its ID. On each card:
+- **Before handing off a request, the assistant sees a short agent state descriptor for each relevant agent** (one line per agent) and picks the right one by its ID. In each state descriptor:
   - the ID, people, threads, drafts, reminders and last-active time come from those records
   - the agent's name and its short summary of progress are written by the AI itself
 - **Starting a new agent takes two steps.** The system first shows whether an existing agent already handles that person, thread or reminder, then a second step creates the agent. This makes accidental duplicates less likely, but doesn't rule them out (see the limitations below).
@@ -126,7 +126,7 @@ python -m pytest
 - **Each new piece works on its own:**
   - agent IDs are unique and never reused
   - people, threads, drafts and reminders are recorded from the agent's real actions
-  - the assistant is shown the right agent cards for each request
+  - the assistant is shown the right agent state descriptors for each request
   - sending to an agent that doesn't exist is refused and does nothing
   - a new agent is only created after an explicit confirm
   - each agent leaves a short summary of its work, and a broken summary never causes a crash

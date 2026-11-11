@@ -3,7 +3,7 @@
 A **recorded live run** (run 2 of 3). Both versions started empty, got the identical prompts and incoming emails, and were driven by the same real model (Claude Haiku 5.5 via OpenRouter, fake Gmail). Everything below is read from what actually happened: tool calls, Gmail actions and reminder records.
 
 - **Old:** original OpenPoke `63d7a37`, agents picked by name
-- **New:** D-004 `c3ca784`, agents picked by ID from evidence cards
+- **New:** D-004 `c3ca784`, agents picked by ID from agent state descriptors
 - In the diffs, `-` lines are the old version and `+` lines the new one; ✅/❌ are judged against the ideal behaviour shown first.
 
 ## Result
@@ -154,7 +154,7 @@ Across all 3 runs: hard checkpoints **26/39 old vs 30/39 new**; blind reminder l
 
 **Ideal:** Cancel only the invoice-chase reminder and confirm it won't fire.
 
-**Why it differs:** **F33.** Old sent the cancel to Bob's email agent by name, but the reminder was owned by the venue agent, and old agents can only see their own reminders. It then created another agent that also saw nothing, and told you none of your reminders existed. All three were still set, and the chase still fires. New routed to the reminder's owner from its card and closed it.
+**Why it differs:** **F33.** Old sent the cancel to Bob's email agent by name, but the reminder was owned by the venue agent, and old agents can only see their own reminders. It then created another agent that also saw nothing, and told you none of your reminders existed. All three were still set, and the chase still fires. New routed to the reminder's owner from its state descriptor and closed it.
 
 ```diff
 - OLD  router → "Email to Bob Ruiz"
