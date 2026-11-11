@@ -60,8 +60,8 @@ The common thread: **identity, memory and ownership all hung on model-written te
 - **Results (9 runs):**
   - **Route by key** (only Alice's agent state descriptor shows her address): 3/3.
   - **Ask when ambiguous** ("cancel my reminder" with no matching key): 3/3.
-  - **Dry run before creating, when the person is already owned by an agent:** 1/3. The prompt itself tells the model to prefer the existing owner of a person, so it usually routed to Bob's existing agent or asked instead of dry-running.
-- **Lesson:** the dry-run rule and the "prefer the existing agent" rule pull in different directions. The eval surfaced a prompt-design tension rather than a code bug.
+  - **New task for an existing person** ("draft a new email to bob about the offsite", when Bob already has an agent): dry run first 1/3. In the other two it reused Bob's existing agent once, and asked you once without a dry run. Overall it **never created a new agent (0/3)**: it reused the existing agent 1/3 and asked you 2/3 (once after its dry run).
+- **Lesson:** the dry-run rule and the prompt's "prefer the existing agent" rule pull in different directions. The eval surfaced a prompt-design tension rather than a code bug.
 
 ### Layer 4: old vs new, live, on the same demanding conversation (`tests/compare/`)
 

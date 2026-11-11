@@ -143,10 +143,10 @@ python -m pytest
 ## Known limitations and what hasn't been measured yet
 - **The offline tests script the AI's choices.** They show the new mechanism works, but not that a real AI model routes requests better. The side-by-side demo is the real-model evidence.
 - **Routing as agents pile up hasn't been measured.** It's not yet known whether routing gets worse as the number of agents grows, or whether this change fixes that.
-- **The live check of the new interface is small:** 9 cases, one model (Claude Haiku 5.5). It checks whether the AI uses the new steps (picking by ID, checking before creating, asking when unsure), not whether it's more accurate than the original. It checked before creating in only 1 of 3 cases.
+- **The live check of the new interface is small:** 9 cases, one model (Claude Haiku 5.5). It checks whether the AI uses the new steps (picking by ID, checking before creating, asking when unsure), not whether it's more accurate than the original.
 - **Known gaps:**
   - **Vague follow-ups:** a follow-up that mentions no person, thread, draft or reminder (e.g. "the budget thing" weeks later) may not find the original agent and can create a duplicate.
-  - **A new task for a person who already has an agent:** it can be sent to that person's existing agent instead of starting a new one. In the live check this happened in 1 of 3 cases; in the other 2, the assistant asked you first.
+  - **A new task for a person who already has an agent:** in the live check ("draft a new email to bob about the offsite"), it reused Bob's existing agent in 1 of 3 cases and asked you in the other 2 (once after checking for existing agents). It never started a new agent.
 
 ## Project Layout
 - `server/` – FastAPI application and agents

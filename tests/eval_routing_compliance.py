@@ -6,10 +6,12 @@ routing cards, follows the routing protocol:
 
   1. route_by_key   "what did alice say about lunch" -> send_message_to_agent
                     with the agent_id whose card owns alice@example.com
-  2. dry_run        "draft a new email to bob about the offsite" (bob@ already
-                    owned by a card, but the user explicitly asks for NEW work)
-                    -> create_agent(confirm=false) before anything else.
-                    Unambiguous, so asking the user does not pass here.
+  2. dry_run        New task for an existing person: "draft a new email to bob
+                    about the offsite" (bob@ already owned by an agent, but the
+                    user explicitly asks for NEW work) -> create_agent(confirm=false)
+                    before anything else. Unambiguous, so asking does not pass.
+                    The reason line names the outcome: dry run first / reused
+                    the existing agent / asked you / created without a dry run.
   3. ask            "cancel my reminder" with no matching key and the owner
                     outside the shown hot set -> ask the user; never dispatch
                     to an ID. Ambiguous, so ASK is the expected action.
@@ -174,13 +176,17 @@ def grade_route_by_key(calls: List[Call]) -> Tuple[bool, str]:
 
 
 def grade_dry_run(calls: List[Call]) -> Tuple[bool, str]:
+    """New task for an existing person. Passes only on a dry run first; the reason names what happened."""
     routing = _routing(calls)
     if not routing:
-        return False, "no routing call (model never dispatched or dry-ran)"
+        return False, "asked you without a dry run (no routing call)"
     first = routing[0]
     if first.name == "create_agent" and not _confirmed(first):
-        return True, f"first routing call: create_agent(confirm={first.args.get('confirm', '<omitted>')})"
-    return False, f"first routing call was {first.name}({json.dumps(first.args)})"
+        asked = any(c.name == "send_message_to_user" and "?" in str(c.args.get("message", "")) for c in calls)
+        return True, "dry run first" + (", then asked you" if asked and len(_routing(calls)) == 1 else "")
+    if first.name == "send_message_to_agent":
+        return False, f"reused the existing agent {first.args.get('agent_id')} (no dry run)"
+    return False, "created a new agent without a dry run"
 
 
 def grade_ask(calls: List[Call]) -> Tuple[bool, str]:
