@@ -4,7 +4,7 @@ Runs OpenPoke's real interaction agent, roster, execution runtime, log store and
 batch manager. Only the model (OpenRouter) and Gmail (Composio) are stubbed.
 No network, temp data dir.
 
-    .venv-test/bin/python tests/demo_alice_e2e.py
+    python tests/demo_alice_e2e.py   # in the Quickstart virtualenv, with tests/requirements.txt installed
 
 The trace marks every line as either
   SCRIPTED  - what the stub model chose to say/do (the input to the experiment)

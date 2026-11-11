@@ -1,18 +1,20 @@
 # Routing baseline tests
 
-Deterministic tests showing how OpenPoke routes requests to persistent agents
-today, pinned at `5b5f635`. They make no LLM calls and no network calls, and
-use only temp data dirs.
+Deterministic tests for how OpenPoke routes requests to persistent agents:
+the original problems (written against `5b5f635`, now either fixed or kept
+visible as known issues) and the new routing pieces (`test_spec_*`). They make
+no LLM calls and no network calls, and use only temp data dirs.
 
 ## Run
 
-```bash
-uv venv -p 3.10 .venv-test
-uv pip install -p .venv-test/bin/python -r server/requirements.txt -r tests/requirements.txt
+From the repo root, in the virtualenv from the main README's Quickstart:
 
-.venv-test/bin/python -m pytest                    # whole suite (~2.5 s)
-.venv-test/bin/python -m pytest -m finding -k F33  # one finding
-.venv-test/bin/python tests/demo_alice_e2e.py      # readable e2e trace (add 2>/dev/null to hide server logs)
+```bash
+pip install -r server/requirements.txt -r tests/requirements.txt
+
+python -m pytest                    # whole suite (158 tests, a few seconds)
+python -m pytest -k F33             # one problem (tests are named by finding ID)
+python tests/demo_alice_e2e.py      # readable end-to-end trace (add 2>/dev/null to hide server logs)
 ```
 
 ## How it is isolated

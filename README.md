@@ -86,7 +86,11 @@ The web app proxies API calls to the Python server using the values in `.env`, s
 - **The default AI model was updated.** The original default (`anthropic/claude-sonnet-4`) has been retired. The app now defaults to Claude Haiku 5.5 (`anthropic/claude-haiku-5.5`), because the live results below were run on it; runs with Claude Sonnet 5.5 had problems through OpenRouter (rate limits on a new account). Each model can be changed with an `OPENPOKE_*_MODEL` environment variable, e.g. `OPENPOKE_INTERACTION_AGENT_MODEL=anthropic/claude-sonnet-5.5`.
 
 ### What this improves
-- **Follow-ups reach the right agent when they mention something recorded,** such as a person, an email thread, a draft or a reminder. "Did Alice reply?" goes back to the agent that emailed Alice, even if you word it differently. Before, rewording often created a brand-new agent that knew nothing about the earlier email. A vague follow-up that mentions none of these can still miss.
+- **Follow-ups reach the right agent when they mention something recorded,** such as an email address, a thread, a draft or a reminder. Before, rewording often created a brand-new agent that knew nothing about the earlier email. A vague follow-up that mentions none of these can still miss.
+  - **Names need care:** a follow-up that only uses a name, like "did Alice reply?", works differently depending on how many agents there are.
+    - **With 8 agents or fewer,** every agent's state descriptor is shown and the assistant matches the name to an address itself.
+    - **With more than 8,** a name only helps once the system has seen it together with the address, in an email header ("Alice Chen <alice.chen@…>") or a contact lookup. Otherwise the follow-up can miss.
+    - **A first name shared by two people** (two Alices) matches both.
 - **Separate tasks stay separate.** Two tasks with similar names (like "C++ job offer" and "C# job offer") no longer share one memory.
 - **Reminders can be changed or cancelled.** Before, "cancel the reminder" could end up with an agent that couldn't see that reminder, so it kept firing. Now the request goes to the agent that owns it.
 - **Fewer wasted agents.** The same 32-request conversation was run three times on each version with Claude Haiku 5.5, and all six runs completed:
@@ -118,6 +122,7 @@ pip install -r tests/requirements.txt
 python -m pytest
 ```
 
+- Run these from the repo root **inside the virtualenv from the Quickstart.** The tests need the server's dependencies from step 5 as well.
 - It takes a few seconds and needs **no API keys or internet**.
 - The AI model and Gmail are replaced with stand-ins that give fixed answers, so the results are the same on every machine.
 - Everything runs in a temporary folder, so your own data isn't touched.
@@ -152,11 +157,14 @@ python -m pytest
 - **Known gaps:**
   - **Vague follow-ups:** a follow-up that mentions no person, thread, draft or reminder (e.g. "the budget thing" weeks later) may not find the original agent and can create a duplicate.
   - **A new task for a person who already has an agent:** in the live check ("draft a new email to bob about the offsite"), it reused Bob's existing agent in 1 of 3 cases and asked you in the other 2 (once after checking for existing agents). It never started a new agent.
+  - **Name-only follow-ups with more than 8 agents:** "did Alice reply?" only finds the agent if the name has already been seen together with the address, in an email header or a contact lookup (see "What this improves").
+- **"Ask you when it's ambiguous" is an instruction in the assistant's prompt, not something the code enforces.** The model decides when to ask.
 
-### Next steps (proposed prompt changes, not applied)
+### Next steps (proposed, not applied)
 - **Ask less often:** right after Alice Park's email arrived, the new version asked "Which Alice?" for "reply to her" in 2 of 3 runs, and once held an explicit "send" to ask about the email's signature.
 - **Don't guess a bare first name:** "set up lunch with bob tomorrow?" was drafted to Bob Ruiz, the only Bob the system had met, in 2 of 3 runs of the new version and 3 of 3 of the original, although the contacts also had Bob Lee.
 - **No reminders nobody asked for:** "keep track of the C++ offer… deadline is Friday" produced a reminder in 2 of 3 runs of the new version (1 of 3 of the original). Agents have no other place to store a note, and once the assistant itself asked for a reminder.
+- **Learn names from your own requests:** when you write "Email Alice Chen (alice.chen@acme.example)" and an agent emails that address, the name isn't linked to it; names are only picked up from email headers and contact lookups. In run 2, both Alices were learned (from email search results), but neither Bob was, even though both requests about Bob gave his full name and address. A code change, unlike the other four.
 - **Put a reminder on the agent running that task:** the "chase Bob about the invoice" reminder ended up on the venue-reminder agent in 7 of 8 runs, so when it fires, the agent that wakes up has none of the invoice's context.
 
 ## Project Layout
