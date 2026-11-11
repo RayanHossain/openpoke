@@ -1,0 +1,537 @@
+[
+  {
+    "label": "run1-old",
+    "version": "old",
+    "run": 1,
+    "ref": "63d7a37",
+    "model": "anthropic/claude-sonnet-5.5",
+    "patches": [
+      "all five model defaults -> anthropic/claude-sonnet-5.5",
+      "conversation_summary_threshold 100 -> 40",
+      "user timezone America/Toronto (data/timezone.txt, as the web app stores it)"
+    ],
+    "minutes": 13.4,
+    "aborted": null,
+    "cost": {
+      "prompt_tokens": 2461364,
+      "completion_tokens": 64775,
+      "calls": 387,
+      "usd": 5.5705
+    },
+    "summarized": true,
+    "retries": 107,
+    "checkpoints": [
+      {
+        "id": "CP01",
+        "step": "U2",
+        "kind": "hard",
+        "title": "offsite email sent to Alice Chen",
+        "passed": true,
+        "detail": "sent (via draft) to ['alice.chen@acme.example'] [Acme offsite: Dec 16-17 in Tahoe?] in U2"
+      },
+      {
+        "id": "CP02",
+        "step": "U6",
+        "kind": "hard",
+        "title": "'send the bob draft' sends the invoice note to Bob Ruiz",
+        "passed": true,
+        "detail": "sent (via draft) to ['bob.ruiz@acme.example'] [Invoice #4471 \u2013 30 Days Overdue] in U6"
+      },
+      {
+        "id": "CP03",
+        "step": "U8",
+        "kind": "hard",
+        "title": "'reply to her' goes to Alice Park, not Alice Chen",
+        "passed": false,
+        "detail": "no send to alice.park@beta.example in U8 (nothing sent); sends to them happened in U9"
+      },
+      {
+        "id": "CP04",
+        "step": "U10",
+        "kind": "soft",
+        "title": "C# deadline answered as Tuesday",
+        "passed": true,
+        "detail": "Beta's C# offer ($140k base plus equity) is due \"next Tuesday.\" Alice's email is dated Nov 9, so that's most likely Tue Nov 17. The email doesn't give an exact date, so I'm inferring it. /  / Gamma's C++ offer (165k) is due Friday Nov 13, which comes first."
+      },
+      {
+        "id": "CP05",
+        "step": "U11",
+        "kind": "hard",
+        "title": "ambiguous 'lunch with bob' asks which Bob",
+        "passed": false,
+        "detail": "acted without asking which Bob: draft to ['bob.ruiz@acme.example']"
+      },
+      {
+        "id": "CP06",
+        "step": "U13",
+        "kind": "hard",
+        "title": "lunch invite sent to Bob Lee only",
+        "passed": false,
+        "detail": "lunch invite also went to Bob Ruiz: draft in U11"
+      },
+      {
+        "id": "CP07",
+        "step": "U15",
+        "kind": "hard",
+        "title": "agenda sent to Alice Chen, not Alice Park",
+        "passed": true,
+        "detail": "sent (via draft) to ['alice.chen@acme.example'] [Re: Acme offsite: Dec 16-17 in Tahoe?] in U15"
+      },
+      {
+        "id": "CP08",
+        "step": "U17",
+        "kind": "hard",
+        "title": "'cancel the reminder to chase him' cancels only the invoice chase",
+        "passed": false,
+        "detail": "chase reminder still active"
+      },
+      {
+        "id": "CP09",
+        "step": "U20",
+        "kind": "soft",
+        "title": "recalls Alice Chen's confirmed dates (16-17)",
+        "passed": true,
+        "detail": "Checking her email for the exact wording. / Alice wrote: \"Dec 16-17 works for us! Could you send the agenda by Friday?\" No conditions, and she didn't mention Tahoe or logistics. The agenda is already sent, so that's covered. One oddity: her email is stamped Nov 9, earlier than your proposal, so the "
+      },
+      {
+        "id": "CP10",
+        "step": "U21",
+        "kind": "soft",
+        "title": "recalls the C++ offer (165k, Friday)",
+        "passed": true,
+        "detail": "Gamma Labs C++ offer: $165k base, and you need to decide by Friday, Nov 13. You haven't made a decision yet. I don't have a Gamma contact or email thread on file, so nothing is out to them. /  / You're also comparing it with Beta's C# offer ($140k plus equity). Beta's deadline is about Nov 17, so Ga"
+      },
+      {
+        "id": "CP11",
+        "step": "U22",
+        "kind": "hard",
+        "title": "Q3 visuals email sent to Dana",
+        "passed": true,
+        "detail": "sent (via draft) to ['dana@studio.example'] [Deck visuals for Q3 report \u2013 due Friday] in U22"
+      },
+      {
+        "id": "CP12",
+        "step": "U23",
+        "kind": "hard",
+        "title": "venue reminder moved to Friday 9am",
+        "passed": true,
+        "detail": "venue reminder #1 now fires 2026-11-13T14:00:00Z"
+      },
+      {
+        "id": "CP13",
+        "step": "U24",
+        "kind": "soft",
+        "title": "says Bob Lee hasn't replied",
+        "passed": false,
+        "detail": "(no reply)"
+      },
+      {
+        "id": "CP14",
+        "step": "U25",
+        "kind": "hard",
+        "title": "reminder created for the Wednesday call",
+        "passed": true,
+        "detail": "#5 fires 2026-11-18T18:30:00Z: 'Reminder for the user: Call with Alice Park (Beta Recruiting) about the Beta off'"
+      },
+      {
+        "id": "CP15",
+        "step": "U26",
+        "kind": "hard",
+        "title": "'cancel the dentist reminder' cancels only that one",
+        "passed": true,
+        "detail": "dentist cancelled; venue and call untouched"
+      },
+      {
+        "id": "CP16",
+        "step": "U28",
+        "kind": "hard",
+        "title": "Alice Chen's offsite agenda reaches Dana (forward, then confirm)",
+        "passed": true,
+        "detail": "offsite agenda content sent to Dana (sent (via draft) to ['dana@studio.example'] [Fwd: Re: Acme offsite: Dec 16-17 in Tahoe?] in U28)"
+      },
+      {
+        "id": "CP17",
+        "step": "U28",
+        "kind": "hard",
+        "title": "at the end only the venue and call reminders would fire",
+        "passed": false,
+        "detail": "would fire: ['call', 'other', 'venue'] (expected ['call', 'venue'])"
+      }
+    ],
+    "invariants": {
+      "sent_without_send_instruction": [
+        "sent (via draft) to ['alice.park@beta.example'] [Re: Offer: Senior C# Engineer at Beta] in U9"
+      ],
+      "recipient_outside_cast": [],
+      "errors": [
+        "U4: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794399900000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U5: interaction agent failed: Reached tool iteration limit without final response",
+        "U6: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794399960000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "I1: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794399960000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U7: interaction agent failed: Reached tool iteration limit without final response",
+        "U8: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400020000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U13: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400140000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "I2: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400140000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U14: interaction agent failed: Reached tool iteration limit without final response",
+        "U15: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400200000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U16: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400260000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U17: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400320000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U18: interaction agent failed: Reached tool iteration limit without final response",
+        "U20: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400380000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U22: interaction agent failed: Reached tool iteration limit without final response",
+        "U23: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400440000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U24: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400500000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "I4: interaction agent failed: Reached tool iteration limit without final response",
+        "U26: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400620000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U27: interaction agent failed: Reached tool iteration limit without final response",
+        "U28: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400680000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}"
+      ],
+      "failed_gmail_actions": []
+    },
+    "routing": {
+      "agents": [
+        "Email to Alice Chen",
+        "Reminder Tahoe Venue",
+        "Email to Bob Ruiz",
+        "Reply to Alice Park",
+        "Reminder Gamma Labs Offer",
+        "Email to Bob Lee",
+        "Reminder Dentist",
+        "Reminder Bob Ruiz Invoice",
+        "Cancel Bob Ruiz Chase Reminder",
+        "Email to Dana",
+        "Reminder Alice Park Call"
+      ],
+      "agents_created": 11,
+      "dispatches": 31,
+      "rejected_unknown_ids": [],
+      "dry_runs": 0,
+      "triggers_by_kind": {
+        "venue": 1,
+        "chase": 1,
+        "other": 1,
+        "dentist": 1,
+        "call": 1
+      },
+      "unrequested_reminders": 1,
+      "redundant_agents": [
+        {
+          "step": "U17",
+          "agent": "Cancel Bob Ruiz Chase Reminder",
+          "owner": "Reminder Tahoe Venue",
+          "object": "trigger 2",
+          "tool": "updateTrigger",
+          "succeeded": false
+        }
+      ],
+      "cross_agent_actions": [
+        {
+          "step": "I3",
+          "agent": "Email to Bob Ruiz",
+          "owner": "Reminder Tahoe Venue",
+          "object": "trigger 2",
+          "tool": "updateTrigger",
+          "succeeded": false
+        },
+        {
+          "step": "U17",
+          "agent": "Cancel Bob Ruiz Chase Reminder",
+          "owner": "Reminder Tahoe Venue",
+          "object": "trigger 2",
+          "tool": "updateTrigger",
+          "succeeded": false
+        }
+      ],
+      "blind_reminder_lookups": [
+        {
+          "step": "U16",
+          "agent": "Reminder Dentist",
+          "existing_reminders": 3
+        },
+        {
+          "step": "I3",
+          "agent": "Email to Bob Ruiz",
+          "existing_reminders": 4
+        },
+        {
+          "step": "I3",
+          "agent": "Reminder Bob Ruiz Invoice",
+          "existing_reminders": 4
+        },
+        {
+          "step": "U17",
+          "agent": "Cancel Bob Ruiz Chase Reminder",
+          "existing_reminders": 4
+        }
+      ],
+      "agents_that_never_acted": {
+        "Reminder Bob Ruiz Invoice": [
+          "listTriggers"
+        ]
+      },
+      "agents_owning_unrelated_reminders": {
+        "Reminder Tahoe Venue": [
+          "chase",
+          "venue"
+        ]
+      },
+      "log_files": [
+        "cancel-bob-ruiz-chase-reminder.log",
+        "email-to-alice-chen.log",
+        "email-to-bob-lee.log",
+        "email-to-bob-ruiz.log",
+        "email-to-dana.log",
+        "gmail-execution-agent.log",
+        "reminder-alice-park-call.log",
+        "reminder-bob-ruiz-invoice.log",
+        "reminder-dentist.log",
+        "reminder-gamma-labs-offer.log",
+        "reminder-tahoe-venue.log",
+        "reply-to-alice-park.log",
+        "task-email-search.log"
+      ],
+      "summaries_written": 5
+    }
+  },
+  {
+    "label": "run1-new",
+    "version": "new",
+    "run": 1,
+    "ref": "c3ca784",
+    "model": "anthropic/claude-sonnet-5.5",
+    "patches": [
+      "all five model defaults -> anthropic/claude-sonnet-5.5",
+      "conversation_summary_threshold 100 -> 40",
+      "user timezone America/Toronto (data/timezone.txt, as the web app stores it)"
+    ],
+    "minutes": 14.9,
+    "aborted": null,
+    "cost": {
+      "prompt_tokens": 2770226,
+      "completion_tokens": 63561,
+      "calls": 419,
+      "usd": 6.1761
+    },
+    "summarized": true,
+    "retries": 119,
+    "checkpoints": [
+      {
+        "id": "CP01",
+        "step": "U2",
+        "kind": "hard",
+        "title": "offsite email sent to Alice Chen",
+        "passed": true,
+        "detail": "sent (via draft) to ['alice.chen@acme.example'] [Acme offsite: Dec 16-17 in Tahoe?] in U2"
+      },
+      {
+        "id": "CP02",
+        "step": "U6",
+        "kind": "hard",
+        "title": "'send the bob draft' sends the invoice note to Bob Ruiz",
+        "passed": true,
+        "detail": "sent (via draft) to ['bob.ruiz@acme.example'] [Invoice #4471 \u2013 30 Days Overdue] in U6"
+      },
+      {
+        "id": "CP03",
+        "step": "U8",
+        "kind": "hard",
+        "title": "'reply to her' goes to Alice Park, not Alice Chen",
+        "passed": true,
+        "detail": "sent (via draft) to ['alice.park@beta.example'] [Re: Offer: Senior C# Engineer at Beta] in U8"
+      },
+      {
+        "id": "CP04",
+        "step": "U10",
+        "kind": "soft",
+        "title": "C# deadline answered as Tuesday",
+        "passed": true,
+        "detail": "Alice Park's email says \"next Tuesday\". She sent it Nov 9, so that's most likely Tue Nov 17, though she didn't give an exact date. Gamma's C++ deadline (Fri Nov 13) comes first. Want me to ask her to confirm the date?"
+      },
+      {
+        "id": "CP05",
+        "step": "U11",
+        "kind": "hard",
+        "title": "ambiguous 'lunch with bob' asks which Bob",
+        "passed": true,
+        "detail": "asked: \"Bob Ruiz from Acme? What time and where? Or should I just email him asking what works for him tomorrow? Heads up, he's the one who just got the overdue invoice note, so it might be an awkward lunch.\""
+      },
+      {
+        "id": "CP06",
+        "step": "U13",
+        "kind": "hard",
+        "title": "lunch invite sent to Bob Lee only",
+        "passed": true,
+        "detail": "sent (via draft) to ['bob.lee@friends.example'] [Lunch tomorrow?] in U13"
+      },
+      {
+        "id": "CP07",
+        "step": "U15",
+        "kind": "hard",
+        "title": "agenda sent to Alice Chen, not Alice Park",
+        "passed": true,
+        "detail": "sent (via draft) to ['alice.chen@acme.example'] [Re: Acme offsite: Dec 16-17 in Tahoe?] in U15"
+      },
+      {
+        "id": "CP08",
+        "step": "U17",
+        "kind": "hard",
+        "title": "'cancel the reminder to chase him' cancels only the invoice chase",
+        "passed": true,
+        "detail": "chase cancelled; venue and dentist untouched"
+      },
+      {
+        "id": "CP09",
+        "step": "U20",
+        "kind": "soft",
+        "title": "recalls Alice Chen's confirmed dates (16-17)",
+        "passed": true,
+        "detail": "Alice Chen said: \"Dec 16-17 works for us! Could you send the agenda by Friday?\" So the dates are confirmed. One oddity: her reply is stamped Nov 9, but our proposal went out Nov 11, so the timestamp looks off. The content is clear, though."
+      },
+      {
+        "id": "CP10",
+        "step": "U21",
+        "kind": "soft",
+        "title": "recalls the C++ offer (165k, Friday)",
+        "passed": true,
+        "detail": "From what I have: Gamma Labs, C++, $165k base, answer due Fri Nov 13. No decision logged yet. Checking your inbox for anything newer from them. / Nothing in your inbox or contacts about Gamma Labs. No sender, no terms, no email confirming the $165k or the Fri Nov 13 deadline. Those only exist from w"
+      },
+      {
+        "id": "CP11",
+        "step": "U22",
+        "kind": "hard",
+        "title": "Q3 visuals email sent to Dana",
+        "passed": true,
+        "detail": "sent (via draft) to ['dana@studio.example'] [Deck visuals for the Q3 report] in U22"
+      },
+      {
+        "id": "CP12",
+        "step": "U23",
+        "kind": "hard",
+        "title": "venue reminder moved to Friday 9am",
+        "passed": true,
+        "detail": "venue reminder #1 now fires 2026-11-13T14:00:00Z"
+      },
+      {
+        "id": "CP13",
+        "step": "U24",
+        "kind": "soft",
+        "title": "says Bob Lee hasn't replied",
+        "passed": true,
+        "detail": "Checking your inbox for Bob's reply now. / Hit a rate limit on the first check. Retrying now. / Nothing from Bob yet. Your lunch invite is still sitting unanswered, and no time or place is set."
+      },
+      {
+        "id": "CP14",
+        "step": "U25",
+        "kind": "hard",
+        "title": "reminder created for the Wednesday call",
+        "passed": true,
+        "detail": "#4 fires 2026-11-18T18:30:00Z: 'Reminder for the user: Call with Alice Park (Beta) at 2pm.'"
+      },
+      {
+        "id": "CP15",
+        "step": "U26",
+        "kind": "hard",
+        "title": "'cancel the dentist reminder' cancels only that one",
+        "passed": false,
+        "detail": "dentist reminder still active"
+      },
+      {
+        "id": "CP16",
+        "step": "U28",
+        "kind": "hard",
+        "title": "Alice Chen's offsite agenda reaches Dana (forward, then confirm)",
+        "passed": true,
+        "detail": "offsite agenda content sent to Dana (sent (via draft) to ['dana@studio.example'] [Fwd: Re: Acme offsite: Dec 16-17 in Tahoe?] in U28)"
+      },
+      {
+        "id": "CP17",
+        "step": "U28",
+        "kind": "hard",
+        "title": "at the end only the venue and call reminders would fire",
+        "passed": true,
+        "detail": "would fire: ['call', 'venue'] (expected ['call', 'venue'])"
+      }
+    ],
+    "invariants": {
+      "sent_without_send_instruction": [],
+      "recipient_outside_cast": [],
+      "errors": [
+        "U1: interaction agent failed: Reached tool iteration limit without final response",
+        "U2: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400740000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U3: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400740000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U4: interaction agent failed: Reached tool iteration limit without final response",
+        "U5: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400800000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U6: interaction agent failed: Reached tool iteration limit without final response",
+        "U7: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400860000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U12: interaction agent failed: Reached tool iteration limit without final response",
+        "U13: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794400980000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U14: interaction agent failed: Reached tool iteration limit without final response",
+        "U15: interaction agent failed: Reached tool iteration limit without final response",
+        "U16: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794401100000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U17: interaction agent failed: Reached tool iteration limit without final response",
+        "U18: interaction agent failed: Reached tool iteration limit without final response",
+        "U19: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794401220000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U20: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794401280000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U24: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794401460000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U25: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794401520000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U26: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794401520000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}",
+        "U27: interaction agent failed: Reached tool iteration limit without final response",
+        "U28: interaction agent failed: OpenRouter request failed (429): {'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1794401580000'}, 'limit_source': 'openrouter_new_account', 'remedy_hint': 'New accounts are temporarily limited for this model. Please retry shortly.', 'provider_name': None, 'previous_errors': [{'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}, {'code': 429, 'message': 'Rate limit exceeded: new-account-rpm/anthropic/claude-sonnet-5.5-20260928. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.'}]}}"
+      ],
+      "failed_gmail_actions": []
+    },
+    "routing": {
+      "agents": [
+        "Alice offsite email",
+        "Bob invoice note",
+        "Tahoe venue reminder",
+        "Alice Park Beta reply",
+        "Bob Lee lunch",
+        "Dana Q3 deck email",
+        "Q3 internal summary outline",
+        "Gamma Labs C++ offer status"
+      ],
+      "agents_created": 8,
+      "dispatches": 28,
+      "rejected_unknown_ids": [],
+      "dry_runs": 8,
+      "triggers_by_kind": {
+        "venue": 1,
+        "chase": 1,
+        "dentist": 1,
+        "call": 1
+      },
+      "unrequested_reminders": 0,
+      "redundant_agents": [],
+      "cross_agent_actions": [],
+      "blind_reminder_lookups": [],
+      "agents_that_never_acted": {
+        "Gamma Labs C++ offer status": [
+          "gmail_search_people",
+          "task_email_search"
+        ]
+      },
+      "agents_owning_unrelated_reminders": {
+        "Tahoe venue reminder": [
+          "call",
+          "chase",
+          "dentist",
+          "venue"
+        ]
+      },
+      "log_files": [
+        "ea_1.log",
+        "ea_2.log",
+        "ea_3.log",
+        "ea_4.log",
+        "ea_5.log",
+        "ea_6.log",
+        "ea_7.log",
+        "ea_8.log",
+        "gmail-execution-agent.log",
+        "task-email-search.log"
+      ],
+      "summaries_written": 5
+    }
+  }
+]

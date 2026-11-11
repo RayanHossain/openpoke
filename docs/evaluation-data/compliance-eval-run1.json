@@ -1,0 +1,62 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "results": [
+    {
+      "scenario": "route_by_key",
+      "passed": true,
+      "reason": "first routing call: send_message_to_agent(agent_id='ea_4')",
+      "calls": [
+        {
+          "name": "send_message_to_user",
+          "args": {
+            "message": "Checking the thread now."
+          }
+        },
+        {
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_id": "ea_4",
+            "instructions": "The user is asking what alice@example.com said about lunch Thursday. Check thread 18c2f9a1b for any reply from Alice and report back her exact answer, plus the date of her reply. If there is no reply yet, say so clearly."
+          }
+        }
+      ],
+      "final_text": "",
+      "usage": {
+        "prompt_tokens": 5662,
+        "completion_tokens": 320
+      },
+      "run": 1
+    },
+    {
+      "scenario": "dry_run",
+      "passed": false,
+      "reason": "no routing call (model never dispatched or dry-ran)",
+      "calls": [],
+      "final_text": "Is this the invoice reminder already waiting in draft r-77, or a new email to Bob?",
+      "usage": {
+        "prompt_tokens": 5659,
+        "completion_tokens": 180
+      },
+      "run": 1
+    },
+    {
+      "scenario": "ask",
+      "passed": true,
+      "reason": "asked the user: \"which reminder? I don't see any open reminders on the agents I can check. Give me what it's about or roughly when it was set.\"",
+      "calls": [
+        {
+          "name": "send_message_to_user",
+          "args": {
+            "message": "which reminder? I don't see any open reminders on the agents I can check. Give me what it's about or roughly when it was set."
+          }
+        }
+      ],
+      "final_text": "Which reminder should I cancel? None of the agents I can see have an open reminder, so give me what it's about or roughly when you set it.",
+      "usage": {
+        "prompt_tokens": 11537,
+        "completion_tokens": 233
+      },
+      "run": 1
+    }
+  ]
+}

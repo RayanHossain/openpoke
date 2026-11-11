@@ -1,0 +1,152 @@
+{
+  "server_root": "/Users/remi/.claude/jobs/308f69e5/tmp/token-create-check/run3-new",
+  "timezone": "America/Toronto",
+  "aborted": null,
+  "steps": [
+    {
+      "id": "U1",
+      "kind": "user",
+      "text": "Email Alice Chen (alice.chen@acme.example) to propose the Acme offsite on Dec 16-17 in Tahoe. Keep it short.",
+      "error": null,
+      "seconds": 4.5,
+      "replies": [
+        "To: alice.chen@acme.example\nSubject: Acme offsite: Dec 16-17 in Tahoe\n\nHi Alice,\n\nI'd like to propose the Acme offsite for December 16-17 in Tahoe. Does that work for you? If so, I'll start pulling together the details.\n\nBest",
+        "Here's the draft to Alice:\n\nSubject: Acme offsite: Dec 16-17 in Tahoe\n\nHi Alice,\n\nI'd like to propose the Acme offsite for December 16-17 in Tahoe. Does that work for you? If so, I'll start pulling together the details.\n\nBest\n\nWant me to send it as is, or change anything?"
+      ],
+      "ia_calls": [
+        {
+          "step": "U1",
+          "name": "send_draft",
+          "args": {
+            "to": "alice.chen@acme.example",
+            "subject": "Acme offsite: Dec 16-17 in Tahoe",
+            "body": "Hi Alice,\n\nI'd like to propose the Acme offsite for December 16-17 in Tahoe. Does that work for you? If so, I'll start pulling together the details.\n\nBest"
+          },
+          "success": true,
+          "payload": {
+            "status": "draft_recorded",
+            "to": "alice.chen@acme.example",
+            "subject": "Acme offsite: Dec 16-17 in Tahoe"
+          }
+        },
+        {
+          "step": "U1",
+          "name": "send_message_to_user",
+          "args": {
+            "message": "Here's the draft to Alice:\n\nSubject: Acme offsite: Dec 16-17 in Tahoe\n\nHi Alice,\n\nI'd like to propose the Acme offsite for December 16-17 in Tahoe. Does that work for you? If so, I'll start pulling together the details.\n\nBest\n\nWant me to send it as is, or change anything?"
+          },
+          "success": true,
+          "payload": {
+            "status": "delivered"
+          }
+        }
+      ],
+      "ea_calls": [],
+      "triggers_after": [],
+      "agents_after": []
+    }
+  ],
+  "gmail": {
+    "events": [],
+    "drafts": [],
+    "messages": [
+      {
+        "id": "m-old0",
+        "thread_id": "t-retro",
+        "sender": "Alice Chen <alice.chen@acme.example>",
+        "to": [
+          "me@openpoke.example"
+        ],
+        "subject": "Q2 retro notes",
+        "body": "Thanks for joining the Q2 retro. Notes attached. Let's sync next quarter.",
+        "ts": "2026-09-02T16:00:00+00:00",
+        "labels": [
+          "INBOX"
+        ]
+      },
+      {
+        "id": "m-old1",
+        "thread_id": "t-invoice",
+        "sender": "Me <me@openpoke.example>",
+        "to": [
+          "bob.ruiz@acme.example"
+        ],
+        "subject": "Invoice #4471",
+        "body": "Hi Bob, attached is invoice #4471 for the September consulting work, due in 30 days.",
+        "ts": "2026-10-09T10:00:00+00:00",
+        "labels": [
+          "SENT"
+        ]
+      },
+      {
+        "id": "m-old2",
+        "thread_id": "t-q2deck",
+        "sender": "Dana Ortiz <dana@studio.example>",
+        "to": [
+          "me@openpoke.example"
+        ],
+        "subject": "Q2 deck feedback",
+        "body": "Here are my notes on the Q2 deck visuals. Happy to help with Q3 too.",
+        "ts": "2026-07-20T11:00:00+00:00",
+        "labels": [
+          "INBOX"
+        ]
+      },
+      {
+        "id": "m-old3",
+        "thread_id": "t-news",
+        "sender": "Tahoe Venues <news@tahoevenues.example>",
+        "to": [
+          "me@openpoke.example"
+        ],
+        "subject": "Fall offsite packages",
+        "body": "Book your fall team offsite in Tahoe. Lakeside lodges available October.",
+        "ts": "2026-10-30T07:00:00+00:00",
+        "labels": [
+          "INBOX"
+        ]
+      },
+      {
+        "id": "m-old4",
+        "thread_id": "t-bobl-old",
+        "sender": "Bob Lee <bob.lee@friends.example>",
+        "to": [
+          "me@openpoke.example"
+        ],
+        "subject": "climbing sunday?",
+        "body": "Want to go climbing Sunday? Same gym as last time.",
+        "ts": "2026-10-18T19:00:00+00:00",
+        "labels": [
+          "INBOX"
+        ]
+      }
+    ]
+  },
+  "triggers_final": [],
+  "agents_final": {
+    "labels": [],
+    "registry": []
+  },
+  "log_files": [],
+  "usage": [
+    {
+      "step": "U1",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5474,
+      "completion_tokens": 626,
+      "seconds": 3.41
+    },
+    {
+      "step": "U1",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 6245,
+      "completion_tokens": 41,
+      "seconds": 1.05
+    }
+  ],
+  "summaries": 0,
+  "transport_retries": [],
+  "working_memory_has_summary": false
+}

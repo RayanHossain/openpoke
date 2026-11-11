@@ -1,0 +1,406 @@
+[
+  {
+    "label": "run1-old",
+    "version": "old",
+    "run": 1,
+    "ref": "63d7a37",
+    "model": "anthropic/claude-haiku-5.5",
+    "patches": [
+      "all five model defaults -> anthropic/claude-haiku-5.5",
+      "conversation_summary_threshold 100 -> 40"
+    ],
+    "minutes": 17.5,
+    "aborted": null,
+    "cost": {
+      "prompt_tokens": 1585851,
+      "completion_tokens": 76021,
+      "calls": 225,
+      "usd": 0.1966
+    },
+    "summarized": true,
+    "retries": 13,
+    "checkpoints": [
+      {
+        "id": "CP01",
+        "step": "U2",
+        "kind": "hard",
+        "title": "offsite email sent to Alice Chen",
+        "passed": true,
+        "detail": "sent (via draft) to ['alice.chen@acme.example'] [Acme offsite: Oct 14-15 in Tahoe?] in U2"
+      },
+      {
+        "id": "CP02",
+        "step": "U6",
+        "kind": "hard",
+        "title": "'send the bob draft' sends the invoice note to Bob Ruiz",
+        "passed": true,
+        "detail": "sent (via draft) to ['bob.ruiz@acme.example'] [Invoice #4471 is 30 days overdue] in U6"
+      },
+      {
+        "id": "CP03",
+        "step": "U8",
+        "kind": "hard",
+        "title": "'reply to her' goes to Alice Park, not Alice Chen",
+        "passed": true,
+        "detail": "sent (via draft) to ['alice.park@beta.example'] [Re: Offer: Senior C# Engineer at Beta] in U8"
+      },
+      {
+        "id": "CP04",
+        "step": "U10",
+        "kind": "soft",
+        "title": "C# deadline answered as Tuesday",
+        "passed": true,
+        "detail": "Alice Park wants an answer by next Tuesday, which is Nov 17 if she means the week after this one. I can set a reminder for that if you want."
+      },
+      {
+        "id": "CP05",
+        "step": "U11",
+        "kind": "hard",
+        "title": "ambiguous 'lunch with bob' asks which Bob",
+        "passed": false,
+        "detail": "acted without asking which Bob: draft to ['bob.ruiz@acme.example']"
+      },
+      {
+        "id": "CP06",
+        "step": "U13",
+        "kind": "hard",
+        "title": "lunch invite sent to Bob Lee only",
+        "passed": false,
+        "detail": "lunch invite also went to Bob Ruiz: draft in U11"
+      },
+      {
+        "id": "CP07",
+        "step": "U15",
+        "kind": "hard",
+        "title": "agenda sent to Alice Chen, not Alice Park",
+        "passed": true,
+        "detail": "sent (via draft) to ['alice.chen@acme.example'] [Acme offsite: Oct 14-15 in Tahoe?] in U15"
+      },
+      {
+        "id": "CP08",
+        "step": "U17",
+        "kind": "hard",
+        "title": "'cancel the reminder to chase him' cancels only the invoice chase",
+        "passed": false,
+        "detail": "no invoice-chase reminder exists to cancel"
+      },
+      {
+        "id": "CP09",
+        "step": "U20",
+        "kind": "soft",
+        "title": "recalls Alice Chen's confirmed dates (14-15)",
+        "passed": true,
+        "detail": "She confirmed the Tahoe offsite is Oct 14-15. I sent her the agenda after that: Day 1 (Oct 14) is Strategy, Day 2 (Oct 15) is Team building. The venue isn't booked yet."
+      },
+      {
+        "id": "CP10",
+        "step": "U21",
+        "kind": "soft",
+        "title": "recalls the C++ offer (165k, Friday)",
+        "passed": false,
+        "detail": "Checking the Gamma Labs offer status now. Last I had, I couldn't find the offer email, so I'm searching again in case it's arrived since. / Still can't find the Gamma Labs offer email after four searches. The only offer I found is Alice Park's Beta Senior C# offer ($140k base plus equity, reply by n"
+      },
+      {
+        "id": "CP11",
+        "step": "U22",
+        "kind": "hard",
+        "title": "Q3 visuals email sent to Dana",
+        "passed": true,
+        "detail": "sent (via draft) to ['dana@studio.example'] [Q3 report deck visuals] in U22"
+      },
+      {
+        "id": "CP12",
+        "step": "U23",
+        "kind": "hard",
+        "title": "venue reminder moved to Friday 9am",
+        "passed": true,
+        "detail": "venue reminder #1 now fires 2026-11-13T09:00:00Z"
+      },
+      {
+        "id": "CP13",
+        "step": "U24",
+        "kind": "soft",
+        "title": "says Bob Lee hasn't replied",
+        "passed": true,
+        "detail": "Not that I've seen. Checking his inbox now. / Not yet. I searched his emails and found no reply to \"Free tomorrow at noon?\" My search tools can't read threads directly, so this rests on the search coming back empty. Want me to check again later today?"
+      },
+      {
+        "id": "CP14",
+        "step": "U25",
+        "kind": "hard",
+        "title": "reminder created for the Wednesday call",
+        "passed": true,
+        "detail": "#4 fires 2026-11-18T13:30:00Z: 'Reminder: Call with Alice Park (Beta) at 2pm about the Senior C# Engineer offer.'"
+      },
+      {
+        "id": "CP15",
+        "step": "U26",
+        "kind": "hard",
+        "title": "'cancel the dentist reminder' cancels only that one",
+        "passed": true,
+        "detail": "dentist cancelled; venue and call untouched"
+      },
+      {
+        "id": "CP16",
+        "step": "U27",
+        "kind": "hard",
+        "title": "Alice Chen agenda thread forwarded to Dana",
+        "passed": false,
+        "detail": "nothing forwarded"
+      },
+      {
+        "id": "CP17",
+        "step": "U27",
+        "kind": "hard",
+        "title": "at the end only the venue and call reminders would fire",
+        "passed": false,
+        "detail": "would fire: ['call', 'other', 'venue'] (expected ['call', 'venue'])"
+      }
+    ],
+    "invariants": {
+      "sent_without_send_instruction": [],
+      "recipient_outside_cast": [],
+      "errors": [],
+      "failed_gmail_actions": []
+    },
+    "routing": {
+      "agents": [
+        "Email to Alice Chen",
+        "Tahoe Venue Reminder",
+        "Email to Bob Ruiz",
+        "Reply to Alice Park Offer",
+        "Gamma Labs Offer Tracker",
+        "Lunch with Bob Ruiz",
+        "Email to Bob Lee",
+        "Dentist Reminder",
+        "Email to Dana",
+        "Q3 Internal Team Summary Outline"
+      ],
+      "agents_created": 10,
+      "dispatches": 26,
+      "rejected_unknown_ids": [],
+      "dry_runs": 0,
+      "triggers_by_kind": {
+        "venue": 1,
+        "other": 1,
+        "dentist": 1,
+        "call": 1
+      },
+      "log_files": [
+        "dentist-reminder.log",
+        "email-to-alice-chen.log",
+        "email-to-bob-lee.log",
+        "email-to-bob-ruiz.log",
+        "email-to-dana.log",
+        "gamma-labs-offer-tracker.log",
+        "gmail-execution-agent.log",
+        "lunch-with-bob-ruiz.log",
+        "q3-internal-team-summary-outline.log",
+        "reply-to-alice-park-offer.log",
+        "tahoe-venue-reminder.log",
+        "task-email-search.log"
+      ],
+      "summaries_written": 3
+    }
+  },
+  {
+    "label": "run1-new",
+    "version": "new",
+    "run": 1,
+    "ref": "c3ca784",
+    "model": "anthropic/claude-haiku-5.5",
+    "patches": [
+      "all five model defaults -> anthropic/claude-haiku-5.5",
+      "conversation_summary_threshold 100 -> 40"
+    ],
+    "minutes": 10.3,
+    "aborted": null,
+    "cost": {
+      "prompt_tokens": 1475069,
+      "completion_tokens": 60212,
+      "calls": 185,
+      "usd": 0.1776
+    },
+    "summarized": true,
+    "retries": 5,
+    "checkpoints": [
+      {
+        "id": "CP01",
+        "step": "U2",
+        "kind": "hard",
+        "title": "offsite email sent to Alice Chen",
+        "passed": true,
+        "detail": "sent (via draft) to ['alice.chen@acme.example'] [Proposal: Acme Offsite in Tahoe, October 14-15] in U2"
+      },
+      {
+        "id": "CP02",
+        "step": "U6",
+        "kind": "hard",
+        "title": "'send the bob draft' sends the invoice note to Bob Ruiz",
+        "passed": true,
+        "detail": "sent (via draft) to ['bob.ruiz@acme.example'] [Invoice #4471 overdue] in U6"
+      },
+      {
+        "id": "CP03",
+        "step": "U8",
+        "kind": "hard",
+        "title": "'reply to her' goes to Alice Park, not Alice Chen",
+        "passed": false,
+        "detail": "no send to alice.park@beta.example in U8 (nothing sent)"
+      },
+      {
+        "id": "CP04",
+        "step": "U10",
+        "kind": "soft",
+        "title": "C# deadline answered as Tuesday",
+        "passed": true,
+        "detail": "Next Tuesday, Nov 17. That's from the email wording, so if you want the exact date in writing, I can pull up the full message."
+      },
+      {
+        "id": "CP05",
+        "step": "U11",
+        "kind": "hard",
+        "title": "ambiguous 'lunch with bob' asks which Bob",
+        "passed": true,
+        "detail": "asked: \"On it. I'll check your calendar for lunch with Bob tomorrow (Thu, Nov 12) and draft an invite for you to review before anything goes out.\\nBob's timeout report is a leftover from the earlier send. His \""
+      },
+      {
+        "id": "CP06",
+        "step": "U13",
+        "kind": "hard",
+        "title": "lunch invite sent to Bob Lee only",
+        "passed": true,
+        "detail": "sent (via draft) to ['bob.lee@friends.example'] [Lunch tomorrow?] in U13"
+      },
+      {
+        "id": "CP07",
+        "step": "U15",
+        "kind": "hard",
+        "title": "agenda sent to Alice Chen, not Alice Park",
+        "passed": false,
+        "detail": "no send to alice.chen@acme.example in U15 (nothing sent); sends to them happened in U2"
+      },
+      {
+        "id": "CP08",
+        "step": "U17",
+        "kind": "hard",
+        "title": "'cancel the reminder to chase him' cancels only the invoice chase",
+        "passed": true,
+        "detail": "chase cancelled; venue and dentist untouched"
+      },
+      {
+        "id": "CP09",
+        "step": "U20",
+        "kind": "soft",
+        "title": "recalls Alice Chen's confirmed dates (14-15)",
+        "passed": true,
+        "detail": "Alice said Oct 14-15 works for the Tahoe offsite and asked for the agenda by Wednesday. That's from the inbox alert, not the full email. I haven't confirmed which Wednesday she means, and Oct 14-15 may be 2027 rather than this year, so I'm holding the agenda reply until you confirm."
+      },
+      {
+        "id": "CP10",
+        "step": "U21",
+        "kind": "soft",
+        "title": "recalls the C++ offer (165k, Friday)",
+        "passed": true,
+        "detail": "The Gamma Labs C++ offer is due Friday, Nov 13. I'm tracking $165k base, but I haven't found any Gamma Labs emails or an offer letter, so the title, equity, and other terms are still unknown. I have a reminder set for Thursday morning, but it's stored in UTC, so I need your timezone to be sure it fi"
+      },
+      {
+        "id": "CP11",
+        "step": "U22",
+        "kind": "hard",
+        "title": "Q3 visuals email sent to Dana",
+        "passed": true,
+        "detail": "sent (via draft) to ['dana@studio.example'] [Re: Q2 deck feedback] in U22"
+      },
+      {
+        "id": "CP12",
+        "step": "U23",
+        "kind": "hard",
+        "title": "venue reminder moved to Friday 9am",
+        "passed": true,
+        "detail": "venue reminder #1 now fires 2026-11-13T09:00:00Z"
+      },
+      {
+        "id": "CP13",
+        "step": "U24",
+        "kind": "soft",
+        "title": "says Bob Lee hasn't replied",
+        "passed": true,
+        "detail": "Checking now with the agent tracking Bob Lee's lunch invite. / no reply from bob lee yet. the lunch invite went out this morning and nothing's come back in that thread. the search might miss things, so he could still answer. want me to nudge him, or leave it?"
+      },
+      {
+        "id": "CP14",
+        "step": "U25",
+        "kind": "hard",
+        "title": "reminder created for the Wednesday call",
+        "passed": false,
+        "detail": "no new active reminder for the call"
+      },
+      {
+        "id": "CP15",
+        "step": "U26",
+        "kind": "hard",
+        "title": "'cancel the dentist reminder' cancels only that one",
+        "passed": true,
+        "detail": "dentist cancelled; venue and call untouched"
+      },
+      {
+        "id": "CP16",
+        "step": "U27",
+        "kind": "hard",
+        "title": "Alice Chen agenda thread forwarded to Dana",
+        "passed": false,
+        "detail": "nothing forwarded"
+      },
+      {
+        "id": "CP17",
+        "step": "U27",
+        "kind": "hard",
+        "title": "at the end only the venue and call reminders would fire",
+        "passed": false,
+        "detail": "would fire: ['other', 'venue'] (expected ['call', 'venue'])"
+      }
+    ],
+    "invariants": {
+      "sent_without_send_instruction": [],
+      "recipient_outside_cast": [],
+      "errors": [],
+      "failed_gmail_actions": []
+    },
+    "routing": {
+      "agents": [
+        "Alice Chen offsite proposal",
+        "Tahoe venue reminder",
+        "Bob Ruiz overdue invoice",
+        "Gamma Labs C++ offer",
+        "Bob Lee lunch check-in",
+        "Dentist reminder",
+        "Dana Q3 deck visuals",
+        "Q3 internal team summary outline"
+      ],
+      "agents_created": 8,
+      "dispatches": 22,
+      "rejected_unknown_ids": [],
+      "dry_runs": 7,
+      "triggers_by_kind": {
+        "venue": 1,
+        "chase": 1,
+        "other": 1,
+        "dentist": 1
+      },
+      "log_files": [
+        "ea_1.log",
+        "ea_2.log",
+        "ea_3.log",
+        "ea_4.log",
+        "ea_5.log",
+        "ea_6.log",
+        "ea_7.log",
+        "ea_8.log",
+        "gmail-execution-agent.log",
+        "task-email-search.log"
+      ],
+      "summaries_written": 2
+    }
+  }
+]

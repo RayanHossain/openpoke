@@ -1,0 +1,211 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "results": [
+    {
+      "scenario": "route_by_key",
+      "passed": true,
+      "reason": "first routing call: send_message_to_agent(agent_id='ea_4')",
+      "calls": [
+        {
+          "name": "send_message_to_user",
+          "args": {
+            "message": "Checking the thread for her reply now."
+          }
+        },
+        {
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_id": "ea_4",
+            "instructions": "The user is asking what alice@example.com said about lunch Thursday. Check thread 18c2f9a1b for any reply from Alice and report her response, including any proposed time or place. If she hasn't replied yet, say so clearly."
+          }
+        }
+      ],
+      "final_text": "",
+      "usage": {
+        "prompt_tokens": 5826,
+        "completion_tokens": 310
+      },
+      "run": 1
+    },
+    {
+      "scenario": "route_by_key",
+      "passed": true,
+      "reason": "first routing call: send_message_to_agent(agent_id='ea_4')",
+      "calls": [
+        {
+          "name": "send_message_to_user",
+          "args": {
+            "message": "Checking the thread now."
+          }
+        },
+        {
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_id": "ea_4",
+            "instructions": "The user is asking what alice@example.com replied about lunch Thursday. Check thread 18c2f9a1b for any reply from Alice and report back exactly what she said, with the date/time of her reply. If she hasn't replied yet, say so clearly."
+          }
+        }
+      ],
+      "final_text": "",
+      "usage": {
+        "prompt_tokens": 5826,
+        "completion_tokens": 343
+      },
+      "run": 2
+    },
+    {
+      "scenario": "route_by_key",
+      "passed": true,
+      "reason": "first routing call: send_message_to_agent(agent_id='ea_4')",
+      "calls": [
+        {
+          "name": "send_message_to_user",
+          "args": {
+            "message": "Checking with the lunch agent to see if Alice has replied."
+          }
+        },
+        {
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_id": "ea_4",
+            "instructions": "The user is asking what alice@example.com said about lunch Thursday. Check thread 18c2f9a1b for any reply from Alice and report her response verbatim or summarized, including the date/time of her reply. If she hasn't replied yet, say so clearly."
+          }
+        }
+      ],
+      "final_text": "",
+      "usage": {
+        "prompt_tokens": 5826,
+        "completion_tokens": 300
+      },
+      "run": 3
+    },
+    {
+      "scenario": "dry_run",
+      "passed": false,
+      "reason": "reused the existing agent ea_7 (no dry run)",
+      "calls": [
+        {
+          "name": "send_message_to_user",
+          "args": {
+            "message": "On it. I'll have the Bob agent draft a separate email about the offsite and leave the invoice draft alone."
+          }
+        },
+        {
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_id": "ea_7",
+            "instructions": "The user wants a NEW, separate email drafted to bob@example.com about the offsite. Do not modify or send draft r-77 (the invoice reminder); create a new draft instead. Look up any relevant offsite details (date, location, agenda, logistics) from the user's inbox or calendar so the draft is useful. If you can't find enough detail to write a sensible draft, say so and list what you need. Report back with the draft's recipient, subject, and full body so the user can review it. Do not send it."
+          }
+        }
+      ],
+      "final_text": "",
+      "usage": {
+        "prompt_tokens": 5830,
+        "completion_tokens": 697
+      },
+      "run": 1
+    },
+    {
+      "scenario": "dry_run",
+      "passed": false,
+      "reason": "reused the existing agent ea_7 (no dry run)",
+      "calls": [
+        {
+          "name": "send_message_to_user",
+          "args": {
+            "message": "On it. Bob already has an open invoice draft, so I'll keep this one separate and check your inbox for offsite details to draft from."
+          }
+        },
+        {
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_id": "ea_7",
+            "instructions": "New request from the user: draft a new, separate email to bob@example.com about the offsite. Do not modify or send draft r-77 (the invoice reminder). Look through the user's recent email and calendar for offsite details (dates, location, agenda, anything Bob needs to know) and use them in the draft. Do not send anything. Report back the draft's recipient, subject, and full body so the user can review it, and note if you couldn't find offsite details."
+          }
+        }
+      ],
+      "final_text": "",
+      "usage": {
+        "prompt_tokens": 5830,
+        "completion_tokens": 740
+      },
+      "run": 2
+    },
+    {
+      "scenario": "dry_run",
+      "passed": false,
+      "reason": "reused the existing agent ea_7 (no dry run)",
+      "calls": [
+        {
+          "name": "send_message_to_user",
+          "args": {
+            "message": "On it. I'll have Bob's agent check your recent emails for offsite details and draft something new. The invoice draft stays untouched."
+          }
+        },
+        {
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_id": "ea_7",
+            "instructions": "The user wants a NEW, separate email draft to bob@example.com about the offsite. Do not modify or send draft r-77 (the invoice reminder); create a new draft instead. Search the user's recent emails and threads for offsite details (dates, location, logistics, anything Bob is involved in) to inform the draft. Keep the draft short and casual. Do not send it. Report back the recipient, subject, and full body of the new draft, and note any offsite details you could not find."
+          }
+        }
+      ],
+      "final_text": "",
+      "usage": {
+        "prompt_tokens": 5830,
+        "completion_tokens": 811
+      },
+      "run": 3
+    },
+    {
+      "scenario": "ask",
+      "passed": false,
+      "reason": "no question sent to the user",
+      "calls": [],
+      "final_text": "Which reminder should I cancel? Tell me what it's for or roughly when it was set, and I'll take care of it.",
+      "usage": {
+        "prompt_tokens": 5844,
+        "completion_tokens": 179
+      },
+      "run": 1
+    },
+    {
+      "scenario": "ask",
+      "passed": true,
+      "reason": "asked the user: \"which reminder? I'm not seeing one in what I have open right now. What was it for, or roughly when was it set?\"",
+      "calls": [
+        {
+          "name": "send_message_to_user",
+          "args": {
+            "message": "which reminder? I'm not seeing one in what I have open right now. What was it for, or roughly when was it set?"
+          }
+        }
+      ],
+      "final_text": "Which reminder? I don't see one in what's open right now. What was it for, or roughly when did you set it?",
+      "usage": {
+        "prompt_tokens": 11860,
+        "completion_tokens": 348
+      },
+      "run": 2
+    },
+    {
+      "scenario": "ask",
+      "passed": true,
+      "reason": "asked the user: \"which reminder? I don't see one pinned to any of my open threads. what's it about, or roughly when was it set?\"",
+      "calls": [
+        {
+          "name": "send_message_to_user",
+          "args": {
+            "message": "which reminder? I don't see one pinned to any of my open threads. what's it about, or roughly when was it set?"
+          }
+        }
+      ],
+      "final_text": "Which reminder should I cancel? I don't see one tied to the threads I'm tracking. What was it about, or roughly when was it set?",
+      "usage": {
+        "prompt_tokens": 11860,
+        "completion_tokens": 289
+      },
+      "run": 3
+    }
+  ]
+}

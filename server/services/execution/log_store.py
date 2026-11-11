@@ -10,6 +10,7 @@ from typing import Dict, Iterator, List, Tuple
 
 from ...logging_config import logger
 from ...utils.timezones import now_in_user_timezone
+from .agent_registry import is_agent_id
 
 
 _DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
@@ -22,6 +23,17 @@ def _slugify(name: str) -> str:
     while "--" in slug:
         slug = slug.replace("--", "-")
     return slug or "agent"
+
+
+def _log_key(agent_key: str) -> str:
+    """File stem for a log.
+
+    Execution agents are keyed by their registry ``agent_id`` (``ea_17.log``),
+    used verbatim so distinct agents can never share a journal. Any other key is
+    a fixed pseudo-agent journal (``gmail-execution-agent``, ``task_email_search``)
+    and keeps the legacy slug.
+    """
+    return agent_key if is_agent_id(agent_key) else _slugify(agent_key)
 
 
 def _encode_payload(payload: str) -> str:
@@ -56,7 +68,7 @@ class ExecutionAgentLogStore:
 
     def _lock_for(self, agent_name: str) -> threading.Lock:
         """Get or create a lock for an agent."""
-        slug = _slugify(agent_name)
+        slug = _log_key(agent_name)
         with self._global_lock:
             if slug not in self._locks:
                 self._locks[slug] = threading.Lock()
@@ -64,7 +76,7 @@ class ExecutionAgentLogStore:
 
     def _log_path(self, agent_name: str) -> Path:
         """Get log file path for an agent."""
-        return self._base_dir / f"{_slugify(agent_name)}.log"
+        return self._base_dir / f"{_log_key(agent_name)}.log"
 
     def _append(self, agent_name: str, tag: str, payload: str) -> None:
         """Append an entry with the given tag."""

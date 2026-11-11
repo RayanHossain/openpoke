@@ -1,0 +1,558 @@
+[
+  {
+    "label": "run1-new",
+    "version": "new",
+    "run": 1,
+    "ref": "HEAD",
+    "model": "anthropic/claude-haiku-5.5",
+    "patches": [
+      "all five model defaults -> anthropic/claude-haiku-5.5",
+      "conversation_summary_threshold 100 -> 40",
+      "user timezone America/Toronto (data/timezone.txt, as the web app stores it)"
+    ],
+    "minutes": 0.2,
+    "aborted": null,
+    "cost": {
+      "prompt_tokens": 48405,
+      "completion_tokens": 1620,
+      "calls": 8,
+      "usd": 0.0057
+    },
+    "summarized": false,
+    "retries": 0,
+    "checkpoints": [
+      {
+        "id": "CP01",
+        "step": "U2",
+        "kind": "hard",
+        "title": "offsite email sent to Alice Chen",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP02",
+        "step": "U6",
+        "kind": "hard",
+        "title": "'send the bob draft' sends the invoice note to Bob Ruiz",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP03",
+        "step": "U8",
+        "kind": "hard",
+        "title": "'reply to her' goes to Alice Park, not Alice Chen",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP04",
+        "step": "U10",
+        "kind": "soft",
+        "title": "C# deadline answered as Tuesday",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP05",
+        "step": "U11",
+        "kind": "hard",
+        "title": "ambiguous 'lunch with bob' asks which Bob",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP06",
+        "step": "U13",
+        "kind": "hard",
+        "title": "lunch invite sent to Bob Lee only",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP07",
+        "step": "U15",
+        "kind": "hard",
+        "title": "agenda sent to Alice Chen, not Alice Park",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP08",
+        "step": "U17",
+        "kind": "hard",
+        "title": "'cancel the reminder to chase him' cancels only the invoice chase",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP09",
+        "step": "U20",
+        "kind": "soft",
+        "title": "recalls Alice Chen's confirmed dates (16-17)",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP10",
+        "step": "U21",
+        "kind": "soft",
+        "title": "recalls the C++ offer (165k, Friday)",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP11",
+        "step": "U22",
+        "kind": "hard",
+        "title": "Q3 visuals email sent to Dana",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP12",
+        "step": "U23",
+        "kind": "hard",
+        "title": "venue reminder moved to Friday 9am",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP13",
+        "step": "U24",
+        "kind": "soft",
+        "title": "says Bob Lee hasn't replied",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP14",
+        "step": "U25",
+        "kind": "hard",
+        "title": "reminder created for the Wednesday call",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP15",
+        "step": "U26",
+        "kind": "hard",
+        "title": "'cancel the dentist reminder' cancels only that one",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP16",
+        "step": "U28",
+        "kind": "hard",
+        "title": "Alice Chen's offsite agenda reaches Dana (forward, then confirm)",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP17",
+        "step": "U28",
+        "kind": "hard",
+        "title": "at the end only the venue and call reminders would fire",
+        "passed": null,
+        "detail": "scenario not completed"
+      }
+    ],
+    "invariants": {
+      "sent_without_send_instruction": [],
+      "recipient_outside_cast": [],
+      "errors": [],
+      "failed_gmail_actions": []
+    },
+    "routing": {
+      "agents": [
+        "Alice Chen offsite proposal"
+      ],
+      "agents_created": 1,
+      "dispatches": 1,
+      "rejected_unknown_ids": [],
+      "dry_runs": 1,
+      "triggers_by_kind": {},
+      "unrequested_reminders": 0,
+      "redundant_agents": [],
+      "cross_agent_actions": [],
+      "blind_reminder_lookups": [],
+      "agents_that_never_acted": {},
+      "agents_owning_unrelated_reminders": {},
+      "log_files": [
+        "ea_1.log",
+        "gmail-execution-agent.log"
+      ],
+      "summaries_written": 0
+    }
+  },
+  {
+    "label": "run2-new",
+    "version": "new",
+    "run": 2,
+    "ref": "HEAD",
+    "model": "anthropic/claude-haiku-5.5",
+    "patches": [
+      "all five model defaults -> anthropic/claude-haiku-5.5",
+      "conversation_summary_threshold 100 -> 40",
+      "user timezone America/Toronto (data/timezone.txt, as the web app stores it)"
+    ],
+    "minutes": 0.2,
+    "aborted": null,
+    "cost": {
+      "prompt_tokens": 47499,
+      "completion_tokens": 1654,
+      "calls": 8,
+      "usd": 0.0056
+    },
+    "summarized": false,
+    "retries": 0,
+    "checkpoints": [
+      {
+        "id": "CP01",
+        "step": "U2",
+        "kind": "hard",
+        "title": "offsite email sent to Alice Chen",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP02",
+        "step": "U6",
+        "kind": "hard",
+        "title": "'send the bob draft' sends the invoice note to Bob Ruiz",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP03",
+        "step": "U8",
+        "kind": "hard",
+        "title": "'reply to her' goes to Alice Park, not Alice Chen",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP04",
+        "step": "U10",
+        "kind": "soft",
+        "title": "C# deadline answered as Tuesday",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP05",
+        "step": "U11",
+        "kind": "hard",
+        "title": "ambiguous 'lunch with bob' asks which Bob",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP06",
+        "step": "U13",
+        "kind": "hard",
+        "title": "lunch invite sent to Bob Lee only",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP07",
+        "step": "U15",
+        "kind": "hard",
+        "title": "agenda sent to Alice Chen, not Alice Park",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP08",
+        "step": "U17",
+        "kind": "hard",
+        "title": "'cancel the reminder to chase him' cancels only the invoice chase",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP09",
+        "step": "U20",
+        "kind": "soft",
+        "title": "recalls Alice Chen's confirmed dates (16-17)",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP10",
+        "step": "U21",
+        "kind": "soft",
+        "title": "recalls the C++ offer (165k, Friday)",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP11",
+        "step": "U22",
+        "kind": "hard",
+        "title": "Q3 visuals email sent to Dana",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP12",
+        "step": "U23",
+        "kind": "hard",
+        "title": "venue reminder moved to Friday 9am",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP13",
+        "step": "U24",
+        "kind": "soft",
+        "title": "says Bob Lee hasn't replied",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP14",
+        "step": "U25",
+        "kind": "hard",
+        "title": "reminder created for the Wednesday call",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP15",
+        "step": "U26",
+        "kind": "hard",
+        "title": "'cancel the dentist reminder' cancels only that one",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP16",
+        "step": "U28",
+        "kind": "hard",
+        "title": "Alice Chen's offsite agenda reaches Dana (forward, then confirm)",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP17",
+        "step": "U28",
+        "kind": "hard",
+        "title": "at the end only the venue and call reminders would fire",
+        "passed": null,
+        "detail": "scenario not completed"
+      }
+    ],
+    "invariants": {
+      "sent_without_send_instruction": [],
+      "recipient_outside_cast": [],
+      "errors": [],
+      "failed_gmail_actions": []
+    },
+    "routing": {
+      "agents": [
+        "Alice Chen offsite proposal"
+      ],
+      "agents_created": 1,
+      "dispatches": 1,
+      "rejected_unknown_ids": [],
+      "dry_runs": 1,
+      "triggers_by_kind": {},
+      "unrequested_reminders": 0,
+      "redundant_agents": [],
+      "cross_agent_actions": [],
+      "blind_reminder_lookups": [],
+      "agents_that_never_acted": {},
+      "agents_owning_unrelated_reminders": {},
+      "log_files": [
+        "ea_1.log",
+        "gmail-execution-agent.log"
+      ],
+      "summaries_written": 0
+    }
+  },
+  {
+    "label": "run3-new",
+    "version": "new",
+    "run": 3,
+    "ref": "HEAD",
+    "model": "anthropic/claude-haiku-5.5",
+    "patches": [
+      "all five model defaults -> anthropic/claude-haiku-5.5",
+      "conversation_summary_threshold 100 -> 40",
+      "user timezone America/Toronto (data/timezone.txt, as the web app stores it)"
+    ],
+    "minutes": 0.1,
+    "aborted": null,
+    "cost": {
+      "prompt_tokens": 11719,
+      "completion_tokens": 667,
+      "calls": 2,
+      "usd": 0.0015
+    },
+    "summarized": false,
+    "retries": 0,
+    "checkpoints": [
+      {
+        "id": "CP01",
+        "step": "U2",
+        "kind": "hard",
+        "title": "offsite email sent to Alice Chen",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP02",
+        "step": "U6",
+        "kind": "hard",
+        "title": "'send the bob draft' sends the invoice note to Bob Ruiz",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP03",
+        "step": "U8",
+        "kind": "hard",
+        "title": "'reply to her' goes to Alice Park, not Alice Chen",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP04",
+        "step": "U10",
+        "kind": "soft",
+        "title": "C# deadline answered as Tuesday",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP05",
+        "step": "U11",
+        "kind": "hard",
+        "title": "ambiguous 'lunch with bob' asks which Bob",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP06",
+        "step": "U13",
+        "kind": "hard",
+        "title": "lunch invite sent to Bob Lee only",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP07",
+        "step": "U15",
+        "kind": "hard",
+        "title": "agenda sent to Alice Chen, not Alice Park",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP08",
+        "step": "U17",
+        "kind": "hard",
+        "title": "'cancel the reminder to chase him' cancels only the invoice chase",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP09",
+        "step": "U20",
+        "kind": "soft",
+        "title": "recalls Alice Chen's confirmed dates (16-17)",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP10",
+        "step": "U21",
+        "kind": "soft",
+        "title": "recalls the C++ offer (165k, Friday)",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP11",
+        "step": "U22",
+        "kind": "hard",
+        "title": "Q3 visuals email sent to Dana",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP12",
+        "step": "U23",
+        "kind": "hard",
+        "title": "venue reminder moved to Friday 9am",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP13",
+        "step": "U24",
+        "kind": "soft",
+        "title": "says Bob Lee hasn't replied",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP14",
+        "step": "U25",
+        "kind": "hard",
+        "title": "reminder created for the Wednesday call",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP15",
+        "step": "U26",
+        "kind": "hard",
+        "title": "'cancel the dentist reminder' cancels only that one",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP16",
+        "step": "U28",
+        "kind": "hard",
+        "title": "Alice Chen's offsite agenda reaches Dana (forward, then confirm)",
+        "passed": null,
+        "detail": "step not reached"
+      },
+      {
+        "id": "CP17",
+        "step": "U28",
+        "kind": "hard",
+        "title": "at the end only the venue and call reminders would fire",
+        "passed": null,
+        "detail": "scenario not completed"
+      }
+    ],
+    "invariants": {
+      "sent_without_send_instruction": [],
+      "recipient_outside_cast": [],
+      "errors": [],
+      "failed_gmail_actions": []
+    },
+    "routing": {
+      "agents": [],
+      "agents_created": 0,
+      "dispatches": 0,
+      "rejected_unknown_ids": [],
+      "dry_runs": 0,
+      "triggers_by_kind": {},
+      "unrequested_reminders": 0,
+      "redundant_agents": [],
+      "cross_agent_actions": [],
+      "blind_reminder_lookups": [],
+      "agents_that_never_acted": {},
+      "agents_owning_unrelated_reminders": {},
+      "log_files": [],
+      "summaries_written": 0
+    }
+  }
+]

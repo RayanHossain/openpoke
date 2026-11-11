@@ -6,10 +6,13 @@ from typing import Dict, Any, List, Optional, Tuple
 from dataclasses import dataclass
 
 from .agent import ExecutionAgent
+from .report import ParsedResponse, parse_report
 from .tools import get_tool_schemas, get_tool_registry
 from ...config import get_settings
 from ...openrouter_client import request_chat_completion
 from ...logging_config import logger
+from ...services.execution import keys as _keys
+from ...services.execution.agent_registry import get_agent_registry
 
 
 @dataclass
@@ -20,6 +23,7 @@ class ExecutionResult:
     response: str
     error: Optional[str] = None
     tools_executed: List[str] = None
+    agent_id: Optional[str] = None
 
 
 class ExecutionAgentRuntime:
@@ -28,12 +32,13 @@ class ExecutionAgentRuntime:
     MAX_TOOL_ITERATIONS = 8
 
     # Initialize execution agent runtime with settings, tools, and agent instance
-    def __init__(self, agent_name: str):
+    def __init__(self, agent_name: str, agent_id: Optional[str] = None):
         settings = get_settings()
-        self.agent = ExecutionAgent(agent_name)
+        self.agent = ExecutionAgent(agent_name, agent_id=agent_id)
+        self.agent_id = agent_id
         self.api_key = settings.openrouter_api_key
         self.model = settings.execution_agent_model
-        self.tool_registry = get_tool_registry(agent_name=agent_name)
+        self.tool_registry = get_tool_registry(agent_name=agent_name, agent_id=agent_id)
         self.tool_schemas = get_tool_schemas()
 
         if not self.api_key:
@@ -102,6 +107,7 @@ class ExecutionAgentRuntime:
                     if success:
                         logger.info(f"[{self.agent.name}] Tool {tool_name} completed successfully")
                         record_payload = self._safe_json_dump(result)
+                        self._record_ownership(tool_name, tool_args, result)
                     else:
                         error_detail = result.get("error") if isinstance(result, dict) else str(result)
                         logger.warning(f"[{self.agent.name}] Tool {tool_name} failed: {error_detail}")
@@ -126,13 +132,16 @@ class ExecutionAgentRuntime:
             if final_response is None:
                 raise RuntimeError("LLM did not return a final response")
 
-            self.agent.record_response(final_response)
+            parsed = parse_report(final_response)
+            self._apply_report(parsed)
+            self.agent.record_response(final_response)  # own journal keeps the report
 
             return ExecutionResult(
                 agent_name=self.agent.name,
                 success=True,
-                response=final_response,
-                tools_executed=tools_executed
+                response=parsed.text or "No action required.",
+                tools_executed=tools_executed,
+                agent_id=self.agent_id,
             )
 
         except Exception as e:
@@ -140,12 +149,52 @@ class ExecutionAgentRuntime:
             error_msg = str(e)
             failure_text = f"Failed to complete task: {error_msg}"
             self.agent.record_response(f"Error: {error_msg}")
+            if self.agent_id:
+                logger.warning(f"[{self.agent.name}] Run failed before reporting; keeping previous brief")
 
             return ExecutionResult(
                 agent_name=self.agent.name,
                 success=False,
                 response=failure_text,
-                error=error_msg
+                error=error_msg,
+                agent_id=self.agent_id,
+            )
+
+    # Store the end-of-run report as the agent's card brief/status (D-004)
+    def _apply_report(self, parsed: ParsedResponse) -> None:
+        """Never raises. Without a valid report the previous brief and status stay."""
+        if not self.agent_id:
+            return
+        if parsed.report is None:
+            logger.warning(
+                f"[{self.agent.name}] No valid end-of-run report ({parsed.problem}); keeping previous brief",
+                extra={"agent_id": self.agent_id},
+            )
+            return
+        if parsed.problem:
+            logger.warning(f"[{self.agent.name}] End-of-run report adjusted: {parsed.problem}")
+        try:
+            get_agent_registry().set_report(self.agent_id, parsed.report.brief, parsed.report.status)
+        except Exception as exc:
+            logger.warning(f"[{self.agent.name}] Failed to store end-of-run report: {exc}")
+
+    # Record what a successful tool call made this agent own (registry keys + aliases)
+    def _record_ownership(self, tool_name: str, arguments: Dict[str, Any], result: Any) -> None:
+        """Never raises: ownership bookkeeping must not fail the tool call."""
+        if not self.agent_id:
+            return
+        try:
+            registry = get_agent_registry()
+            for key in _keys.extract_from_tool_call(tool_name, arguments, result):
+                registry.add_key(self.agent_id, key)
+            for key in _keys.extract_closed_from_tool_call(tool_name, arguments, result):
+                registry.close_key(key)
+            for address, name in _keys.extract_aliases(tool_name, arguments, result):
+                registry.add_alias(address, name)
+        except Exception as exc:
+            logger.warning(
+                f"[{self.agent.name}] Failed to record keys for {tool_name}: {exc}",
+                extra={"agent_id": self.agent_id, "tool": tool_name},
             )
 
     # Execute OpenRouter API call with system prompt, messages, and optional tool schemas

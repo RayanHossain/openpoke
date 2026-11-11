@@ -1,0 +1,1004 @@
+{
+  "server_root": "/Users/remi/.claude/jobs/308f69e5/tmp/compare-smoke/run1-old",
+  "aborted": null,
+  "steps": [
+    {
+      "id": "U1",
+      "kind": "user",
+      "text": "Email Alice Chen (alice.chen@acme.example) to propose the Acme offsite on Oct 14-15 in Tahoe. Keep it short.",
+      "error": null,
+      "seconds": 4.6,
+      "replies": [
+        "To: alice.chen@acme.example\nSubject: Acme offsite: Oct 14-15 in Tahoe\n\nHi Alice,\n\nI'd like to propose the Acme offsite for October 14-15 in Tahoe. Do those dates work for you? Happy to adjust if they clash with anything.\n\nBest",
+        "Here's the draft to Alice. Want me to send it as is, or change anything?"
+      ],
+      "ia_calls": [
+        {
+          "step": "U1",
+          "name": "send_draft",
+          "args": {
+            "to": "alice.chen@acme.example",
+            "subject": "Acme offsite: Oct 14-15 in Tahoe",
+            "body": "Hi Alice,\n\nI'd like to propose the Acme offsite for October 14-15 in Tahoe. Do those dates work for you? Happy to adjust if they clash with anything.\n\nBest"
+          },
+          "success": true,
+          "payload": {
+            "status": "draft_recorded",
+            "to": "alice.chen@acme.example",
+            "subject": "Acme offsite: Oct 14-15 in Tahoe"
+          }
+        },
+        {
+          "step": "U1",
+          "name": "send_message_to_user",
+          "args": {
+            "message": "Here's the draft to Alice. Want me to send it as is, or change anything?"
+          },
+          "success": true,
+          "payload": {
+            "status": "delivered"
+          }
+        }
+      ],
+      "ea_calls": [],
+      "triggers_after": [],
+      "agents_after": []
+    },
+    {
+      "id": "U2",
+      "kind": "user",
+      "text": "looks good, send it",
+      "error": null,
+      "seconds": 12.0,
+      "replies": [
+        "Sending it to Alice now.",
+        "Confirmed, the send went through to the agent. I'll let you know once Alice's email is out.",
+        "Sent. Alice should have the offsite proposal for Oct 14-15 in Tahoe."
+      ],
+      "ia_calls": [
+        {
+          "step": "U2",
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_name": "Alice Chen Offsite Email",
+            "instructions": "Send this email now, exactly as written, to alice.chen@acme.example. Do not change the text.\n\nSubject: Acme offsite: Oct 14-15 in Tahoe\n\nHi Alice,\n\nI'd like to propose the Acme offsite for October 14-15 in Tahoe. Do those dates work for you? Happy to adjust if they clash with anything.\n\nBest\n\nConfirm once it has been sent, and report any error."
+          },
+          "success": true,
+          "payload": {
+            "status": "submitted",
+            "agent_name": "Alice Chen Offsite Email",
+            "new_agent_created": true
+          }
+        },
+        {
+          "step": "U2",
+          "name": "send_message_to_user",
+          "args": {
+            "message": "Sending it to Alice now."
+          },
+          "success": true,
+          "payload": {
+            "status": "delivered"
+          }
+        },
+        {
+          "step": "U2",
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_name": "Alice Chen Offsite Email",
+            "instructions": "The user has explicitly confirmed: they reviewed the draft and replied \"looks good, send it.\" Please send draft r-1 now with gmail_execute_draft, to alice.chen@acme.example, subject \"Acme offsite: Oct 14-15 in Tahoe\", body unchanged. Reply with confirmation once sent, including the sent message ID."
+          },
+          "success": true,
+          "payload": {
+            "status": "submitted",
+            "agent_name": "Alice Chen Offsite Email",
+            "new_agent_created": false
+          }
+        },
+        {
+          "step": "U2",
+          "name": "send_message_to_user",
+          "args": {
+            "message": "Confirmed, the send went through to the agent. I'll let you know once Alice's email is out."
+          },
+          "success": true,
+          "payload": {
+            "status": "delivered"
+          }
+        }
+      ],
+      "ea_calls": [
+        {
+          "step": "U2",
+          "agent": "Alice Chen Offsite Email",
+          "agent_id": null,
+          "tool": "gmail_create_draft",
+          "args": {
+            "recipient_email": "alice.chen@acme.example",
+            "subject": "Acme offsite: Oct 14-15 in Tahoe",
+            "body": "Hi Alice,\n\nI'd like to propose the Acme offsite for October 14-15 in Tahoe. Do those dates work for you? Happy to adjust if they clash with anything.\n\nBest",
+            "is_html": false
+          },
+          "success": true,
+          "result": "{'successful': True, 'error': None, 'data': {'id': 'r-1', 'message': {'id': 'm-2', 'threadId': 't-3'}}}"
+        },
+        {
+          "step": "U2",
+          "agent": "Alice Chen Offsite Email",
+          "agent_id": null,
+          "tool": "gmail_execute_draft",
+          "args": {
+            "draft_id": "r-1"
+          },
+          "success": true,
+          "result": "{'successful': True, 'error': None, 'data': {'id': 'm-4', 'threadId': 't-3'}}"
+        }
+      ],
+      "triggers_after": [],
+      "agents_after": [
+        "Alice Chen Offsite Email"
+      ]
+    },
+    {
+      "id": "U3",
+      "kind": "user",
+      "text": "Also remind me Thursday at 9am to book the Tahoe venue.",
+      "error": null,
+      "seconds": 10.6,
+      "replies": [
+        "On it. Setting a reminder for Thursday at 9am to book the Tahoe venue.",
+        "Your Thursday reminder is set, but it was saved in UTC, so right now it would fire at 1am Pacific. What timezone are you in? I'll fix it to 9am your time."
+      ],
+      "ia_calls": [
+        {
+          "step": "U3",
+          "name": "send_message_to_user",
+          "args": {
+            "message": "On it. Setting a reminder for Thursday at 9am to book the Tahoe venue."
+          },
+          "success": true,
+          "payload": {
+            "status": "delivered"
+          }
+        },
+        {
+          "step": "U3",
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_name": "Tahoe Venue Reminder",
+            "instructions": "Create a reminder for Thursday at 9:00 AM (the upcoming Thursday, November 12, 2026, based on the current date of Wednesday, November 11, 2026) with the text: \"Book the Tahoe venue for the Acme offsite (Oct 14-15).\" Use the user's default timezone if known. Confirm back with the exact date, time, and timezone the reminder was set for."
+          },
+          "success": true,
+          "payload": {
+            "status": "submitted",
+            "agent_name": "Tahoe Venue Reminder",
+            "new_agent_created": true
+          }
+        },
+        {
+          "step": "U3",
+          "name": "send_message_to_user",
+          "args": {
+            "message": "Your Thursday reminder is set, but it was saved in UTC, so right now it would fire at 1am Pacific. What timezone are you in? I'll fix it to 9am your time."
+          },
+          "success": true,
+          "payload": {
+            "status": "delivered"
+          }
+        }
+      ],
+      "ea_calls": [
+        {
+          "step": "U3",
+          "agent": "Tahoe Venue Reminder",
+          "agent_id": null,
+          "tool": "createTrigger",
+          "args": {
+            "payload": "Book the Tahoe venue for the Acme offsite (Oct 14-15).",
+            "start_time": "2026-11-12T09:00:00",
+            "status": "active"
+          },
+          "success": true,
+          "result": "{'trigger_id': 1, 'status': 'active', 'next_trigger': '2026-11-12T09:00:00Z', 'start_time': '2026-11-12T09:00:00Z', 'timezone': 'UTC', 'recurrence_rule': None}"
+        }
+      ],
+      "triggers_after": [
+        {
+          "id": 1,
+          "agent_name": "Tahoe Venue Reminder",
+          "payload": "Book the Tahoe venue for the Acme offsite (Oct 14-15).",
+          "start_time": "2026-11-12T09:00:00Z",
+          "next_trigger": "2026-11-12T09:00:00Z",
+          "recurrence_rule": null,
+          "timezone": "UTC",
+          "status": "active",
+          "last_error": null,
+          "created_at": "2026-11-11T03:17:38Z",
+          "updated_at": "2026-11-11T03:17:38Z",
+          "owner": "Tahoe Venue Reminder"
+        }
+      ],
+      "agents_after": [
+        "Alice Chen Offsite Email",
+        "Tahoe Venue Reminder"
+      ]
+    },
+    {
+      "id": "U4",
+      "kind": "user",
+      "text": "Draft a note to Bob Ruiz (bob.ruiz@acme.example) saying invoice #4471 is now 30 days overdue.",
+      "error": null,
+      "seconds": 10.0,
+      "replies": [
+        "On it. Drafting the note to Bob now, I'll show it to you before anything goes out.",
+        "To: bob.ruiz@acme.example\nSubject: Invoice #4471 overdue\n\nHi Bob,\n\nInvoice #4471 is now 30 days overdue. Could you let me know the payment status or if anything is holding it up?\n\nThanks",
+        "Here's the draft to Bob:\n\nTo: bob.ruiz@acme.example\nSubject: Invoice #4471 overdue\n\nHi Bob,\n\nInvoice #4471 is now 30 days overdue. Could you let me know the payment status or if anything is holding it up?\n\nThanks\n\nWant me to send it as is, or change anything?"
+      ],
+      "ia_calls": [
+        {
+          "step": "U4",
+          "name": "send_message_to_user",
+          "args": {
+            "message": "On it. Drafting the note to Bob now, I'll show it to you before anything goes out."
+          },
+          "success": true,
+          "payload": {
+            "status": "delivered"
+          }
+        },
+        {
+          "step": "U4",
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_name": "Bob Ruiz Overdue Invoice Draft",
+            "instructions": "Create an email draft only. Do NOT send it. Recipient: bob.ruiz@acme.example. Subject: Invoice #4471 overdue. Body: \"Hi Bob,\\n\\nInvoice #4471 is now 30 days overdue. Could you let me know the payment status or if anything is holding it up?\\n\\nThanks\". Report back the draft ID and the exact recipient, subject, and body so I can show the user."
+          },
+          "success": true,
+          "payload": {
+            "status": "submitted",
+            "agent_name": "Bob Ruiz Overdue Invoice Draft",
+            "new_agent_created": true
+          }
+        },
+        {
+          "step": "U4",
+          "name": "send_draft",
+          "args": {
+            "to": "bob.ruiz@acme.example",
+            "subject": "Invoice #4471 overdue",
+            "body": "Hi Bob,\n\nInvoice #4471 is now 30 days overdue. Could you let me know the payment status or if anything is holding it up?\n\nThanks"
+          },
+          "success": true,
+          "payload": {
+            "status": "draft_recorded",
+            "to": "bob.ruiz@acme.example",
+            "subject": "Invoice #4471 overdue"
+          }
+        },
+        {
+          "step": "U4",
+          "name": "send_message_to_user",
+          "args": {
+            "message": "Here's the draft to Bob:\n\nTo: bob.ruiz@acme.example\nSubject: Invoice #4471 overdue\n\nHi Bob,\n\nInvoice #4471 is now 30 days overdue. Could you let me know the payment status or if anything is holding it up?\n\nThanks\n\nWant me to send it as is, or change anything?"
+          },
+          "success": true,
+          "payload": {
+            "status": "delivered"
+          }
+        }
+      ],
+      "ea_calls": [
+        {
+          "step": "U4",
+          "agent": "Bob Ruiz Overdue Invoice Draft",
+          "agent_id": null,
+          "tool": "gmail_create_draft",
+          "args": {
+            "recipient_email": "bob.ruiz@acme.example",
+            "subject": "Invoice #4471 overdue",
+            "body": "Hi Bob,\n\nInvoice #4471 is now 30 days overdue. Could you let me know the payment status or if anything is holding it up?\n\nThanks",
+            "is_html": false
+          },
+          "success": true,
+          "result": "{'successful': True, 'error': None, 'data': {'id': 'r-5', 'message': {'id': 'm-6', 'threadId': 't-7'}}}"
+        }
+      ],
+      "triggers_after": [
+        {
+          "id": 1,
+          "agent_name": "Tahoe Venue Reminder",
+          "payload": "Book the Tahoe venue for the Acme offsite (Oct 14-15).",
+          "start_time": "2026-11-12T09:00:00Z",
+          "next_trigger": "2026-11-12T09:00:00Z",
+          "recurrence_rule": null,
+          "timezone": "UTC",
+          "status": "active",
+          "last_error": null,
+          "created_at": "2026-11-11T03:17:38Z",
+          "updated_at": "2026-11-11T03:17:38Z",
+          "owner": "Tahoe Venue Reminder"
+        }
+      ],
+      "agents_after": [
+        "Alice Chen Offsite Email",
+        "Tahoe Venue Reminder",
+        "Bob Ruiz Overdue Invoice Draft"
+      ]
+    },
+    {
+      "id": "U5",
+      "kind": "user",
+      "text": "And remind me Friday at 10am to chase Bob about the invoice if he hasn't paid.",
+      "error": null,
+      "seconds": 10.9,
+      "replies": [
+        "On it. Setting a Friday 10am reminder to chase Bob. It'll be saved in the same UTC setting as Thursday's unless you tell me your timezone, so what's yours? I'll fix both at once.",
+        "Friday 10am reminder to chase Bob is set, but it's saved in UTC like Thursday's, so it would fire at 2am Pacific. Tell me your timezone and I'll correct both. The Bob draft is still waiting on your go-ahead."
+      ],
+      "ia_calls": [
+        {
+          "step": "U5",
+          "name": "send_message_to_user",
+          "args": {
+            "message": "On it. Setting a Friday 10am reminder to chase Bob. It'll be saved in the same UTC setting as Thursday's unless you tell me your timezone, so what's yours? I'll fix both at once."
+          },
+          "success": true,
+          "payload": {
+            "status": "delivered"
+          }
+        },
+        {
+          "step": "U5",
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_name": "Tahoe Venue Reminder",
+            "instructions": "Create a one-time reminder for Friday, November 13, 2026 at 10:00 AM with the text: \"Chase Bob Ruiz (bob.ruiz@acme.example) about invoice #4471 if he hasn't paid.\" The user's timezone is not yet known, so keep the timezone consistent with the existing Thursday reminder (Trigger ID 1) and report back the stored time and timezone. Do not change Trigger ID 1 yet; the user will confirm their timezone and we'll correct both reminders together."
+          },
+          "success": true,
+          "payload": {
+            "status": "submitted",
+            "agent_name": "Tahoe Venue Reminder",
+            "new_agent_created": false
+          }
+        }
+      ],
+      "ea_calls": [
+        {
+          "step": "U5",
+          "agent": "Tahoe Venue Reminder",
+          "agent_id": null,
+          "tool": "createTrigger",
+          "args": {
+            "payload": "Chase Bob Ruiz (bob.ruiz@acme.example) about invoice #4471 if he hasn't paid.",
+            "start_time": "2026-11-13T10:00:00",
+            "status": "active"
+          },
+          "success": true,
+          "result": "{'trigger_id': 2, 'status': 'active', 'next_trigger': '2026-11-13T10:00:00Z', 'start_time': '2026-11-13T10:00:00Z', 'timezone': 'UTC', 'recurrence_rule': None}"
+        }
+      ],
+      "triggers_after": [
+        {
+          "id": 1,
+          "agent_name": "Tahoe Venue Reminder",
+          "payload": "Book the Tahoe venue for the Acme offsite (Oct 14-15).",
+          "start_time": "2026-11-12T09:00:00Z",
+          "next_trigger": "2026-11-12T09:00:00Z",
+          "recurrence_rule": null,
+          "timezone": "UTC",
+          "status": "active",
+          "last_error": null,
+          "created_at": "2026-11-11T03:17:38Z",
+          "updated_at": "2026-11-11T03:17:38Z",
+          "owner": "Tahoe Venue Reminder"
+        },
+        {
+          "id": 2,
+          "agent_name": "Tahoe Venue Reminder",
+          "payload": "Chase Bob Ruiz (bob.ruiz@acme.example) about invoice #4471 if he hasn't paid.",
+          "start_time": "2026-11-13T10:00:00Z",
+          "next_trigger": "2026-11-13T10:00:00Z",
+          "recurrence_rule": null,
+          "timezone": "UTC",
+          "status": "active",
+          "last_error": null,
+          "created_at": "2026-11-11T03:18:00Z",
+          "updated_at": "2026-11-11T03:18:00Z",
+          "owner": "Tahoe Venue Reminder"
+        }
+      ],
+      "agents_after": [
+        "Alice Chen Offsite Email",
+        "Tahoe Venue Reminder",
+        "Bob Ruiz Overdue Invoice Draft"
+      ]
+    },
+    {
+      "id": "U6",
+      "kind": "user",
+      "text": "send the bob draft",
+      "error": null,
+      "seconds": 6.9,
+      "replies": [
+        "sending bob the invoice note now.",
+        "Bob's invoice note is sent. Your Thursday and Friday reminders are still saved in UTC, so I need your timezone to fix them. What is it?"
+      ],
+      "ia_calls": [
+        {
+          "step": "U6",
+          "name": "send_message_to_user",
+          "args": {
+            "message": "sending bob the invoice note now."
+          },
+          "success": true,
+          "payload": {
+            "status": "delivered"
+          }
+        },
+        {
+          "step": "U6",
+          "name": "send_message_to_agent",
+          "args": {
+            "agent_name": "Bob Ruiz Overdue Invoice Draft",
+            "instructions": "The user has explicitly confirmed. Send draft r-5 (message m-6, thread t-7) to bob.ruiz@acme.example unchanged, then report back the sent message ID and confirm the body that went out."
+          },
+          "success": true,
+          "payload": {
+            "status": "submitted",
+            "agent_name": "Bob Ruiz Overdue Invoice Draft",
+            "new_agent_created": false
+          }
+        }
+      ],
+      "ea_calls": [
+        {
+          "step": "U6",
+          "agent": "Bob Ruiz Overdue Invoice Draft",
+          "agent_id": null,
+          "tool": "gmail_execute_draft",
+          "args": {
+            "draft_id": "r-5"
+          },
+          "success": true,
+          "result": "{'successful': True, 'error': None, 'data': {'id': 'm-8', 'threadId': 't-7'}}"
+        }
+      ],
+      "triggers_after": [
+        {
+          "id": 1,
+          "agent_name": "Tahoe Venue Reminder",
+          "payload": "Book the Tahoe venue for the Acme offsite (Oct 14-15).",
+          "start_time": "2026-11-12T09:00:00Z",
+          "next_trigger": "2026-11-12T09:00:00Z",
+          "recurrence_rule": null,
+          "timezone": "UTC",
+          "status": "active",
+          "last_error": null,
+          "created_at": "2026-11-11T03:17:38Z",
+          "updated_at": "2026-11-11T03:17:38Z",
+          "owner": "Tahoe Venue Reminder"
+        },
+        {
+          "id": 2,
+          "agent_name": "Tahoe Venue Reminder",
+          "payload": "Chase Bob Ruiz (bob.ruiz@acme.example) about invoice #4471 if he hasn't paid.",
+          "start_time": "2026-11-13T10:00:00Z",
+          "next_trigger": "2026-11-13T10:00:00Z",
+          "recurrence_rule": null,
+          "timezone": "UTC",
+          "status": "active",
+          "last_error": null,
+          "created_at": "2026-11-11T03:18:00Z",
+          "updated_at": "2026-11-11T03:18:00Z",
+          "owner": "Tahoe Venue Reminder"
+        }
+      ],
+      "agents_after": [
+        "Alice Chen Offsite Email",
+        "Tahoe Venue Reminder",
+        "Bob Ruiz Overdue Invoice Draft"
+      ]
+    }
+  ],
+  "gmail": {
+    "events": [
+      {
+        "step": "U2",
+        "action": "draft",
+        "draft_id": "r-1",
+        "thread_id": "t-3",
+        "to": [
+          "alice.chen@acme.example"
+        ],
+        "subject": "Acme offsite: Oct 14-15 in Tahoe",
+        "body": "Hi Alice,\n\nI'd like to propose the Acme offsite for October 14-15 in Tahoe. Do those dates work for you? Happy to adjust if they clash with anything.\n\nBest",
+        "in_existing_thread": false
+      },
+      {
+        "step": "U2",
+        "action": "send",
+        "via": "draft",
+        "draft_id": "r-1",
+        "message_id": "m-4",
+        "thread_id": "t-3",
+        "to": [
+          "alice.chen@acme.example"
+        ],
+        "subject": "Acme offsite: Oct 14-15 in Tahoe",
+        "body": "Hi Alice,\n\nI'd like to propose the Acme offsite for October 14-15 in Tahoe. Do those dates work for you? Happy to adjust if they clash with anything.\n\nBest",
+        "draft_step": "U2"
+      },
+      {
+        "step": "U4",
+        "action": "draft",
+        "draft_id": "r-5",
+        "thread_id": "t-7",
+        "to": [
+          "bob.ruiz@acme.example"
+        ],
+        "subject": "Invoice #4471 overdue",
+        "body": "Hi Bob,\n\nInvoice #4471 is now 30 days overdue. Could you let me know the payment status or if anything is holding it up?\n\nThanks",
+        "in_existing_thread": false
+      },
+      {
+        "step": "U6",
+        "action": "send",
+        "via": "draft",
+        "draft_id": "r-5",
+        "message_id": "m-8",
+        "thread_id": "t-7",
+        "to": [
+          "bob.ruiz@acme.example"
+        ],
+        "subject": "Invoice #4471 overdue",
+        "body": "Hi Bob,\n\nInvoice #4471 is now 30 days overdue. Could you let me know the payment status or if anything is holding it up?\n\nThanks",
+        "draft_step": "U4"
+      }
+    ],
+    "drafts": [
+      {
+        "id": "r-1",
+        "message_id": "m-2",
+        "thread_id": "t-3",
+        "to": [
+          "alice.chen@acme.example"
+        ],
+        "subject": "Acme offsite: Oct 14-15 in Tahoe",
+        "body": "Hi Alice,\n\nI'd like to propose the Acme offsite for October 14-15 in Tahoe. Do those dates work for you? Happy to adjust if they clash with anything.\n\nBest",
+        "status": "sent",
+        "step": "U2"
+      },
+      {
+        "id": "r-5",
+        "message_id": "m-6",
+        "thread_id": "t-7",
+        "to": [
+          "bob.ruiz@acme.example"
+        ],
+        "subject": "Invoice #4471 overdue",
+        "body": "Hi Bob,\n\nInvoice #4471 is now 30 days overdue. Could you let me know the payment status or if anything is holding it up?\n\nThanks",
+        "status": "sent",
+        "step": "U4"
+      }
+    ],
+    "messages": [
+      {
+        "id": "m-old0",
+        "thread_id": "t-retro",
+        "sender": "Alice Chen <alice.chen@acme.example>",
+        "to": [
+          "me@openpoke.example"
+        ],
+        "subject": "Q2 retro notes",
+        "body": "Thanks for joining the Q2 retro. Notes attached. Let's sync next quarter.",
+        "ts": "2026-09-02T16:00:00+00:00",
+        "labels": [
+          "INBOX"
+        ]
+      },
+      {
+        "id": "m-old1",
+        "thread_id": "t-invoice",
+        "sender": "Me <me@openpoke.example>",
+        "to": [
+          "bob.ruiz@acme.example"
+        ],
+        "subject": "Invoice #4471",
+        "body": "Hi Bob, attached is invoice #4471 for the September consulting work, due in 30 days.",
+        "ts": "2026-10-09T10:00:00+00:00",
+        "labels": [
+          "SENT"
+        ]
+      },
+      {
+        "id": "m-old2",
+        "thread_id": "t-q2deck",
+        "sender": "Dana Ortiz <dana@studio.example>",
+        "to": [
+          "me@openpoke.example"
+        ],
+        "subject": "Q2 deck feedback",
+        "body": "Here are my notes on the Q2 deck visuals. Happy to help with Q3 too.",
+        "ts": "2026-07-20T11:00:00+00:00",
+        "labels": [
+          "INBOX"
+        ]
+      },
+      {
+        "id": "m-old3",
+        "thread_id": "t-news",
+        "sender": "Tahoe Venues <news@tahoevenues.example>",
+        "to": [
+          "me@openpoke.example"
+        ],
+        "subject": "Fall offsite packages",
+        "body": "Book your fall team offsite in Tahoe. Lakeside lodges available October.",
+        "ts": "2026-10-30T07:00:00+00:00",
+        "labels": [
+          "INBOX"
+        ]
+      },
+      {
+        "id": "m-old4",
+        "thread_id": "t-bobl-old",
+        "sender": "Bob Lee <bob.lee@friends.example>",
+        "to": [
+          "me@openpoke.example"
+        ],
+        "subject": "climbing sunday?",
+        "body": "Want to go climbing Sunday? Same gym as last time.",
+        "ts": "2026-10-18T19:00:00+00:00",
+        "labels": [
+          "INBOX"
+        ]
+      },
+      {
+        "id": "m-4",
+        "thread_id": "t-3",
+        "sender": "Me <me@openpoke.example>",
+        "to": [
+          "alice.chen@acme.example"
+        ],
+        "subject": "Acme offsite: Oct 14-15 in Tahoe",
+        "body": "Hi Alice,\n\nI'd like to propose the Acme offsite for October 14-15 in Tahoe. Do those dates work for you? Happy to adjust if they clash with anything.\n\nBest",
+        "ts": "2026-11-09T08:07:00+00:00",
+        "labels": [
+          "SENT"
+        ]
+      },
+      {
+        "id": "m-8",
+        "thread_id": "t-7",
+        "sender": "Me <me@openpoke.example>",
+        "to": [
+          "bob.ruiz@acme.example"
+        ],
+        "subject": "Invoice #4471 overdue",
+        "body": "Hi Bob,\n\nInvoice #4471 is now 30 days overdue. Could you let me know the payment status or if anything is holding it up?\n\nThanks",
+        "ts": "2026-11-09T08:14:00+00:00",
+        "labels": [
+          "SENT"
+        ]
+      }
+    ]
+  },
+  "triggers_final": [
+    {
+      "id": 1,
+      "agent_name": "Tahoe Venue Reminder",
+      "payload": "Book the Tahoe venue for the Acme offsite (Oct 14-15).",
+      "start_time": "2026-11-12T09:00:00Z",
+      "next_trigger": "2026-11-12T09:00:00Z",
+      "recurrence_rule": null,
+      "timezone": "UTC",
+      "status": "active",
+      "last_error": null,
+      "created_at": "2026-11-11T03:17:38Z",
+      "updated_at": "2026-11-11T03:17:38Z",
+      "owner": "Tahoe Venue Reminder"
+    },
+    {
+      "id": 2,
+      "agent_name": "Tahoe Venue Reminder",
+      "payload": "Chase Bob Ruiz (bob.ruiz@acme.example) about invoice #4471 if he hasn't paid.",
+      "start_time": "2026-11-13T10:00:00Z",
+      "next_trigger": "2026-11-13T10:00:00Z",
+      "recurrence_rule": null,
+      "timezone": "UTC",
+      "status": "active",
+      "last_error": null,
+      "created_at": "2026-11-11T03:18:00Z",
+      "updated_at": "2026-11-11T03:18:00Z",
+      "owner": "Tahoe Venue Reminder"
+    }
+  ],
+  "agents_final": {
+    "labels": [
+      "Alice Chen Offsite Email",
+      "Tahoe Venue Reminder",
+      "Bob Ruiz Overdue Invoice Draft"
+    ]
+  },
+  "log_files": [
+    "alice-chen-offsite-email.log",
+    "bob-ruiz-overdue-invoice-draft.log",
+    "gmail-execution-agent.log",
+    "tahoe-venue-reminder.log"
+  ],
+  "usage": [
+    {
+      "step": "U1",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 4408,
+      "completion_tokens": 633,
+      "seconds": 3.63
+    },
+    {
+      "step": "U1",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 4995,
+      "completion_tokens": 56,
+      "seconds": 0.92
+    },
+    {
+      "step": "U2",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 4631,
+      "completion_tokens": 283,
+      "seconds": 1.51
+    },
+    {
+      "step": "U2",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5285,
+      "completion_tokens": 1,
+      "seconds": 0.84
+    },
+    {
+      "step": "U2",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5001,
+      "completion_tokens": 429,
+      "seconds": 2.22
+    },
+    {
+      "step": "U2",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5427,
+      "completion_tokens": 374,
+      "seconds": 2.27
+    },
+    {
+      "step": "U2",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 4989,
+      "completion_tokens": 374,
+      "seconds": 2.16
+    },
+    {
+      "step": "U2",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5415,
+      "completion_tokens": 80,
+      "seconds": 1.02
+    },
+    {
+      "step": "U2",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5624,
+      "completion_tokens": 136,
+      "seconds": 1.21
+    },
+    {
+      "step": "U2",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5576,
+      "completion_tokens": 137,
+      "seconds": 1.38
+    },
+    {
+      "step": "U2",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5768,
+      "completion_tokens": 162,
+      "seconds": 1.28
+    },
+    {
+      "step": "U2",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5262,
+      "completion_tokens": 168,
+      "seconds": 1.36
+    },
+    {
+      "step": "U3",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5378,
+      "completion_tokens": 577,
+      "seconds": 2.99
+    },
+    {
+      "step": "U3",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 6040,
+      "completion_tokens": 44,
+      "seconds": 0.95
+    },
+    {
+      "step": "U3",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 4981,
+      "completion_tokens": 315,
+      "seconds": 1.84
+    },
+    {
+      "step": "U3",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5287,
+      "completion_tokens": 395,
+      "seconds": 2.23
+    },
+    {
+      "step": "U3",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5758,
+      "completion_tokens": 304,
+      "seconds": 2.48
+    },
+    {
+      "step": "U3",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5977,
+      "completion_tokens": 72,
+      "seconds": 1.01
+    },
+    {
+      "step": "U4",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5924,
+      "completion_tokens": 598,
+      "seconds": 3.14
+    },
+    {
+      "step": "U4",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 6631,
+      "completion_tokens": 1,
+      "seconds": 0.89
+    },
+    {
+      "step": "U4",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5012,
+      "completion_tokens": 260,
+      "seconds": 1.73
+    },
+    {
+      "step": "U4",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5397,
+      "completion_tokens": 220,
+      "seconds": 1.54
+    },
+    {
+      "step": "U4",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 6235,
+      "completion_tokens": 500,
+      "seconds": 2.56
+    },
+    {
+      "step": "U4",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 6956,
+      "completion_tokens": 120,
+      "seconds": 1.02
+    },
+    {
+      "step": "U5",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 6549,
+      "completion_tokens": 912,
+      "seconds": 4.7
+    },
+    {
+      "step": "U5",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 7374,
+      "completion_tokens": 1,
+      "seconds": 0.91
+    },
+    {
+      "step": "U5",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5765,
+      "completion_tokens": 277,
+      "seconds": 1.73
+    },
+    {
+      "step": "U5",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 6101,
+      "completion_tokens": 291,
+      "seconds": 1.94
+    },
+    {
+      "step": "U5",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 6949,
+      "completion_tokens": 344,
+      "seconds": 2.48
+    },
+    {
+      "step": "U6",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 7098,
+      "completion_tokens": 291,
+      "seconds": 1.72
+    },
+    {
+      "step": "U6",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 7623,
+      "completion_tokens": 37,
+      "seconds": 1.01
+    },
+    {
+      "step": "U6",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5453,
+      "completion_tokens": 125,
+      "seconds": 1.13
+    },
+    {
+      "step": "U6",
+      "role": "execution",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 5597,
+      "completion_tokens": 280,
+      "seconds": 1.86
+    },
+    {
+      "step": "U6",
+      "role": "interaction",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 7384,
+      "completion_tokens": 323,
+      "seconds": 2.21
+    }
+  ],
+  "summaries": 0,
+  "working_memory_has_summary": false
+}

@@ -5,6 +5,7 @@ from typing import List, Optional, Dict, Any
 
 from ...services.execution import get_execution_agent_logs
 from ...logging_config import logger
+from .report import REPORT_FORMAT
 
 
 # Load system prompt template from file
@@ -16,6 +17,7 @@ else:
     SYSTEM_PROMPT_TEMPLATE = """You are an execution agent responsible for completing specific tasks using available tools.
 
 Agent Name: {agent_name}
+Agent ID: {agent_id}
 Purpose: {agent_purpose}
 
 Instructions:
@@ -26,7 +28,9 @@ You have access to Gmail tools to help complete your tasks. When given instructi
 2. Use the appropriate tools to complete the task
 3. Provide clear status updates on your actions
 
-Be thorough, accurate, and efficient in your execution."""
+Be thorough, accurate, and efficient in your execution.
+
+{report_format}"""
 
 
 class ExecutionAgent:
@@ -36,16 +40,21 @@ class ExecutionAgent:
     def __init__(
         self,
         name: str,
-        conversation_limit: Optional[int] = None
+        conversation_limit: Optional[int] = None,
+        agent_id: Optional[str] = None,
     ):
         """
         Initialize an execution agent.
 
         Args:
-            name: Human-readable agent name (e.g., 'conversation with keith')
+            name: Human-readable agent label (e.g., 'conversation with keith')
             conversation_limit: Optional limit on past conversations to include (None = all)
+            agent_id: Registry identity; keys the agent's log. Legacy callers without
+                one fall back to the name.
         """
         self.name = name
+        self.agent_id = agent_id
+        self._log_key = agent_id or name
         self.conversation_limit = conversation_limit
         self._log_store = get_execution_agent_logs()
 
@@ -56,7 +65,9 @@ class ExecutionAgent:
 
         return SYSTEM_PROMPT_TEMPLATE.format(
             agent_name=self.name,
-            agent_purpose=agent_purpose
+            agent_id=self.agent_id or "(unregistered)",
+            agent_purpose=agent_purpose,
+            report_format=REPORT_FORMAT,
         )
 
     # Combine base system prompt with conversation history, applying conversation limits
@@ -70,7 +81,7 @@ class ExecutionAgent:
         base_prompt = self.build_system_prompt()
 
         # Load history transcript
-        transcript = self._log_store.load_transcript(self.name)
+        transcript = self._log_store.load_transcript(self._log_key)
 
         if transcript:
             # Apply conversation limit if needed
@@ -113,11 +124,11 @@ class ExecutionAgent:
     # Log the agent's final response to the execution log store
     def record_response(self, response: str) -> None:
         """Record agent's response to the log."""
-        self._log_store.record_agent_response(self.name, response)
+        self._log_store.record_agent_response(self._log_key, response)
 
     # Log tool invocation and results with truncated content for readability
     def record_tool_execution(self, tool_name: str, arguments: str, result: str) -> None:
         """Record tool execution details."""
-        self._log_store.record_action(self.name, f"Calling {tool_name} with: {arguments[:200]}")
+        self._log_store.record_action(self._log_key, f"Calling {tool_name} with: {arguments[:200]}")
         # Record the tool response
-        self._log_store.record_tool_response(self.name, tool_name, result[:500])
+        self._log_store.record_tool_response(self._log_key, tool_name, result[:500])

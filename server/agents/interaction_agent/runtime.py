@@ -2,10 +2,10 @@
 
 import json
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 from .agent import build_system_prompt, prepare_message_with_history
-from .tools import ToolResult, get_tool_schemas, handle_tool_call
+from .tools import ToolResult, get_tool_schemas, handle_tool_call, turn_scope
 from ...config import get_settings
 from ...services.conversation import get_conversation_log, get_working_memory_log
 from ...openrouter_client import request_chat_completion
@@ -137,6 +137,16 @@ class InteractionAgentRuntime:
         system_prompt: str,
         messages: List[Dict[str, Any]],
     ) -> _LoopSummary:
+        """One interaction turn. Dry-run tokens issued by create_agent are valid only inside it."""
+
+        with turn_scope():
+            return await self._run_turn(system_prompt, messages)
+
+    async def _run_turn(
+        self,
+        system_prompt: str,
+        messages: List[Dict[str, Any]],
+    ) -> _LoopSummary:
         """Iteratively query the LLM until it issues a final response."""
 
         summary = _LoopSummary()
@@ -163,15 +173,39 @@ class InteractionAgentRuntime:
             if not parsed_tool_calls:
                 break
 
+            seen_in_turn: Set[Tuple[str, str]] = set()
             for tool_call in parsed_tool_calls:
+                dedup_key = self._dedup_key(tool_call)
+                if dedup_key in seen_in_turn:
+                    # Identical call already ran in this reply: running it again would
+                    # double-dispatch (e.g. two runs of the same agent task). Still answer
+                    # the tool_call_id so the message sequence stays valid for the API.
+                    logger.warning(
+                        "Dropping duplicate tool call in the same model turn",
+                        extra={"tool": tool_call.name, "tool_call_id": tool_call.identifier},
+                    )
+                    messages.append({
+                        "role": "tool",
+                        "tool_call_id": tool_call.identifier or tool_call.name,
+                        "content": self._format_tool_result(
+                            tool_call,
+                            ToolResult(
+                                success=False,
+                                payload={"error": "Duplicate of an identical tool call earlier in this turn; skipped."},
+                            ),
+                        ),
+                    })
+                    continue
+                seen_in_turn.add(dedup_key)
+
                 summary.tool_names.append(tool_call.name)
 
-                if tool_call.name == "send_message_to_agent":
-                    agent_name = tool_call.arguments.get("agent_name")
-                    if isinstance(agent_name, str) and agent_name:
-                        summary.execution_agents.add(agent_name)
-
                 result = self._execute_tool(tool_call)
+
+                if tool_call.name in {"send_message_to_agent", "create_agent"} and result.success:
+                    agent_id = (result.payload or {}).get("agent_id")
+                    if isinstance(agent_id, str) and agent_id:
+                        summary.execution_agents.add(agent_id)
 
                 if result.user_message:
                     summary.user_messages.append(result.user_message)
@@ -229,6 +263,11 @@ class InteractionAgentRuntime:
         return message
 
     # Convert raw LLM tool calls into structured _ToolCall objects with validation
+    @staticmethod
+    def _dedup_key(tool_call: _ToolCall) -> Tuple[str, str]:
+        """Identity of a call within one turn; sort_keys makes key order irrelevant."""
+        return tool_call.name, json.dumps(tool_call.arguments, sort_keys=True, default=str)
+
     def _parse_tool_calls(self, raw_tool_calls: List[Dict[str, Any]]) -> List[_ToolCall]:
         """Normalize tool call payloads from the LLM."""
 
