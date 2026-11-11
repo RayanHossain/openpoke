@@ -83,7 +83,7 @@ The web app proxies API calls to the Python server using the values in `.env`, s
   - the agent's name and its short summary of progress are written by the AI itself
 - **Starting a new agent takes two steps.** The system first shows whether an existing agent already handles that person, thread or reminder, then a second step creates the agent. This makes accidental duplicates less likely, but doesn't rule them out (see the limitations below).
 - **The same action repeated twice in one reply only runs once.** For example, the same task won't be handed to the same agent twice.
-- **The default AI model was updated.** The original default (`anthropic/claude-sonnet-4`) has been retired, so the app now uses `anthropic/claude-sonnet-5.5`. Each model can be changed with an `OPENPOKE_*_MODEL` environment variable, e.g. `OPENPOKE_INTERACTION_AGENT_MODEL`.
+- **The default AI model was updated.** The original default (`anthropic/claude-sonnet-4`) has been retired. The app now defaults to Claude Haiku 5.5 (`anthropic/claude-haiku-5.5`), because the live results below were run on it; runs with Claude Sonnet 5.5 had problems through OpenRouter (rate limits on a new account). Each model can be changed with an `OPENPOKE_*_MODEL` environment variable, e.g. `OPENPOKE_INTERACTION_AGENT_MODEL=anthropic/claude-sonnet-5.5`.
 
 ### What this improves
 - **Follow-ups reach the right agent when they mention something recorded,** such as a person, an email thread, a draft or a reminder. "Did Alice reply?" goes back to the agent that emailed Alice, even if you word it differently. Before, rewording often created a brand-new agent that knew nothing about the earlier email. A vague follow-up that mentions none of these can still miss.
