@@ -71,6 +71,7 @@ Haiku = passes out of 3 runs. Sonnet = ✅/❌ for one run, with `*` meaning the
 
 | Need | File |
 |---|---|
+| **Demo: all 32 prompts, then old vs new diffs where they behaved differently** | [`demo-old-vs-new.md`](demo-old-vs-new.md) |
 | Why the old design failed, how the new one fixes it, and the full method | [Tests Detailed](tests-detailed.md) |
 | Haiku 3-run report, per-run transcripts, raw evidence | `evaluation-data/haiku-3-runs/` (`report.md`, `run*/transcript.md`, `run*/evidence.json`) |
 | Sonnet spot check | `evaluation-data/sonnet-spot-check/` |

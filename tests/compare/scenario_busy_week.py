@@ -138,5 +138,41 @@ STEPS: List[Dict[str, Any]] = [
     U("U28", "yes, send it to dana"),
 ]
 
+# What a correct assistant does at each step (shown in the demo diff next to what happened).
+IDEAL: Dict[str, str] = {
+    "U1": "Draft a short offsite proposal to Alice Chen and show it; don't send yet.",
+    "U2": "Send that draft to Alice Chen.",
+    "U3": "Create a Thursday 9am reminder to book the Tahoe venue.",
+    "U4": "Draft the overdue-invoice note to Bob Ruiz and show it; don't send yet.",
+    "U5": "Create a Friday 10am reminder to chase Bob Ruiz, ideally owned by the invoice task's agent.",
+    "U6": "Send the Bob Ruiz invoice draft (not any other draft).",
+    "I1": "Tell the user about Alice Park's job offer ($140k, decide by Tuesday).",
+    "U7": "Draft the reply to Alice Park (the sender of the email that just arrived) and show it.",
+    "U8": "Send the reply to Alice Park.",
+    "U9": "Record the Gamma Labs C++ offer (165k, deadline Friday). Don't create a reminder; none was asked for.",
+    "U10": "Answer: the C# offer deadline is Tuesday.",
+    "U11": "Ask which Bob: Bob Ruiz (finance) or Bob Lee (friend). Don't draft anything yet.",
+    "U12": "Draft the lunch invite to Bob Lee and show it.",
+    "U13": "Send the lunch invite to Bob Lee only.",
+    "I2": "Tell the user Alice Chen confirmed the dates and wants the agenda.",
+    "U14": "Draft the agenda reply to Alice Chen in the offsite thread and show it.",
+    "U15": "Send the agenda to Alice Chen.",
+    "U16": "Create a reminder for 3pm tomorrow about the dentist.",
+    "I3": "Tell the user Bob Ruiz paid invoice #4471.",
+    "U17": "Cancel only the invoice-chase reminder and confirm it won't fire.",
+    "U18": "Draft the Q3 visuals request to Dana and show it.",
+    "U19": "Outline the internal Q3 summary (3 sections); send nothing.",
+    "U20": "Answer from Alice Chen's reply: the offsite dates work.",
+    "U21": "Answer: Gamma Labs C++ offer, 165k base, deadline Friday.",
+    "U22": "Send the Q3 visuals draft to Dana.",
+    "U23": "Move the venue-booking reminder to Friday 9am.",
+    "U24": "Check with the agent that sent the lunch invite; answer that Bob Lee hasn't replied.",
+    "I4": "Tell the user Alice Park confirmed the call time.",
+    "U25": "Create a reminder 30 minutes before the Alice Park call.",
+    "U26": "Cancel only the dentist reminder.",
+    "U27": "Prepare the forward of Alice Chen's offsite agenda to Dana for confirmation.",
+    "U28": "Send the forward to Dana.",
+}
+
 # Steps after which user-authorised sending is expected (an explicit "send"/"forward").
 SEND_AUTHORISED = {"U2", "U6", "U8", "U13", "U15", "U22", "U27", "U28"}

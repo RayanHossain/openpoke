@@ -7,6 +7,7 @@ This document explains how the change from name-based routing to ID-based routin
 - **Old version:** `63d7a37` (OpenPoke as originally written)
 - **New version:** `c3ca784` on `feat/registry-routing` (D-004 steps 1-8 plus one follow-up fix)
 - **Tooling:** `tests/` (deterministic suites) and `tests/compare/` (live comparison), on `compare/live-busy-week`
+- **Demo walkthrough (old vs new, prompt by prompt):** [`demo-old-vs-new.md`](demo-old-vs-new.md)
 - **Short version:** [Tests Summary](tests-summary.md). **Raw reports, transcripts and evidence:** [`evaluation-data/`](evaluation-data/)
 
 ## 1. The problem in one paragraph
