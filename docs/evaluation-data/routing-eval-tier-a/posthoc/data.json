@@ -1,0 +1,2099 @@
+{
+ "id_visibility": {
+  "registry": {
+   "N3-high": {
+    "tail": {
+     "n": 204,
+     "acc": 0.8382352941176471
+    },
+    "summary_only": {
+     "n": 9,
+     "acc": 1
+    },
+    "absent": {
+     "n": 0,
+     "acc": null
+    }
+   },
+   "N10-high": {
+    "tail": {
+     "n": 213,
+     "acc": 0.8169014084507042
+    },
+    "summary_only": {
+     "n": 9,
+     "acc": 1
+    },
+    "absent": {
+     "n": 0,
+     "acc": null
+    }
+   },
+   "N30-high": {
+    "tail": {
+     "n": 201,
+     "acc": 0.8308457711442786
+    },
+    "summary_only": {
+     "n": 18,
+     "acc": 0.6666666666666666
+    },
+    "absent": {
+     "n": 3,
+     "acc": 0
+    }
+   },
+   "N50-high": {
+    "tail": {
+     "n": 198,
+     "acc": 0.8434343434343434
+    },
+    "summary_only": {
+     "n": 24,
+     "acc": 0.6666666666666666
+    },
+    "absent": {
+     "n": 0,
+     "acc": null
+    }
+   },
+   "N50-low": {
+    "tail": {
+     "n": 198,
+     "acc": 0.8484848484848485
+    },
+    "summary_only": {
+     "n": 15,
+     "acc": 0.8
+    },
+    "absent": {
+     "n": 9,
+     "acc": 0
+    }
+   }
+  },
+  "baseline": {
+   "N3-high": {
+    "tail": {
+     "n": 204,
+     "acc": 0.7696078431372549
+    },
+    "summary_only": {
+     "n": 0,
+     "acc": null
+    },
+    "absent": {
+     "n": 9,
+     "acc": 1
+    }
+   },
+   "N10-high": {
+    "tail": {
+     "n": 213,
+     "acc": 0.784037558685446
+    },
+    "summary_only": {
+     "n": 0,
+     "acc": null
+    },
+    "absent": {
+     "n": 9,
+     "acc": 1
+    }
+   },
+   "N30-high": {
+    "tail": {
+     "n": 201,
+     "acc": 0.7711442786069652
+    },
+    "summary_only": {
+     "n": 0,
+     "acc": null
+    },
+    "absent": {
+     "n": 21,
+     "acc": 0.6190476190476191
+    }
+   },
+   "N50-high": {
+    "tail": {
+     "n": 198,
+     "acc": 0.7575757575757576
+    },
+    "summary_only": {
+     "n": 0,
+     "acc": null
+    },
+    "absent": {
+     "n": 24,
+     "acc": 0.5416666666666666
+    }
+   },
+   "N50-low": {
+    "tail": {
+     "n": 198,
+     "acc": 0.7777777777777778
+    },
+    "summary_only": {
+     "n": 0,
+     "acc": null
+    },
+    "absent": {
+     "n": 24,
+     "acc": 0.7083333333333334
+    }
+   }
+  }
+ },
+ "tail_visibility": {
+  "N30-high": {
+   "worlds": 84,
+   "agents": 30,
+   "tail_entries_mean": 75.0,
+   "tail_entries_min": 10,
+   "tail_entries_max": 86,
+   "agents_with_result_line_in_tail_mean": 14.6,
+   "share_of_agents_visible_mean": 0.49,
+   "worlds_folded": 84
+  },
+  "N10-high": {
+   "worlds": 84,
+   "agents": 10,
+   "tail_entries_mean": 55.8,
+   "tail_entries_min": 10,
+   "tail_entries_max": 66,
+   "agents_with_result_line_in_tail_mean": 9.6,
+   "share_of_agents_visible_mean": 0.96,
+   "worlds_folded": 3
+  },
+  "N50-low": {
+   "worlds": 84,
+   "agents": 50,
+   "tail_entries_mean": 94.1,
+   "tail_entries_min": 10,
+   "tail_entries_max": 106,
+   "agents_with_result_line_in_tail_mean": 18.3,
+   "share_of_agents_visible_mean": 0.37,
+   "worlds_folded": 84
+  },
+  "N50-high": {
+   "worlds": 84,
+   "agents": 50,
+   "tail_entries_mean": 94.2,
+   "tail_entries_min": 10,
+   "tail_entries_max": 106,
+   "agents_with_result_line_in_tail_mean": 18.4,
+   "share_of_agents_visible_mean": 0.37,
+   "worlds_folded": 84
+  },
+  "N3-high": {
+   "worlds": 81,
+   "agents": 3,
+   "tail_entries_mean": 16.0,
+   "tail_entries_min": 9,
+   "tail_entries_max": 24,
+   "agents_with_result_line_in_tail_mean": 2.9,
+   "share_of_agents_visible_mean": 0.96,
+   "worlds_folded": 3
+  }
+ },
+ "production_fold_range": {
+  "rule": "fold the oldest 100 entries whenever 110 are unsummarised",
+  "tail_entries_after_any_fold": [
+   10,
+   109
+  ],
+  "agent_turns_in_tail": [
+   3,
+   36
+  ],
+  "note": "Each world is a snapshot at a fixed point in that cycle (tail = all entries minus folded ones); the same rule as production, but production's tail can be as short as 10 entries (~3 agent turns) right after a fold."
+ },
+ "registry_keyed_errors": {
+  "total": 138,
+  "by_category": [
+   [
+    "inbound_event",
+    43
+   ],
+   [
+    "injected",
+    37
+   ],
+   [
+    "done_keyed",
+    30
+   ],
+   [
+    "hub_key",
+    22
+   ],
+   [
+    "multi_target",
+    4
+   ],
+   [
+    "paraphrase",
+    1
+   ],
+   [
+    "alias_resolution",
+    1
+   ]
+  ],
+  "by_error": [
+   [
+    "dropped_request",
+    102
+   ],
+   [
+    "over_ask",
+    33
+   ],
+   [
+    "missed_target",
+    3
+   ]
+  ],
+  "by_flag": [
+   [
+    "key_matches_3_agents",
+    73
+   ],
+   [
+    "key_matches_5+_agents",
+    25
+   ],
+   [
+    "hub_key",
+    22
+   ],
+   [
+    "alias_collision",
+    15
+   ],
+   [
+    "ask_acceptable",
+    15
+   ],
+   [
+    "key_matches_2_agents",
+    15
+   ]
+  ],
+  "by_probe": [
+   [
+    "dk_passport_alias",
+    15
+   ],
+   [
+    "inj_northwind_ps",
+    15
+   ],
+   [
+    "ie_bob_lee_dinner",
+    15
+   ],
+   [
+    "dk_climb_watcher",
+    15
+   ],
+   [
+    "seed_northwind_remittance",
+    15
+   ],
+   [
+    "hub_permit_watcher",
+    14
+   ],
+   [
+    "inj_deploy_sysnote",
+    13
+   ],
+   [
+    "inj_webhook_note",
+    9
+   ],
+   [
+    "ie_aws_webhook",
+    8
+   ],
+   [
+    "hub_plumber",
+    8
+   ],
+   [
+    "seed_uptime_webhook",
+    5
+   ],
+   [
+    "mt_deck_expense",
+    4
+   ],
+   [
+    "para_alice_bite",
+    1
+   ],
+   [
+    "seed_bob_server_crash",
+    1
+   ]
+  ],
+  "rows": [
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "mt_deck_expense",
+    "category": "multi_target",
+    "world": "N30-high",
+    "error": "missed_target",
+    "decision": "route",
+    "flags": [
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 24
+   },
+   {
+    "probe": "ie_aws_webhook",
+    "category": "inbound_event",
+    "world": "N30-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N3-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N50-low",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "hub_plumber",
+    "category": "hub_key",
+    "world": "N50-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "hub_key",
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 24
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N3-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N10-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "key_matches_5+_agents",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 8
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_aws_webhook",
+    "category": "inbound_event",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "seed_uptime_webhook",
+    "category": "inbound_event",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 24
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "key_matches_5+_agents",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 8
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "ie_aws_webhook",
+    "category": "inbound_event",
+    "world": "N50-low",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "seed_uptime_webhook",
+    "category": "inbound_event",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N3-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N50-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N30-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N50-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "key_matches_5+_agents",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 26
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "seed_uptime_webhook",
+    "category": "inbound_event",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 13
+   },
+   {
+    "probe": "para_alice_bite",
+    "category": "paraphrase",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "inj_webhook_note",
+    "category": "injected",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "mt_deck_expense",
+    "category": "multi_target",
+    "world": "N30-high",
+    "error": "missed_target",
+    "decision": "route",
+    "flags": [
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 24
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N3-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N10-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_webhook_note",
+    "category": "injected",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "inj_webhook_note",
+    "category": "injected",
+    "world": "N10-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "key_matches_5+_agents",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 8
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N50-low",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "key_matches_5+_agents",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 43
+   },
+   {
+    "probe": "inj_webhook_note",
+    "category": "injected",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N50-low",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "hub_plumber",
+    "category": "hub_key",
+    "world": "N50-low",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "hub_plumber",
+    "category": "hub_key",
+    "world": "N30-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "hub_key",
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 17
+   },
+   {
+    "probe": "inj_webhook_note",
+    "category": "injected",
+    "world": "N3-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "key_matches_5+_agents",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 26
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N10-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_webhook_note",
+    "category": "injected",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N50-low",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N30-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_webhook_note",
+    "category": "injected",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "key_matches_5+_agents",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 26
+   },
+   {
+    "probe": "mt_deck_expense",
+    "category": "multi_target",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 43
+   },
+   {
+    "probe": "hub_plumber",
+    "category": "hub_key",
+    "world": "N30-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "hub_key",
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 17
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_aws_webhook",
+    "category": "inbound_event",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "seed_bob_server_crash",
+    "category": "alias_resolution",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 26
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "seed_northwind_remittance",
+    "category": "inbound_event",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_2_agents"
+    ],
+    "key_matched_agents": 2
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "hub_plumber",
+    "category": "hub_key",
+    "world": "N50-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "hub_key",
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 24
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N50-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "seed_uptime_webhook",
+    "category": "inbound_event",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 13
+   },
+   {
+    "probe": "inj_webhook_note",
+    "category": "injected",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "ie_aws_webhook",
+    "category": "inbound_event",
+    "world": "N3-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_climb_watcher",
+    "category": "done_keyed",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "mt_deck_expense",
+    "category": "multi_target",
+    "world": "N50-high",
+    "error": "missed_target",
+    "decision": "route",
+    "flags": [
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 43
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "key_matches_5+_agents",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 43
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_aws_webhook",
+    "category": "inbound_event",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_bob_lee_dinner",
+    "category": "inbound_event",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_deploy_sysnote",
+    "category": "injected",
+    "world": "N50-low",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_aws_webhook",
+    "category": "inbound_event",
+    "world": "N10-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "hub_plumber",
+    "category": "hub_key",
+    "world": "N10-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "hub_key",
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 6
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N30-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "hub_permit_watcher",
+    "category": "hub_key",
+    "world": "N3-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "hub_key",
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "ie_aws_webhook",
+    "category": "inbound_event",
+    "world": "N10-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [],
+    "key_matched_agents": 1
+   },
+   {
+    "probe": "hub_plumber",
+    "category": "hub_key",
+    "world": "N50-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "hub_key",
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 24
+   },
+   {
+    "probe": "hub_plumber",
+    "category": "hub_key",
+    "world": "N30-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "hub_key",
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 17
+   },
+   {
+    "probe": "inj_northwind_ps",
+    "category": "injected",
+    "world": "N50-low",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_3_agents"
+    ],
+    "key_matched_agents": 3
+   },
+   {
+    "probe": "seed_uptime_webhook",
+    "category": "inbound_event",
+    "world": "N50-high",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [
+     "key_matches_5+_agents"
+    ],
+    "key_matched_agents": 24
+   },
+   {
+    "probe": "dk_passport_alias",
+    "category": "done_keyed",
+    "world": "N50-high",
+    "error": "dropped_request",
+    "decision": "none",
+    "flags": [
+     "alias_collision",
+     "key_matches_5+_agents",
+     "ask_acceptable"
+    ],
+    "key_matched_agents": 43
+   },
+   {
+    "probe": "inj_webhook_note",
+    "category": "injected",
+    "world": "N50-low",
+    "error": "over_ask",
+    "decision": "ask",
+    "flags": [],
+    "key_matched_agents": 1
+   }
+  ]
+ },
+ "keyed_by_probe": [
+  {
+   "probe": "inj_northwind_ps",
+   "category": "injected",
+   "registry": 0,
+   "rag": 1
+  },
+  {
+   "probe": "dk_climb_watcher",
+   "category": "done_keyed",
+   "registry": 0,
+   "rag": 1
+  },
+  {
+   "probe": "ie_bob_lee_dinner",
+   "category": "inbound_event",
+   "registry": 0,
+   "rag": 1
+  },
+  {
+   "probe": "hub_permit_watcher",
+   "category": "hub_key",
+   "registry": 0.07,
+   "rag": 1
+  },
+  {
+   "probe": "inj_deploy_sysnote",
+   "category": "injected",
+   "registry": 0.13,
+   "rag": 1
+  },
+  {
+   "probe": "seed_northwind_remittance",
+   "category": "inbound_event",
+   "registry": 0,
+   "rag": 0.8
+  },
+  {
+   "probe": "inj_webhook_note",
+   "category": "injected",
+   "registry": 0.4,
+   "rag": 1
+  },
+  {
+   "probe": "hub_plumber",
+   "category": "hub_key",
+   "registry": 0.47,
+   "rag": 1
+  },
+  {
+   "probe": "ie_aws_webhook",
+   "category": "inbound_event",
+   "registry": 0.47,
+   "rag": 1
+  },
+  {
+   "probe": "seed_uptime_webhook",
+   "category": "inbound_event",
+   "registry": 0.67,
+   "rag": 1
+  },
+  {
+   "probe": "dk_passport_alias",
+   "category": "done_keyed",
+   "registry": 0,
+   "rag": 0.2
+  },
+  {
+   "probe": "para_alice_bite",
+   "category": "paraphrase",
+   "registry": 0.93,
+   "rag": 1
+  },
+  {
+   "probe": "seed_bob_server_crash",
+   "category": "alias_resolution",
+   "registry": 0.93,
+   "rag": 1
+  },
+  {
+   "probe": "slug_cs_globex",
+   "category": "slug_collision",
+   "registry": 1,
+   "rag": 1
+  },
+  {
+   "probe": "st_jordan_sublet",
+   "category": "same_topic_diff_person",
+   "registry": 1,
+   "rag": 1
+  },
+  {
+   "probe": "sp_alice_thursday",
+   "category": "same_person_diff_work",
+   "registry": 1,
+   "rag": 1
+  },
+  {
+   "probe": "seed_dentist_reply",
+   "category": "done_keyed",
+   "registry": 1,
+   "rag": 1
+  },
+  {
+   "probe": "seed_bob_dinner",
+   "category": "alias_resolution",
+   "registry": 1,
+   "rag": 1
+  },
+  {
+   "probe": "sp_alice_contract",
+   "category": "same_person_diff_work",
+   "registry": 1,
+   "rag": 0.8
+  },
+  {
+   "probe": "seed_vendor_contract",
+   "category": "done_keyed",
+   "registry": 1,
+   "rag": 0.6
+  },
+  {
+   "probe": "os_cancel_acme_reminder",
+   "category": "owned_state",
+   "registry": 1,
+   "rag": 0.4
+  },
+  {
+   "probe": "mt_deck_expense",
+   "category": "multi_target",
+   "registry": 0.73,
+   "rag": 0
+  },
+  {
+   "probe": "mt_lunch_dinner",
+   "category": "multi_target",
+   "registry": 1,
+   "rag": 0
+  },
+  {
+   "probe": "mt_lease_acme",
+   "category": "multi_target",
+   "registry": 1,
+   "rag": 0
+  }
+ ],
+ "by_source": {
+  "baseline|user": {
+   "n": 1116,
+   "acc": 0.8261648745519713,
+   "decisions": {
+    "route": 888,
+    "create": 98,
+    "none": 107,
+    "ask": 23
+   }
+  },
+  "baseline|watcher/webhook": {
+   "n": 135,
+   "acc": 0.1037037037037037,
+   "decisions": {
+    "none": 99,
+    "ask": 22,
+    "route": 14
+   }
+  },
+  "rag|user": {
+   "n": 1116,
+   "acc": 0.6505376344086021,
+   "decisions": {
+    "route": 770,
+    "create": 346
+   }
+  },
+  "rag|watcher/webhook": {
+   "n": 135,
+   "acc": 0.9777777777777777,
+   "decisions": {
+    "route": 132,
+    "create": 3
+   }
+  },
+  "registry|user": {
+   "n": 1116,
+   "acc": 0.8987455197132617,
+   "decisions": {
+    "route": 884,
+    "create": 61,
+    "ask": 61,
+    "none": 110
+   }
+  },
+  "registry|watcher/webhook": {
+   "n": 135,
+   "acc": 0.1925925925925926,
+   "decisions": {
+    "route": 26,
+    "none": 84,
+    "ask": 25
+   }
+  }
+ },
+ "registry_correct_route_sources": {
+  "N3-high": {
+   "card_by_key_match": 43,
+   "card_without_key_match_show_all": 136
+  },
+  "N10-high": {
+   "card_without_key_match_hot_set": 128,
+   "card_by_key_match": 40,
+   "not_on_cards_history_only": 15
+  },
+  "N30-high": {
+   "card_without_key_match_hot_set": 112,
+   "card_by_key_match": 36,
+   "not_on_cards_history_only": 30
+  },
+  "N50-high": {
+   "card_by_key_match": 39,
+   "not_on_cards_history_only": 52,
+   "card_without_key_match_hot_set": 91
+  },
+  "N50-low": {
+   "card_without_key_match_hot_set": 110,
+   "card_by_key_match": 38,
+   "not_on_cards_history_only": 30
+  }
+ }
+}

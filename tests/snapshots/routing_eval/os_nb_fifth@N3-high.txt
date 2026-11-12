@@ -1,0 +1,185 @@
+# world os_nb_fifth@N3-high (seed 809347300); probe message source=user
+=== baseline: roster.json ===
+[
+  "Acme Retainer Invoice",
+  "Northwind Monthly Invoice",
+  "Holiday Gift List"
+]
+=== baseline: IA user message ===
+<conversation_history>
+<user_message timestamp="2026-08-13 15:00:00">Invoice Acme for the retainer on the 5th of every month</user_message>
+<agent_message timestamp="2026-08-13 15:00:00">[SUCCESS] Acme Retainer Invoice: Set reminder t_8 for the monthly Acme retainer invoice.</agent_message>
+<poke_reply timestamp="2026-08-13 15:00:00">Update: Set reminder t_8 for the monthly Acme retainer invoice.</poke_reply>
+<user_message timestamp="2026-09-02 15:00:00">Send Northwind their invoice on the 1st of every month</user_message>
+<agent_message timestamp="2026-09-02 15:00:00">[SUCCESS] Northwind Monthly Invoice: Set reminder t_7 for the monthly Northwind invoice.</agent_message>
+<poke_reply timestamp="2026-09-02 15:00:00">Update: Set reminder t_7 for the monthly Northwind invoice.</poke_reply>
+<user_message timestamp="2026-11-01 15:00:00">Draft November invoice INV-2291 for Northwind</user_message>
+<agent_message timestamp="2026-11-01 15:00:00">[SUCCESS] Northwind Monthly Invoice: Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).</agent_message>
+<poke_reply timestamp="2026-11-01 15:00:00">Update: Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).</poke_reply>
+<user_message timestamp="2026-11-01 17:24:00">Send the draft about the monthly Northwind invoice</user_message>
+<agent_message timestamp="2026-11-01 17:24:00">[SUCCESS] Northwind Monthly Invoice: Sent the email about the monthly Northwind invoice.</agent_message>
+<poke_reply timestamp="2026-11-01 17:24:00">Update: Sent the email about the monthly Northwind invoice.</poke_reply>
+<user_message timestamp="2026-11-05 15:00:00">Draft retainer invoice INV-A-118 for Acme</user_message>
+<agent_message timestamp="2026-11-05 15:00:00">[SUCCESS] Acme Retainer Invoice: Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).</agent_message>
+<poke_reply timestamp="2026-11-05 15:00:00">Update: Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).</poke_reply>
+<user_message timestamp="2026-11-05 17:24:00">Send the draft about the monthly Acme retainer invoice</user_message>
+<agent_message timestamp="2026-11-05 17:24:00">[SUCCESS] Acme Retainer Invoice: Sent the email about the monthly Acme retainer invoice.</agent_message>
+<poke_reply timestamp="2026-11-05 17:24:00">Update: Sent the email about the monthly Acme retainer invoice.</poke_reply>
+<user_message timestamp="2026-11-11 12:07:12">Start a holiday gift list for the family</user_message>
+<agent_message timestamp="2026-11-11 12:07:12">[SUCCESS] Holiday Gift List: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.</agent_message>
+<poke_reply timestamp="2026-11-11 12:07:12">Update: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.</poke_reply>
+<user_message timestamp="2026-11-11 14:31:12">Any news on the family holiday gift list?</user_message>
+<agent_message timestamp="2026-11-11 14:31:12">[SUCCESS] Holiday Gift List: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.</agent_message>
+<poke_reply timestamp="2026-11-11 14:31:12">Update: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.</poke_reply>
+</conversation_history>
+
+<active_agents>
+<agent name="Acme Retainer Invoice" />
+<agent name="Northwind Monthly Invoice" />
+<agent name="Holiday Gift List" />
+</active_agents>
+
+<new_user_message>
+stop pinging me on the 5th about billing
+</new_user_message>
+=== registry: IA user message ===
+<conversation_history>
+<user_message timestamp="2026-08-13 15:00:00">Invoice Acme for the retainer on the 5th of every month</user_message>
+<agent_message timestamp="2026-08-13 15:00:00">[SUCCESS] ea_1 (Acme Retainer Invoice): Set reminder t_8 for the monthly Acme retainer invoice.</agent_message>
+<poke_reply timestamp="2026-08-13 15:00:00">Update: Set reminder t_8 for the monthly Acme retainer invoice.</poke_reply>
+<user_message timestamp="2026-09-02 15:00:00">Send Northwind their invoice on the 1st of every month</user_message>
+<agent_message timestamp="2026-09-02 15:00:00">[SUCCESS] ea_2 (Northwind Monthly Invoice): Set reminder t_7 for the monthly Northwind invoice.</agent_message>
+<poke_reply timestamp="2026-09-02 15:00:00">Update: Set reminder t_7 for the monthly Northwind invoice.</poke_reply>
+<user_message timestamp="2026-11-01 15:00:00">Draft November invoice INV-2291 for Northwind</user_message>
+<agent_message timestamp="2026-11-01 15:00:00">[SUCCESS] ea_2 (Northwind Monthly Invoice): Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).</agent_message>
+<poke_reply timestamp="2026-11-01 15:00:00">Update: Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).</poke_reply>
+<user_message timestamp="2026-11-01 17:24:00">Send the draft about the monthly Northwind invoice</user_message>
+<agent_message timestamp="2026-11-01 17:24:00">[SUCCESS] ea_2 (Northwind Monthly Invoice): Sent the email about the monthly Northwind invoice.</agent_message>
+<poke_reply timestamp="2026-11-01 17:24:00">Update: Sent the email about the monthly Northwind invoice.</poke_reply>
+<user_message timestamp="2026-11-05 15:00:00">Draft retainer invoice INV-A-118 for Acme</user_message>
+<agent_message timestamp="2026-11-05 15:00:00">[SUCCESS] ea_1 (Acme Retainer Invoice): Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).</agent_message>
+<poke_reply timestamp="2026-11-05 15:00:00">Update: Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).</poke_reply>
+<user_message timestamp="2026-11-05 17:24:00">Send the draft about the monthly Acme retainer invoice</user_message>
+<agent_message timestamp="2026-11-05 17:24:00">[SUCCESS] ea_1 (Acme Retainer Invoice): Sent the email about the monthly Acme retainer invoice.</agent_message>
+<poke_reply timestamp="2026-11-05 17:24:00">Update: Sent the email about the monthly Acme retainer invoice.</poke_reply>
+<user_message timestamp="2026-11-11 12:07:12">Start a holiday gift list for the family</user_message>
+<agent_message timestamp="2026-11-11 12:07:12">[SUCCESS] ea_3 (Holiday Gift List): Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.</agent_message>
+<poke_reply timestamp="2026-11-11 12:07:12">Update: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.</poke_reply>
+<user_message timestamp="2026-11-11 14:31:12">Any news on the family holiday gift list?</user_message>
+<agent_message timestamp="2026-11-11 14:31:12">[SUCCESS] ea_3 (Holiday Gift List): Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.</agent_message>
+<poke_reply timestamp="2026-11-11 14:31:12">Update: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.</poke_reply>
+</conversation_history>
+
+<active_agents>
+ea_3 | Holiday Gift List | - | open: none | 28m | Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.
+ea_1 | Acme Retainer Invoice | ap@acme.example | open: trigger t_8 | 5d waiting_external | Sends the monthly Acme retainer invoice (t_8). INV-A-118 was sent an…
+ea_2 | Northwind Monthly Invoice | accounts@northwind.exam… | open: trigger t_7 | 9d waiting_external | Sends Northwind's invoice on the 1st (t_7) and chases p…
+</active_agents>
+
+<new_user_message>
+stop pinging me on the 5th about billing
+</new_user_message>
+=== rag as_built: roster dicts ===
+[
+  {
+    "agent_id": "ea_1",
+    "name": "Acme Retainer Invoice",
+    "topic": "Sends the monthly Acme retainer invoice (t_8). INV-A-118 was sent and awaits payment from Acme AP.",
+    "active_tasks": [
+      "trigger t_8"
+    ],
+    "past_action_notes": [
+      "Set reminder t_8 for the monthly Acme retainer invoice.",
+      "Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).",
+      "Sent the email about the monthly Acme retainer invoice."
+    ]
+  },
+  {
+    "agent_id": "ea_2",
+    "name": "Northwind Monthly Invoice",
+    "topic": "Sends Northwind's invoice on the 1st (t_7) and chases payment. November invoice INV-2291 is outstanding.",
+    "active_tasks": [
+      "trigger t_7"
+    ],
+    "past_action_notes": [
+      "Set reminder t_7 for the monthly Northwind invoice.",
+      "Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).",
+      "Sent the email about the monthly Northwind invoice."
+    ]
+  },
+  {
+    "agent_id": "ea_3",
+    "name": "Holiday Gift List",
+    "topic": "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.",
+      "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen."
+    ]
+  }
+]
+=== rag as_built: query ===
+stop pinging me on the 5th about billing
+=== rag parity: roster dicts ===
+[
+  {
+    "agent_id": "ea_1",
+    "name": "Acme Retainer Invoice",
+    "topic": "Sends the monthly Acme retainer invoice (t_8). INV-A-118 was sent and awaits payment from Acme AP. | status: waiting_external | last active: 5d ago | keys: address:ap@acme.example, draft:r-inv-a118, thread:th_inv_a118, trigger:8",
+    "active_tasks": [
+      "trigger t_8"
+    ],
+    "past_action_notes": [
+      "Set reminder t_8 for the monthly Acme retainer invoice.",
+      "Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).",
+      "Sent the email about the monthly Acme retainer invoice."
+    ]
+  },
+  {
+    "agent_id": "ea_2",
+    "name": "Northwind Monthly Invoice",
+    "topic": "Sends Northwind's invoice on the 1st (t_7) and chases payment. November invoice INV-2291 is outstanding. | status: waiting_external | last active: 9d ago | keys: address:accounts@northwind.example, draft:r-inv-2291, thread:th_inv_2291, trigger:7",
+    "active_tasks": [
+      "trigger t_7"
+    ],
+    "past_action_notes": [
+      "Set reminder t_7 for the monthly Northwind invoice.",
+      "Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).",
+      "Sent the email about the monthly Northwind invoice."
+    ]
+  },
+  {
+    "agent_id": "ea_3",
+    "name": "Holiday Gift List",
+    "topic": "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen. | status: active | last active: 28m ago | keys: none",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.",
+      "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen."
+    ]
+  }
+]
+=== rag parity: query ===
+Recent conversation:
+user: Send the draft about the monthly Northwind invoice
+agent result: Sent the email about the monthly Northwind invoice.
+assistant: Update: Sent the email about the monthly Northwind invoice.
+
+user: Draft retainer invoice INV-A-118 for Acme
+agent result: Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).
+assistant: Update: Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).
+
+user: Send the draft about the monthly Acme retainer invoice
+agent result: Sent the email about the monthly Acme retainer invoice.
+assistant: Update: Sent the email about the monthly Acme retainer invoice.
+
+user: Start a holiday gift list for the family
+agent result: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.
+assistant: Update: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.
+
+user: Any news on the family holiday gift list?
+agent result: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.
+assistant: Update: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.
+
+New message:
+stop pinging me on the 5th about billing

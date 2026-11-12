@@ -1,0 +1,18 @@
+{
+ "batch": "main",
+ "jobs": 3753,
+ "done": 3753,
+ "worker_exit_codes": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "harness_errors": 0,
+ "cost_usd": 7.0316
+}

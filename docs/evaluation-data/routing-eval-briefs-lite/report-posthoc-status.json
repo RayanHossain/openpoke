@@ -1,0 +1,775 @@
+{
+ "label": "POST-HOC: model-written briefs from scripted histories + model-reported statuses",
+ "arms": {
+  "registry": {
+   "scripted": {
+    "probes": 84,
+    "accuracy": 0.8214285714285714,
+    "ci95": [
+     0.7499999999999999,
+     0.8928571428571429
+    ],
+    "preferred": 0.8214285714285714,
+    "severity_per_decision": 0.6309523809523809,
+    "flip_rate": 0.14285714285714285,
+    "groups": {
+     "keyed": {
+      "probes": 24,
+      "accuracy": 0.6388888888888888,
+      "ci95": [
+       0.4583333333333333,
+       0.8194444444444443
+      ]
+     },
+     "keyless": {
+      "probes": 50,
+      "accuracy": 0.9133333333333333,
+      "ci95": [
+       0.84,
+       0.9733333333333334
+      ]
+     },
+     "state_bearing": {
+      "probes": 9,
+      "accuracy": 1,
+      "ci95": [
+       1.0,
+       1.0
+      ]
+     },
+     "ambiguous": {
+      "probes": 12,
+      "accuracy": 0.6944444444444444,
+      "ci95": [
+       0.47222222222222215,
+       0.8888888888888888
+      ]
+     }
+    }
+   },
+   "model_brief": {
+    "probes": 84,
+    "accuracy": 0.8452380952380952,
+    "ci95": [
+     0.7777777777777777,
+     0.9126984126984128
+    ],
+    "preferred": 0.8293650793650794,
+    "severity_per_decision": 0.5238095238095238,
+    "flip_rate": 0.15476190476190477,
+    "groups": {
+     "keyed": {
+      "probes": 24,
+      "accuracy": 0.6388888888888888,
+      "ci95": [
+       0.4444444444444445,
+       0.8333333333333334
+      ]
+     },
+     "keyless": {
+      "probes": 50,
+      "accuracy": 0.9266666666666666,
+      "ci95": [
+       0.8533333333333334,
+       0.98
+      ]
+     },
+     "state_bearing": {
+      "probes": 9,
+      "accuracy": 0.9629629629629629,
+      "ci95": [
+       0.8888888888888888,
+       1.0
+      ]
+     },
+     "ambiguous": {
+      "probes": 12,
+      "accuracy": 0.8055555555555556,
+      "ci95": [
+       0.611111111111111,
+       0.9444444444444443
+      ]
+     }
+    }
+   },
+   "model_brief_status": {
+    "probes": 84,
+    "accuracy": 0.7896825396825397,
+    "ci95": [
+     0.7063492063492063,
+     0.8650793650793651
+    ],
+    "preferred": 0.7817460317460317,
+    "severity_per_decision": 0.7301587301587301,
+    "flip_rate": 0.15476190476190477,
+    "groups": {
+     "keyed": {
+      "probes": 24,
+      "accuracy": 0.5972222222222222,
+      "ci95": [
+       0.4166666666666666,
+       0.8055555555555555
+      ]
+     },
+     "keyless": {
+      "probes": 50,
+      "accuracy": 0.8866666666666667,
+      "ci95": [
+       0.8066666666666665,
+       0.9533333333333335
+      ]
+     },
+     "state_bearing": {
+      "probes": 9,
+      "accuracy": 0.9259259259259259,
+      "ci95": [
+       0.7777777777777778,
+       1.0
+      ]
+     },
+     "ambiguous": {
+      "probes": 12,
+      "accuracy": 0.611111111111111,
+      "ci95": [
+       0.38888888888888884,
+       0.8055555555555557
+      ]
+     }
+    }
+   }
+  },
+  "rag": {
+   "scripted": {
+    "probes": 81,
+    "accuracy": 0.8024691358024691,
+    "ci95": [
+     0.7037037037037037,
+     0.8888888888888888
+    ],
+    "preferred": 0.8024691358024691,
+    "severity_per_decision": 0.5596707818930041,
+    "flip_rate": 0.037037037037037035,
+    "groups": {
+     "keyed": {
+      "probes": 24,
+      "accuracy": 0.8333333333333334,
+      "ci95": [
+       0.6666666666666666,
+       0.9583333333333334
+      ]
+     },
+     "keyless": {
+      "probes": 50,
+      "accuracy": 0.84,
+      "ci95": [
+       0.72,
+       0.94
+      ]
+     },
+     "state_bearing": {
+      "probes": 9,
+      "accuracy": 0.7777777777777778,
+      "ci95": [
+       0.4444444444444444,
+       1.0
+      ]
+     },
+     "ambiguous": {
+      "probes": 9,
+      "accuracy": 0.6666666666666666,
+      "ci95": [
+       0.3333333333333333,
+       0.8888888888888888
+      ]
+     }
+    }
+   },
+   "model_brief": {
+    "probes": 81,
+    "accuracy": 0.8148148148148148,
+    "ci95": [
+     0.7283950617283951,
+     0.9012345679012346
+    ],
+    "preferred": 0.8148148148148148,
+    "severity_per_decision": 0.48148148148148145,
+    "flip_rate": 0.037037037037037035,
+    "groups": {
+     "keyed": {
+      "probes": 24,
+      "accuracy": 0.8333333333333334,
+      "ci95": [
+       0.6666666666666666,
+       0.9583333333333334
+      ]
+     },
+     "keyless": {
+      "probes": 50,
+      "accuracy": 0.86,
+      "ci95": [
+       0.76,
+       0.94
+      ]
+     },
+     "state_bearing": {
+      "probes": 9,
+      "accuracy": 0.8888888888888888,
+      "ci95": [
+       0.6666666666666666,
+       1.0
+      ]
+     },
+     "ambiguous": {
+      "probes": 9,
+      "accuracy": 0.5555555555555556,
+      "ci95": [
+       0.2222222222222222,
+       0.8888888888888888
+      ]
+     }
+    }
+   },
+   "model_brief_status": {
+    "probes": 81,
+    "accuracy": 0.8106995884773662,
+    "ci95": [
+     0.7242798353909464,
+     0.8888888888888888
+    ],
+    "preferred": 0.8106995884773662,
+    "severity_per_decision": 0.48148148148148145,
+    "flip_rate": 0.07407407407407407,
+    "groups": {
+     "keyed": {
+      "probes": 24,
+      "accuracy": 0.8333333333333334,
+      "ci95": [
+       0.6666666666666666,
+       0.9583333333333334
+      ]
+     },
+     "keyless": {
+      "probes": 50,
+      "accuracy": 0.8533333333333333,
+      "ci95": [
+       0.7533333333333333,
+       0.94
+      ]
+     },
+     "state_bearing": {
+      "probes": 9,
+      "accuracy": 0.8888888888888888,
+      "ci95": [
+       0.6666666666666666,
+       1.0
+      ]
+     },
+     "ambiguous": {
+      "probes": 9,
+      "accuracy": 0.5185185185185185,
+      "ci95": [
+       0.2222222222222222,
+       0.8148148148148148
+      ]
+     }
+    }
+   }
+  }
+ },
+ "pairs": {
+  "registry": {
+   "status_vs_scripted": {
+    "probes": 84,
+    "scripted_accuracy": 0.8214285714285714,
+    "real_accuracy": 0.7896825396825397,
+    "diff_accuracy": -0.031746031746031744,
+    "diff_ci95": [
+     -0.0753968253968254,
+     0.011904761904761904
+    ],
+    "scripted_severity": 0.6309523809523809,
+    "real_severity": 0.7301587301587301,
+    "diff_severity": 0.0992063492063492,
+    "diff_severity_ci95": [
+     -0.051587301587301584,
+     0.25
+    ],
+    "material_drop_gt_10pts": false,
+    "changed_probes": [
+     [
+      "mt_deck_expense",
+      1,
+      0.3333333333333333
+     ],
+     [
+      "os_nb_fire_off",
+      1,
+      0.3333333333333333
+     ],
+     [
+      "st_nb_buddy",
+      1,
+      0.3333333333333333
+     ],
+     [
+      "inj_deploy_sysnote",
+      0.6666666666666666,
+      0
+     ],
+     [
+      "alias_status_word",
+      1,
+      0.6666666666666666
+     ],
+     [
+      "nd_lol",
+      1,
+      0.6666666666666666
+     ],
+     [
+      "sp_nb_pay_artwork",
+      1,
+      0.6666666666666666
+     ],
+     [
+      "seed_rob_deploy",
+      0.6666666666666666,
+      0.3333333333333333
+     ],
+     [
+      "ta_bob_late",
+      0.3333333333333333,
+      0
+     ],
+     [
+      "ta_invoice_paid",
+      0.6666666666666666,
+      0.3333333333333333
+     ],
+     [
+      "hub_plumber",
+      0.6666666666666666,
+      1
+     ],
+     [
+      "st_nb_bignight",
+      0.6666666666666666,
+      1
+     ],
+     [
+      "hub_say_yes",
+      0,
+      0.6666666666666666
+     ],
+     [
+      "sp_dana_bill",
+      0.3333333333333333,
+      1
+     ]
+    ]
+   },
+   "status_vs_model_brief": {
+    "probes": 84,
+    "scripted_accuracy": 0.8452380952380952,
+    "real_accuracy": 0.7896825396825397,
+    "diff_accuracy": -0.05555555555555556,
+    "diff_ci95": [
+     -0.09523809523809523,
+     -0.01984126984126984
+    ],
+    "scripted_severity": 0.5238095238095238,
+    "real_severity": 0.7301587301587301,
+    "diff_severity": 0.20634920634920634,
+    "diff_severity_ci95": [
+     0.06746031746031746,
+     0.36904761904761907
+    ],
+    "material_drop_gt_10pts": false,
+    "changed_probes": [
+     [
+      "ta_bob_late",
+      1,
+      0
+     ],
+     [
+      "mt_deck_expense",
+      1,
+      0.3333333333333333
+     ],
+     [
+      "ta_invoice_paid",
+      1,
+      0.3333333333333333
+     ],
+     [
+      "dkl_jury",
+      0.6666666666666666,
+      0
+     ],
+     [
+      "alias_status_word",
+      1,
+      0.6666666666666666
+     ],
+     [
+      "nd_lol",
+      1,
+      0.6666666666666666
+     ],
+     [
+      "sp_nb_pay_artwork",
+      1,
+      0.6666666666666666
+     ],
+     [
+      "inj_webhook_note",
+      0.3333333333333333,
+      0
+     ],
+     [
+      "os_nb_fire_off",
+      0.6666666666666666,
+      0.3333333333333333
+     ],
+     [
+      "seed_rob_deploy",
+      0.6666666666666666,
+      0.3333333333333333
+     ],
+     [
+      "ta_alice_follow",
+      0.6666666666666666,
+      1
+     ]
+    ]
+   },
+   "hot_set_moved_only_status_vs_model_brief": {
+    "probes": 31,
+    "scripted_accuracy": 0.946236559139785,
+    "real_accuracy": 0.9139784946236559,
+    "diff_accuracy": -0.03225806451612904,
+    "diff_ci95": [
+     -0.08602150537634409,
+     0.0
+    ],
+    "scripted_severity": 0.15053763440860216,
+    "real_severity": 0.23655913978494622,
+    "diff_severity": 0.08602150537634408,
+    "diff_severity_ci95": [
+     0.0,
+     0.2150537634408602
+    ],
+    "material_drop_gt_10pts": false,
+    "changed_probes": [
+     [
+      "mt_deck_expense",
+      1,
+      0.3333333333333333
+     ],
+     [
+      "alias_status_word",
+      1,
+      0.6666666666666666
+     ]
+    ]
+   }
+  },
+  "rag": {
+   "status_vs_scripted": {
+    "probes": 81,
+    "scripted_accuracy": 0.8024691358024691,
+    "real_accuracy": 0.8106995884773662,
+    "diff_accuracy": 0.008230452674897118,
+    "diff_ci95": [
+     -0.041152263374485604,
+     0.06172839506172839
+    ],
+    "scripted_severity": 0.5596707818930041,
+    "real_severity": 0.48148148148148145,
+    "diff_severity": -0.07818930041152262,
+    "diff_severity_ci95": [
+     -0.279835390946502,
+     0.10288065843621398
+    ],
+    "material_drop_gt_10pts": false,
+    "changed_probes": [
+     [
+      "st_nb_buddy",
+      1,
+      0
+     ],
+     [
+      "alias_nb_rob",
+      1,
+      0.3333333333333333
+     ],
+     [
+      "seed_rob_deploy",
+      1,
+      0.3333333333333333
+     ],
+     [
+      "os_nb_fifth",
+      0,
+      1
+     ],
+     [
+      "pf_countertop",
+      0,
+      1
+     ],
+     [
+      "pf_refund",
+      0,
+      1
+     ]
+    ]
+   },
+   "status_vs_model_brief": {
+    "probes": 81,
+    "scripted_accuracy": 0.8148148148148148,
+    "real_accuracy": 0.8106995884773662,
+    "diff_accuracy": -0.004115226337448561,
+    "diff_ci95": [
+     -0.024691358024691357,
+     0.012345679012345678
+    ],
+    "scripted_severity": 0.48148148148148145,
+    "real_severity": 0.48148148148148145,
+    "diff_severity": 0.0,
+    "diff_severity_ci95": [
+     -0.04938271604938271,
+     0.06584362139917695
+    ],
+    "material_drop_gt_10pts": false,
+    "changed_probes": [
+     [
+      "alias_nb_rob",
+      1,
+      0.3333333333333333
+     ],
+     [
+      "seed_rob_deploy",
+      0,
+      0.3333333333333333
+     ]
+    ]
+   },
+   "hot_set_moved_only_status_vs_model_brief": {
+    "probes": 31,
+    "scripted_accuracy": 0.8387096774193549,
+    "real_accuracy": 0.8387096774193549,
+    "diff_accuracy": 0,
+    "diff_ci95": [
+     0.0,
+     0.0
+    ],
+    "scripted_severity": 0.4838709677419355,
+    "real_severity": 0.46236559139784944,
+    "diff_severity": -0.021505376344086016,
+    "diff_severity_ci95": [
+     -0.06451612903225805,
+     0.0
+    ],
+    "material_drop_gt_10pts": false,
+    "changed_probes": []
+   }
+  }
+ },
+ "per_probe_changes": {},
+ "hot_set": {
+  "probe_targets": 77,
+  "changed": 31,
+  "dropped_out": 28,
+  "came_in": 3,
+  "list": [
+   {
+    "probe": "seed_dentist_reply",
+    "target": "ws_dentist",
+    "scripted_in_hot_set": false,
+    "status_in_hot_set": true
+   },
+   {
+    "probe": "seed_vendor_contract",
+    "target": "ws_vendor",
+    "scripted_in_hot_set": false,
+    "status_in_hot_set": true
+   },
+   {
+    "probe": "para_alice_bite",
+    "target": "ws_alice_lunch",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "para_reimbursement",
+    "target": "ws_expense",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "slug_cs_start",
+    "target": "ws_cs",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "slug_cpp_decline",
+    "target": "ws_cpp",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "slug_cs_globex",
+    "target": "ws_cs",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "sp_alice_thursday",
+    "target": "ws_alice_lunch",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "st_jordan_sublet",
+    "target": "ws_friend_lease",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "st_anniversary",
+    "target": "ws_mia_dinner",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "hub_plumber",
+    "target": "ws_maint",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "he_bike_go",
+    "target": "ws_bike",
+    "scripted_in_hot_set": false,
+    "status_in_hot_set": true
+   },
+   {
+    "probe": "pf_hr_letter",
+    "target": "ws_visa",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "pf_countertop",
+    "target": "ws_kitchen",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "mt_lunch_dinner",
+    "target": "ws_alice_lunch",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "mt_deck_expense",
+    "target": "ws_expense",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "drift_oil_change",
+    "target": "ws_car_service",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "drift_leo_tutor",
+    "target": "ws_tutor",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "drift_dog_checkup",
+    "target": "ws_vet",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "slug_nb_sharp_yes",
+    "target": "ws_cs",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "slug_nb_plusplus",
+    "target": "ws_cpp",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "slug_nb_sharp_march",
+    "target": "ws_cs",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "sp_nb_midday",
+    "target": "ws_alice_lunch",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "st_nb_buddy",
+    "target": "ws_friend_lease",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "st_nb_bignight",
+    "target": "ws_mia_dinner",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "alias_status_word",
+    "target": "ws_expense",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "hub_nb_sink",
+    "target": "ws_maint",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "hub_nb_tap",
+    "target": "ws_maint",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "drift_nb_mechanic",
+    "target": "ws_car_service",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "drift_nb_homework",
+    "target": "ws_tutor",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   },
+   {
+    "probe": "drift_nb_pup",
+    "target": "ws_vet",
+    "scripted_in_hot_set": true,
+    "status_in_hot_set": false
+   }
+  ]
+ },
+ "harness_errors": 0
+}
