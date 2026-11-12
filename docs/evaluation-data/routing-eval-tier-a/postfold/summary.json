@@ -1,0 +1,18 @@
+{
+ "batch": "postfold",
+ "jobs": 1512,
+ "done": 1512,
+ "worker_exit_codes": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "harness_errors": 0,
+ "cost_usd": 2.2096
+}
