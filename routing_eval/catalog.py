@@ -68,6 +68,7 @@ _CORE_PEOPLE: List[Person] = [
     P("tixhub", "TixHub", "orders@tixhub.example"),
     P("library", "City Library", "holds@citylibrary.example"),
     P("county", "County Clerk", "clerk@county.example"),
+    P("bob_ruiz", "Bob Ruiz", "bob.ruiz@acme.example"),  # smoke check only (CP05, compliance analogs)
 ]
 
 # Filler people: first names never used by core people or probe messages.
@@ -313,6 +314,12 @@ _LIB: List[Workstream] = [
       "waiting_external", [S(2, "reply", "Book a vet visit for Biscuit on Monday")],
       thread="th_vet", agent_of="ws_news"),
 ]
+
+# ---- smoke-check only (routing_eval.smoke); no dev probe uses these ----
+_LIB.append(W("ws_smoke_invoice", "Invoice #4471 for Bob Ruiz", "invoice #4471 to Bob Ruiz", "finance", ["bob_ruiz"],
+              "Drafted an invoice reminder for #4471 to Bob Ruiz (draft r-77). Waiting on the user's approval.",
+              "waiting_user", [S(1, "draft", "Draft a reminder to Bob Ruiz about invoice #4471")],
+              thread="th_inv_4471", draft="r-77"))
 
 LIBRARY: Dict[str, Workstream] = {w.ws_id: w for w in _LIB}
 
@@ -829,6 +836,11 @@ PROBES: List[BaseProbe] = [
     BP("hub_nb_sink", "tell the building folks Tuesday morning works for the sink guy",
        "hub_key", ("ws_maint", "ws_parking", "ws_gifts"), [route("ws_maint")], route("ws_maint"),
        "deictic", axes=("person",), distractors=("ws_parking",), rationale="Hub inbox; 'sink guy' = the faucet repair."),
+    BP("hub_nb_tap", "let whoever manages our place know the dripping tap can be looked at Tuesday",
+       "hub_key", ("ws_maint", "ws_parking", "ws_gifts"), [route("ws_maint")], route("ws_maint"),
+       "deictic", axes=("person",), distractors=("ws_parking",),
+       rationale="Added after real creation names (changelog 2026-11-12): hub_nb_sink now overlaps its target's "
+                 "real name 'Building Office Faucet Repair'. 'dripping tap' = the faucet repair."),
     BP("hub_nb_cage", "did the building ever give back the money for the basement cage?",
        "hub_key", ("ws_deposit", "ws_maint", "ws_parking"), [route("ws_deposit")], route("ws_deposit"),
        "deictic", axes=("person",), distractors=("ws_maint", "ws_parking"),

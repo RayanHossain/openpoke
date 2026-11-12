@@ -109,9 +109,8 @@ def test_baseline_files_and_working_memory(tmp_path):
     roster = json.loads((tmp_path / "baseline/execution_agents/roster.json").read_text())
     assert roster == list(view.roster) == [a.name for a in world.agents]
     state = WorkingMemoryLog(tmp_path / "baseline/conversation/poke_working_memory.log").load_summary_state()
-    assert state.summary_text.startswith("Earlier in the conversation:")
-    assert "headphones refund" in state.summary_text  # folded target appears as a topic ...
-    assert "Headphones refund" not in state.summary_text  # ... but never under its agent name
+    # the real summarizer's frozen summary for this world and arm (routing_eval/data/summaries.json)
+    assert state.summary_text and state.summary_text == views.summary_text(world, "baseline")
     entries = views.conversation_entries(world, "baseline")
     assert state.last_index == views.folded_count(len(entries)) - 1
     assert len(state.unsummarized_entries) == len(entries) - views.folded_count(len(entries))
@@ -167,3 +166,30 @@ def test_spurious_org_aliases_collide():
         book = keybook(w)
         hits = {ws for r in agents_for_keys(text_keys(p.message, book), book, w) for ws in w.agent(r).ws_ids}
         assert spurious in hits, (pid, hits)
+
+
+def test_real_summaries_cover_every_folded_world():
+    """Every planned world that folds has a fresh (hash-matched) real summary for both arms."""
+    from routing_eval import summaries
+    jobs = summaries.needed()
+    assert jobs
+    for world_id, arm, entries, cut in jobs:
+        text = summaries.lookup(world_id, arm, entries[:cut])
+        assert text.strip(), (world_id, arm)
+
+
+def test_real_creation_names():
+    """Agents carry the baseline IA's frozen creation names; only logged failures keep the label."""
+    from routing_eval import names
+    data = names.load()
+    failures = {f["key"] for f in data["failures"]}
+    assert data["model"] == "anthropic/claude-haiku-5.5" and data["baseline_commit"].startswith("5b5f635")
+    for ws in catalog.LIBRARY.values():
+        if ws.agent_of is None and ws.ws_id not in failures:
+            assert names.core_name(ws.ws_id), ws.ws_id
+    pairs, _ = generate(plan=((50, "high"),))
+    sources = {a.name_source for w, _ in pairs for a in w.agents}
+    assert sources <= {"baseline-ia", "placeholder:label"}
+    placeholder = sum(a.name_source == "placeholder:label" for w, _ in pairs for a in w.agents)
+    total = sum(len(w.agents) for w, _ in pairs)
+    assert placeholder / total < 0.05, (placeholder, total)

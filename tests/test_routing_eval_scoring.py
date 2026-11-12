@@ -111,7 +111,7 @@ def test_policies_behave_as_specified():
 def test_g1_runs_on_the_whole_dev_set():
     out = g1.run()
     assert out["passed"], out["verdicts"]
-    assert out["instances"] == 412 and len(out["skipped"]) == 3
+    assert out["instances"] == 417 and len(out["skipped"]) == 3
     assert [tuple(x) for x in out["plan"]] == [(3, "high"), (10, "high"), (30, "high"), (50, "high"), (50, "low")]
     assert set(out["fallback_per_n"]) == {3, 10, 30, 50}
     assert all(f["rate"] <= 0.10 for f in out["fallback_per_n"].values()), out["fallback_per_n"]
@@ -125,3 +125,11 @@ def test_g1_runs_on_the_whole_dev_set():
     assert out["pooled"]["always_create"]["accuracy"] < 0.1  # only genuinely_new creates
     md = g1.to_markdown(out)
     assert "PASS" in md and md.count("\n| ") >= len(CATEGORIES)
+
+
+def test_baseline_merged_name_is_one_agent():
+    """Same-named agents are one baseline agent: routing to the merged name reaches all their work."""
+    w, i = _case("seed_bob_dinner", n=3)
+    dinner, deploy = _ref(w, "ws_dinner"), _ref(w, "ws_deploy")
+    assert score(i, Decision("route", (f"{dinner}+{deploy}",)), w).correct  # target is inside the merged agent
+    assert not score(i, Decision("route", (deploy,)), w).correct

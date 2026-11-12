@@ -27,6 +27,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 from unittest import mock
 
+from . import summaries
 from .generator import entry_owners, folded_count
 from .keys_pure import keybook
 from .schema import Agent, Event, World
@@ -82,21 +83,14 @@ def conversation_entries(world: World, arm: str) -> List[Tuple[str, str, str]]:
     return out
 
 
-def summary_text(world: World) -> str:
-    """Working-memory summary of the folded entries.
-
-    TODO(D-005 §1/§4): the real summary is written by the summarizer model. This template is a
-    placeholder: one line per folded workstream topic, never an agent name (the "dropped link")."""
-    owners = entry_owners(world.events)
-    cut = folded_count(len(owners))
-    seen: List[str] = []
-    for ws_id in owners[:cut]:
-        if ws_id and ws_id not in seen:
-            seen.append(ws_id)
-    if not seen:
+def summary_text(world: World, arm: str) -> str:
+    """Working-memory summary of the folded entries, written by the real summarizer (Haiku 5.5) and
+    frozen per world and arm in routing_eval/data/summaries.json. Raises MissingSummary if absent or stale."""
+    entries = conversation_entries(world, arm)
+    cut = folded_count(len(entries))
+    if not cut:
         return ""
-    lines = ["Earlier in the conversation:"] + [f"- The user asked for help with {world.ws(w).topic}." for w in seen]
-    return "\n".join(lines)
+    return summaries.lookup(world.world_id, arm, entries[:cut])
 
 
 def write_conversation(world: World, conv_dir: Path, arm: str) -> Dict[str, Any]:
@@ -106,7 +100,7 @@ def write_conversation(world: World, conv_dir: Path, arm: str) -> Dict[str, Any]
     (conv_dir / "poke_conversation.log").write_text("".join(_line(t, p, ts) for t, ts, p in entries), encoding="utf-8")
     last_at = entries[cut - 1][1] if cut else None
     meta = json.dumps({"last_index": cut - 1, "updated_at": (world.now.isoformat() if cut else None)})
-    wm = [_line("summary_info", meta), _line("conversation_summary", summary_text(world))]
+    wm = [_line("summary_info", meta), _line("conversation_summary", summary_text(world, arm))]
     wm += [_line(t, p, ts) for t, ts, p in entries[cut:]]
     (conv_dir / "poke_working_memory.log").write_text("".join(wm), encoding="utf-8")
     return {"entries": len(entries), "folded": cut, "last_folded_at": last_at}
@@ -118,7 +112,7 @@ def transcript(world: World, arm: str) -> str:
     entries = conversation_entries(world, arm)
     cut = folded_count(len(entries))
     parts: List[str] = []
-    summary = summary_text(world).strip()
+    summary = summary_text(world, arm).strip()
     if summary:
         parts.append(f"<conversation_summary>{escape(summary, quote=False)}</conversation_summary>")
     for tag, ts, payload in entries[cut:]:

@@ -1,89 +1,89 @@
 # world seed_bob_server_crash@N10-high (seed 3787225158); probe message source=user
 === baseline: roster.json ===
 [
-  "Roof leak with Bob",
-  "Code review with Grace",
-  "API rate limits with Laura",
-  "Database migration with Rosa",
-  "Headcount plan with Bob",
-  "Pet insurance with Bob",
-  "Trademark filing with Bob",
-  "Lease renewal with Bob",
-  "Reunion dinner with Bob Lee",
-  "Deploy + gateway crash w/ Bob"
+  "Roof Leak Email to Bob Okafor",
+  "Grace Okoro Code Review Email",
+  "Laura Pinto API Rate Limit Email",
+  "Rosa Garcia Database Migration Email",
+  "Bob Okafor Headcount Note",
+  "Bob Okafor Contact Lookup",
+  "Bob Okafor Trademark Email",
+  "Bob Hale Lease Request",
+  "Bob Lee Reunion Dinner",
+  "Bob Okafor Email"
 ]
 === baseline: IA user message ===
 <conversation_history>
 <user_message timestamp="2026-09-25 13:19:12">Send an email about the roof leak with Bob Okafor</user_message>
-<agent_message timestamp="2026-09-25 13:19:12">[SUCCESS] Roof leak with Bob: Sent an email about the roof leak with Bob Okafor.</agent_message>
+<agent_message timestamp="2026-09-25 13:19:12">[SUCCESS] Roof Leak Email to Bob Okafor: Sent an email about the roof leak with Bob Okafor.</agent_message>
 <poke_reply timestamp="2026-09-25 13:19:12">Update: Sent an email about the roof leak with Bob Okafor.</poke_reply>
 <user_message timestamp="2026-09-30 19:33:36">Any news on the roof leak with Bob Okafor?</user_message>
-<agent_message timestamp="2026-09-30 19:33:36">[SUCCESS] Roof leak with Bob: The roof leak with Bob Okafor. Finished; nothing open.</agent_message>
+<agent_message timestamp="2026-09-30 19:33:36">[SUCCESS] Roof Leak Email to Bob Okafor: The roof leak with Bob Okafor. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-09-30 19:33:36">Update: The roof leak with Bob Okafor. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-10-10 22:26:24">Send an email about the code review with Grace Okoro</user_message>
-<agent_message timestamp="2026-10-10 22:26:24">[SUCCESS] Code review with Grace: Sent an email about the code review with Grace Okoro.</agent_message>
+<agent_message timestamp="2026-10-10 22:26:24">[SUCCESS] Grace Okoro Code Review Email: Sent an email about the code review with Grace Okoro.</agent_message>
 <poke_reply timestamp="2026-10-10 22:26:24">Update: Sent an email about the code review with Grace Okoro.</poke_reply>
 <user_message timestamp="2026-10-13 10:55:12">Send an email about the API rate limit question from Laura Pinto</user_message>
-<agent_message timestamp="2026-10-13 10:55:12">[SUCCESS] API rate limits with Laura: Sent an email about the API rate limit question from Laura Pinto.</agent_message>
+<agent_message timestamp="2026-10-13 10:55:12">[SUCCESS] Laura Pinto API Rate Limit Email: Sent an email about the API rate limit question from Laura Pinto.</agent_message>
 <poke_reply timestamp="2026-10-13 10:55:12">Update: Sent an email about the API rate limit question from Laura Pinto.</poke_reply>
 <user_message timestamp="2026-10-15 09:00:00">Any news on the code review with Grace Okoro?</user_message>
-<agent_message timestamp="2026-10-15 09:00:00">[SUCCESS] Code review with Grace: The code review with Grace Okoro. Finished; nothing open.</agent_message>
+<agent_message timestamp="2026-10-15 09:00:00">[SUCCESS] Grace Okoro Code Review Email: The code review with Grace Okoro. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-10-15 09:00:00">Update: The code review with Grace Okoro. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-10-16 02:45:36">Any news on the API rate limit question from Laura Pinto?</user_message>
-<agent_message timestamp="2026-10-16 02:45:36">[SUCCESS] API rate limits with Laura: The API rate limit question from Laura Pinto. Finished; nothing open.</agent_message>
+<agent_message timestamp="2026-10-16 02:45:36">[SUCCESS] Laura Pinto API Rate Limit Email: The API rate limit question from Laura Pinto. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-10-16 02:45:36">Update: The API rate limit question from Laura Pinto. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-10-16 09:43:12">Send an email about the database migration with Rosa Garcia</user_message>
-<agent_message timestamp="2026-10-16 09:43:12">[SUCCESS] Database migration with Rosa: Sent an email about the database migration with Rosa Garcia.</agent_message>
+<agent_message timestamp="2026-10-16 09:43:12">[SUCCESS] Rosa Garcia Database Migration Email: Sent an email about the database migration with Rosa Garcia.</agent_message>
 <poke_reply timestamp="2026-10-16 09:43:12">Update: Sent an email about the database migration with Rosa Garcia.</poke_reply>
 <user_message timestamp="2026-10-18 03:43:12">Draft a note about the headcount plan with Bob Okafor</user_message>
-<agent_message timestamp="2026-10-18 03:43:12">[SUCCESS] Headcount plan with Bob: Drafted an email about the headcount plan with Bob Okafor (draft r-fx6).</agent_message>
+<agent_message timestamp="2026-10-18 03:43:12">[SUCCESS] Bob Okafor Headcount Note: Drafted an email about the headcount plan with Bob Okafor (draft r-fx6).</agent_message>
 <poke_reply timestamp="2026-10-18 03:43:12">Update: Drafted an email about the headcount plan with Bob Okafor (draft r-fx6).</poke_reply>
 <user_message timestamp="2026-10-21 14:45:36">Any news on the database migration with Rosa Garcia?</user_message>
-<agent_message timestamp="2026-10-21 14:45:36">[SUCCESS] Database migration with Rosa: The database migration with Rosa Garcia. Finished; nothing open.</agent_message>
+<agent_message timestamp="2026-10-21 14:45:36">[SUCCESS] Rosa Garcia Database Migration Email: The database migration with Rosa Garcia. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-10-21 14:45:36">Update: The database migration with Rosa Garcia. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-10-22 01:48:00">Send an email about pet insurance with Bob Okafor</user_message>
-<agent_message timestamp="2026-10-22 01:48:00">[SUCCESS] Pet insurance with Bob: Sent an email about pet insurance with Bob Okafor.</agent_message>
+<agent_message timestamp="2026-10-22 01:48:00">[SUCCESS] Bob Okafor Contact Lookup: Sent an email about pet insurance with Bob Okafor.</agent_message>
 <poke_reply timestamp="2026-10-22 01:48:00">Update: Sent an email about pet insurance with Bob Okafor.</poke_reply>
 <user_message timestamp="2026-10-23 09:28:48">Send the draft about the headcount plan with Bob Okafor</user_message>
-<agent_message timestamp="2026-10-23 09:28:48">[SUCCESS] Headcount plan with Bob: Sent the email about the headcount plan with Bob Okafor.</agent_message>
+<agent_message timestamp="2026-10-23 09:28:48">[SUCCESS] Bob Okafor Headcount Note: Sent the email about the headcount plan with Bob Okafor.</agent_message>
 <poke_reply timestamp="2026-10-23 09:28:48">Update: Sent the email about the headcount plan with Bob Okafor.</poke_reply>
 <user_message timestamp="2026-10-25 04:12:00">Any news on pet insurance with Bob Okafor?</user_message>
-<agent_message timestamp="2026-10-25 04:12:00">[SUCCESS] Pet insurance with Bob: Pet insurance with Bob Okafor. Finished; nothing open.</agent_message>
+<agent_message timestamp="2026-10-25 04:12:00">[SUCCESS] Bob Okafor Contact Lookup: Pet insurance with Bob Okafor. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-10-25 04:12:00">Update: Pet insurance with Bob Okafor. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-10-29 14:02:24">Send an email about the trademark filing with Bob Okafor</user_message>
-<agent_message timestamp="2026-10-29 14:02:24">[SUCCESS] Trademark filing with Bob: Sent an email about the trademark filing with Bob Okafor.</agent_message>
+<agent_message timestamp="2026-10-29 14:02:24">[SUCCESS] Bob Okafor Trademark Email: Sent an email about the trademark filing with Bob Okafor.</agent_message>
 <poke_reply timestamp="2026-10-29 14:02:24">Update: Sent an email about the trademark filing with Bob Okafor.</poke_reply>
 <user_message timestamp="2026-11-03 07:48:00">Any news on the trademark filing with Bob Okafor?</user_message>
-<agent_message timestamp="2026-11-03 07:48:00">[SUCCESS] Trademark filing with Bob: The trademark filing with Bob Okafor. In progress.</agent_message>
+<agent_message timestamp="2026-11-03 07:48:00">[SUCCESS] Bob Okafor Trademark Email: The trademark filing with Bob Okafor. In progress.</agent_message>
 <poke_reply timestamp="2026-11-03 07:48:00">Update: The trademark filing with Bob Okafor. In progress.</poke_reply>
 <user_message timestamp="2026-11-07 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
-<agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] Lease renewal with Bob: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
+<agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] Bob Hale Lease Request: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
 <poke_reply timestamp="2026-11-07 15:00:00">Update: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</poke_reply>
 <user_message timestamp="2026-11-09 15:00:00">Ask Bob Lee which Friday works for our reunion dinner</user_message>
-<agent_message timestamp="2026-11-09 15:00:00">[SUCCESS] Reunion dinner with Bob Lee: Sent an email about the reunion dinner with Bob Lee.</agent_message>
+<agent_message timestamp="2026-11-09 15:00:00">[SUCCESS] Bob Lee Reunion Dinner: Sent an email about the reunion dinner with Bob Lee.</agent_message>
 <poke_reply timestamp="2026-11-09 15:00:00">Update: Sent an email about the reunion dinner with Bob Lee.</poke_reply>
 <user_message timestamp="2026-11-10 15:00:00">Email Bob Okafor about last night's api-gateway crash and whether the hotfix ships today</user_message>
-<agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] Deploy + gateway crash w/ Bob: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.</agent_message>
+<agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] Bob Okafor Email: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.</agent_message>
 <poke_reply timestamp="2026-11-10 15:00:00">Update: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.</poke_reply>
 <user_message timestamp="2026-11-10 15:00:00">Any news on the reunion dinner with Bob Lee?</user_message>
-<agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] Reunion dinner with Bob Lee: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.</agent_message>
+<agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] Bob Lee Reunion Dinner: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.</agent_message>
 <poke_reply timestamp="2026-11-10 15:00:00">Update: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.</poke_reply>
 <user_message timestamp="2026-11-11 13:04:48">Remind me at 6pm to check the hotfix deploy</user_message>
-<agent_message timestamp="2026-11-11 13:04:48">[SUCCESS] Deploy + gateway crash w/ Bob: Set reminder t_21 for the api-gateway crash and hotfix deploy.</agent_message>
+<agent_message timestamp="2026-11-11 13:04:48">[SUCCESS] Bob Okafor Email: Set reminder t_21 for the api-gateway crash and hotfix deploy.</agent_message>
 <poke_reply timestamp="2026-11-11 13:04:48">Update: Set reminder t_21 for the api-gateway crash and hotfix deploy.</poke_reply>
 </conversation_history>
 
 <active_agents>
-<agent name="Roof leak with Bob" />
-<agent name="Code review with Grace" />
-<agent name="API rate limits with Laura" />
-<agent name="Database migration with Rosa" />
-<agent name="Headcount plan with Bob" />
-<agent name="Pet insurance with Bob" />
-<agent name="Trademark filing with Bob" />
-<agent name="Lease renewal with Bob" />
-<agent name="Reunion dinner with Bob Lee" />
-<agent name="Deploy + gateway crash w/ Bob" />
+<agent name="Roof Leak Email to Bob Okafor" />
+<agent name="Grace Okoro Code Review Email" />
+<agent name="Laura Pinto API Rate Limit Email" />
+<agent name="Rosa Garcia Database Migration Email" />
+<agent name="Bob Okafor Headcount Note" />
+<agent name="Bob Okafor Contact Lookup" />
+<agent name="Bob Okafor Trademark Email" />
+<agent name="Bob Hale Lease Request" />
+<agent name="Bob Lee Reunion Dinner" />
+<agent name="Bob Okafor Email" />
 </active_agents>
 
 <new_user_message>
@@ -92,72 +92,72 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
 === registry: IA user message ===
 <conversation_history>
 <user_message timestamp="2026-09-25 13:19:12">Send an email about the roof leak with Bob Okafor</user_message>
-<agent_message timestamp="2026-09-25 13:19:12">[SUCCESS] ea_1 (Roof leak with Bob): Sent an email about the roof leak with Bob Okafor.</agent_message>
+<agent_message timestamp="2026-09-25 13:19:12">[SUCCESS] ea_1 (Roof Leak Email to Bob Okafor): Sent an email about the roof leak with Bob Okafor.</agent_message>
 <poke_reply timestamp="2026-09-25 13:19:12">Update: Sent an email about the roof leak with Bob Okafor.</poke_reply>
 <user_message timestamp="2026-09-30 19:33:36">Any news on the roof leak with Bob Okafor?</user_message>
-<agent_message timestamp="2026-09-30 19:33:36">[SUCCESS] ea_1 (Roof leak with Bob): The roof leak with Bob Okafor. Finished; nothing open.</agent_message>
+<agent_message timestamp="2026-09-30 19:33:36">[SUCCESS] ea_1 (Roof Leak Email to Bob Okafor): The roof leak with Bob Okafor. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-09-30 19:33:36">Update: The roof leak with Bob Okafor. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-10-10 22:26:24">Send an email about the code review with Grace Okoro</user_message>
-<agent_message timestamp="2026-10-10 22:26:24">[SUCCESS] ea_2 (Code review with Grace): Sent an email about the code review with Grace Okoro.</agent_message>
+<agent_message timestamp="2026-10-10 22:26:24">[SUCCESS] ea_2 (Grace Okoro Code Review Email): Sent an email about the code review with Grace Okoro.</agent_message>
 <poke_reply timestamp="2026-10-10 22:26:24">Update: Sent an email about the code review with Grace Okoro.</poke_reply>
 <user_message timestamp="2026-10-13 10:55:12">Send an email about the API rate limit question from Laura Pinto</user_message>
-<agent_message timestamp="2026-10-13 10:55:12">[SUCCESS] ea_3 (API rate limits with Laura): Sent an email about the API rate limit question from Laura Pinto.</agent_message>
+<agent_message timestamp="2026-10-13 10:55:12">[SUCCESS] ea_3 (Laura Pinto API Rate Limit Email): Sent an email about the API rate limit question from Laura Pinto.</agent_message>
 <poke_reply timestamp="2026-10-13 10:55:12">Update: Sent an email about the API rate limit question from Laura Pinto.</poke_reply>
 <user_message timestamp="2026-10-15 09:00:00">Any news on the code review with Grace Okoro?</user_message>
-<agent_message timestamp="2026-10-15 09:00:00">[SUCCESS] ea_2 (Code review with Grace): The code review with Grace Okoro. Finished; nothing open.</agent_message>
+<agent_message timestamp="2026-10-15 09:00:00">[SUCCESS] ea_2 (Grace Okoro Code Review Email): The code review with Grace Okoro. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-10-15 09:00:00">Update: The code review with Grace Okoro. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-10-16 02:45:36">Any news on the API rate limit question from Laura Pinto?</user_message>
-<agent_message timestamp="2026-10-16 02:45:36">[SUCCESS] ea_3 (API rate limits with Laura): The API rate limit question from Laura Pinto. Finished; nothing open.</agent_message>
+<agent_message timestamp="2026-10-16 02:45:36">[SUCCESS] ea_3 (Laura Pinto API Rate Limit Email): The API rate limit question from Laura Pinto. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-10-16 02:45:36">Update: The API rate limit question from Laura Pinto. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-10-16 09:43:12">Send an email about the database migration with Rosa Garcia</user_message>
-<agent_message timestamp="2026-10-16 09:43:12">[SUCCESS] ea_4 (Database migration with Rosa): Sent an email about the database migration with Rosa Garcia.</agent_message>
+<agent_message timestamp="2026-10-16 09:43:12">[SUCCESS] ea_4 (Rosa Garcia Database Migration Email): Sent an email about the database migration with Rosa Garcia.</agent_message>
 <poke_reply timestamp="2026-10-16 09:43:12">Update: Sent an email about the database migration with Rosa Garcia.</poke_reply>
 <user_message timestamp="2026-10-18 03:43:12">Draft a note about the headcount plan with Bob Okafor</user_message>
-<agent_message timestamp="2026-10-18 03:43:12">[SUCCESS] ea_5 (Headcount plan with Bob): Drafted an email about the headcount plan with Bob Okafor (draft r-fx6).</agent_message>
+<agent_message timestamp="2026-10-18 03:43:12">[SUCCESS] ea_5 (Bob Okafor Headcount Note): Drafted an email about the headcount plan with Bob Okafor (draft r-fx6).</agent_message>
 <poke_reply timestamp="2026-10-18 03:43:12">Update: Drafted an email about the headcount plan with Bob Okafor (draft r-fx6).</poke_reply>
 <user_message timestamp="2026-10-21 14:45:36">Any news on the database migration with Rosa Garcia?</user_message>
-<agent_message timestamp="2026-10-21 14:45:36">[SUCCESS] ea_4 (Database migration with Rosa): The database migration with Rosa Garcia. Finished; nothing open.</agent_message>
+<agent_message timestamp="2026-10-21 14:45:36">[SUCCESS] ea_4 (Rosa Garcia Database Migration Email): The database migration with Rosa Garcia. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-10-21 14:45:36">Update: The database migration with Rosa Garcia. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-10-22 01:48:00">Send an email about pet insurance with Bob Okafor</user_message>
-<agent_message timestamp="2026-10-22 01:48:00">[SUCCESS] ea_6 (Pet insurance with Bob): Sent an email about pet insurance with Bob Okafor.</agent_message>
+<agent_message timestamp="2026-10-22 01:48:00">[SUCCESS] ea_6 (Bob Okafor Contact Lookup): Sent an email about pet insurance with Bob Okafor.</agent_message>
 <poke_reply timestamp="2026-10-22 01:48:00">Update: Sent an email about pet insurance with Bob Okafor.</poke_reply>
 <user_message timestamp="2026-10-23 09:28:48">Send the draft about the headcount plan with Bob Okafor</user_message>
-<agent_message timestamp="2026-10-23 09:28:48">[SUCCESS] ea_5 (Headcount plan with Bob): Sent the email about the headcount plan with Bob Okafor.</agent_message>
+<agent_message timestamp="2026-10-23 09:28:48">[SUCCESS] ea_5 (Bob Okafor Headcount Note): Sent the email about the headcount plan with Bob Okafor.</agent_message>
 <poke_reply timestamp="2026-10-23 09:28:48">Update: Sent the email about the headcount plan with Bob Okafor.</poke_reply>
 <user_message timestamp="2026-10-25 04:12:00">Any news on pet insurance with Bob Okafor?</user_message>
-<agent_message timestamp="2026-10-25 04:12:00">[SUCCESS] ea_6 (Pet insurance with Bob): Pet insurance with Bob Okafor. Finished; nothing open.</agent_message>
+<agent_message timestamp="2026-10-25 04:12:00">[SUCCESS] ea_6 (Bob Okafor Contact Lookup): Pet insurance with Bob Okafor. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-10-25 04:12:00">Update: Pet insurance with Bob Okafor. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-10-29 14:02:24">Send an email about the trademark filing with Bob Okafor</user_message>
-<agent_message timestamp="2026-10-29 14:02:24">[SUCCESS] ea_7 (Trademark filing with Bob): Sent an email about the trademark filing with Bob Okafor.</agent_message>
+<agent_message timestamp="2026-10-29 14:02:24">[SUCCESS] ea_7 (Bob Okafor Trademark Email): Sent an email about the trademark filing with Bob Okafor.</agent_message>
 <poke_reply timestamp="2026-10-29 14:02:24">Update: Sent an email about the trademark filing with Bob Okafor.</poke_reply>
 <user_message timestamp="2026-11-03 07:48:00">Any news on the trademark filing with Bob Okafor?</user_message>
-<agent_message timestamp="2026-11-03 07:48:00">[SUCCESS] ea_7 (Trademark filing with Bob): The trademark filing with Bob Okafor. In progress.</agent_message>
+<agent_message timestamp="2026-11-03 07:48:00">[SUCCESS] ea_7 (Bob Okafor Trademark Email): The trademark filing with Bob Okafor. In progress.</agent_message>
 <poke_reply timestamp="2026-11-03 07:48:00">Update: The trademark filing with Bob Okafor. In progress.</poke_reply>
 <user_message timestamp="2026-11-07 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
-<agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] ea_8 (Lease renewal with Bob): Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
+<agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] ea_8 (Bob Hale Lease Request): Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
 <poke_reply timestamp="2026-11-07 15:00:00">Update: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</poke_reply>
 <user_message timestamp="2026-11-09 15:00:00">Ask Bob Lee which Friday works for our reunion dinner</user_message>
-<agent_message timestamp="2026-11-09 15:00:00">[SUCCESS] ea_9 (Reunion dinner with Bob Lee): Sent an email about the reunion dinner with Bob Lee.</agent_message>
+<agent_message timestamp="2026-11-09 15:00:00">[SUCCESS] ea_9 (Bob Lee Reunion Dinner): Sent an email about the reunion dinner with Bob Lee.</agent_message>
 <poke_reply timestamp="2026-11-09 15:00:00">Update: Sent an email about the reunion dinner with Bob Lee.</poke_reply>
 <user_message timestamp="2026-11-10 15:00:00">Email Bob Okafor about last night's api-gateway crash and whether the hotfix ships today</user_message>
-<agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] ea_10 (Deploy + gateway crash w/ Bob): Emailed Bob Okafor about the api-gateway crash and hotfix deploy.</agent_message>
+<agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] ea_10 (Bob Okafor Email): Emailed Bob Okafor about the api-gateway crash and hotfix deploy.</agent_message>
 <poke_reply timestamp="2026-11-10 15:00:00">Update: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.</poke_reply>
 <user_message timestamp="2026-11-10 15:00:00">Any news on the reunion dinner with Bob Lee?</user_message>
-<agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] ea_9 (Reunion dinner with Bob Lee): Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.</agent_message>
+<agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] ea_9 (Bob Lee Reunion Dinner): Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.</agent_message>
 <poke_reply timestamp="2026-11-10 15:00:00">Update: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.</poke_reply>
 <user_message timestamp="2026-11-11 13:04:48">Remind me at 6pm to check the hotfix deploy</user_message>
-<agent_message timestamp="2026-11-11 13:04:48">[SUCCESS] ea_10 (Deploy + gateway crash w/ Bob): Set reminder t_21 for the api-gateway crash and hotfix deploy.</agent_message>
+<agent_message timestamp="2026-11-11 13:04:48">[SUCCESS] ea_10 (Bob Okafor Email): Set reminder t_21 for the api-gateway crash and hotfix deploy.</agent_message>
 <poke_reply timestamp="2026-11-11 13:04:48">Update: Set reminder t_21 for the api-gateway crash and hotfix deploy.</poke_reply>
 </conversation_history>
 
 <active_agents>
-ea_10 | Deploy + gateway crash w/ Bob | bob.okafor@acme.example | open: trigger t_21 | 1h | Coordinating last night's api-gateway crash and today's hotfix depl…
-ea_9 | Reunion dinner with Bob Lee | bob.lee@friends.example | open: none | 1d waiting_user | Bob Lee can do any Friday this month. Waiting on the user to pick…
-ea_8 | Lease renewal with Bob | bob.hale@harborviewprop… | open: draft r-lease-02 | 4d waiting_user | Drafted a note asking Bob Hale, the landlord, for the rev…
-ea_7 | Trademark filing with Bob | bob.okafor@acme.example | open: none | 8d | The trademark filing with Bob Okafor. In progress.
-ea_6 | Pet insurance with Bob | bob.okafor@acme.example | open: none | 17d done | Pet insurance with Bob Okafor. Finished; nothing open.
-ea_5 | Headcount plan with Bob | bob.okafor@acme.example | open: none | 19d done | The headcount plan with Bob Okafor. Finished; nothing open.
-ea_1 | Roof leak with Bob | bob.okafor@acme.example | open: none | 41d done | The roof leak with Bob Okafor. Finished; nothing open.
+ea_10 | Bob Okafor Email | bob.okafor@acme.example | open: trigger t_21 | 1h | Coordinating last night's api-gateway crash and today's hotfix deploy with Bob O…
+ea_9 | Bob Lee Reunion Dinner | bob.lee@friends.example | open: none | 1d waiting_user | Bob Lee can do any Friday this month. Waiting on the user to pick a re…
+ea_8 | Bob Hale Lease Request | bob.hale@harborviewprop… | open: draft r-lease-02 | 4d waiting_user | Drafted a note asking Bob Hale, the landlord, for the rev…
+ea_7 | Bob Okafor Trademark Email | bob.okafor@acme.example | open: none | 8d | The trademark filing with Bob Okafor. In progress.
+ea_6 | Bob Okafor Contact Lookup | bob.okafor@acme.example | open: none | 17d done | Pet insurance with Bob Okafor. Finished; nothing open.
+ea_5 | Bob Okafor Headcount Note | bob.okafor@acme.example | open: none | 19d done | The headcount plan with Bob Okafor. Finished; nothing open.
+ea_1 | Roof Leak Email to Bob Okafor | bob.okafor@acme.example | open: none | 41d done | The roof leak with Bob Okafor. Finished; nothing open.
 (7 of 10 agents shown)
 </active_agents>
 
@@ -168,7 +168,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
 [
   {
     "agent_id": "ea_1",
-    "name": "Roof leak with Bob",
+    "name": "Roof Leak Email to Bob Okafor",
     "topic": "The roof leak with Bob Okafor. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
@@ -178,7 +178,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_2",
-    "name": "Code review with Grace",
+    "name": "Grace Okoro Code Review Email",
     "topic": "The code review with Grace Okoro. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
@@ -188,7 +188,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_3",
-    "name": "API rate limits with Laura",
+    "name": "Laura Pinto API Rate Limit Email",
     "topic": "The API rate limit question from Laura Pinto. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
@@ -198,7 +198,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_4",
-    "name": "Database migration with Rosa",
+    "name": "Rosa Garcia Database Migration Email",
     "topic": "The database migration with Rosa Garcia. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
@@ -208,7 +208,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_5",
-    "name": "Headcount plan with Bob",
+    "name": "Bob Okafor Headcount Note",
     "topic": "The headcount plan with Bob Okafor. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
@@ -218,7 +218,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_6",
-    "name": "Pet insurance with Bob",
+    "name": "Bob Okafor Contact Lookup",
     "topic": "Pet insurance with Bob Okafor. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
@@ -228,7 +228,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_7",
-    "name": "Trademark filing with Bob",
+    "name": "Bob Okafor Trademark Email",
     "topic": "The trademark filing with Bob Okafor. In progress.",
     "active_tasks": [],
     "past_action_notes": [
@@ -238,7 +238,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_8",
-    "name": "Lease renewal with Bob",
+    "name": "Bob Hale Lease Request",
     "topic": "Drafted a note asking Bob Hale, the landlord, for the revised 12-month lease renewal paperwork. Draft r-lease-02 is not sent yet.",
     "active_tasks": [
       "draft r-lease-02"
@@ -249,7 +249,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_9",
-    "name": "Reunion dinner with Bob Lee",
+    "name": "Bob Lee Reunion Dinner",
     "topic": "Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.",
     "active_tasks": [],
     "past_action_notes": [
@@ -259,7 +259,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_10",
-    "name": "Deploy + gateway crash w/ Bob",
+    "name": "Bob Okafor Email",
     "topic": "Coordinating last night's api-gateway crash and today's hotfix deploy with Bob Okafor. Deploy check reminder t_21 is set.",
     "active_tasks": [
       "trigger t_21"
@@ -276,7 +276,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
 [
   {
     "agent_id": "ea_1",
-    "name": "Roof leak with Bob",
+    "name": "Roof Leak Email to Bob Okafor",
     "topic": "The roof leak with Bob Okafor. Finished; nothing open. | status: done | last active: 41d ago | keys: address:bob.okafor@acme.example, thread:th_fx4",
     "active_tasks": [],
     "past_action_notes": [
@@ -286,7 +286,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_2",
-    "name": "Code review with Grace",
+    "name": "Grace Okoro Code Review Email",
     "topic": "The code review with Grace Okoro. Finished; nothing open. | status: done | last active: 27d ago | keys: address:grace.okoro@pool.example, thread:th_fx5",
     "active_tasks": [],
     "past_action_notes": [
@@ -296,7 +296,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_3",
-    "name": "API rate limits with Laura",
+    "name": "Laura Pinto API Rate Limit Email",
     "topic": "The API rate limit question from Laura Pinto. Finished; nothing open. | status: done | last active: 26d ago | keys: address:laura.pinto@pool.example, thread:th_fx3",
     "active_tasks": [],
     "past_action_notes": [
@@ -306,7 +306,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_4",
-    "name": "Database migration with Rosa",
+    "name": "Rosa Garcia Database Migration Email",
     "topic": "The database migration with Rosa Garcia. Finished; nothing open. | status: done | last active: 21d ago | keys: address:rosa.garcia@pool.example, thread:th_fx1",
     "active_tasks": [],
     "past_action_notes": [
@@ -316,7 +316,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_5",
-    "name": "Headcount plan with Bob",
+    "name": "Bob Okafor Headcount Note",
     "topic": "The headcount plan with Bob Okafor. Finished; nothing open. | status: done | last active: 19d ago | keys: address:bob.okafor@acme.example, draft:r-fx6, thread:th_fx6",
     "active_tasks": [],
     "past_action_notes": [
@@ -326,7 +326,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_6",
-    "name": "Pet insurance with Bob",
+    "name": "Bob Okafor Contact Lookup",
     "topic": "Pet insurance with Bob Okafor. Finished; nothing open. | status: done | last active: 17d ago | keys: address:bob.okafor@acme.example, thread:th_fx0",
     "active_tasks": [],
     "past_action_notes": [
@@ -336,7 +336,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_7",
-    "name": "Trademark filing with Bob",
+    "name": "Bob Okafor Trademark Email",
     "topic": "The trademark filing with Bob Okafor. In progress. | status: active | last active: 8d ago | keys: address:bob.okafor@acme.example, thread:th_fx2",
     "active_tasks": [],
     "past_action_notes": [
@@ -346,7 +346,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_8",
-    "name": "Lease renewal with Bob",
+    "name": "Bob Hale Lease Request",
     "topic": "Drafted a note asking Bob Hale, the landlord, for the revised 12-month lease renewal paperwork. Draft r-lease-02 is not sent yet. | status: waiting_user | last active: 4d ago | keys: address:bob.hale@harborviewproperties.example, draft:r-lease-02, thread:th_lease_7731",
     "active_tasks": [
       "draft r-lease-02"
@@ -357,7 +357,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_9",
-    "name": "Reunion dinner with Bob Lee",
+    "name": "Bob Lee Reunion Dinner",
     "topic": "Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant. | status: waiting_user | last active: 1d ago | keys: address:bob.lee@friends.example, thread:th_dinner_4410",
     "active_tasks": [],
     "past_action_notes": [
@@ -367,7 +367,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_10",
-    "name": "Deploy + gateway crash w/ Bob",
+    "name": "Bob Okafor Email",
     "topic": "Coordinating last night's api-gateway crash and today's hotfix deploy with Bob Okafor. Deploy check reminder t_21 is set. | status: active | last active: 1h ago | keys: address:bob.okafor@acme.example, thread:th_deploy_8812, trigger:21",
     "active_tasks": [
       "trigger t_21"

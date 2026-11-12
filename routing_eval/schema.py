@@ -98,6 +98,7 @@ class Workstream:
     trigger: Optional[int] = None
     trigger_active: bool = True
     agent_of: Optional[str] = None  # name_drift: this work was done by another workstream's agent
+    name_key: Optional[str] = None  # filler template key for its frozen creation name (names.py)
 
 
 @dataclass(frozen=True)

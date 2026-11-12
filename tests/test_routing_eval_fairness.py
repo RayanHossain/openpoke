@@ -54,10 +54,10 @@ def _registry_message(world, inst, tmp_path, name):
         with views.world_clock(world, sb.registry):
             msgs = ia_agent.prepare_message_with_history(inst.message, real_transcript,
                                                          message_type=views.message_type(inst.source))
-        rows = {}
-        for ea in view.ref_of:
-            rec = sb.registry.get(ea)
-            rows[rec.label] = rec.brief
+        rows = []
+        for a in world.agents:
+            rec = sb.registry.get(view.id_of[a.ref])
+            rows.append((rec.label, rec.brief))
         return view, msgs[0]["content"], rows
     finally:
         sb.close()
@@ -81,19 +81,19 @@ def test_view_builders_take_only_the_world():
 def test_every_arm_sees_the_same_world(tmp_path):
     for i, (world, inst) in enumerate(PAIRS):
         names = [a.name for a in world.agents]
-        briefs = {a.name: a.brief for a in world.agents}
+        briefs = [a.brief for a in world.agents]
         # baseline
         base = views.load_baseline(world, tmp_path / f"b{i}")
         assert set(base.roster) == set(names)
         base_msg = views.baseline_ia_message(world, inst.message, inst.source)
         # registry
         _reg_view, reg_msg, rows = _registry_message(world, inst, tmp_path, f"r{i}")
-        assert rows == briefs, world.world_id
+        assert rows == list(zip(names, briefs)), world.world_id
         # rag (both variants)
         for variant in views.RAG_VARIANTS:
             docs = views.rag_roster(world, variant)
             assert [d["name"] for d in docs] == names
-            assert all(d["topic"].startswith(briefs[d["name"]]) for d in docs)
+            assert all(d["topic"].startswith(b) for d, b in zip(docs, briefs))
             assert views.rag_query(world, inst.message, variant).endswith(inst.message)
         # same incoming message, same turn type
         tag = "new_agent_message" if views.message_type(inst.source) == "agent" else "new_user_message"

@@ -71,6 +71,46 @@ def ia_input(world: World, message: str, source: str, root: Optional[Path] = Non
     return json.loads(proc.stdout.strip().splitlines()[-1])
 
 
+def _empty_data(data: Path) -> None:
+    """A fresh 5b5f635 data dir: empty roster, no history (what a first-ever turn sees)."""
+    (data / "execution_agents").mkdir(parents=True, exist_ok=True)
+    (data / "execution_agents" / "roster.json").write_text("[]", encoding="utf-8")
+    conv = data / "conversation"
+    conv.mkdir(parents=True, exist_ok=True)
+    (conv / "poke_conversation.log").write_text("", encoding="utf-8")
+    meta = json.dumps({"last_index": -1, "updated_at": None})
+    (conv / "poke_working_memory.log").write_text(
+        f"<summary_info>{meta}</summary_info>\n<conversation_summary></conversation_summary>\n", encoding="utf-8")
+
+
+def ia_turn(world: Optional[World], message: str, source: str, *, ledger, purpose: str, key: str,
+            root: Optional[Path] = None, model: str = "anthropic/claude-haiku-5.5",
+            estimate: float = 0.0) -> Dict[str, object]:
+    """One real 5b5f635 interaction-agent turn (real model, EA stubbed). ``world=None`` = empty world."""
+    root = check_root(root)
+    ledger.check(estimate)
+    env = {k: v for k, v in __import__("os").environ.items() if not k.startswith(("COMPOSIO_", "OPENPOKE_"))}
+    env["OPENROUTER_API_KEY"] = key
+    with tempfile.TemporaryDirectory(prefix="routing-eval-baseline-") as tmp:
+        data = Path(tmp) / "world-data"
+        if world is None:
+            _empty_data(data)
+        else:
+            load_baseline(world, data)
+        proc = subprocess.run(
+            [sys.executable, str(_CHILD), "--baseline-root", str(root), "--world-data", str(data),
+             "--message-type", message_type(source), "--mode", "turn", "--model", model],
+            input=message, capture_output=True, text=True, timeout=600, env=env,
+        )
+    if proc.returncode != 0:
+        raise RuntimeError(f"baseline child failed:\n{proc.stderr[-4000:]}")
+    out = json.loads(proc.stdout.strip().splitlines()[-1])
+    for u in out["usage"]:
+        ledger.record(purpose, "baseline", u.get("model") or model, int(u.get("prompt_tokens") or 0),
+                      int(u.get("completion_tokens") or 0), u.get("cost"))
+    return out
+
+
 if __name__ == "__main__":
     if sys.argv[1:] == ["setup"]:
         print(f"baseline worktree ready: {setup()}")

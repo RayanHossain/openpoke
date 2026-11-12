@@ -1,0 +1,122 @@
+{
+ "per_router_smoke": {
+  "baseline": {
+   "decisions": 3,
+   "calls": 6,
+   "calls_per_decision": 2.0,
+   "prompt_tokens_per_decision": 10443.333333333334,
+   "completion_tokens_per_decision": 293.0,
+   "cost_per_call": 0.0005954166666666667,
+   "cost_per_decision": 0.0011908333333333335
+  },
+  "registry": {
+   "decisions": 12,
+   "calls": 24,
+   "calls_per_decision": 2.0,
+   "prompt_tokens_per_decision": 14797.333333333334,
+   "completion_tokens_per_decision": 378.8333333333333,
+   "cost_per_call": 0.000834575,
+   "cost_per_decision": 0.00166915
+  },
+  "rag": {
+   "decisions": 4,
+   "calls": 4,
+   "calls_per_decision": 1.0,
+   "prompt_tokens_per_decision": 1073.5,
+   "completion_tokens_per_decision": 115.75,
+   "cost_per_call": 0.00016522500000000002,
+   "cost_per_decision": 0.00016522500000000002
+  }
+ },
+ "per_router_and_n": {
+  "baseline@N3-high": {
+   "decisions_per_run": 81,
+   "cost_per_decision": 0.001191,
+   "prompt_scale_vs_N3": 1.0
+  },
+  "registry@N3-high": {
+   "decisions_per_run": 81,
+   "cost_per_decision": 0.001669,
+   "prompt_scale_vs_N3": 1.0
+  },
+  "rag@N3-high": {
+   "decisions_per_run": 81,
+   "cost_per_decision": 0.000165,
+   "prompt_scale_vs_N3": 1.0
+  },
+  "baseline@N10-high": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.001652,
+   "prompt_scale_vs_N3": 1.44
+  },
+  "registry@N10-high": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.002315,
+   "prompt_scale_vs_N3": 1.44
+  },
+  "rag@N10-high": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.000165,
+   "prompt_scale_vs_N3": 1.0
+  },
+  "baseline@N30-high": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.002141,
+   "prompt_scale_vs_N3": 1.91
+  },
+  "registry@N30-high": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.00283,
+   "prompt_scale_vs_N3": 1.78
+  },
+  "rag@N30-high": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.000165,
+   "prompt_scale_vs_N3": 1.0
+  },
+  "baseline@N50-high": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.002549,
+   "prompt_scale_vs_N3": 2.3
+  },
+  "registry@N50-high": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.003256,
+   "prompt_scale_vs_N3": 2.07
+  },
+  "rag@N50-high": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.000165,
+   "prompt_scale_vs_N3": 0.99
+  },
+  "baseline@N50-low": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.002541,
+   "prompt_scale_vs_N3": 2.29
+  },
+  "registry@N50-low": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.003237,
+   "prompt_scale_vs_N3": 2.06
+  },
+  "rag@N50-low": {
+   "decisions_per_run": 84,
+   "cost_per_decision": 0.000164,
+   "prompt_scale_vs_N3": 0.98
+  }
+ },
+ "plan": {
+  "Tier A main (N 3/10/30/50 high x 3 runs x 3 routers)": 4.575,
+  "Low-similarity N50 (x 3 runs x 3 routers)": 1.497,
+  "RAG as-built N30 (1 run)": 0.014,
+  "G2 breaks (3 x registry N10 x 1 run)": 0.583,
+  "Held-out (40 probes x N 3/30/50 x 3 runs x 3 routers)": 1.696,
+  "Tier B (3 sessions x 30 turns x 2 routers x 2 runs; EAs stubbed)": 1.202,
+  "Tier C mini (2 grown sessions with real EAs + 20 probes x 2 routers x 2 brief versions x 3 runs)": 0.9,
+  "Debugging and reruns (spec allowance)": 2.0
+ },
+ "plan_total": 12.47,
+ "spent_so_far": 2.0244,
+ "projected_total_with_spent": 14.49,
+ "cap": 25.0
+}

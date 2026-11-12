@@ -46,7 +46,9 @@ class Scored:
 
 
 def _ws_of(world: World, refs: Iterable[str]) -> List[Set[str]]:
-    return [set(world.agent(r).ws_ids) for r in refs]
+    """Workstreams owned by each chosen agent. "agA+agB" is one baseline agent made of
+    same-named agents (5b5f635's roster keeps one entry per exact name, so they share one agent)."""
+    return [set().union(*(world.agent(x).ws_ids for x in r.split("+"))) for r in refs]
 
 
 def matches(action: Action, decision: Decision, world: World) -> bool:

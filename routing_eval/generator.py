@@ -16,7 +16,7 @@ from dataclasses import replace
 from datetime import timedelta
 from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple
 
-from . import catalog
+from . import catalog, names
 from .keys_pure import agents_for_keys, explicit_keys, keybook, resolve_aliases
 from .schema import (
     HOT_SET_K, N_LEVELS, REFERENCE_NOW, SIM_LEVELS, SUMMARY_TAIL, SUMMARY_THRESHOLD, WORLD_PLAN,
@@ -118,7 +118,7 @@ def _make_filler(k: int, template: Tuple[str, str, str], family: str, person: Pe
     return Workstream(
         ws_id=f"fx_{k}", label=label, topic=topic, family=family, people=(person.pid,), brief=brief,
         status=status, steps=tuple(steps), thread=thread, draft=draft, trigger=trigger,
-        trigger_active=(status != "done"),
+        trigger_active=(status != "done"), name_key=names.template_key(org, family, label_t),
     )
 
 
@@ -275,6 +275,16 @@ def _tool_calls(ws: Workstream, step: StepSpec, first: bool) -> Tuple[ToolCall, 
     return tuple(calls)
 
 
+def _creation_name(w: Workstream) -> Tuple[str, str]:
+    """Frozen baseline-IA creation name (spec §1); the label only if none was generated."""
+    if w.name_key:
+        org, family, label_t = w.name_key.split("|", 2)
+        name = names.filler_name(org == "org", family, label_t, catalog.PEOPLE[w.people[0]])
+    else:
+        name = names.core_name(w.ws_id)
+    return (name, "baseline-ia") if name else (w.label, "placeholder:label")
+
+
 def _build_events(workstreams: Sequence[Workstream]) -> Tuple[List[Event], List[Agent]]:
     owner = {w.ws_id: (w.agent_of or w.ws_id) for w in workstreams}
     creators = [w for w in workstreams if w.agent_of is None]
@@ -307,8 +317,8 @@ def _build_events(workstreams: Sequence[Workstream]) -> Tuple[List[Event], List[
         mine = [e for e in events if e.agent_ref == ref]
         agents.append(Agent(
             ref=ref,
-            name=w.label,  # TODO(D-005 §1): frozen baseline-IA creation name; label is a placeholder
-            name_source="placeholder:label",
+            name=_creation_name(w)[0],
+            name_source=_creation_name(w)[1],
             ws_ids=tuple(x.ws_id for x in workstreams if owner[x.ws_id] == w.ws_id),
             created_at=mine[0].at,
             last_active_at=mine[-1].at,
@@ -474,7 +484,7 @@ def overlap_words(probe: BaseProbe, lib=None) -> Set[str]:
         # the agent's brief is its latest report: the latest-started workstream it owns
         owned = [w for w in lib.values() if (w.agent_of or w.ws_id) == creator.ws_id]
         latest = min(owned, key=lambda w: w.steps[-1].days_ago)
-        out |= msg & content_words(f"{creator.label} {latest.brief}")
+        out |= msg & content_words(f"{_creation_name(creator)[0]} {latest.brief}")  # the name routers see
     return out
 
 

@@ -1,0 +1,810 @@
+{
+ "rows": [
+  {
+   "probe": "smoke_route_by_key",
+   "router": "registry",
+   "run": 1,
+   "n": 3,
+   "decision": "route",
+   "targets": [
+    [
+     "ws_alice_lunch"
+    ]
+   ],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 13270,
+   "first_routing_call": "send_message_to_agent",
+   "first_routing_confirm": false,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_smoke_invoice"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_flight"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "Checking with the lunch thread now."
+     }
+    },
+    {
+     "name": "send_message_to_agent",
+     "args": {
+      "agent_id": "ea_2",
+      "instructions": "The user is asking what Alice Chen said about the lunch next week. Check the inbox for any reply from Alice Chen (alice.chen@acme.example) on the lunch thread and report her exact reply, including the date and any proposed times or places. If she hasn't replied yet, say so clearly."
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_route_by_key",
+   "router": "registry",
+   "run": 2,
+   "n": 3,
+   "decision": "route",
+   "targets": [
+    [
+     "ws_alice_lunch"
+    ]
+   ],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 13254,
+   "first_routing_call": "send_message_to_agent",
+   "first_routing_confirm": false,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_smoke_invoice"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_flight"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "Nothing from her yet as far as I can see. Checking her inbox to make sure."
+     }
+    },
+    {
+     "name": "send_message_to_agent",
+     "args": {
+      "agent_id": "ea_2",
+      "instructions": "The user is asking what Alice Chen said about the lunch. Check for any reply from alice.chen@acme.example to the lunch request and report back exactly what she said, with the date. If there is no reply yet, say so plainly."
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_route_by_key",
+   "router": "registry",
+   "run": 3,
+   "n": 3,
+   "decision": "route",
+   "targets": [
+    [
+     "ws_alice_lunch"
+    ]
+   ],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 13248,
+   "first_routing_call": "send_message_to_agent",
+   "first_routing_confirm": false,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_smoke_invoice"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_flight"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "Checking with the Alice lunch thread now."
+     }
+    },
+    {
+     "name": "send_message_to_agent",
+     "args": {
+      "agent_id": "ea_2",
+      "instructions": "The user is asking what Alice Chen (alice.chen@acme.example) said about lunch. Check the inbox for any reply from Alice to the lunch request thread, and report her reply's content and date. If she hasn't replied yet, say so clearly."
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_route_by_key",
+   "router": "rag",
+   "run": 1,
+   "n": 3,
+   "decision": "route",
+   "targets": [
+    [
+     "ws_alice_lunch"
+    ]
+   ],
+   "correct": true,
+   "error": null,
+   "calls": 3,
+   "prompt_tokens": 1414,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": null,
+   "create_cause": null,
+   "embedder": "openrouter:openai/text-embedding-3-small",
+   "candidates": [
+    [
+     "ws_flight"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_smoke_invoice"
+    ]
+   ],
+   "tool_calls": [],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_dry_run",
+   "router": "registry",
+   "run": 1,
+   "n": 3,
+   "decision": "route",
+   "targets": [
+    [
+     "ws_smoke_invoice"
+    ]
+   ],
+   "correct": false,
+   "error": "forced_merge",
+   "calls": 2,
+   "prompt_tokens": 13421,
+   "first_routing_call": "send_message_to_agent",
+   "first_routing_confirm": false,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_smoke_invoice"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_flight"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "On it. I'll have the agent handling Bob draft the offsite email for you to review."
+     }
+    },
+    {
+     "name": "send_message_to_agent",
+     "args": {
+      "agent_id": "ea_3",
+      "instructions": "The user wants a new email drafted to Bob Ruiz (bob.ruiz@acme.example) about the offsite. This is a separate email from the invoice #4471 reminder, so do not change or send draft r-77. Ask me for any missing details the draft needs (such as date, location, or what specifically to say) before drafting if they are required. Do not send anything. Once drafted, report the full draft (recipient, subject, and body) so I can show it to the user for review."
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_dry_run",
+   "router": "registry",
+   "run": 2,
+   "n": 3,
+   "decision": "route",
+   "targets": [
+    [
+     "ws_smoke_invoice"
+    ]
+   ],
+   "correct": false,
+   "error": "forced_merge",
+   "calls": 2,
+   "prompt_tokens": 13471,
+   "first_routing_call": "send_message_to_agent",
+   "first_routing_confirm": false,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_smoke_invoice"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_flight"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "On it. Bob's already got an open thread with me, so I'm having that agent draft a new separate email about the offsite. The invoice draft stays untouched."
+     }
+    },
+    {
+     "name": "send_message_to_agent",
+     "args": {
+      "agent_id": "ea_3",
+      "instructions": "The user wants a NEW, separate email to Bob Ruiz (bob.ruiz@acme.example) about the offsite. Do not modify or send draft r-77 (the invoice #4471 reminder); leave it as is. Look up the offsite details (date, location, timing, anything relevant) and draft a new email to Bob about it. Do not send it. Report back the draft ID, recipient, subject, and full body. If you can't find the offsite details, say so in your report."
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_dry_run",
+   "router": "registry",
+   "run": 3,
+   "n": 3,
+   "decision": "route",
+   "targets": [
+    [
+     "ws_smoke_invoice"
+    ]
+   ],
+   "correct": false,
+   "error": "forced_merge",
+   "calls": 3,
+   "prompt_tokens": 20638,
+   "first_routing_call": "send_message_to_agent",
+   "first_routing_confirm": false,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_smoke_invoice"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_flight"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "On it. I'll have the agent handling Bob's thread draft a new email about the offsite."
+     }
+    },
+    {
+     "name": "send_message_to_agent",
+     "args": {
+      "agent_id": "ea_3",
+      "instructions": "The user wants a new email drafted to Bob Ruiz (bob.ruiz@acme.example) about the offsite. This is separate from invoice #4471, so don't fold the invoice reminder into it. Ask me for any details you need (date, location, what to say) if they're not already in the thread. Otherwise draft it and report back the recipient, subject, and full body so I can show the user before anything is sent. Don't send it yet."
+     }
+    },
+    {
+     "name": "wait",
+     "args": {
+      "reason": "Waiting for Bob Ruiz thread agent to draft the offsite email before showing the user anything."
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_dry_run",
+   "router": "rag",
+   "run": 1,
+   "n": 3,
+   "decision": "create",
+   "targets": [],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 1196,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": null,
+   "create_cause": "model_chose_create",
+   "embedder": "openrouter:openai/text-embedding-3-small",
+   "candidates": [
+    [
+     "ws_flight"
+    ],
+    [
+     "ws_smoke_invoice"
+    ],
+    [
+     "ws_alice_lunch"
+    ]
+   ],
+   "tool_calls": [],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_ask",
+   "router": "registry",
+   "run": 1,
+   "n": 14,
+   "decision": "none",
+   "targets": [],
+   "correct": false,
+   "error": "dropped_request",
+   "calls": 1,
+   "prompt_tokens": 10160,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_hd_grocery"
+    ],
+    [
+     "ws_hd_concert"
+    ],
+    [
+     "ws_hd_laptop"
+    ],
+    [
+     "ws_hd_bookclub"
+    ],
+    [
+     "ws_hd_library"
+    ]
+   ],
+   "tool_calls": [],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_ask",
+   "router": "registry",
+   "run": 2,
+   "n": 14,
+   "decision": "ask",
+   "targets": [],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 20584,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_hd_grocery"
+    ],
+    [
+     "ws_hd_concert"
+    ],
+    [
+     "ws_hd_laptop"
+    ],
+    [
+     "ws_hd_bookclub"
+    ],
+    [
+     "ws_hd_library"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "which one? you've got a few open:\n- t_7: monthly Northwind invoice\n- t_505: prescription refill via Paula Reyes\n- t_501: furnace service with Xenia Park\n- t_502: furnace service with Julia Novak"
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_ask",
+   "router": "registry",
+   "run": 3,
+   "n": 14,
+   "decision": "ask",
+   "targets": [],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 20594,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_hd_grocery"
+    ],
+    [
+     "ws_hd_concert"
+    ],
+    [
+     "ws_hd_laptop"
+    ],
+    [
+     "ws_hd_bookclub"
+    ],
+    [
+     "ws_hd_library"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "which one? you've got a few open:\n- t_7: Northwind monthly invoice\n- t_505: prescription refill via Paula Reyes\n- t_501: furnace service with Xenia Park (already finished)\n- t_502: furnace service with Julia Novak"
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_ask",
+   "router": "rag",
+   "run": 1,
+   "n": 14,
+   "decision": "create",
+   "targets": [],
+   "correct": false,
+   "error": "duplicate_create",
+   "calls": 3,
+   "prompt_tokens": 2447,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": null,
+   "create_cause": "model_chose_create",
+   "embedder": "openrouter:openai/text-embedding-3-small",
+   "candidates": [
+    [
+     "ws_hd_library"
+    ],
+    [
+     "ws_hd_grocery"
+    ],
+    [
+     "fx_0"
+    ],
+    [
+     "ws_hd_bookclub"
+    ],
+    [
+     "ws_hd_concert"
+    ]
+   ],
+   "tool_calls": [],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_cp05",
+   "router": "baseline",
+   "run": 1,
+   "n": 3,
+   "decision": "ask",
+   "targets": [],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 10454,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": null,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_climb"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_smoke_invoice"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "Which Bob, Bob Lee or Bob Ruiz?"
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_cp05",
+   "router": "baseline",
+   "run": 2,
+   "n": 3,
+   "decision": "ask",
+   "targets": [],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 10434,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": null,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_climb"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_smoke_invoice"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "which bob, lee or ruiz?"
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_cp05",
+   "router": "baseline",
+   "run": 3,
+   "n": 3,
+   "decision": "ask",
+   "targets": [],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 10442,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": null,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_climb"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_smoke_invoice"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "which bob? bob lee or bob ruiz?"
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_cp05",
+   "router": "registry",
+   "run": 1,
+   "n": 3,
+   "decision": "ask",
+   "targets": [],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 12990,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_smoke_invoice"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_climb"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "Which Bob? Bob Lee (climbing buddy) or Bob Ruiz (the invoice #4471 draft)?"
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_cp05",
+   "router": "registry",
+   "run": 2,
+   "n": 3,
+   "decision": "ask",
+   "targets": [],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 12988,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_smoke_invoice"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_climb"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "Which Bob? Bob Lee (climbing buddy) or Bob Ruiz (the invoice #4471 one)?"
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_cp05",
+   "router": "registry",
+   "run": 3,
+   "n": 3,
+   "decision": "ask",
+   "targets": [],
+   "correct": true,
+   "error": null,
+   "calls": 2,
+   "prompt_tokens": 12950,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": 0,
+   "create_cause": null,
+   "embedder": null,
+   "candidates": [
+    [
+     "ws_smoke_invoice"
+    ],
+    [
+     "ws_alice_lunch"
+    ],
+    [
+     "ws_climb"
+    ]
+   ],
+   "tool_calls": [
+    {
+     "name": "send_message_to_user",
+     "args": {
+      "message": "Which Bob, Bob Lee or Bob Ruiz?"
+     }
+    }
+   ],
+   "error_text": null
+  },
+  {
+   "probe": "smoke_cp05",
+   "router": "rag",
+   "run": 1,
+   "n": 3,
+   "decision": "create",
+   "targets": [],
+   "correct": false,
+   "error": "duplicate_create",
+   "calls": 3,
+   "prompt_tokens": 1466,
+   "first_routing_call": null,
+   "first_routing_confirm": null,
+   "dry_runs": null,
+   "create_cause": "model_chose_create",
+   "embedder": "openrouter:openai/text-embedding-3-small",
+   "candidates": [
+    [
+     "ws_climb"
+    ],
+    [
+     "ws_smoke_invoice"
+    ],
+    [
+     "ws_alice_lunch"
+    ]
+   ],
+   "tool_calls": [],
+   "error_text": null
+  }
+ ],
+ "spend": {
+  "run": "smoke",
+  "calls": 41,
+  "cost_usd": 0.024308,
+  "prompt_tokens": 215421,
+  "completion_tokens": 5888,
+  "over_100k": 0,
+  "total_spent_usd": 0.494941,
+  "by_purpose": {
+   "smoke:registry": {
+    "calls": 24,
+    "cost": 0.02003,
+    "prompt_tokens": 177568,
+    "completion_tokens": 4546
+   },
+   "rag-embeddings": {
+    "calls": 7,
+    "cost": 4.5e-05,
+    "prompt_tokens": 2229,
+    "completion_tokens": 0
+   },
+   "smoke:rag": {
+    "calls": 4,
+    "cost": 0.000661,
+    "prompt_tokens": 4294,
+    "completion_tokens": 463
+   },
+   "smoke:baseline": {
+    "calls": 6,
+    "cost": 0.003572,
+    "prompt_tokens": 31330,
+    "completion_tokens": 879
+   }
+  }
+ },
+ "embedders_seen": [
+  "openrouter:openai/text-embedding-3-small"
+ ]
+}
