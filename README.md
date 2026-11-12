@@ -6,6 +6,7 @@ OpenPoke is a simplified, open-source take on [Interaction Company’s](https://
 - Gmail tooling via [Composio](https://composio.dev/) for drafting/replying/forwarding without leaving chat.
 - Trigger scheduler and background watchers for reminders and "important email" alerts.
 - Next.js web UI that proxies everything through the shared `.env`, so plugging in API keys is the only setup.
+- Routing evaluation (registry vs baseline vs RAG): [docs/routing-eval/README.md](docs/routing-eval/README.md).
 
 ## Requirements
 - Python 3.10+
