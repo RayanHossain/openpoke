@@ -1,6 +1,6 @@
 # Routing eval: pre-registration (G7)
 
-Predictions drafted by Claude Code; approved by Rayan without edits.
+Predictions drafted by Claude Code; approved by the project owner without edits.
 
 Written and committed 2026-11-12, before any Tier A dev-probe run (only the smoke-check analogs have been run).
 Dev set at commit time: 84 probes after the G4 label check (ASK widened on 4 probes; `ws_lease` world fixed).
