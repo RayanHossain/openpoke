@@ -56,7 +56,10 @@
 <user_message timestamp="2026-11-03 07:48:00">Any news on the trademark filing with Bob Okafor?</user_message>
 <agent_message timestamp="2026-11-03 07:48:00">[SUCCESS] Bob Okafor Trademark Email: The trademark filing with Bob Okafor. In progress.</agent_message>
 <poke_reply timestamp="2026-11-03 07:48:00">Update: The trademark filing with Bob Okafor. In progress.</poke_reply>
-<user_message timestamp="2026-11-07 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
+<user_message timestamp="2026-11-05 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
+<agent_message timestamp="2026-11-05 15:00:00">[SUCCESS] Bob Hale Lease Request: Emailed Bob Hale about the lease renewal paperwork.</agent_message>
+<poke_reply timestamp="2026-11-05 15:00:00">Update: Emailed Bob Hale about the lease renewal paperwork.</poke_reply>
+<user_message timestamp="2026-11-07 15:00:00">Draft a reply to Bob Hale confirming we'll renew for another year</user_message>
 <agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] Bob Hale Lease Request: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
 <poke_reply timestamp="2026-11-07 15:00:00">Update: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</poke_reply>
 <user_message timestamp="2026-11-09 15:00:00">Ask Bob Lee which Friday works for our reunion dinner</user_message>
@@ -133,7 +136,10 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
 <user_message timestamp="2026-11-03 07:48:00">Any news on the trademark filing with Bob Okafor?</user_message>
 <agent_message timestamp="2026-11-03 07:48:00">[SUCCESS] ea_7 (Bob Okafor Trademark Email): The trademark filing with Bob Okafor. In progress.</agent_message>
 <poke_reply timestamp="2026-11-03 07:48:00">Update: The trademark filing with Bob Okafor. In progress.</poke_reply>
-<user_message timestamp="2026-11-07 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
+<user_message timestamp="2026-11-05 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
+<agent_message timestamp="2026-11-05 15:00:00">[SUCCESS] ea_8 (Bob Hale Lease Request): Emailed Bob Hale about the lease renewal paperwork.</agent_message>
+<poke_reply timestamp="2026-11-05 15:00:00">Update: Emailed Bob Hale about the lease renewal paperwork.</poke_reply>
+<user_message timestamp="2026-11-07 15:00:00">Draft a reply to Bob Hale confirming we'll renew for another year</user_message>
 <agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] ea_8 (Bob Hale Lease Request): Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
 <poke_reply timestamp="2026-11-07 15:00:00">Update: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</poke_reply>
 <user_message timestamp="2026-11-09 15:00:00">Ask Bob Lee which Friday works for our reunion dinner</user_message>
@@ -153,7 +159,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
 <active_agents>
 ea_10 | Bob Okafor Email | bob.okafor@acme.example | open: trigger t_21 | 1h | Coordinating last night's api-gateway crash and today's hotfix deploy with Bob O…
 ea_9 | Bob Lee Reunion Dinner | bob.lee@friends.example | open: none | 1d waiting_user | Bob Lee can do any Friday this month. Waiting on the user to pick a re…
-ea_8 | Bob Hale Lease Request | bob.hale@harborviewprop… | open: draft r-lease-02 | 4d waiting_user | Drafted a note asking Bob Hale, the landlord, for the rev…
+ea_8 | Bob Hale Lease Request | bob.hale@harborviewprop… | open: draft r-lease-02 | 4d waiting_user | Emailed Bob Hale, the landlord, for the revised 12-month…
 ea_7 | Bob Okafor Trademark Email | bob.okafor@acme.example | open: none | 8d | The trademark filing with Bob Okafor. In progress.
 ea_6 | Bob Okafor Contact Lookup | bob.okafor@acme.example | open: none | 17d done | Pet insurance with Bob Okafor. Finished; nothing open.
 ea_5 | Bob Okafor Headcount Note | bob.okafor@acme.example | open: none | 19d done | The headcount plan with Bob Okafor. Finished; nothing open.
@@ -239,11 +245,12 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   {
     "agent_id": "ea_8",
     "name": "Bob Hale Lease Request",
-    "topic": "Drafted a note asking Bob Hale, the landlord, for the revised 12-month lease renewal paperwork. Draft r-lease-02 is not sent yet.",
+    "topic": "Emailed Bob Hale, the landlord, for the revised 12-month lease renewal paperwork; no reply yet. Drafted the user's renewal confirmation (r-lease-02), not sent.",
     "active_tasks": [
       "draft r-lease-02"
     ],
     "past_action_notes": [
+      "Emailed Bob Hale about the lease renewal paperwork.",
       "Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02)."
     ]
   },
@@ -347,11 +354,12 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   {
     "agent_id": "ea_8",
     "name": "Bob Hale Lease Request",
-    "topic": "Drafted a note asking Bob Hale, the landlord, for the revised 12-month lease renewal paperwork. Draft r-lease-02 is not sent yet. | status: waiting_user | last active: 4d ago | keys: address:bob.hale@harborviewproperties.example, draft:r-lease-02, thread:th_lease_7731",
+    "topic": "Emailed Bob Hale, the landlord, for the revised 12-month lease renewal paperwork; no reply yet. Drafted the user's renewal confirmation (r-lease-02), not sent. | status: waiting_user | last active: 4d ago | keys: address:bob.hale@harborviewproperties.example, draft:r-lease-02, thread:th_lease_7731",
     "active_tasks": [
       "draft r-lease-02"
     ],
     "past_action_notes": [
+      "Emailed Bob Hale about the lease renewal paperwork.",
       "Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02)."
     ]
   },
@@ -380,7 +388,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
 ]
 === rag parity: query ===
 Recent conversation:
-user: Ask Bob Hale for the revised lease renewal paperwork
+user: Draft a reply to Bob Hale confirming we'll renew for another year
 agent result: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).
 assistant: Update: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).
 

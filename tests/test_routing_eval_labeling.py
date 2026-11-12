@@ -15,8 +15,15 @@ def test_packet_has_no_leaks_and_matches_the_committed_key():
     data = labeling.build()
     packet = labeling.README + "\n".join(data["items"])
     assert labeling._leaks(packet, data["key"]) == []
+    # The committed key records what the labeler saw (2026-11-12). Acceptable sets may since have been widened
+    # (G4 rules, never narrowed) and worlds fixed, so only the stable parts must match a fresh build.
     committed = json.loads(labeling.KEY_PATH.read_text())
-    assert committed["seed"] == labeling.SEED and committed["items"] == data["key"]
+    assert committed["seed"] == labeling.SEED and set(committed["items"]) == set(data["key"])
+    for item_id, item in committed["items"].items():
+        assert item["probe_id"] == data["key"][item_id]["probe_id"]
+        assert item["letters"] == data["key"][item_id]["letters"]
+        now = {(a["kind"], tuple(a["letters"])) for a in data["key"][item_id]["acceptable"]}
+        assert {(a["kind"], tuple(a["letters"])) for a in item["acceptable"]} <= now  # only ever widened
     assert "hub_nb_tap" in data["probes"] and set(labeling.ALIAS_COLLISION) <= set(data["probes"])
     from routing_eval import catalog
     from routing_eval.generator import build_world

@@ -152,7 +152,8 @@ def _check_probe(p: BaseProbe, lib: Dict[str, Workstream], errs: List[str]) -> N
         errs.append(f"{where}: post_fold must force a fold")
     if c == "name_drift" and not all(lib[t].agent_of for t in p.targets):
         errs.append(f"{where}: name_drift target must be work done by another workstream's agent")
-    if "ask" in kinds and c not in ("truly_ambiguous", "alias_resolution", "hub_key") :
+    if "ask" in kinds and c not in ("truly_ambiguous", "alias_resolution", "hub_key") \
+            and p.probe_id not in catalog.G4_ASK_WIDENED:
         errs.append(f"{where}: ASK acceptable outside an ambiguity category; justify or fix")
 
 

@@ -42,8 +42,8 @@
   "Simon Clarke Contact Lookup",
   "Grace Okoro Tennis Lessons Email",
   "Jonas Berg Cat Sitting Email",
-  "Family Reunion Email to Kevin Osei",
   "Bob Hale Lease Request",
+  "Family Reunion Email to Kevin Osei",
   "Pedro Alves NDA Draft",
   "Paula Reyes Cat Sitting Email",
   "Bob Lee Reunion Dinner",
@@ -134,10 +134,13 @@ Context &amp; Notes:
 <user_message timestamp="2026-11-04 22:26:24">Any news on quarterly goals with Julia Novak?</user_message>
 <agent_message timestamp="2026-11-04 22:26:24">[SUCCESS] Julia Novak Quarterly Goals Email: Quarterly goals with Julia Novak. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-11-04 22:26:24">Update: Quarterly goals with Julia Novak. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-05 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
+<agent_message timestamp="2026-11-05 15:00:00">[SUCCESS] Bob Hale Lease Request: Emailed Bob Hale about the lease renewal paperwork.</agent_message>
+<poke_reply timestamp="2026-11-05 15:00:00">Update: Emailed Bob Hale about the lease renewal paperwork.</poke_reply>
 <user_message timestamp="2026-11-06 07:33:36">Send an email about the family reunion with Kevin Osei</user_message>
 <agent_message timestamp="2026-11-06 07:33:36">[SUCCESS] Family Reunion Email to Kevin Osei: Sent an email about the family reunion with Kevin Osei.</agent_message>
 <poke_reply timestamp="2026-11-06 07:33:36">Update: Sent an email about the family reunion with Kevin Osei.</poke_reply>
-<user_message timestamp="2026-11-07 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
+<user_message timestamp="2026-11-07 15:00:00">Draft a reply to Bob Hale confirming we'll renew for another year</user_message>
 <agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] Bob Hale Lease Request: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
 <poke_reply timestamp="2026-11-07 15:00:00">Update: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</poke_reply>
 <user_message timestamp="2026-11-07 20:16:48">Draft a note about the NDA from Pedro Alves</user_message>
@@ -223,8 +226,8 @@ Context &amp; Notes:
 <agent name="Simon Clarke Contact Lookup" />
 <agent name="Grace Okoro Tennis Lessons Email" />
 <agent name="Jonas Berg Cat Sitting Email" />
-<agent name="Family Reunion Email to Kevin Osei" />
 <agent name="Bob Hale Lease Request" />
+<agent name="Family Reunion Email to Kevin Osei" />
 <agent name="Pedro Alves NDA Draft" />
 <agent name="Paula Reyes Cat Sitting Email" />
 <agent name="Bob Lee Reunion Dinner" />
@@ -319,11 +322,14 @@ Context &amp; Notes:
 <user_message timestamp="2026-11-04 22:26:24">Any news on quarterly goals with Julia Novak?</user_message>
 <agent_message timestamp="2026-11-04 22:26:24">[SUCCESS] ea_38 (Julia Novak Quarterly Goals Email): Quarterly goals with Julia Novak. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-11-04 22:26:24">Update: Quarterly goals with Julia Novak. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-05 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
+<agent_message timestamp="2026-11-05 15:00:00">[SUCCESS] ea_44 (Bob Hale Lease Request): Emailed Bob Hale about the lease renewal paperwork.</agent_message>
+<poke_reply timestamp="2026-11-05 15:00:00">Update: Emailed Bob Hale about the lease renewal paperwork.</poke_reply>
 <user_message timestamp="2026-11-06 07:33:36">Send an email about the family reunion with Kevin Osei</user_message>
-<agent_message timestamp="2026-11-06 07:33:36">[SUCCESS] ea_44 (Family Reunion Email to Kevin Osei): Sent an email about the family reunion with Kevin Osei.</agent_message>
+<agent_message timestamp="2026-11-06 07:33:36">[SUCCESS] ea_45 (Family Reunion Email to Kevin Osei): Sent an email about the family reunion with Kevin Osei.</agent_message>
 <poke_reply timestamp="2026-11-06 07:33:36">Update: Sent an email about the family reunion with Kevin Osei.</poke_reply>
-<user_message timestamp="2026-11-07 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
-<agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] ea_45 (Bob Hale Lease Request): Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
+<user_message timestamp="2026-11-07 15:00:00">Draft a reply to Bob Hale confirming we'll renew for another year</user_message>
+<agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] ea_44 (Bob Hale Lease Request): Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
 <poke_reply timestamp="2026-11-07 15:00:00">Update: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</poke_reply>
 <user_message timestamp="2026-11-07 20:16:48">Draft a note about the NDA from Pedro Alves</user_message>
 <agent_message timestamp="2026-11-07 20:16:48">[SUCCESS] ea_46 (Pedro Alves NDA Draft): Drafted an email about the NDA from Pedro Alves (draft r-fx12).</agent_message>
@@ -359,7 +365,7 @@ Context &amp; Notes:
 <agent_message timestamp="2026-11-11 06:07:12">[SUCCESS] ea_50 (Julia Novak Tire Change Email): The tire change with Julia Novak. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-11-11 06:07:12">Update: The tire change with Julia Novak. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-11-11 08:02:24">Any news on the family reunion with Kevin Osei?</user_message>
-<agent_message timestamp="2026-11-11 08:02:24">[SUCCESS] ea_44 (Family Reunion Email to Kevin Osei): The family reunion with Kevin Osei. Finished; nothing open.</agent_message>
+<agent_message timestamp="2026-11-11 08:02:24">[SUCCESS] ea_45 (Family Reunion Email to Kevin Osei): The family reunion with Kevin Osei. Finished; nothing open.</agent_message>
 <poke_reply timestamp="2026-11-11 08:02:24">Update: The family reunion with Kevin Osei. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-11-11 13:04:48">Remind me at 6pm to check the hotfix deploy</user_message>
 <agent_message timestamp="2026-11-11 13:04:48">[SUCCESS] ea_49 (Bob Okafor Email): Set reminder t_21 for the api-gateway crash and hotfix deploy.</agent_message>
@@ -369,7 +375,7 @@ Context &amp; Notes:
 <active_agents>
 ea_49 | Bob Okafor Email | bob.okafor@acme.example | open: trigger t_21 | 1h | Coordinating last night's api-gateway crash and today's hotfix deploy with Bob O…
 ea_48 | Bob Lee Reunion Dinner | bob.lee@friends.example | open: none | 1d waiting_user | Bob Lee can do any Friday this month. Waiting on the user to pick a r…
-ea_45 | Bob Hale Lease Request | bob.hale@harborviewprop… | open: draft r-lease-02 | 4d waiting_user | Drafted a note asking Bob Hale, the landlord, for the re…
+ea_44 | Bob Hale Lease Request | bob.hale@harborviewprop… | open: draft r-lease-02 | 4d waiting_user | Emailed Bob Hale, the landlord, for the revised 12-month…
 ea_42 | Grace Okoro Tennis Lessons Email | grace.okoro@pool.example | open: none | 1d waiting_external | Tennis lessons with Grace Okoro. Waiting on Grace's re…
 ea_47 | Paula Reyes Cat Sitting Email | paula.reyes@pool.example | open: none | 1d | Cat sitting with Paula Reyes. In progress.
 ea_40 | Simon Clarke Contact Lookup | simon.clarke@pool.examp… | open: none | 3d | Mail forwarding with Simon Clarke. In progress.
@@ -822,23 +828,24 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_44",
+    "name": "Bob Hale Lease Request",
+    "topic": "Emailed Bob Hale, the landlord, for the revised 12-month lease renewal paperwork; no reply yet. Drafted the user's renewal confirmation (r-lease-02), not sent.",
+    "active_tasks": [
+      "draft r-lease-02"
+    ],
+    "past_action_notes": [
+      "Emailed Bob Hale about the lease renewal paperwork.",
+      "Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02)."
+    ]
+  },
+  {
+    "agent_id": "ea_45",
     "name": "Family Reunion Email to Kevin Osei",
     "topic": "The family reunion with Kevin Osei. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
       "Sent an email about the family reunion with Kevin Osei.",
       "The family reunion with Kevin Osei. Finished; nothing open."
-    ]
-  },
-  {
-    "agent_id": "ea_45",
-    "name": "Bob Hale Lease Request",
-    "topic": "Drafted a note asking Bob Hale, the landlord, for the revised 12-month lease renewal paperwork. Draft r-lease-02 is not sent yet.",
-    "active_tasks": [
-      "draft r-lease-02"
-    ],
-    "past_action_notes": [
-      "Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02)."
     ]
   },
   {
@@ -1339,23 +1346,24 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_44",
+    "name": "Bob Hale Lease Request",
+    "topic": "Emailed Bob Hale, the landlord, for the revised 12-month lease renewal paperwork; no reply yet. Drafted the user's renewal confirmation (r-lease-02), not sent. | status: waiting_user | last active: 4d ago | keys: address:bob.hale@harborviewproperties.example, draft:r-lease-02, thread:th_lease_7731",
+    "active_tasks": [
+      "draft r-lease-02"
+    ],
+    "past_action_notes": [
+      "Emailed Bob Hale about the lease renewal paperwork.",
+      "Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02)."
+    ]
+  },
+  {
+    "agent_id": "ea_45",
     "name": "Family Reunion Email to Kevin Osei",
     "topic": "The family reunion with Kevin Osei. Finished; nothing open. | status: done | last active: 6h ago | keys: address:kevin.osei@pool.example, thread:th_fx21",
     "active_tasks": [],
     "past_action_notes": [
       "Sent an email about the family reunion with Kevin Osei.",
       "The family reunion with Kevin Osei. Finished; nothing open."
-    ]
-  },
-  {
-    "agent_id": "ea_45",
-    "name": "Bob Hale Lease Request",
-    "topic": "Drafted a note asking Bob Hale, the landlord, for the revised 12-month lease renewal paperwork. Draft r-lease-02 is not sent yet. | status: waiting_user | last active: 4d ago | keys: address:bob.hale@harborviewproperties.example, draft:r-lease-02, thread:th_lease_7731",
-    "active_tasks": [
-      "draft r-lease-02"
-    ],
-    "past_action_notes": [
-      "Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02)."
     ]
   },
   {

@@ -1,0 +1,807 @@
+{
+ "items": 27,
+ "agree": 27,
+ "agree_rate": 1.0,
+ "preferred_match": 27,
+ "rows": [
+  {
+   "item_id": "Q-HV8B",
+   "probe_id": "dk_passport_alias",
+   "category": "done_keyed",
+   "answer": "D",
+   "also_accept": "ASK",
+   "confidence": "medium",
+   "note": "\"Passport stuff\" most naturally means the passport renewal appointment (D), which is finished; the other Passport Office items are unrelated errands, so ASK is only a weak fallback.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [
+    "ASK"
+   ],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "answer_ws": [
+    "ws_passport"
+   ]
+  },
+  {
+   "item_id": "Q-RK1E",
+   "probe_id": "st_nb_buddy",
+   "category": "same_topic_diff_person",
+   "answer": "C",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "\"My buddy\" plus \"subletting bit\" matches Jordan's apartment lease, where the sublet clause was flagged.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "C"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "C"
+    ]
+   },
+   "answer_ws": [
+    "ws_friend_lease"
+   ]
+  },
+  {
+   "item_id": "Q-OIAH",
+   "probe_id": "alias_passport_number",
+   "category": "alias_resolution",
+   "answer": "B",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "YYZ is Toronto's airport code, so this is about the Toronto conference flights with Maple Air.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "B"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "B"
+    ]
+   },
+   "answer_ws": [
+    "ws_flight"
+   ]
+  },
+  {
+   "item_id": "Q-1JRG",
+   "probe_id": "sp_nb_pay_artwork",
+   "category": "same_person_diff_work",
+   "answer": "A",
+   "also_accept": "ASK",
+   "confidence": "medium",
+   "note": "Paying for design/slides artwork matches Dana's design invoice awaiting payment approval; I (Q3 deck visuals) is a feedback request, not a payment.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [
+    "ASK"
+   ],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "A"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "A"
+    ]
+   },
+   "answer_ws": [
+    "ws_dana_invoice"
+   ]
+  },
+  {
+   "item_id": "Q-L7JG",
+   "probe_id": "para_nb_getaway",
+   "category": "paraphrase",
+   "answer": "F",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "\"Work getaway\" = team offsite, and F is the venue search with Lakeside Lodge.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "F"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "F"
+    ]
+   },
+   "answer_ws": [
+    "ws_offsite"
+   ]
+  },
+  {
+   "item_id": "Q-WJ0C",
+   "probe_id": "slug_nb_sharp_yes",
+   "category": "slug_collision",
+   "answer": "E",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "\"C-sharp\" = C#, so this accepts the Globex C# offer (E), not the Initech C++ one.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "E"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "E"
+    ]
+   },
+   "answer_ws": [
+    "ws_cs"
+   ]
+  },
+  {
+   "item_id": "Q-V02T",
+   "probe_id": "para_reimbursement",
+   "category": "paraphrase",
+   "answer": "G",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Reimbursement paperwork for last month = the October expense report submitted to the Expenses Team.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "G"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "G"
+    ]
+   },
+   "answer_ws": [
+    "ws_expense"
+   ]
+  },
+  {
+   "item_id": "Q-NQ5S",
+   "probe_id": "alias_bright_idea",
+   "category": "alias_resolution",
+   "answer": "F",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Work getaway = team offsite; the host is Lakeside Lodge on the venue thread F.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "F"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "F"
+    ]
+   },
+   "answer_ws": [
+    "ws_offsite"
+   ]
+  },
+  {
+   "item_id": "Q-CH5X",
+   "probe_id": "drift_nb_pup",
+   "category": "name_drift",
+   "answer": "B",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "\"Pup's doctor appointment\" = Biscuit's vet visit, which is awaiting confirmation.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "B"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "B"
+    ]
+   },
+   "answer_ws": [
+    "ws_vet"
+   ]
+  },
+  {
+   "item_id": "Q-6R6U",
+   "probe_id": "alias_nb_bbo",
+   "category": "alias_resolution",
+   "answer": "H",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "\"Bbo\" is a typo for Bob, and papers for staying another year = the lease renewal paperwork (draft r-lease-02).",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "H"
+     ]
+    },
+    {
+     "kind": "ask",
+     "letters": []
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "H"
+    ]
+   },
+   "answer_ws": [
+    "ws_lease"
+   ]
+  },
+  {
+   "item_id": "Q-G042",
+   "probe_id": "os_nb_nudge",
+   "category": "owned_state",
+   "answer": "D",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "The only 6pm reminder is t_21 (hotfix deploy check) on D.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "answer_ws": [
+    "ws_deploy"
+   ]
+  },
+  {
+   "item_id": "Q-J9IK",
+   "probe_id": "hub_nb_carpass",
+   "category": "hub_key",
+   "answer": "I",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Car pass = parking permit/sticker, which is pending with the building office.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "I"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "I"
+    ]
+   },
+   "answer_ws": [
+    "ws_parking"
+   ]
+  },
+  {
+   "item_id": "Q-F577",
+   "probe_id": "sp_nb_midday",
+   "category": "same_person_diff_work",
+   "answer": "F",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "\"Bite to eat\" = lunch with Alice Chen, which is still being scheduled.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "F"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "F"
+    ]
+   },
+   "answer_ws": [
+    "ws_alice_lunch"
+   ]
+  },
+  {
+   "item_id": "Q-X6PB",
+   "probe_id": "hub_nb_tap",
+   "category": "hub_key",
+   "answer": "D",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Dripping tap = leaky kitchen faucet, which is waiting on a plumber time from Harborview.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "answer_ws": [
+    "ws_maint"
+   ]
+  },
+  {
+   "item_id": "Q-SXOU",
+   "probe_id": "drift_nb_homework",
+   "category": "name_drift",
+   "answer": "D",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Homework helper for my son = the math tutor search for Leo.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "answer_ws": [
+    "ws_tutor"
+   ]
+  },
+  {
+   "item_id": "Q-M47W",
+   "probe_id": "slug_nb_plusplus",
+   "category": "slug_collision",
+   "answer": "E",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "\"Plus-plus job\" = the C++ offer from Initech, which the user is still deciding on.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "E"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "E"
+    ]
+   },
+   "answer_ws": [
+    "ws_cpp"
+   ]
+  },
+  {
+   "item_id": "Q-CZQE",
+   "probe_id": "st_nb_owner",
+   "category": "same_topic_diff_person",
+   "answer": "H",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Building owner = landlord Bob Hale, and the new agreement = lease renewal paperwork (note: draft r-lease-02 was never sent, so the answer is no).",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "H"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "H"
+    ]
+   },
+   "answer_ws": [
+    "ws_lease"
+   ]
+  },
+  {
+   "item_id": "Q-BYMW",
+   "probe_id": "alias_status_word",
+   "category": "alias_resolution",
+   "answer": "F",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Money back for last month's costs = the October expense report reimbursement.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "F"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "F"
+    ]
+   },
+   "answer_ws": [
+    "ws_expense"
+   ]
+  },
+  {
+   "item_id": "Q-AJMZ",
+   "probe_id": "drift_nb_mechanic",
+   "category": "name_drift",
+   "answer": "G",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Mechanic appointment this weekend = Saturday oil change at Becker Auto, which is awaiting confirmation.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "G"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "G"
+    ]
+   },
+   "answer_ws": [
+    "ws_car_service"
+   ]
+  },
+  {
+   "item_id": "Q-MA52",
+   "probe_id": "para_nb_slides",
+   "category": "paraphrase",
+   "answer": "C",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Designer weighing in on the slides = Dana's feedback on the Q3 deck visuals.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "C"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "C"
+    ]
+   },
+   "answer_ws": [
+    "ws_dana_deck"
+   ]
+  },
+  {
+   "item_id": "Q-UWXE",
+   "probe_id": "hub_nb_cage",
+   "category": "hub_key",
+   "answer": "D",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Basement cage = storage locker, so this is the deposit refund request.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "answer_ws": [
+    "ws_deposit"
+   ]
+  },
+  {
+   "item_id": "Q-2A0D",
+   "probe_id": "sp_nb_agreement",
+   "category": "same_person_diff_work",
+   "answer": "D",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Revisions to the agreement = Alice's consulting contract changes; draft r-ac-77 awaits the user's OK.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "answer_ws": [
+    "ws_alice_contract"
+   ]
+  },
+  {
+   "item_id": "Q-UB52",
+   "probe_id": "st_nb_bignight",
+   "category": "same_topic_diff_person",
+   "answer": "D",
+   "also_accept": "ASK",
+   "confidence": "medium",
+   "note": "\"Our big night\" best fits the anniversary dinner, which is waiting on the user to choose a time; the Bob Lee reunion dinner is a weaker fit.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [
+    "ASK"
+   ],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "answer_ws": [
+    "ws_mia_dinner"
+   ]
+  },
+  {
+   "item_id": "Q-WC3M",
+   "probe_id": "os_nb_fifth",
+   "category": "owned_state",
+   "answer": "J",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "The 5th-of-month billing reminder is t_8 for the Acme retainer invoice; Northwind's is on the 1st.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "J"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "J"
+    ]
+   },
+   "answer_ws": [
+    "ws_acme"
+   ]
+  },
+  {
+   "item_id": "Q-8DAZ",
+   "probe_id": "alias_nb_rob",
+   "category": "alias_resolution",
+   "answer": "C",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "Rob = Bob Okafor, and his fix = the api-gateway hotfix deploy.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "C"
+     ]
+    },
+    {
+     "kind": "ask",
+     "letters": []
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "C"
+    ]
+   },
+   "answer_ws": [
+    "ws_deploy"
+   ]
+  },
+  {
+   "item_id": "Q-AV93",
+   "probe_id": "os_nb_fire_off",
+   "category": "owned_state",
+   "answer": "A",
+   "also_accept": "ASK",
+   "confidence": "medium",
+   "note": "The landlord draft r-lease-02 is the clearly flagged unsent note to the building owner, but J also has an unsent draft to Bob Hale (r-fx4), and sending is irreversible, so ASK is defensible.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [
+    "ASK"
+   ],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "A"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "A"
+    ]
+   },
+   "answer_ws": [
+    "ws_lease"
+   ]
+  },
+  {
+   "item_id": "Q-2H3Y",
+   "probe_id": "slug_nb_sharp_march",
+   "category": "slug_collision",
+   "answer": "D",
+   "also_accept": "",
+   "confidence": "high",
+   "note": "\"Sharp gig\" = the C# role at Globex, where the start date is being negotiated.",
+   "in_acceptable": true,
+   "matches_preferred": true,
+   "also_outside_set": [],
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "answer_ws": [
+    "ws_cs"
+   ]
+  }
+ ]
+}

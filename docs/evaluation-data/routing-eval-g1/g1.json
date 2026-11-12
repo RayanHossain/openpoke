@@ -1030,16 +1030,16 @@
    },
    "owned_state": {
     "n": 30,
-    "accuracy": 0.5,
+    "accuracy": 0.3333333333333333,
     "ci95": [
-     0.3333333333333333,
-     0.6666666666666666
+     0.16666666666666666,
+     0.5333333333333333
     ],
-    "preferred": 0.5,
-    "severity": 80,
+    "preferred": 0.3333333333333333,
+    "severity": 130,
     "errors": {
-     "duplicate_create": 10,
-     "wrong_route_state": 5
+     "wrong_route_state": 10,
+     "duplicate_create": 10
     }
    },
    "truly_ambiguous": {
@@ -2593,14 +2593,16 @@
    },
    "owned_state|overlap": {
     "n": 15,
-    "accuracy": 1.0,
+    "accuracy": 0.6666666666666666,
     "ci95": [
-     1.0,
-     1.0
+     0.4,
+     0.8666666666666667
     ],
-    "preferred": 1.0,
-    "severity": 0,
-    "errors": {}
+    "preferred": 0.6666666666666666,
+    "severity": 50,
+    "errors": {
+     "wrong_route_state": 5
+    }
    },
    "truly_ambiguous|overlap": {
     "n": 15,
@@ -3363,92 +3365,92 @@
   "lexical": {
    "N3-high": {
     "n": 81,
-    "accuracy": 0.4444444444444444,
+    "accuracy": 0.43209876543209874,
     "ci95": [
-     0.345679012345679,
-     0.5555555555555556
+     0.3333333333333333,
+     0.5432098765432098
     ],
-    "preferred": 0.4444444444444444,
-    "severity": 137,
+    "preferred": 0.43209876543209874,
+    "severity": 147,
     "errors": {
      "duplicate_create": 34,
      "forced_merge": 1,
      "wrong_route_info": 3,
+     "wrong_route_state": 2,
      "missed_target": 3,
-     "dispatch_on_no_dispatch": 3,
-     "wrong_route_state": 1
+     "dispatch_on_no_dispatch": 3
     }
    },
    "N10-high": {
     "n": 84,
-    "accuracy": 0.5,
+    "accuracy": 0.4880952380952381,
     "ci95": [
-     0.40476190476190477,
-     0.6071428571428571
+     0.39285714285714285,
+     0.5952380952380952
     ],
-    "preferred": 0.5,
-    "severity": 135,
+    "preferred": 0.4880952380952381,
+    "severity": 145,
     "errors": {
      "forced_merge": 2,
      "duplicate_create": 24,
      "wrong_route_info": 9,
+     "wrong_route_state": 2,
      "missed_target": 3,
-     "dispatch_on_no_dispatch": 3,
-     "wrong_route_state": 1
+     "dispatch_on_no_dispatch": 3
     }
    },
    "N30-high": {
     "n": 84,
-    "accuracy": 0.4880952380952381,
+    "accuracy": 0.47619047619047616,
     "ci95": [
-     0.38095238095238093,
-     0.5952380952380952
+     0.36904761904761907,
+     0.5833333333333334
     ],
-    "preferred": 0.4880952380952381,
-    "severity": 139,
+    "preferred": 0.47619047619047616,
+    "severity": 149,
     "errors": {
      "forced_merge": 2,
      "duplicate_create": 24,
      "wrong_route_info": 10,
+     "wrong_route_state": 2,
      "missed_target": 3,
-     "dispatch_on_no_dispatch": 3,
-     "wrong_route_state": 1
+     "dispatch_on_no_dispatch": 3
     }
    },
    "N50-high": {
     "n": 84,
-    "accuracy": 0.4880952380952381,
+    "accuracy": 0.47619047619047616,
     "ci95": [
-     0.38095238095238093,
-     0.5952380952380952
+     0.36904761904761907,
+     0.5833333333333334
     ],
-    "preferred": 0.4880952380952381,
-    "severity": 139,
+    "preferred": 0.47619047619047616,
+    "severity": 149,
     "errors": {
      "forced_merge": 2,
      "duplicate_create": 24,
      "wrong_route_info": 10,
+     "wrong_route_state": 2,
      "missed_target": 3,
-     "dispatch_on_no_dispatch": 3,
-     "wrong_route_state": 1
+     "dispatch_on_no_dispatch": 3
     }
    },
    "N50-low": {
     "n": 84,
-    "accuracy": 0.5238095238095238,
+    "accuracy": 0.5119047619047619,
     "ci95": [
-     0.4166666666666667,
-     0.6309523809523809
+     0.40476190476190477,
+     0.6190476190476191
     ],
-    "preferred": 0.5238095238095238,
-    "severity": 131,
+    "preferred": 0.5119047619047619,
+    "severity": 141,
     "errors": {
      "forced_merge": 3,
      "duplicate_create": 20,
      "wrong_route_info": 10,
+     "wrong_route_state": 2,
      "missed_target": 3,
-     "dispatch_on_no_dispatch": 3,
-     "wrong_route_state": 1
+     "dispatch_on_no_dispatch": 3
     }
    }
   },
@@ -3559,16 +3561,16 @@
     }
    },
    "ambiguous": {
-    "n": 40,
+    "n": 60,
     "accuracy": 0.0,
     "ci95": [
      0.0,
      0.0
     ],
     "preferred": 0.0,
-    "severity": 120,
+    "severity": 180,
     "errors": {
-     "duplicate_create": 40
+     "duplicate_create": 60
     }
    },
    "state_bearing": {
@@ -3616,16 +3618,17 @@
     }
    },
    "ambiguous": {
-    "n": 40,
-    "accuracy": 0.125,
+    "n": 60,
+    "accuracy": 0.08333333333333333,
     "ci95": [
-     0.025,
-     0.25
+     0.016666666666666666,
+     0.16666666666666666
     ],
-    "preferred": 0.125,
-    "severity": 140,
+    "preferred": 0.08333333333333333,
+    "severity": 250,
     "errors": {
-     "wrong_route_info": 35
+     "wrong_route_info": 50,
+     "wrong_route_state": 5
     }
    },
    "state_bearing": {
@@ -3675,17 +3678,17 @@
     }
    },
    "ambiguous": {
-    "n": 40,
-    "accuracy": 0.0,
+    "n": 60,
+    "accuracy": 0.05,
     "ci95": [
      0.0,
-     0.0
+     0.11666666666666667
     ],
-    "preferred": 0.0,
-    "severity": 130,
+    "preferred": 0.05,
+    "severity": 183,
     "errors": {
-     "duplicate_create": 30,
-     "wrong_route_info": 10
+     "duplicate_create": 45,
+     "wrong_route_info": 12
     }
    },
    "state_bearing": {
@@ -3722,46 +3725,47 @@
    },
    "keyless": {
     "n": 247,
-    "accuracy": 0.41700404858299595,
+    "accuracy": 0.3967611336032389,
     "ci95": [
-     0.3562753036437247,
-     0.4777327935222672
+     0.340080971659919,
+     0.4574898785425101
     ],
-    "preferred": 0.41700404858299595,
-    "severity": 495,
+    "preferred": 0.3967611336032389,
+    "severity": 545,
     "errors": {
      "duplicate_create": 111,
      "wrong_route_info": 28,
-     "wrong_route_state": 5
+     "wrong_route_state": 10
     }
    },
    "ambiguous": {
-    "n": 40,
-    "accuracy": 0.225,
+    "n": 60,
+    "accuracy": 0.18333333333333332,
     "ci95": [
-     0.1,
-     0.35
+     0.08333333333333333,
+     0.2833333333333333
     ],
-    "preferred": 0.225,
-    "severity": 104,
+    "preferred": 0.18333333333333332,
+    "severity": 193,
     "errors": {
-     "duplicate_create": 20,
-     "wrong_route_info": 11
+     "duplicate_create": 33,
+     "wrong_route_info": 11,
+     "wrong_route_state": 5
     }
    },
    "state_bearing": {
     "n": 45,
-    "accuracy": 0.4444444444444444,
+    "accuracy": 0.3333333333333333,
     "ci95": [
-     0.28888888888888886,
-     0.6
+     0.2,
+     0.4666666666666667
     ],
-    "preferred": 0.4444444444444444,
-    "severity": 105,
+    "preferred": 0.3333333333333333,
+    "severity": 155,
     "errors": {
+     "wrong_route_state": 10,
      "missed_target": 5,
-     "duplicate_create": 15,
-     "wrong_route_state": 5
+     "duplicate_create": 15
     }
    }
   },
@@ -3794,16 +3798,16 @@
     }
    },
    "ambiguous": {
-    "n": 40,
+    "n": 60,
     "accuracy": 0.0,
     "ci95": [
      0.0,
      0.0
     ],
     "preferred": 0.0,
-    "severity": 120,
+    "severity": 180,
     "errors": {
-     "duplicate_create": 40
+     "duplicate_create": 60
     }
    },
    "state_bearing": {
@@ -3873,20 +3877,20 @@
   },
   "lexical": {
    "n": 417,
-   "accuracy": 0.4892086330935252,
+   "accuracy": 0.47721822541966424,
    "ci95": [
-    0.44364508393285373,
-    0.539568345323741
+    0.4292565947242206,
+    0.5251798561151079
    ],
-   "preferred": 0.4892086330935252,
-   "severity": 681,
+   "preferred": 0.47721822541966424,
+   "severity": 731,
    "errors": {
     "duplicate_create": 126,
     "forced_merge": 10,
     "wrong_route_info": 42,
+    "wrong_route_state": 10,
     "missed_target": 15,
-    "dispatch_on_no_dispatch": 15,
-    "wrong_route_state": 5
+    "dispatch_on_no_dispatch": 15
    }
   },
   "key_only": {
@@ -3909,20 +3913,20 @@
   "0.5": {
    "pooled": {
     "n": 417,
-    "accuracy": 0.4988009592326139,
+    "accuracy": 0.486810551558753,
     "ci95": [
-     0.45083932853717024,
-     0.5491606714628298
+     0.4412470023980815,
+     0.5347721822541966
     ],
-    "preferred": 0.4988009592326139,
-    "severity": 684,
+    "preferred": 0.486810551558753,
+    "severity": 734,
     "errors": {
      "forced_merge": 13,
      "wrong_route_info": 54,
      "duplicate_create": 107,
+     "wrong_route_state": 10,
      "missed_target": 15,
-     "dispatch_on_no_dispatch": 15,
-     "wrong_route_state": 5
+     "dispatch_on_no_dispatch": 15
     }
    },
    "no_overlap_fail": [],
@@ -4100,14 +4104,16 @@
     },
     "owned_state|overlap": {
      "n": 15,
-     "accuracy": 1.0,
+     "accuracy": 0.6666666666666666,
      "ci95": [
-      1.0,
-      1.0
+      0.4,
+      0.8666666666666667
      ],
-     "preferred": 1.0,
-     "severity": 0,
-     "errors": {}
+     "preferred": 0.6666666666666666,
+     "severity": 50,
+     "errors": {
+      "wrong_route_state": 5
+     }
     },
     "truly_ambiguous|overlap": {
      "n": 15,
@@ -4426,16 +4432,16 @@
     },
     "owned_state": {
      "n": 30,
-     "accuracy": 0.5,
+     "accuracy": 0.3333333333333333,
      "ci95": [
-      0.3333333333333333,
-      0.6666666666666666
+      0.16666666666666666,
+      0.5333333333333333
      ],
-     "preferred": 0.5,
-     "severity": 80,
+     "preferred": 0.3333333333333333,
+     "severity": 130,
      "errors": {
-      "duplicate_create": 10,
-      "wrong_route_state": 5
+      "wrong_route_state": 10,
+      "duplicate_create": 10
      }
     },
     "truly_ambiguous": {
@@ -4507,20 +4513,20 @@
   "1.0": {
    "pooled": {
     "n": 417,
-    "accuracy": 0.4892086330935252,
+    "accuracy": 0.47721822541966424,
     "ci95": [
-     0.44364508393285373,
-     0.539568345323741
+     0.4292565947242206,
+     0.5251798561151079
     ],
-    "preferred": 0.4892086330935252,
-    "severity": 681,
+    "preferred": 0.47721822541966424,
+    "severity": 731,
     "errors": {
      "duplicate_create": 126,
      "forced_merge": 10,
      "wrong_route_info": 42,
+     "wrong_route_state": 10,
      "missed_target": 15,
-     "dispatch_on_no_dispatch": 15,
-     "wrong_route_state": 5
+     "dispatch_on_no_dispatch": 15
     }
    },
    "no_overlap_fail": [],
@@ -4705,14 +4711,16 @@
     },
     "owned_state|overlap": {
      "n": 15,
-     "accuracy": 1.0,
+     "accuracy": 0.6666666666666666,
      "ci95": [
-      1.0,
-      1.0
+      0.4,
+      0.8666666666666667
      ],
-     "preferred": 1.0,
-     "severity": 0,
-     "errors": {}
+     "preferred": 0.6666666666666666,
+     "severity": 50,
+     "errors": {
+      "wrong_route_state": 5
+     }
     },
     "truly_ambiguous|overlap": {
      "n": 15,
@@ -5034,16 +5042,16 @@
     },
     "owned_state": {
      "n": 30,
-     "accuracy": 0.5,
+     "accuracy": 0.3333333333333333,
      "ci95": [
-      0.3333333333333333,
-      0.6666666666666666
+      0.16666666666666666,
+      0.5333333333333333
      ],
-     "preferred": 0.5,
-     "severity": 80,
+     "preferred": 0.3333333333333333,
+     "severity": 130,
      "errors": {
-      "duplicate_create": 10,
-      "wrong_route_state": 5
+      "wrong_route_state": 10,
+      "duplicate_create": 10
      }
     },
     "truly_ambiguous": {
@@ -5115,20 +5123,20 @@
   "2.0": {
    "pooled": {
     "n": 417,
-    "accuracy": 0.434052757793765,
+    "accuracy": 0.4244604316546763,
     "ci95": [
-     0.38848920863309355,
-     0.4844124700239808
+     0.37889688249400477,
+     0.4724220623501199
     ],
-    "preferred": 0.434052757793765,
-    "severity": 721,
+    "preferred": 0.4244604316546763,
+    "severity": 754,
     "errors": {
-     "duplicate_create": 168,
+     "duplicate_create": 169,
      "forced_merge": 7,
      "wrong_route_info": 29,
+     "wrong_route_state": 6,
      "missed_target": 14,
-     "dispatch_on_no_dispatch": 15,
-     "wrong_route_state": 3
+     "dispatch_on_no_dispatch": 15
     }
    },
    "no_overlap_fail": [],
@@ -5318,15 +5326,16 @@
     },
     "owned_state|overlap": {
      "n": 15,
-     "accuracy": 0.8666666666666667,
+     "accuracy": 0.6,
      "ci95": [
-      0.6666666666666666,
-      1.0
+      0.3333333333333333,
+      0.8666666666666667
      ],
-     "preferred": 0.8666666666666667,
-     "severity": 6,
+     "preferred": 0.6,
+     "severity": 39,
      "errors": {
-      "duplicate_create": 2
+      "duplicate_create": 3,
+      "wrong_route_state": 3
      }
     },
     "truly_ambiguous|overlap": {
@@ -5652,16 +5661,16 @@
     },
     "owned_state": {
      "n": 30,
-     "accuracy": 0.43333333333333335,
+     "accuracy": 0.3,
      "ci95": [
-      0.23333333333333334,
-      0.6
+      0.13333333333333333,
+      0.4666666666666667
      ],
-     "preferred": 0.43333333333333335,
-     "severity": 72,
+     "preferred": 0.3,
+     "severity": 105,
      "errors": {
-      "duplicate_create": 14,
-      "wrong_route_state": 3
+      "duplicate_create": 15,
+      "wrong_route_state": 6
      }
     },
     "truly_ambiguous": {

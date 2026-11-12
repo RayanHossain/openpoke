@@ -100,8 +100,10 @@ def W(ws_id, label, topic, family, people, brief, status, steps, **kw) -> Workst
 _LIB: List[Workstream] = [
     # ---- three Bobs (+ history) -------------------------------------------
     W("ws_lease", "Lease renewal with Bob", "the lease renewal paperwork", "housing", ["bob_hale"],
-      "Drafted a note asking Bob Hale, the landlord, for the revised 12-month lease renewal paperwork. Draft r-lease-02 is not sent yet.",
-      "waiting_user", [S(4, "draft", "Ask Bob Hale for the revised lease renewal paperwork")],
+      "Emailed Bob Hale, the landlord, for the revised 12-month lease renewal paperwork; no reply yet. "
+      "Drafted the user's renewal confirmation (r-lease-02), not sent.",
+      "waiting_user", [S(6, "reply", "Ask Bob Hale for the revised lease renewal paperwork"),
+                       S(4, "draft", "Draft a reply to Bob Hale confirming we'll renew for another year")],
       thread="th_lease_7731", draft="r-lease-02"),
     W("ws_rent", "September rent receipt", "the September rent receipt", "housing", ["bob_hale"],
       "Bob Hale resent the September rent receipt. Nothing open.",
@@ -872,6 +874,18 @@ PROBES: List[BaseProbe] = [
        "deictic", state_bearing=True, axes=("person",), distractors=("ws_northwind",),
        rationale="The 5th-of-month reminder is Acme's (t_8); Northwind's is on the 1st (only in the history)."),
 ]
+
+# G4 blind label check (2026-11-12): ASK added to the acceptable set where the labeler, at medium
+# confidence, also accepted ASK (rule in routing-eval-changes.md; sets are only ever widened).
+G4_ASK_WIDENED: Dict[str, str] = {
+    "dk_passport_alias": "Q-HV8B: several Passport Office workstreams exist; 'passport stuff' is a weak fallback ASK",
+    "sp_nb_pay_artwork": "Q-1JRG: deck feedback and invoice are both Dana's slide work",
+    "st_nb_bignight": "Q-UB52: two dinners are open; 'our big night' favours the anniversary but not certainly",
+    "os_nb_fire_off": "Q-AV93: two unsent drafts to the same landlord (r-lease-02 and a same-person filler's)",
+}
+for _p in PROBES:
+    if _p.probe_id in G4_ASK_WIDENED and ASK not in _p.acceptable:
+        PROBES[PROBES.index(_p)] = BaseProbe(**{**_p.__dict__, "acceptable": (*_p.acceptable, ASK)})
 
 # Categories that cannot exist at a given N, by definition (reported, not hidden).
 STRUCTURAL_EXCLUSIONS: Dict[str, str] = {
