@@ -269,8 +269,16 @@ class RegistryView:
     conversation: Dict[str, Any]
 
 
-def load_registry(world: World, registry, trigger_store, conv_dir: Path) -> RegistryView:
-    """Seed an *empty* sandbox registry + trigger store with this world's history."""
+MUTATIONS = ("keys_off", "briefs_blank", "no_ask")  # G2 deliberate breaks (spec §0)
+
+
+def load_registry(world: World, registry, trigger_store, conv_dir: Path, mutation: Optional[str] = None) -> RegistryView:
+    """Seed an *empty* sandbox registry + trigger store with this world's history.
+
+    G2 ``mutation``: ``keys_off`` records no keys and no aliases; ``briefs_blank`` stores empty briefs
+    (``no_ask`` is applied to the system prompt by the harness)."""
+    if mutation is not None and mutation not in MUTATIONS:
+        raise ValueError(mutation)
     _require_sandbox()
     from server.agents.execution_agent.report import parse_report
     from server.services.execution import keys as K
@@ -298,6 +306,10 @@ def load_registry(world: World, registry, trigger_store, conv_dir: Path) -> Regi
             agent_id = id_of[ev.agent_ref]
             at = ev.at.isoformat()
             for tc in ev.tool_calls:
+                if mutation == "keys_off":  # G2: no key or alias recording at all
+                    if tc.name == "createTrigger":
+                        _seed_trigger(trigger_store, world, ev, tc, agent_id)
+                    continue
                 for key in K.extract_from_tool_call(tc.name, dict(tc.args), dict(tc.result)):
                     k = normalize_key(key)
                     conn.execute(
@@ -316,8 +328,9 @@ def load_registry(world: World, registry, trigger_store, conv_dir: Path) -> Regi
             parsed = parse_report(f'{ev.ea_text}\n<report status="{ev.report_status}">{ev.report_brief}</report>')
             if parsed.report is None:
                 raise RuntimeError(f"world report rejected by parse_report: {parsed.problem}")
+            brief = "" if mutation == "briefs_blank" else parsed.report.brief
             conn.execute("UPDATE agents SET brief = ?, status = ?, last_active_at = ? WHERE agent_id = ?",
-                         (parsed.report.brief, parsed.report.status, at, agent_id))
+                         (brief, parsed.report.status, at, agent_id))
     for address, name in sorted(aliases):
         registry.add_alias(address, name)
     conv = write_conversation(world, conv_dir, "registry")

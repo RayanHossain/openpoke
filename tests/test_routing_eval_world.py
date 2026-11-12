@@ -40,6 +40,24 @@ def _load(tmp_path: Path, world, name: str):
     return sb, view
 
 
+def test_g2_world_mutations(tmp_path):
+    """mut_keys_off: no keys or aliases recorded; mut_briefs_blank: every brief empty (spec §0 G2)."""
+    world = build_world(next(p for p in catalog.PROBES if p.probe_id == "os_send_lease_draft"), 10, "high")
+    for mutation in ("keys_off", "briefs_blank"):
+        sb = harness.open_sandbox(tmp_path / mutation)
+        try:
+            view = views.load_registry(world, sb.registry, sb.triggers._store, sb.data_dir / "conversation",
+                                       mutation=mutation)
+            keys = sum(len(sb.registry.keys_for(ea)) for ea in view.ref_of)
+            briefs = [sb.registry.get(ea).brief for ea in view.ref_of]
+            if mutation == "keys_off":
+                assert keys == 0 and not sb.registry.resolve_alias("Bob Hale") and all(briefs)
+            else:
+                assert keys > 0 and all(b == "" for b in briefs)
+        finally:
+            sb.close()
+
+
 def test_dataset_validates():
     out = validate()
     assert out["probes"] == len(catalog.PROBES) >= 54

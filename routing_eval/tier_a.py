@@ -215,7 +215,8 @@ class LiveSandboxRouters:
         dispatched: List[str] = []
         with tempfile.TemporaryDirectory(prefix="tier-a-registry-") as tmp, self.ls.world_dir(Path(tmp)):
             registry = get_agent_registry()
-            view = views.load_registry(world, registry, get_trigger_service()._store, Path(tmp) / "conversation")
+            view = views.load_registry(world, registry, get_trigger_service()._store, Path(tmp) / "conversation",
+                                       mutation=mutate if mutate in ("keys_off", "briefs_blank") else None)
             with views.world_clock(world, registry):
                 runtime = rt_mod.InteractionAgentRuntime()
                 runtime.model = live.ROUTER_MODEL
@@ -239,7 +240,10 @@ class LiveSandboxRouters:
                 pt_before = self.ledger.prompt_tokens
                 error = None
                 try:
-                    await runtime._run_interaction_loop(ia_agent.build_system_prompt(), messages)
+                    system = ia_agent.build_system_prompt()
+                    if mutate == "no_ask":  # G2: remove the ASK rule from the registry prompt
+                        system = "\n".join(l for l in system.splitlines() if not l.lstrip().startswith("- ASK:"))
+                    await runtime._run_interaction_loop(system, messages)
                 except Exception as exc:  # recorded (iteration limit, transport error)
                     error = f"{type(exc).__name__}: {exc}"
                 finally:
