@@ -84,7 +84,7 @@ Total spent: $10.28 of the $25 cap.
 ## Follow-ups after the round-2 report (all post-hoc; not pre-registered)
 
 **Addendum.** `../routing-eval-preregistration-addendum.md` was committed at `09b5633` (2026-11-12 08:11:55 UTC),
-after round-2 results existed. It was written before Rayan and the planning chat saw round-2 results, but it is
+after round-2 results existed. It was written before round-2 results were seen, but it is
 not applied as pre-registered. Read under its rule 2 (differences under 5 points = "no meaningful difference"):
 the primary comparisons stand (N = 30: +6.0; N = 50: +9.9); the N = 10 secondary difference (+4.4) would read as no
 meaningful difference. Under its rule 4, baseline merge counts are evidence the problem exists, not evidence for

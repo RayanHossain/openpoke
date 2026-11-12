@@ -1,6 +1,6 @@
 """POST-HOC Tier C-lite variant: model-written briefs AND model-reported statuses (N = 10 high).
 
-Requested by Rayan on 2026-11-12 after the model-brief-only results were seen; not pre-registered.
+Requested by the project owner on 2026-11-12 after the model-brief-only results were seen; not pre-registered.
 Three arms paired by probe (accuracy = mean over 3 runs): scripted briefs + scripted statuses (round2
 ``main``), model-written briefs + scripted statuses, model-written briefs + model statuses.
 

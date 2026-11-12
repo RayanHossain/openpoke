@@ -30,7 +30,7 @@ from .round2 import EST_PER_DECISION, _row
 
 OUT = BL.OUT / "probes"
 ROUTERS = ("registry", "rag")
-# variant -> (file prefix, use model statuses, cost cap). briefs_status is POST-HOC (Rayan, 2026-11-12, after
+# variant -> (file prefix, use model statuses, cost cap). briefs_status is POST-HOC (project owner, 2026-11-12, after
 # the model-brief results were seen): model-written briefs AND the statuses from the same reports; $1 cap.
 STATUS_START_SPEND = 4.29982148
 VARIANTS = {"briefs": ("r", False, BL.CAP), "briefs_status": ("s", True, STATUS_START_SPEND + 1.00)}

@@ -6,7 +6,7 @@ REPORT_FORMAT, tool schemas, Haiku 5.5), with its scripted history replayed into
 execution log (real ExecutionAgent.record_tool_execution: 200-char argument / 500-char result
 truncation; the current request is journaled before the run, as interaction_agent.tools._dispatch does).
 
-Two harness choices (Rayan, 2026-11-12, after the one-call pilot; routing-eval-changes.md):
+Two harness choices (project owner, 2026-11-12, after the one-call pilot; routing-eval-changes.md):
 * **Draft-first replay.** A scripted ``reply`` step sends mail directly (gmail_reply_to_thread),
   which the EA prompt forbids; replayed as two runs: create the reply draft, then "the user
   approved" -> gmail_execute_draft. Only the EA's journal changes; the world (keys, conversation,
@@ -44,10 +44,10 @@ from .schema import Event, ToolCall, World
 
 OUT = live.REPO / "docs" / "evaluation-data" / "routing-eval-briefs-lite"
 BRIEFS = OUT / "briefs.json"
-PLAN = ((10, "high"),)            # N = 30 dropped for cost (Rayan, 2026-11-12)
+PLAN = ((10, "high"),)            # N = 30 dropped for cost (project owner, 2026-11-12)
 PILOT_PLAN = ((10, "high"), (30, "high"))  # the one-call pilot sampled from both
 SESSION_START_SPEND = 2.60948326  # branch ledger total when this session started (2026-11-12)
-SESSION_CAP = 3.00                # Rayan's cap for this session
+SESSION_CAP = 3.00                # Project owner's cap for this session
 CAP = SESSION_START_SPEND + SESSION_CAP
 CONCURRENCY = 4
 MAX_ITER = 3
