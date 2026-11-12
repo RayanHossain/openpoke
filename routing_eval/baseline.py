@@ -71,10 +71,10 @@ def ia_input(world: World, message: str, source: str, root: Optional[Path] = Non
     return json.loads(proc.stdout.strip().splitlines()[-1])
 
 
-def _empty_data(data: Path) -> None:
-    """A fresh 5b5f635 data dir: empty roster, no history (what a first-ever turn sees)."""
+def _empty_data(data: Path, roster: Optional[list] = None) -> None:
+    """A fresh 5b5f635 data dir: the given roster names (default none) and no history."""
     (data / "execution_agents").mkdir(parents=True, exist_ok=True)
-    (data / "execution_agents" / "roster.json").write_text("[]", encoding="utf-8")
+    (data / "execution_agents" / "roster.json").write_text(json.dumps(list(roster or [])), encoding="utf-8")
     conv = data / "conversation"
     conv.mkdir(parents=True, exist_ok=True)
     (conv / "poke_conversation.log").write_text("", encoding="utf-8")
@@ -85,7 +85,7 @@ def _empty_data(data: Path) -> None:
 
 def ia_turn(world: Optional[World], message: str, source: str, *, ledger, purpose: str, key: str,
             root: Optional[Path] = None, model: str = "anthropic/claude-haiku-5.5",
-            estimate: float = 0.0) -> Dict[str, object]:
+            estimate: float = 0.0, roster: Optional[list] = None) -> Dict[str, object]:
     """One real 5b5f635 interaction-agent turn (real model, EA stubbed). ``world=None`` = empty world."""
     root = check_root(root)
     ledger.check(estimate)
@@ -94,7 +94,7 @@ def ia_turn(world: Optional[World], message: str, source: str, *, ledger, purpos
     with tempfile.TemporaryDirectory(prefix="routing-eval-baseline-") as tmp:
         data = Path(tmp) / "world-data"
         if world is None:
-            _empty_data(data)
+            _empty_data(data, roster)
         else:
             load_baseline(world, data)
         proc = subprocess.run(

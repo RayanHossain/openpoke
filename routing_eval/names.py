@@ -43,6 +43,11 @@ def core_name(ws_id: str) -> Optional[str]:
     return (load().get("core") or {}).get(ws_id, {}).get("name")
 
 
+def instance_name(world_id: str, ws_id: str) -> Optional[str]:
+    """Per-instance creation name for a filler agent that collided (rename_collisions)."""
+    return ((load().get("instances") or {}).get(world_id) or {}).get(ws_id, {}).get("name")
+
+
 def filler_name(org: bool, family: str, label_t: str, person) -> Optional[str]:
     entry = (load().get("templates") or {}).get(template_key(org, family, label_t))
     if not entry or not entry.get("pattern"):
@@ -139,6 +144,71 @@ def retry_failures() -> Dict:
     return data
 
 
+def collision_jobs(world) -> list:
+    """Filler agents whose creation name another agent in the world also has. In a group of fillers
+    only, the earliest keeps its name; with a core agent in the group, every filler is re-named."""
+    groups: Dict[str, list] = {}
+    for a in world.agents:
+        groups.setdefault(a.name, []).append(a)
+    jobs = []
+    for name, agents in groups.items():
+        if len(agents) < 2:
+            continue
+        fillers = [a for a in agents if all(w.startswith("fx_") for w in a.ws_ids)]
+        if len(fillers) == len(agents):
+            fillers = fillers[1:]
+        jobs += fillers
+    return jobs
+
+
+def rename_collisions(workers: int = 6) -> Dict:
+    """One real 5b5f635 IA turn per colliding filler agent (per world instance, not per template).
+    The IA sees the world's other agent names as its roster (no history) and the filler's own
+    creating message: a new name resolves the collision; reusing an existing name is a genuine merge."""
+    from . import baseline, live
+    from .generator import _default_message, generate
+    global _cache
+    data = json.loads(NAMES_FILE.read_text(encoding="utf-8"))
+    data.setdefault("instances", {})
+    _cache = data
+    key = live.load_key()
+    ledger = live.Ledger(run="rename-collisions")
+    pairs, _ = generate()
+    work = [(w, collision_jobs(w)) for w, _ in pairs]
+    work = [(w, j) for w, j in work if j]
+    total = sum(len(j) for _, j in work)
+
+    def run_world(item):
+        world, jobs = item
+        names_now = {a.ref: a.name for a in world.agents}
+        out = {}
+        for agent in jobs:
+            ws = world.ws(agent.ws_ids[0])
+            message = ws.steps[0].message or _default_message(ws, ws.steps[0])
+            roster = []
+            for a in world.agents:
+                if a.ref != agent.ref and names_now[a.ref] not in roster:
+                    roster.append(names_now[a.ref])
+            res = baseline.ia_turn(None, message, "user", ledger=ledger, purpose="rename-collisions", key=key,
+                                   estimate=0.004 * total, roster=roster)
+            new = _name_from(res)
+            reused = new is not None and new in roster
+            out[ws.ws_id] = {"name": new, "previous": agent.name, "message": message, "roster_size": len(roster),
+                             "reused_existing_name": reused, "no_dispatch": new is None}
+            if new:
+                names_now[agent.ref] = new
+        return world.world_id, out
+
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        for world_id, out in pool.map(run_world, work):
+            data["instances"][world_id] = out
+    data["rename_spend"] = ledger.summary()
+    NAMES_FILE.write_text(json.dumps(data, indent=1, sort_keys=True), encoding="utf-8")
+    _cache = None
+    return {"jobs": total, "worlds": len(work), "spend": ledger.summary()}
+
+
 def name_missing() -> Dict:
     """Name creating workstreams added after the first run (e.g. smoke-only ones); logged as its own run."""
     from . import baseline, live
@@ -167,7 +237,9 @@ def name_missing() -> Dict:
 
 if __name__ == "__main__":
     from . import live
-    if sys.argv[1:] == ["missing"]:
+    if sys.argv[1:] == ["rename-collisions"]:
+        print(json.dumps(live.run_cli(rename_collisions, paths=(NAMES_FILE,))))
+    elif sys.argv[1:] == ["missing"]:
         print(json.dumps(live.run_cli(name_missing, paths=(NAMES_FILE,))))
     elif sys.argv[1:] == ["retry"]:
         r = live.run_cli(retry_failures, paths=(NAMES_FILE,))

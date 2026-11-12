@@ -109,6 +109,20 @@ def creation_merges(world: World) -> int:
     return sum(k - 1 for k in counts.values() if k > 1)
 
 
+def merges_by_n(worlds) -> Dict[str, Dict[str, int]]:
+    """World-level metric: forced merges at creation (baseline) per world type, 4 points each."""
+    out: Dict[str, Dict[str, int]] = {}
+    for w in worlds:
+        k = f"N{w.n}-{w.sim}"
+        m = creation_merges(w)
+        o = out.setdefault(k, {"worlds": 0, "worlds_with_merges": 0, "merges": 0, "weighted": 0})
+        o["worlds"] += 1
+        o["worlds_with_merges"] += bool(m)
+        o["merges"] += m
+        o["weighted"] += WEIGHTS["forced_merge"] * m
+    return out
+
+
 def target_shares_name(inst: ProbeInstance, world: World) -> bool:
     """True if a target workstream's agent has the same creation name as another agent in the world."""
     names = [a.name for a in world.agents]
@@ -116,8 +130,9 @@ def target_shares_name(inst: ProbeInstance, world: World) -> bool:
 
 
 def score(inst: ProbeInstance, decision: Decision, world: World, router: Optional[str] = None) -> Scored:
-    """Score one decision. ``router="baseline"`` adds the forced merges at creation (weight 4 each)
-    to the severity; accuracy and the route itself are scored as for every router."""
+    """Score one decision. ``router="baseline"`` also records the world's forced merges at creation
+    (``creation_merges``); they are reported as a separate world-level metric by N
+    (``merges_by_n``), not added to the per-probe severity (changelog 2026-11-12)."""
     correct = any(matches(a, decision, world) for a in inst.acceptable)
     preferred = matches(inst.preferred, decision, world)
     err = None if correct else _error(inst, decision, world)
@@ -125,8 +140,8 @@ def score(inst: ProbeInstance, decision: Decision, world: World, router: Optiona
     if err in ("missed_target", "extra_target"):
         weight = (WEIGHTS["missed_target"] * _missed(inst, decision, world)
                   + WEIGHTS["extra_target"] * _extra(inst, decision, world))
-    merges = creation_merges(world) if router == "baseline" else 0
-    return Scored(inst, decision, correct, preferred, err, weight + WEIGHTS["forced_merge"] * merges, merges)
+    merges = creation_merges(world) if router == "baseline" else 0  # world-level metric, not in severity
+    return Scored(inst, decision, correct, preferred, err, weight, merges)
 
 
 # --------------------------------------------------------------------------- #

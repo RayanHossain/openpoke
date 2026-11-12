@@ -31,6 +31,18 @@ from .policies import Decision
 from .schema import ProbeInstance, World
 
 RAG_BRANCH = "worktree-rag-router"
+
+
+def _embedding_digest(body: Dict[str, Any]) -> Dict[str, Any]:
+    """Raw embeddings response without the vectors: each vector becomes its index, dimensions and
+    sha256 (instruction 2026-11-12: vectors would add ~90 MB of JSONL per main run)."""
+    import hashlib
+    out = {k: v for k, v in body.items() if k != "data"}
+    out["data"] = [{"index": d.get("index"), "dimensions": len(d.get("embedding") or []),
+                    "sha256": hashlib.sha256(json.dumps(d.get("embedding")).encode()).hexdigest()}
+                   for d in body.get("data") or []]
+    out["vectors_stored"] = False
+    return out
 RAG_FILES = ("server/services/routing/__init__.py", "server/services/routing/rag_router.py")
 
 
@@ -162,7 +174,8 @@ class LiveSandboxRouters:
                     texts = (k.get("json") or {}).get("input") or []
                     pt = int(u.get("prompt_tokens") or sum(len(t) for t in texts) // 4)
                     ledger.record("rag-embeddings", "rag", live.EMBED_MODEL, pt, 0, u.get("cost"),
-                                  raw={"request": {"url": str(url), "json": k.get("json")}, "response": body})
+                                  raw={"request": {"url": str(url), "json": k.get("json")},
+                                       "response": _embedding_digest(body)})
                 except Exception:  # noqa: BLE001 - metering must not break the call
                     pass
             return resp
@@ -264,7 +277,7 @@ class LiveSandboxRouters:
             cause = self._create_cause(debug, self._captured[-1] if self._captured else None)
         d = Decision("route", (ref_of[result["target_id"]],)) if result["action"] == "route" else Decision("create")
         info = {"candidates": [ref_of[c] for c in debug["candidates"] if c in ref_of], "create_cause": cause,
-                "ranking": debug["ranking"][:10], "embedder": debug["embedder"], "threshold": debug["threshold"],
+                "ranking": debug["ranking"], "embedder": debug["embedder"], "threshold": debug["threshold"],
                 "raw": self._captured[-1] if self._captured else None, "calls": self.ledger.calls - n_before,
                 "prompt_tokens": self.ledger.prompt_tokens - pt_before, "variant": variant}
         return Decision(d.action, d.targets, tuple(info["candidates"]), info["prompt_tokens"]), info

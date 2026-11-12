@@ -275,6 +275,12 @@ def _tool_calls(ws: Workstream, step: StepSpec, first: bool) -> Tuple[ToolCall, 
     return tuple(calls)
 
 
+def _with_instance_name(agent: Agent, world_id: str) -> Agent:
+    """Colliding filler agents carry their per-instance baseline name (names.rename_collisions)."""
+    name = names.instance_name(world_id, agent.ws_ids[0])
+    return replace(agent, name=name, name_source="baseline-ia:instance") if name else agent
+
+
 def _creation_name(w: Workstream) -> Tuple[str, str]:
     """Frozen baseline-IA creation name (spec §1); the label only if none was generated."""
     if w.name_key:
@@ -396,9 +402,11 @@ def build_world(probe: BaseProbe, n: int, sim: str) -> World:
     events, agents = _build_events(workstreams)
     if probe.force_fold:
         events = _add_chatter(events, probe.targets, rng)
+    world_id = f"{probe.probe_id}@N{n}-{sim}"
+    agents = [_with_instance_name(a, world_id) for a in agents]
     people_ids = {p for w in workstreams for p in w.people}
     return World(
-        world_id=f"{probe.probe_id}@N{n}-{sim}",
+        world_id=world_id,
         probe_id=probe.probe_id, n=n, sim=sim, seed=seed, now=REFERENCE_NOW,
         people={pid: catalog.PEOPLE[pid] for pid in sorted(people_ids)},
         workstreams=tuple(workstreams),

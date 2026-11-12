@@ -72,3 +72,13 @@ def test_world_export_is_complete_json(tmp_path):
     assert data["world_id"] == w.world_id and len(data["agents"]) == 10
     assert data["agents"][0]["created_at"].startswith("20") and data["events"][0]["tool_calls"]
     assert data["_export"]["format"] == "routing-eval-world/v1"
+
+
+def test_embedding_raw_keeps_digest_not_vectors():
+    from routing_eval.tier_a import _embedding_digest
+    body = {"model": "openai/text-embedding-3-small", "usage": {"prompt_tokens": 7},
+            "data": [{"index": 0, "embedding": [0.1] * 384}, {"index": 1, "embedding": [0.2] * 384}]}
+    d = _embedding_digest(body)
+    assert d["vectors_stored"] is False and d["usage"] == {"prompt_tokens": 7}
+    assert [x["dimensions"] for x in d["data"]] == [384, 384] and all(len(x["sha256"]) == 64 for x in d["data"])
+    assert '"embedding":' not in json.dumps(d)  # no vector field (the model name contains "embedding")

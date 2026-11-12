@@ -51,7 +51,8 @@ def lookup(world_id: str, arm: str, folded_entries) -> str:
     return rec["summary"]
 
 
-def needed():
+def needed(only_missing: bool = False):
+    """Summaries the planned worlds need; ``only_missing`` keeps those absent or stale (hash mismatch)."""
     from .generator import folded_count, generate
     from .views import conversation_entries
     pairs, _ = generate()
@@ -60,8 +61,15 @@ def needed():
         for arm in ARMS:
             entries = conversation_entries(world, arm)
             cut = folded_count(len(entries))
-            if cut:
-                jobs.append((world.world_id, arm, entries, cut))
+            if not cut:
+                continue
+            if only_missing:
+                try:
+                    lookup(world.world_id, arm, entries[:cut])
+                    continue
+                except MissingSummary:
+                    pass
+            jobs.append((world.world_id, arm, entries, cut))
     return jobs
 
 
@@ -89,7 +97,7 @@ def _worker(shard: int, shards: int, out_path: Path) -> None:
         return resp
 
     summ.request_chat_completion = llm
-    jobs = [j for i, j in enumerate(needed()) if i % shards == shard]
+    jobs = [j for i, j in enumerate(needed(only_missing=True)) if i % shards == shard]
     results = {}
     for world_id, arm, entries, cut in jobs:
         with tempfile.TemporaryDirectory() as tmp:
@@ -112,8 +120,11 @@ def _worker(shard: int, shards: int, out_path: Path) -> None:
 
 def generate(workers: int = 6) -> Dict:
     from . import live
+    n_jobs = len(needed(only_missing=True))  # only absent or stale summaries are (re)generated
+    if not n_jobs:
+        return {"jobs": 0, "written": 0, "failed_shards": [], "calls": 0, "cost_usd": 0.0,
+                "prompt_tokens": 0, "completion_tokens": 0}
     agg = live.Ledger(run="summaries-batch")  # aggregate of the worker processes (their calls are in the ledger)
-    n_jobs = len(needed())
     with tempfile.TemporaryDirectory() as tmp:
         procs = []
         for i in range(workers):
@@ -159,7 +170,7 @@ if __name__ == "__main__":
         from . import live
         print(json.dumps(live.run_cli(generate, a.workers, paths=(SUMMARIES_FILE,))))
     elif sys.argv[1:2] == ["count"]:
-        jobs = needed()
+        jobs = needed(only_missing="--missing" in sys.argv)
         print(len(jobs), "summaries needed;", sum(len(j[2]) for j in jobs), "entries total")
     else:
         print(__doc__)

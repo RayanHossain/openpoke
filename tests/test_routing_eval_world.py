@@ -189,7 +189,7 @@ def test_real_creation_names():
             assert names.core_name(ws.ws_id), ws.ws_id
     pairs, _ = generate(plan=((50, "high"),))
     sources = {a.name_source for w, _ in pairs for a in w.agents}
-    assert sources <= {"baseline-ia", "placeholder:label"}
+    assert sources <= {"baseline-ia", "baseline-ia:instance", "placeholder:label"}
     placeholder = sum(a.name_source == "placeholder:label" for w, _ in pairs for a in w.agents)
     total = sum(len(w.agents) for w, _ in pairs)
     assert placeholder / total < 0.05, (placeholder, total)

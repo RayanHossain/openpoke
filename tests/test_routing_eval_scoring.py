@@ -146,4 +146,4 @@ def test_baseline_forced_merge_at_creation():
     d = Decision("create")
     base, reg = score(i, d, w, router="baseline"), score(i, d, w, router="registry")
     assert base.correct == reg.correct and base.error == reg.error  # the route itself is scored the same
-    assert base.severity == reg.severity + 4 * m and base.creation_merges == m and reg.creation_merges == 0
+    assert base.severity == reg.severity and base.creation_merges == m and reg.creation_merges == 0  # world-level only
