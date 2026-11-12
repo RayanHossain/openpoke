@@ -80,3 +80,38 @@ registry's lead is present at N = 3, so it is not mainly a scaling effect.
 ## Cost
 Round 2: $7.68 (main $7.03: registry $3.57, baseline $3.13, RAG $0.27 + embeddings $0.06; G2 $0.63; as-built $0.01).
 Total spent: $10.28 of the $25 cap.
+
+## Follow-ups after the round-2 report (all post-hoc; not pre-registered)
+
+**Addendum.** `../routing-eval-preregistration-addendum.md` was committed at `09b5633` (2026-11-12 08:11:55 UTC),
+after round-2 results existed. It was written before Rayan and the planning chat saw round-2 results, but it is
+not applied as pre-registered. Read under its rule 2 (differences under 5 points = "no meaningful difference"):
+the primary comparisons stand (N = 30: +6.0; N = 50: +9.9); the N = 10 secondary difference (+4.4) would read as no
+meaningful difference. Under its rule 4, baseline merge counts are evidence the problem exists, not evidence for
+the registry.
+
+**G2 now passes** with a combined break (registry, N = 30, 84 probes, 1 run): history IDs stripped AND the
+`create_agent` dry run's existing-owner lookup removed. Accuracy 79.8% → 66.7%, **−13.1 [−21.4, −5.6]**; keyless
+−20.7 [−33.3, −10.0]; ambiguous −30.6 [−52.8, −8.3]; hot_set_eviction −100. Without both paths the registry is no
+better than the baseline (−7.1 [−16.7, +2.0]). Single breaks (keys, briefs, ASK line, history IDs alone) did not
+cause visible drops, because the registry has two retrieval paths (cards and history IDs, plus the dry run).
+
+**Inbound events (F10, confirmed gap).** Watcher/webhook events are dispatched to an agent by the baseline in 10%
+and the registry in 19% of decisions (RAG: 100%); the IA routers mostly tell the user or do nothing. Pre-registered
+labels stay primary. Post-hoc views (`posthoc/scoring.md`): with "telling the user" acceptable on those probes, registry
+vs baseline is +8.6 / +6.0 / +3.2 / +8.3 / +6.0 points (N3…N50 low); on user-typed messages only, registry 88–93%,
+baseline 78–86%, RAG 51–85%.
+
+**RAG.** Parity stays the pre-registered primary. RAG's decline with N (86% → 55%) comes from our parity adapter,
+which prepends the last 5 conversation turns to the query, **not from RAG as built**: as-built RAG is flat
+(79%, 79%, 77%, 77% at N = 3/10/30/50; 3 runs; post-hoc) and beats parity by +10.7 at N = 30 and +22.2 at N = 50.
+
+**Post-fold condition** (`posthoc/postfold.md`): the same N = 30 / N = 50 worlds observed right after a fold (tail =
+10 entries, the production minimum); 1,512 decisions, 3 runs. No router changes meaningfully against its ordinary
+worlds (all within ±3.6 points). Registry vs baseline: N = 30 +3.6 [−3.6, +11.9] (no meaningful difference),
+N = 50 +10.7 [+4.4, +17.5]. After a fold the registry's target IDs are mostly only in the summary (162/222 and 177/222
+decisions), where its accuracy is 81–86%; the baseline's target names are mostly absent from the history (it still
+sees every name in its roster), 79–80%.
+
+Cost of the follow-ups: $3.87 (history-ID break $0.48, RAG as-built sweep $0.12, combined break $0.25, post-fold
+summaries $0.81 and decisions $2.21). Total spent: $14.15 of $25.
