@@ -4,6 +4,11 @@
 Numbers: `report.json` (from `python -m routing_eval.analysis`); per-decision results in `main/`, `g2/`, `asbuilt/`;
 raw calls in `../routing-eval-raw/round2-*.jsonl`. Pre-registration: `../routing-eval-preregistration.md` (b0de820).
 
+**Pre-registration timing:** `b0de820` was committed at 07:03:21 UTC, before the first round-2 paid call (07:05:27 UTC)
+and before any round-2 result (first result commit `44bf34a`, 07:07:27 UTC). **There is no pre-registration
+addendum:** no other commit has ever touched the pre-registration file, and none mentions an addendum.
+Analyses added after this report (`posthoc/`) are post-hoc and labelled so.
+
 ## Gates
 - **G1** (simple routers): pass. **G4** (blind labels): 27/27 agreement. **G6** (fair views): snapshot-tested.
 - **G2 (deliberate breaks): FAIL.** No break caused a visible drop in its target categories (registry, N=10, 1 run,
