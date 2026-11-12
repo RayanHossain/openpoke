@@ -1,0 +1,15 @@
+{
+ "rep": 2,
+ "variant": "briefs_status",
+ "jobs": 168,
+ "done": 168,
+ "worker_exit_codes": [
+  0,
+  0,
+  0,
+  0
+ ],
+ "harness_errors": 0,
+ "cost_usd": 0.2485,
+ "label": "POST-HOC: model-written briefs from scripted histories + model-reported statuses"
+}
