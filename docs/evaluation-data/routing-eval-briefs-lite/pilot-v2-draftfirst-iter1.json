@@ -1,0 +1,570 @@
+{
+ "briefs": {
+  "0bb9516012afc222": {
+   "agent_id": "ea_4",
+   "apologises": false,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 2,
+     "stubbed": [
+      "task_email_search"
+     ]
+    },
+    {
+     "content": "The reply draft (r-re-th_fx8) to office@harborviewproperties.example was sent on thread th_fx8 (message m-th_fx8).\n\nProblem to flag: the draft's body was only the text \"Re: the coverage question for Harborview Office\", not a real answer to the coverage question. That is what was sent. The original draft was created without the actual content, so the recipient received a subject-line echo with no substance. The user should be told this, and a proper follow-up with the real answer should be drafted if they want one. I don't have the content of the coverage question, so I can't write that follow-up myself.\n\n<report status=\"done\">Sent the reply to office@harborviewproperties.example on thread th_fx8 (message m-th_fx8). The body was only a repeat of the subject line, so no real answer went out. A follow-up with the actual coverage answer needs to be drafted and approved if the user wants one.</report>",
+     "final": true,
+     "iterations": 1,
+     "problem": "brief trimmed to 2 sentences / 280 chars",
+     "report": {
+      "brief": "Sent the reply to office@harborviewproperties.example on thread th_fx8 (message m-th_fx8). The body was only a repeat of the subject line, so no real answer went out.",
+      "status": "done"
+     },
+     "run_index": 1,
+     "stubbed": []
+    }
+   ],
+   "brief": "Sent the reply to office@harborviewproperties.example on thread th_fx8 (message m-th_fx8). The body was only a repeat of the subject line, so no real answer went out.",
+   "brief_from_run": 2,
+   "last_run_ok": false,
+   "model_status": "done",
+   "name": "Harborview Office Coverage Email",
+   "runs": 3,
+   "scripted_brief": "The coverage question for Harborview Office. Finished; nothing open.",
+   "scripted_runs": 2,
+   "scripted_status": "done",
+   "uses": [
+    [
+     "hub_nb_sink@N30-high",
+     "ag4"
+    ]
+   ],
+   "ws_ids": [
+    "fx_8"
+   ]
+  },
+  "1126abc87290ae01": {
+   "agent_id": "ea_20",
+   "apologises": false,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 2,
+     "stubbed": [
+      "task_email_search"
+     ]
+    },
+    {
+     "content": "The draft r-re-th_fx7 was sent. The message ID is m-th_fx7, on thread th_fx7.\n\nThe sent email has the following content, which is unusually thin. Please check it with the user:\n- **To:** appointments@pawsvet.example\n- **Subject:** Re: the price match with Paws Vet Clinic\n- **Body:** \"Re: the price match with Paws Vet Clinic\"\n\nThe body contains no actual price match details, such as the competitor's price, the item or service, or a request. The original draft was created with that text as its body, and I sent it as-is. If the user wanted specific content, they will need a follow-up email on the same thread.\n\n<report status=\"done\">Sent the reply draft r-re-th_fx7 to appointments@pawsvet.example on thread th_fx7 (message m-th_fx7). The body was only the subject line text, with no price match details, so Poke should confirm with the user whether a follow-up with specifics is needed. No drafts or reminders are pending.</report>",
+     "final": true,
+     "iterations": 1,
+     "problem": "brief trimmed to 2 sentences / 280 chars",
+     "report": {
+      "brief": "Sent the reply draft r-re-th_fx7 to appointments@pawsvet.example on thread th_fx7 (message m-th_fx7). The body was only the subject line text, with no price match details, so Poke should confirm with the user whether a follow-up with specifics is needed.",
+      "status": "done"
+     },
+     "run_index": 1,
+     "stubbed": []
+    }
+   ],
+   "brief": "Sent the reply draft r-re-th_fx7 to appointments@pawsvet.example on thread th_fx7 (message m-th_fx7). The body was only the subject line text, with no price match details, so Poke should confirm with the user whether a follow-up with specifics is needed.",
+   "brief_from_run": 2,
+   "last_run_ok": false,
+   "model_status": "done",
+   "name": "Paws Vet Clinic Price Match Email",
+   "runs": 3,
+   "scripted_brief": "The price match with Paws Vet Clinic. Waiting on the user to decide.",
+   "scripted_runs": 2,
+   "scripted_status": "waiting_user",
+   "uses": [
+    [
+     "drift_dog_checkup@N30-high",
+     "ag20"
+    ]
+   ],
+   "ws_ids": [
+    "fx_7"
+   ]
+  },
+  "22efd1d1c47dbf46": {
+   "agent_id": "ea_3",
+   "apologises": false,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 1,
+     "stubbed": [
+      "task_email_search",
+      "listTriggers"
+     ]
+    },
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 0,
+     "stubbed": [
+      "listTriggers"
+     ]
+    }
+   ],
+   "brief": "",
+   "brief_from_run": null,
+   "last_run_ok": false,
+   "model_status": null,
+   "name": "Airport Pickup Reminder - Bob Lee",
+   "runs": 2,
+   "scripted_brief": "The airport pickup for Bob Lee. Finished; nothing open.",
+   "scripted_runs": 2,
+   "scripted_status": "done",
+   "uses": [
+    [
+     "seed_bob_dinner@N10-high",
+     "ag3"
+    ]
+   ],
+   "ws_ids": [
+    "fx_6"
+   ]
+  },
+  "4d3d4e6422d1a430": {
+   "agent_id": "ea_5",
+   "apologises": false,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 2,
+     "stubbed": [
+      "task_email_search"
+     ]
+    },
+    {
+     "content": "The draft was sent to talent@globex.example on thread th_fx5 (message m-th_fx5).\n\nThe sent body was only the text \"Re: the group booking with Globex Talent\". The earlier draft was created with that as its body, so the email contains no actual booking details. If the user wanted substantive content, a follow-up email with the details will need to be drafted and approved first.\n\n<report status=\"done\">Sent the reply on thread th_fx5 to talent@globex.example (message m-th_fx5). The body was only the subject line text, so no booking details were included. Any follow-up with details would need a new draft and approval.</report>",
+     "final": true,
+     "iterations": 1,
+     "problem": "brief trimmed to 2 sentences / 280 chars",
+     "report": {
+      "brief": "Sent the reply on thread th_fx5 to talent@globex.example (message m-th_fx5). The body was only the subject line text, so no booking details were included.",
+      "status": "done"
+     },
+     "run_index": 1,
+     "stubbed": []
+    }
+   ],
+   "brief": "Sent the reply on thread th_fx5 to talent@globex.example (message m-th_fx5). The body was only the subject line text, so no booking details were included.",
+   "brief_from_run": 2,
+   "last_run_ok": false,
+   "model_status": "done",
+   "name": "Globex Talent Group Booking",
+   "runs": 3,
+   "scripted_brief": "The group booking with Globex Talent. Finished; nothing open.",
+   "scripted_runs": 2,
+   "scripted_status": "done",
+   "uses": [
+    [
+     "slug_nb_sharp_march@N30-high",
+     "ag5"
+    ]
+   ],
+   "ws_ids": [
+    "fx_5"
+   ]
+  },
+  "5a5733c5e5329dd2": {
+   "agent_id": "ea_18",
+   "apologises": true,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 2,
+     "stubbed": [
+      "task_email_search"
+     ]
+    },
+    {
+     "content": "The reply draft (r-re-th_fx7) was sent to bob.hale@harborviewproperties.example on thread th_fx7. The send returned success, with message id m-th_fx7.\n\nPlease tell the user that the sent email's body is only the placeholder text \"Re: the invoice follow-up with Bob Hale\". The draft was created with that text as its body, and no invoice details were included. The sent email is not a real follow-up. If the user wanted substantive content, such as an amount, due date, or payment request, a new email will need to be drafted and approved.\n\nSent message details:\n- To: bob.hale@harborviewproperties.example\n- Subject: Re: the invoice follow-up with Bob Hale\n- Body: Re: the invoice follow-up with Bob Hale\n- Thread: th_fx7\n\n<report status=\"done\">Sent a reply to Bob Hale (bob.hale@harborviewproperties.example) on thread th_fx7 via draft r-re-th_fx7, but the body contained only the subject-line placeholder text. No further action is pending unless the user wants a substantive follow-up drafted.</report>",
+     "final": true,
+     "iterations": 1,
+     "problem": null,
+     "report": {
+      "brief": "Sent a reply to Bob Hale (bob.hale@harborviewproperties.example) on thread th_fx7 via draft r-re-th_fx7, but the body contained only the subject-line placeholder text. No further action is pending unless the user wants a substantive follow-up drafted.",
+      "status": "done"
+     },
+     "run_index": 1,
+     "stubbed": []
+    }
+   ],
+   "brief": "Sent a reply to Bob Hale (bob.hale@harborviewproperties.example) on thread th_fx7 via draft r-re-th_fx7, but the body contained only the subject-line placeholder text. No further action is pending unless the user wants a substantive follow-up drafted.",
+   "brief_from_run": 2,
+   "last_run_ok": false,
+   "model_status": "done",
+   "name": "Bob Hale Invoice Follow-up",
+   "runs": 3,
+   "scripted_brief": "The invoice follow-up with Bob Hale. Waiting on Bob's reply.",
+   "scripted_runs": 2,
+   "scripted_status": "waiting_external",
+   "uses": [
+    [
+     "seed_bbo_lease@N30-high",
+     "ag18"
+    ]
+   ],
+   "ws_ids": [
+    "fx_7"
+   ]
+  },
+  "619934fe219845b7": {
+   "agent_id": "ea_25",
+   "apologises": true,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 2,
+     "stubbed": [
+      "task_email_search"
+     ]
+    },
+    {
+     "content": "The reply draft (draft ID r-re-th_fx15) has been sent to appointments@pawsvet.example on thread th_fx15. The send returned message ID m-th_fx15.\n\nThe body that was sent was only \"Re: the onboarding forms from Paws Vet Clinic\". The original draft was created with that text as its body, so the recipient got a subject-line placeholder with no actual content about the forms. Let the user know this, since they may want to follow up with the real message.\n\n<report status=\"done\">Sent the reply draft r-re-th_fx15 to appointments@pawsvet.example on thread th_fx15 (message m-th_fx15). The body was only the placeholder \"Re: the onboarding forms from Paws Vet Clinic\", so a follow-up with the actual content may be needed. No drafts or reminders remain open.</report>",
+     "final": true,
+     "iterations": 1,
+     "problem": "brief trimmed to 2 sentences / 280 chars",
+     "report": {
+      "brief": "Sent the reply draft r-re-th_fx15 to appointments@pawsvet.example on thread th_fx15 (message m-th_fx15). The body was only the placeholder \"Re: the onboarding forms from Paws Vet Clinic\", so a follow-up with the actual content may be needed.",
+      "status": "done"
+     },
+     "run_index": 1,
+     "stubbed": []
+    }
+   ],
+   "brief": "Sent the reply draft r-re-th_fx15 to appointments@pawsvet.example on thread th_fx15 (message m-th_fx15). The body was only the placeholder \"Re: the onboarding forms from Paws Vet Clinic\", so a follow-up with the actual content may be needed.",
+   "brief_from_run": 2,
+   "last_run_ok": false,
+   "model_status": "done",
+   "name": "Paws Vet Clinic Onboarding Email",
+   "runs": 3,
+   "scripted_brief": "The onboarding forms from Paws Vet Clinic. Waiting on Paws Vet Clinic's reply.",
+   "scripted_runs": 2,
+   "scripted_status": "waiting_external",
+   "uses": [
+    [
+     "drift_nb_pup@N30-high",
+     "ag25"
+    ]
+   ],
+   "ws_ids": [
+    "fx_15"
+   ]
+  },
+  "6fd13a8c0b74ea69": {
+   "agent_id": "ea_7",
+   "apologises": false,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 2,
+     "stubbed": [
+      "task_email_search"
+     ]
+    },
+    {
+     "content": "The reply draft (r-re-th_fx9) was sent to expenses@acme.example on thread th_fx9. The send returned success with message ID m-th_fx9.\n\nSent message details:\n- To: expenses@acme.example\n- Subject: Re: the backorder update from Expenses Team\n- Body: \"Re: the backorder update from Expenses Team\"\n\nThe body contains only the subject line repeated, with no actual backorder update content. I created that draft without the user's details, so the recipient got a placeholder-style message. Poke may want to check with the user and send a proper follow-up with the real backorder details if needed.\n\n<report status=\"done\">Sent the reply draft r-re-th_fx9 to expenses@acme.example on thread th_fx9 (message m-th_fx9). The body was only the subject line, not real backorder content, so a follow-up with the actual update may be needed.</report>",
+     "final": true,
+     "iterations": 1,
+     "problem": null,
+     "report": {
+      "brief": "Sent the reply draft r-re-th_fx9 to expenses@acme.example on thread th_fx9 (message m-th_fx9). The body was only the subject line, not real backorder content, so a follow-up with the actual update may be needed.",
+      "status": "done"
+     },
+     "run_index": 1,
+     "stubbed": []
+    }
+   ],
+   "brief": "Sent the reply draft r-re-th_fx9 to expenses@acme.example on thread th_fx9 (message m-th_fx9). The body was only the subject line, not real backorder content, so a follow-up with the actual update may be needed.",
+   "brief_from_run": 2,
+   "last_run_ok": false,
+   "model_status": "done",
+   "name": "Expenses Team Backorder Email",
+   "runs": 3,
+   "scripted_brief": "The backorder update from Expenses Team. Finished; nothing open.",
+   "scripted_runs": 2,
+   "scripted_status": "done",
+   "uses": [
+    [
+     "alias_status_word@N30-high",
+     "ag7"
+    ]
+   ],
+   "ws_ids": [
+    "fx_9"
+   ]
+  },
+  "79487bdd2c399690": {
+   "agent_id": "ea_9",
+   "apologises": false,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 2,
+     "stubbed": [
+      "task_email_search"
+     ]
+    },
+    {
+     "content": "The draft was sent to expenses@acme.example on thread th_fx0 (message m-th_fx0).\n\nThe sent email had this content:\n- To: expenses@acme.example\n- Subject: Re: the waitlist spot at Expenses Team\n- Body: \"Re: the waitlist spot at Expenses Team\"\n\nThe body is only the subject line repeated, with no actual message. The original draft was created that way, and I sent it as approved. If the user meant to say something specific about the waitlist spot, they should send a follow-up in the same thread.\n\n<report status=\"done\">Sent the approved waitlist reply to expenses@acme.example on thread th_fx0 (draft r-re-th_fx0, message m-th_fx0). The body contained only the subject line, so a follow-up with real content may be needed. No drafts or reminders are pending.</report>",
+     "final": true,
+     "iterations": 1,
+     "problem": "brief trimmed to 2 sentences / 280 chars",
+     "report": {
+      "brief": "Sent the approved waitlist reply to expenses@acme.example on thread th_fx0 (draft r-re-th_fx0, message m-th_fx0). The body contained only the subject line, so a follow-up with real content may be needed.",
+      "status": "done"
+     },
+     "run_index": 1,
+     "stubbed": []
+    }
+   ],
+   "brief": "Sent the approved waitlist reply to expenses@acme.example on thread th_fx0 (draft r-re-th_fx0, message m-th_fx0). The body contained only the subject line, so a follow-up with real content may be needed.",
+   "brief_from_run": 2,
+   "last_run_ok": false,
+   "model_status": "done",
+   "name": "Expenses Team Waitlist Email",
+   "runs": 3,
+   "scripted_brief": "The waitlist spot at Expenses Team. In progress.",
+   "scripted_runs": 2,
+   "scripted_status": "active",
+   "uses": [
+    [
+     "para_reimbursement@N10-high",
+     "ag9"
+    ]
+   ],
+   "ws_ids": [
+    "fx_0"
+   ]
+  },
+  "b068600c84097e44": {
+   "agent_id": "ea_21",
+   "apologises": true,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 2,
+     "stubbed": [
+      "task_email_search"
+     ]
+    },
+    {
+     "content": "The reply to Bob Hale has been sent on thread th_fx3 (message m-th_fx3).\n\nThe draft's body was only the placeholder text \"Re: the camera return to Bob Hale\", not a real message, so Bob received an email containing just that line. The original request didn't include any details about the camera return, so I wrote no substantive content. If the user meant to say something specific, such as a return date, a pickup arrangement, or a thank-you, a follow-up reply on th_fx3 can be drafted once they provide the details.\n\nRecipient: bob.hale@harborviewproperties.example\n\n<report status=\"done\">Sent a reply to Bob Hale (bob.hale@harborviewproperties.example) on thread th_fx3 (message m-th_fx3). The body contained only placeholder text, so a substantive follow-up would need the user's details.</report>",
+     "final": true,
+     "iterations": 1,
+     "problem": null,
+     "report": {
+      "brief": "Sent a reply to Bob Hale (bob.hale@harborviewproperties.example) on thread th_fx3 (message m-th_fx3). The body contained only placeholder text, so a substantive follow-up would need the user's details.",
+      "status": "done"
+     },
+     "run_index": 1,
+     "stubbed": []
+    }
+   ],
+   "brief": "Sent a reply to Bob Hale (bob.hale@harborviewproperties.example) on thread th_fx3 (message m-th_fx3). The body contained only placeholder text, so a substantive follow-up would need the user's details.",
+   "brief_from_run": 2,
+   "last_run_ok": false,
+   "model_status": "done",
+   "name": "Bob Hale Camera Return Email",
+   "runs": 3,
+   "scripted_brief": "The camera return to Bob Hale. Finished; nothing open.",
+   "scripted_runs": 2,
+   "scripted_status": "done",
+   "uses": [
+    [
+     "mt_lease_acme@N30-high",
+     "ag21"
+    ]
+   ],
+   "ws_ids": [
+    "fx_3"
+   ]
+  },
+  "bab52100ba478010": {
+   "agent_id": "ea_17",
+   "apologises": true,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 2,
+     "stubbed": [
+      "task_email_search"
+     ]
+    },
+    {
+     "content": "The draft was sent to Isaac Moreau (isaac.moreau@pool.example) on thread th_fx25 (message m-th_fx25).\n\nThe draft's body was only the placeholder text \"Re: the database migration with Isaac Moreau,\" with no real message content. The email Isaac received likely contains just that line. The user should be told this, and a follow-up email with the actual content can be drafted if they want one.\n\n<report status=\"done\">Sent the reply to Isaac Moreau (isaac.moreau@pool.example) on thread th_fx25 (draft r-re-th_fx25, message m-th_fx25). The body was a placeholder line, not real content, so a follow-up with the actual details may be needed.</report>",
+     "final": true,
+     "iterations": 1,
+     "problem": null,
+     "report": {
+      "brief": "Sent the reply to Isaac Moreau (isaac.moreau@pool.example) on thread th_fx25 (draft r-re-th_fx25, message m-th_fx25). The body was a placeholder line, not real content, so a follow-up with the actual details may be needed.",
+      "status": "done"
+     },
+     "run_index": 1,
+     "stubbed": []
+    }
+   ],
+   "brief": "Sent the reply to Isaac Moreau (isaac.moreau@pool.example) on thread th_fx25 (draft r-re-th_fx25, message m-th_fx25). The body was a placeholder line, not real content, so a follow-up with the actual details may be needed.",
+   "brief_from_run": 2,
+   "last_run_ok": false,
+   "model_status": "done",
+   "name": "Isaac Moreau Database Migration Email",
+   "runs": 3,
+   "scripted_brief": "The database migration with Isaac Moreau. Finished; nothing open.",
+   "scripted_runs": 2,
+   "scripted_status": "done",
+   "uses": [
+    [
+     "inj_deploy_sysnote@N30-high",
+     "ag17"
+    ]
+   ],
+   "ws_ids": [
+    "fx_25"
+   ]
+  },
+  "dad95d86ebcf06c8": {
+   "agent_id": "ea_15",
+   "apologises": false,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 2,
+     "stubbed": [
+      "task_email_search"
+     ]
+    },
+    {
+     "content": "The reply draft (draft r-re-th_fx2) was sent to Bob Hale at bob.hale@harborviewproperties.example on thread th_fx2. Gmail returned message id m-th_fx2.\n\nThe draft body was only the text \"Re: the recruiter call with Bob Hale\", with no actual content about the call. The user approved that draft as written, but they may not have realized how little it says. Poke may want to tell the user that the email was sent with that minimal body.\n\n<report status=\"done\">Sent the reply to Bob Hale (bob.hale@harborviewproperties.example) on thread th_fx2 from draft r-re-th_fx2. Its body was only the subject line text, so no follow-up draft is pending.</report>",
+     "final": true,
+     "iterations": 1,
+     "problem": null,
+     "report": {
+      "brief": "Sent the reply to Bob Hale (bob.hale@harborviewproperties.example) on thread th_fx2 from draft r-re-th_fx2. Its body was only the subject line text, so no follow-up draft is pending.",
+      "status": "done"
+     },
+     "run_index": 1,
+     "stubbed": []
+    }
+   ],
+   "brief": "Sent the reply to Bob Hale (bob.hale@harborviewproperties.example) on thread th_fx2 from draft r-re-th_fx2. Its body was only the subject line text, so no follow-up draft is pending.",
+   "brief_from_run": 2,
+   "last_run_ok": false,
+   "model_status": "done",
+   "name": "Bob Hale Recruiter Email",
+   "runs": 3,
+   "scripted_brief": "The recruiter call with Bob Hale. In progress.",
+   "scripted_runs": 2,
+   "scripted_status": "active",
+   "uses": [
+    [
+     "os_nb_fire_off@N30-high",
+     "ag15"
+    ]
+   ],
+   "ws_ids": [
+    "fx_2"
+   ]
+  },
+  "ec87728a1f280d42": {
+   "agent_id": "ea_4",
+   "apologises": false,
+   "attempts": [
+    {
+     "content": "",
+     "final": false,
+     "iterations": 1,
+     "problem": "no final message within 1 iterations (production allows 8)",
+     "report": null,
+     "run_index": 2,
+     "stubbed": [
+      "task_email_search"
+     ]
+    },
+    {
+     "content": "The reply draft (r-re-th_fx8) was sent to mia@family.example on thread th_fx8. Message ID: m-th_fx8.\n\nThe sent message is not a real thesis feedback reply. The draft body was only the subject line, verbatim:\n- To: mia@family.example\n- Subject: Re: thesis feedback from Mia Santos\n- Body: Re: thesis feedback from Mia Santos\n\nI did not write this body. Mia may be confused by it, so the user may want to send a proper follow-up in the same thread.\n\n<report status=\"done\">Sent the reply to mia@family.example on thread th_fx8 (message m-th_fx8). The body contained only the subject line, so a follow-up with real feedback may be needed. No drafts or reminders are pending.</report>",
+     "final": true,
+     "iterations": 1,
+     "problem": "brief trimmed to 2 sentences / 280 chars",
+     "report": {
+      "brief": "Sent the reply to mia@family.example on thread th_fx8 (message m-th_fx8). The body contained only the subject line, so a follow-up with real feedback may be needed.",
+      "status": "done"
+     },
+     "run_index": 1,
+     "stubbed": []
+    }
+   ],
+   "brief": "Sent the reply to mia@family.example on thread th_fx8 (message m-th_fx8). The body contained only the subject line, so a follow-up with real feedback may be needed.",
+   "brief_from_run": 2,
+   "last_run_ok": false,
+   "model_status": "done",
+   "name": "Mia Santos Thesis Feedback",
+   "runs": 3,
+   "scripted_brief": "Thesis feedback from Mia Santos. Finished; nothing open.",
+   "scripted_runs": 2,
+   "scripted_status": "done",
+   "uses": [
+    [
+     "st_nb_bignight@N30-high",
+     "ag4"
+    ]
+   ],
+   "ws_ids": [
+    "fx_8"
+   ]
+  }
+ },
+ "label": "model-written briefs from scripted histories",
+ "max_iter": 1
+}
