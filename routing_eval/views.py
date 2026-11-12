@@ -15,6 +15,7 @@ they refuse to run against the repo's real ``server/``.
 from __future__ import annotations
 
 import contextlib
+import re
 import functools
 import itertools
 import json
@@ -93,14 +94,26 @@ def summary_text(world: World, arm: str) -> str:
     return summaries.lookup(world.world_id, arm, entries[:cut])
 
 
-def write_conversation(world: World, conv_dir: Path, arm: str) -> Dict[str, Any]:
+def strip_agent_ids(text: str) -> str:
+    """G2 mut_history_ids_off: 'ea_4 (Name)' -> 'Name'; any other bare ea_k removed."""
+    text = re.sub(r"\bea_\d+\s*\(([^)]*)\)", r"\1", text)
+    text = re.sub(r"\s*\(\s*ea_\d+\s*\)", "", text)
+    return re.sub(r"\bea_\d+\b", "", text)
+
+
+def write_conversation(world: World, conv_dir: Path, arm: str, strip_ids: bool = False) -> Dict[str, Any]:
     entries = conversation_entries(world, arm)
     cut = folded_count(len(entries))
     conv_dir.mkdir(parents=True, exist_ok=True)
     (conv_dir / "poke_conversation.log").write_text("".join(_line(t, p, ts) for t, ts, p in entries), encoding="utf-8")
     last_at = entries[cut - 1][1] if cut else None
     meta = json.dumps({"last_index": cut - 1, "updated_at": (world.now.isoformat() if cut else None)})
-    wm = [_line("summary_info", meta), _line("conversation_summary", summary_text(world, arm))]
+    summary = summary_text(world, arm)
+    if strip_ids:
+        entries = [(t, ts, strip_agent_ids(p)) for t, ts, p in entries]
+        summary = strip_agent_ids(summary)
+        (conv_dir / "poke_conversation.log").write_text("".join(_line(t, p, ts) for t, ts, p in entries), encoding="utf-8")
+    wm = [_line("summary_info", meta), _line("conversation_summary", summary)]
     wm += [_line(t, p, ts) for t, ts, p in entries[cut:]]
     (conv_dir / "poke_working_memory.log").write_text("".join(wm), encoding="utf-8")
     return {"entries": len(entries), "folded": cut, "last_folded_at": last_at}
@@ -269,7 +282,7 @@ class RegistryView:
     conversation: Dict[str, Any]
 
 
-MUTATIONS = ("keys_off", "briefs_blank", "no_ask")  # G2 deliberate breaks (spec §0)
+MUTATIONS = ("keys_off", "briefs_blank", "no_ask", "history_ids_off")  # G2 deliberate breaks
 
 
 def load_registry(world: World, registry, trigger_store, conv_dir: Path, mutation: Optional[str] = None) -> RegistryView:
@@ -333,7 +346,7 @@ def load_registry(world: World, registry, trigger_store, conv_dir: Path, mutatio
                          (brief, parsed.report.status, at, agent_id))
     for address, name in sorted(aliases):
         registry.add_alias(address, name)
-    conv = write_conversation(world, conv_dir, "registry")
+    conv = write_conversation(world, conv_dir, "registry", strip_ids=(mutation == "history_ids_off"))
     return RegistryView(id_of, {v: k for k, v in id_of.items()}, conv)
 
 

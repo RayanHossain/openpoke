@@ -216,7 +216,7 @@ class LiveSandboxRouters:
         with tempfile.TemporaryDirectory(prefix="tier-a-registry-") as tmp, self.ls.world_dir(Path(tmp)):
             registry = get_agent_registry()
             view = views.load_registry(world, registry, get_trigger_service()._store, Path(tmp) / "conversation",
-                                       mutation=mutate if mutate in ("keys_off", "briefs_blank") else None)
+                                       mutation=mutate if mutate in ("keys_off", "briefs_blank", "history_ids_off") else None)
             with views.world_clock(world, registry):
                 runtime = rt_mod.InteractionAgentRuntime()
                 runtime.model = live.ROUTER_MODEL

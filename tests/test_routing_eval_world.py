@@ -58,6 +58,26 @@ def test_g2_world_mutations(tmp_path):
             sb.close()
 
 
+def test_g2_history_ids_off(tmp_path):
+    """mut_history_ids_off: no ea_k in the registry's history or summary; cards keep their IDs."""
+    import re
+    p = next(p for p in catalog.PROBES if p.probe_id == "pf_refund")
+    world = build_world(p, 30, "high")  # folded: has a summary
+    sb = harness.open_sandbox(tmp_path / "h")
+    try:
+        views.load_registry(world, sb.registry, sb.triggers._store, sb.data_dir / "conversation",
+                            mutation="history_ids_off")
+        conv = (sb.data_dir / "conversation" / "poke_conversation.log").read_text()
+        wm = (sb.data_dir / "conversation" / "poke_working_memory.log").read_text()
+        assert not re.search(r"\bea_\d+\b", conv) and not re.search(r"\bea_\d+\b", wm)
+        assert "[SUCCESS] " in conv
+        with views.world_clock(world, sb.registry):
+            from server.agents.interaction_agent import agent as ia_agent
+            assert re.search(r"\bea_\d+ \|", ia_agent._render_active_agents(p.message))
+    finally:
+        sb.close()
+
+
 def test_dataset_validates():
     out = validate()
     assert out["probes"] == len(catalog.PROBES) >= 54

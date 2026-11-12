@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import os
 import random
 import subprocess
 import sys
@@ -46,6 +47,17 @@ def jobs(batch: str) -> List[Dict]:
         elif batch == "asbuilt":
             out.append({"router": "rag", "probe": pid, "n": 30, "sim": "high", "run": 1, "variant": "as_built",
                         "mutation": None})
+        elif batch == "g2_history":  # post-hoc G2 break (requested after round 2)
+            for n in (10, 30):
+                out.append({"router": "registry", "probe": pid, "n": n, "sim": "high", "run": 1, "variant": None,
+                            "mutation": "history_ids_off"})
+        elif batch == "asbuilt_sweep":  # post-hoc: RAG as-built at every N, 3 runs
+            for n in (3, 10, 30, 50):
+                if n < p.min_n:
+                    continue
+                for run in (1, 2, 3):
+                    out.append({"router": "rag", "probe": pid, "n": n, "sim": "high", "run": run,
+                                "variant": "as_built", "mutation": None})
         elif batch == "g2":
             for m in ("keys_off", "briefs_blank", "no_ask"):
                 out.append({"router": "registry", "probe": pid, "n": 10, "sim": "high", "run": 1, "variant": None,
@@ -106,6 +118,11 @@ def worker(batch: str, shard: int, shards: int) -> None:
     for k, job in enumerate(todo):
         remaining = sum(EST_PER_DECISION[j["router"]] for j in todo[k:]) * shards
         ledger.check(remaining)  # cost guard: stop if the projected rest would exceed the cap
+        cap = os.environ.get("ROUTING_EVAL_BATCH_CAP")
+        if cap:  # shared cap for a group of batches, measured from a fixed starting spend
+            limit, start = (float(x) for x in cap.split(":"))
+            if live.spent_so_far() - start + remaining > limit:
+                raise live.BudgetExceeded(f"batch cap ${limit:.2f} would be exceeded")
         p = probes[job["probe"]]
         world = build_world(p, job["n"], job["sim"])
         inst = instance(p, world)
@@ -157,7 +174,7 @@ if __name__ == "__main__":
     elif sys.argv[1] == "run":
         ap = argparse.ArgumentParser()
         ap.add_argument("cmd")
-        ap.add_argument("batch", choices=("g2", "asbuilt", "main"))
+        ap.add_argument("batch", choices=("g2", "asbuilt", "main", "g2_history", "asbuilt_sweep"))
         ap.add_argument("--workers", type=int, default=9)
         a = ap.parse_args()
         print(json.dumps(live.run_cli(run, a.batch, a.workers, paths=(OUT / a.batch,))))
