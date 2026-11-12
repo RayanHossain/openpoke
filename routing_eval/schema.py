@@ -113,7 +113,7 @@ class Event:
     """One conversation turn in the world's history, chronological."""
 
     at: datetime
-    kind: Literal["step", "chatter"]
+    kind: Literal["step", "chatter", "wait"]
     user_message: str
     ws_id: Optional[str] = None
     agent_ref: Optional[str] = None

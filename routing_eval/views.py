@@ -75,6 +75,9 @@ def conversation_entries(world: World, arm: str) -> List[Tuple[str, str, str]]:
     out: List[Tuple[str, str, str]] = []
     for ev in world.events:
         ts = ev.at.strftime(TS_FMT)
+        if ev.kind == "wait":  # ConversationLog.record_wait: one entry, never shown to the user
+            out.append(("wait", ts, ev.reply))
+            continue
         out.append(("user_message", ts, ev.user_message))
         if ev.kind == "step":
             agent = by_ref[ev.agent_ref]

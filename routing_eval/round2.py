@@ -51,6 +51,18 @@ def jobs(batch: str) -> List[Dict]:
             for n in (10, 30):
                 out.append({"router": "registry", "probe": pid, "n": n, "sim": "high", "run": 1, "variant": None,
                             "mutation": "history_ids_off"})
+        elif batch == "g2_combined":  # post-hoc G2 break: history IDs off + dry-run owner lookup off
+            out.append({"router": "registry", "probe": pid, "n": 30, "sim": "high", "run": 1, "variant": None,
+                        "mutation": "history_and_owners_off"})
+        elif batch == "postfold":  # post-hoc condition: worlds right after a fold (tail = 10 entries)
+            for n in (30, 50):
+                if n < p.min_n:
+                    continue
+                for router in ("baseline", "registry", "rag"):
+                    for run in (1, 2, 3):
+                        out.append({"router": router, "probe": pid, "n": n, "sim": "high", "run": run,
+                                    "variant": "as_built" if router == "rag" else None, "mutation": None,
+                                    "snapshot": "postfold"})
         elif batch == "asbuilt_sweep":  # post-hoc: RAG as-built at every N, 3 runs
             for n in (3, 10, 30, 50):
                 if n < p.min_n:
@@ -63,8 +75,11 @@ def jobs(batch: str) -> List[Dict]:
                 out.append({"router": "registry", "probe": pid, "n": 10, "sim": "high", "run": 1, "variant": None,
                             "mutation": m})
     for j in out:
-        j["job_id"] = f"{j['router']}|{j['probe']}|N{j['n']}-{j['sim']}|r{j['run']}|{j['variant'] or '-'}|{j['mutation'] or '-'}"
+        j["job_id"] = (f"{j['router']}|{j['probe']}|N{j['n']}-{j['sim']}|r{j['run']}|{j['variant'] or '-'}|"
+                       f"{j['mutation'] or '-'}" + (f"|{j['snapshot']}" if j.get("snapshot") else ""))
     random.Random(f"round2-{batch}").shuffle(out)
+    if batch == "postfold":  # run 1 for everything first: if the $3 cap stops the batch, earlier runs are complete
+        out.sort(key=lambda j: j["run"])
     return out
 
 
@@ -125,6 +140,9 @@ def worker(batch: str, shard: int, shards: int) -> None:
                 raise live.BudgetExceeded(f"batch cap ${limit:.2f} would be exceeded")
         p = probes[job["probe"]]
         world = build_world(p, job["n"], job["sim"])
+        if job.get("snapshot") == "postfold":
+            from .generator import post_fold_snapshot
+            world = post_fold_snapshot(world)
         inst = instance(p, world)
         purpose = f"{batch}:{job['router']}" + (f":{job['mutation']}" if job["mutation"] else "") + \
                   (":as_built" if job["variant"] == "as_built" else "")
@@ -174,7 +192,7 @@ if __name__ == "__main__":
     elif sys.argv[1] == "run":
         ap = argparse.ArgumentParser()
         ap.add_argument("cmd")
-        ap.add_argument("batch", choices=("g2", "asbuilt", "main", "g2_history", "asbuilt_sweep"))
+        ap.add_argument("batch", choices=("g2", "asbuilt", "main", "g2_history", "asbuilt_sweep", "g2_combined", "postfold"))
         ap.add_argument("--workers", type=int, default=9)
         a = ap.parse_args()
         print(json.dumps(live.run_cli(run, a.batch, a.workers, paths=(OUT / a.batch,))))

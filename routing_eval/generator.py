@@ -341,8 +341,12 @@ def entry_owners(events: Sequence[Event]) -> List[Optional[str]]:
     """One item per conversation-log entry, in order: the ws_id it belongs to (None for chatter)."""
     out: List[Optional[str]] = []
     for ev in events:
-        out.extend([ev.ws_id] * (3 if ev.kind == "step" else 2))  # user/agent/reply or user/reply
+        out.extend([ev.ws_id] * _entries_of(ev))
     return out
+
+
+def _entries_of(ev: Event) -> int:
+    return {"step": 3, "chatter": 2, "wait": 1}[ev.kind]  # user/agent/reply, user/reply, wait
 
 
 def folded_count(total_entries: int) -> int:
@@ -416,6 +420,44 @@ def build_world(probe: BaseProbe, n: int, sim: str) -> World:
         agents=tuple(agents),
         events=tuple(events),
     )
+
+
+def post_fold_snapshot(world: World) -> World:
+    """The same world observed right after a summary fold (post-hoc condition, 2026-11-12).
+
+    Old chatter (plus one wait marker if the entry count needs it) is inserted just before the most
+    recent events that hold the last >= 10 entries, so the total becomes 100(m+1) + 10: the next fold
+    leaves exactly SUMMARY_TAIL = 10 visible entries (the production minimum), all from real recent
+    events. Entries before the insertion point are unchanged, so their frozen summary can be reused."""
+    events = list(world.events)
+    total = len(entry_owners(events))
+    folded = folded_count(total)
+    target = folded + SUMMARY_THRESHOLD + SUMMARY_TAIL
+    k = target - total
+    if k <= 0:
+        raise CannotPlace(f"{world.world_id}: tail already >= {SUMMARY_THRESHOLD + SUMMARY_TAIL}")
+    e, last = 0, 0
+    while last < SUMMARY_TAIL:
+        e += 1
+        last += _entries_of(events[-e])
+    before, after = events[:-e], events[-e:]
+    t0 = before[-1].at if before else after[0].at - timedelta(hours=1)
+    t1 = after[0].at
+    n_chat, n_wait = k // 2, k % 2
+    rng = random.Random(world.seed + 1)
+    pad: List[Event] = []
+    slots = n_chat + n_wait
+    for i in range(slots):
+        at = t0 + (t1 - t0) * (i + 1) / (slots + 1)
+        if i < n_chat:
+            msg, reply = _CHATTER[rng.randrange(len(_CHATTER))]
+            pad.append(Event(at=at, kind="chatter", user_message=msg, reply=reply))
+        else:
+            pad.append(Event(at=at, kind="wait", user_message="", reply="Waiting for the user's reply."))
+    new_events = [*before, *pad, *after]
+    new_total = len(entry_owners(new_events))
+    assert new_total == target and new_total - folded_count(new_total) == SUMMARY_TAIL, (world.world_id, new_total)
+    return replace(world, world_id=world.world_id + "-postfold", events=tuple(new_events))
 
 
 def hot_set(world: World) -> List[str]:

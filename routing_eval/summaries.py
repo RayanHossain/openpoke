@@ -51,13 +51,33 @@ def lookup(world_id: str, arm: str, folded_entries) -> str:
     return rec["summary"]
 
 
-def needed(only_missing: bool = False):
+def postfold_worlds():
+    from .generator import build_world, post_fold_snapshot
+    from . import catalog
+    out = []
+    for p in catalog.PROBES:
+        for n in (30, 50):
+            if n >= p.min_n:
+                out.append(post_fold_snapshot(build_world(p, n, "high")))
+    return out
+
+
+def _start_state(world_id: str, arm: str, entries) -> tuple:
+    """Reuse the base world's frozen summary when the entries it folded are unchanged."""
+    base_id = world_id.removesuffix("-postfold")
+    rec = (load().get(base_id) or {}).get(arm)
+    if base_id != world_id and rec and rec["hash"] == entries_hash([list(e) for e in entries[:rec["folded"]]]):
+        return rec["summary"], rec["folded"]
+    return "", 0
+
+
+def needed(only_missing: bool = False, postfold: bool = False):
     """Summaries the planned worlds need; ``only_missing`` keeps those absent or stale (hash mismatch)."""
     from .generator import folded_count, generate
     from .views import conversation_entries
-    pairs, _ = generate()
+    worlds = postfold_worlds() if postfold else [w for w, _ in generate()[0]]
     jobs = []
-    for world, _inst in pairs:
+    for world in worlds:
         for arm in ARMS:
             entries = conversation_entries(world, arm)
             cut = folded_count(len(entries))
@@ -73,7 +93,7 @@ def needed(only_missing: bool = False):
     return jobs
 
 
-def _worker(shard: int, shards: int, out_path: Path) -> None:
+def _worker(shard: int, shards: int, out_path: Path, postfold: bool = False) -> None:
     from . import live
     from . import live_sandbox as ls
     ls.bootstrap(live.load_key())
@@ -89,6 +109,10 @@ def _worker(shard: int, shards: int, out_path: Path) -> None:
 
     async def llm(**kwargs):
         ledger.check(0.002)
+        if cap:
+            limit, start = (float(x) for x in cap.split(":"))
+            if live.spent_so_far() - start + 0.002 > limit:
+                raise live.BudgetExceeded(f"batch cap ${limit:.2f} would be exceeded")
         resp = await real(**kwargs)
         u = live.usage_of(resp)
         ledger.record("summaries", "summarizer", u["model"] or kwargs.get("model"), u["prompt_tokens"],
@@ -97,7 +121,9 @@ def _worker(shard: int, shards: int, out_path: Path) -> None:
         return resp
 
     summ.request_chat_completion = llm
-    jobs = [j for i, j in enumerate(needed(only_missing=True)) if i % shards == shard]
+    jobs = [j for i, j in enumerate(needed(only_missing=True, postfold=postfold)) if i % shards == shard]
+    import os
+    cap = os.environ.get("ROUTING_EVAL_BATCH_CAP")
     results = {}
     for world_id, arm, entries, cut in jobs:
         with tempfile.TemporaryDirectory() as tmp:
@@ -105,6 +131,12 @@ def _worker(shard: int, shards: int, out_path: Path) -> None:
             conv = data / "conversation"
             conv.mkdir(parents=True)
             (conv / "poke_conversation.log").write_text("".join(_line(t, p, ts) for t, ts, p in entries), encoding="utf-8")
+            start_summary, start_folded = _start_state(world_id, arm, entries)
+            if start_folded:  # continue from the reused summary: only later batches are summarised
+                meta = json.dumps({"last_index": start_folded - 1, "updated_at": None})
+                wm = [_line("summary_info", meta), _line("conversation_summary", start_summary)]
+                wm += [_line(t, p, ts) for t, ts, p in entries[start_folded:]]
+                (conv / "poke_working_memory.log").write_text("".join(wm), encoding="utf-8")
             with ls.world_dir(data):
                 async def fold():
                     while await summ.summarize_conversation():
@@ -114,13 +146,14 @@ def _worker(shard: int, shards: int, out_path: Path) -> None:
         if state.last_index != cut - 1:
             raise RuntimeError(f"{world_id}/{arm}: summarizer folded to {state.last_index}, expected {cut - 1}")
         results.setdefault(world_id, {})[arm] = {"summary": state.summary_text, "folded": cut,
-                                                 "hash": entries_hash([list(e) for e in entries[:cut]])}
+                                                 "hash": entries_hash([list(e) for e in entries[:cut]]),
+                                                 "reused_from_base": start_folded}
     out_path.write_text(json.dumps({"results": results, "spend": ledger.summary()}), encoding="utf-8")
 
 
-def generate(workers: int = 6) -> Dict:
+def generate(workers: int = 6, postfold: bool = False) -> Dict:
     from . import live
-    n_jobs = len(needed(only_missing=True))  # only absent or stale summaries are (re)generated
+    n_jobs = len(needed(only_missing=True, postfold=postfold))  # only absent or stale summaries are (re)generated
     if not n_jobs:
         return {"jobs": 0, "written": 0, "failed_shards": [], "calls": 0, "cost_usd": 0.0,
                 "prompt_tokens": 0, "completion_tokens": 0}
@@ -130,7 +163,8 @@ def generate(workers: int = 6) -> Dict:
         for i in range(workers):
             out = Path(tmp) / f"shard{i}.json"
             procs.append((subprocess.Popen([sys.executable, "-m", "routing_eval.summaries", "worker", str(i),
-                                            str(workers), str(out)], cwd=Path(__file__).parent.parent), out))
+                                            str(workers), str(out), "postfold" if postfold else "plan"],
+                                           cwd=Path(__file__).parent.parent), out))
         merged: Dict = {}
         spend = []
         failed = []
@@ -161,16 +195,17 @@ def generate(workers: int = 6) -> Dict:
 
 if __name__ == "__main__":
     if sys.argv[1:2] == ["worker"]:
-        _worker(int(sys.argv[2]), int(sys.argv[3]), Path(sys.argv[4]))
+        _worker(int(sys.argv[2]), int(sys.argv[3]), Path(sys.argv[4]), postfold=(sys.argv[5:6] == ["postfold"]))
     elif sys.argv[1:2] == ["generate"]:
         ap = argparse.ArgumentParser()
         ap.add_argument("cmd")
         ap.add_argument("--workers", type=int, default=6)
+        ap.add_argument("--postfold", action="store_true")
         a = ap.parse_args()
         from . import live
-        print(json.dumps(live.run_cli(generate, a.workers, paths=(SUMMARIES_FILE,))))
+        print(json.dumps(live.run_cli(generate, a.workers, a.postfold, paths=(SUMMARIES_FILE,))))
     elif sys.argv[1:2] == ["count"]:
-        jobs = needed(only_missing="--missing" in sys.argv)
+        jobs = needed(only_missing="--missing" in sys.argv, postfold="--postfold" in sys.argv)
         print(len(jobs), "summaries needed;", sum(len(j[2]) for j in jobs), "entries total")
     else:
         print(__doc__)

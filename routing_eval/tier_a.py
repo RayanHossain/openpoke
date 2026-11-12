@@ -216,7 +216,8 @@ class LiveSandboxRouters:
         with tempfile.TemporaryDirectory(prefix="tier-a-registry-") as tmp, self.ls.world_dir(Path(tmp)):
             registry = get_agent_registry()
             view = views.load_registry(world, registry, get_trigger_service()._store, Path(tmp) / "conversation",
-                                       mutation=mutate if mutate in ("keys_off", "briefs_blank", "history_ids_off") else None)
+                                       mutation=("history_ids_off" if mutate == "history_and_owners_off" else
+                                                 mutate if mutate in ("keys_off", "briefs_blank", "history_ids_off") else None))
             with views.world_clock(world, registry):
                 runtime = rt_mod.InteractionAgentRuntime()
                 runtime.model = live.ROUTER_MODEL
@@ -235,6 +236,13 @@ class LiveSandboxRouters:
 
                 rt_mod.request_chat_completion = self._metered(real_llm, "registry", ref)
                 rt_mod.handle_tool_call = handle
+                real_dry = ia_tools._dry_run_payload
+                if mutate == "history_and_owners_off":  # G2: the dry run no longer reveals existing owners
+                    def dry(label, instructions, _real=real_dry):
+                        out = _real(label, instructions)
+                        out["existing_owners"] = []
+                        return out
+                    ia_tools._dry_run_payload = dry
                 ia_tools._dispatch = lambda agent_id, label, instructions: dispatched.append(agent_id)
                 n_before = self.ledger.calls
                 pt_before = self.ledger.prompt_tokens
@@ -248,6 +256,7 @@ class LiveSandboxRouters:
                     error = f"{type(exc).__name__}: {exc}"
                 finally:
                     rt_mod.request_chat_completion, rt_mod.handle_tool_call, ia_tools._dispatch = real_llm, real_handle, real_dispatch
+                    ia_tools._dry_run_payload = real_dry
         d, info = decision_from_registry(calls, view.ref_of)
         info.update(candidates=[view.ref_of[i] for i in shown if i in view.ref_of], tool_calls=calls, error=error,
                     calls=self.ledger.calls - n_before, prompt_tokens=self.ledger.prompt_tokens - pt_before,

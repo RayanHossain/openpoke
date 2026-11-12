@@ -231,3 +231,18 @@ def test_real_creation_names():
     placeholder = sum(a.name_source == "placeholder:label" for w, _ in pairs for a in w.agents)
     total = sum(len(w.agents) for w, _ in pairs)
     assert placeholder / total < 0.05, (placeholder, total)
+
+
+def test_post_fold_snapshot_tail_is_the_production_minimum():
+    """Post-hoc condition: right after a fold the tail is exactly 10 entries of real recent events,
+    and the entries the base world folded are unchanged (its frozen summary is reused)."""
+    from routing_eval.generator import folded_count, post_fold_snapshot
+    for pid, n in (("seed_bob_server_crash", 30), ("pf_refund", 50), ("he_rsvp", 30)):
+        base = build_world(next(p for p in catalog.PROBES if p.probe_id == pid), n, "high")
+        snap = post_fold_snapshot(base)
+        e0, e1 = views.conversation_entries(base, "registry"), views.conversation_entries(snap, "registry")
+        cut0, cut1 = folded_count(len(e0)), folded_count(len(e1))
+        assert len(e1) - cut1 == 10 and cut1 == cut0 + 100
+        assert e1[:cut0] == e0[:cut0]                      # reusable folded prefix
+        assert e1[-10:] == e0[-10:]                        # the visible tail is the base world's last 10 entries
+        assert [a.name for a in snap.agents] == [a.name for a in base.agents] and snap.world_id.endswith("-postfold")
