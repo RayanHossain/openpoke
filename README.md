@@ -84,8 +84,12 @@ The web app proxies API calls to the Python server using the values in `.env`, s
 **If you already ran an older copy:** delete `server/data/triggers.db` once before starting the server. **This deletes any reminders you had saved**, because reminders are now stored by agent ID; you'll need to set them up again.
 
 ## How it was tested
-- [docs/routing-eval/README.md](docs/routing-eval/README.md): a stress test with 3 to 50 agents across three routers (original, registry, RAG), with predictions committed before any results.
-- [docs/demo-old-vs-new.md](docs/demo-old-vs-new.md): the earlier live comparison, one 32-request conversation on both versions.
+- **Registry vs original:** +6 points at 30 agents and +10 at 50, mostly from stable agent IDs and the pre-create lookup, not the cards.
+- **RAG as built:** flat at about 77–79% across 3–50 agents, roughly level with the registry (about 80–82%); it can't ask the user. (The equal-information RAG variant declined with N because of our adapter, not RAG itself.)
+- **Original:** per-decision accuracy didn't drop significantly with more agents, but it merged unrelated work at creation (reused an existing name in 189 of 209 cases).
+- **Registry weak spots:** rarely asks when ambiguous; inbound emails rarely reach the owning agent.
+
+Details: [docs/routing-eval/README.md](docs/routing-eval/README.md) (3–50 agents, three routers, predictions committed first) and [docs/demo-old-vs-new.md](docs/demo-old-vs-new.md) (the earlier 32-request live comparison).
 
 ## Running the tests
 ```bash
