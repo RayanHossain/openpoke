@@ -1,0 +1,18 @@
+{
+ "batch": "g2",
+ "jobs": 252,
+ "done": 252,
+ "worker_exit_codes": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "harness_errors": 0,
+ "cost_usd": 0.6323
+}
