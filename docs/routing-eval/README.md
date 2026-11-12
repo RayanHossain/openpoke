@@ -1,6 +1,6 @@
 # Routing eval
 
-After talking with Parsa about how OpenPoke decides which agent should get a message, I wanted to know whether that routing breaks down as agents pile up, and whether the registry design I was testing (stable agent IDs plus key-matched cards) actually helps. So I ran a stress test: 84 synthetic probes placed in worlds of 3, 10, 30 and 50 agents, against the original names-only router, the registry and a RAG router, all on Haiku 5.5.
+After talking with Parsa about how OpenPoke decides which agent should get a message, I wanted to know whether that routing breaks down as agents pile up, and whether my registry design (stable agent IDs plus key-matched cards) actually helps. So I ran a stress test: 84 synthetic probes placed in worlds of 3, 10, 30 and 50 agents, against the original names-only router, the registry and a RAG router, all on Haiku 5.5.
 
 I tried to keep it honest. I committed my predictions before any results existed, and a later addendum is marked as written before but committed after the results. A separate session that had seen neither the labels nor the code labelled a sample blind and agreed on all 27 items. Deliberate breaks checked that the eval could actually see the registry fail; when single breaks changed nothing, that is what showed me how the registry really works. A small pilot caught the harness's own mistake before the paid run: it produced no valid agent reports until I fixed it. Every paid call is logged raw.
 
