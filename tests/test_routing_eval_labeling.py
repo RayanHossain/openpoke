@@ -18,7 +18,11 @@ def test_packet_has_no_leaks_and_matches_the_committed_key():
     committed = json.loads(labeling.KEY_PATH.read_text())
     assert committed["seed"] == labeling.SEED and committed["items"] == data["key"]
     assert "hub_nb_tap" in data["probes"] and set(labeling.ALIAS_COLLISION) <= set(data["probes"])
+    from routing_eval import catalog
+    from routing_eval.generator import build_world
     for item in data["key"].values():
-        assert len(item["letters"]) == 10  # N = 10 world, every workstream shown
+        probe = next(p for p in catalog.PROBES if p.probe_id == item["probe_id"])
+        world = build_world(probe, 10, "high")  # N = 10 agents; a name-drift agent owns two workstreams
+        assert len(world.agents) == 10 and set(item["letters"].values()) == {w.ws_id for w in world.workstreams}
         for a in item["acceptable"]:
             assert all(l in item["letters"] for l in a["letters"])
