@@ -1,0 +1,854 @@
+{
+ "items": {
+  "Q-1JRG": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "A"
+     ]
+    }
+   ],
+   "category": "same_person_diff_work",
+   "letters": {
+    "A": "ws_dana_invoice",
+    "B": "fx_2",
+    "C": "ws_gifts",
+    "D": "fx_1",
+    "E": "fx_4",
+    "F": "fx_0",
+    "G": "fx_6",
+    "H": "fx_3",
+    "I": "ws_dana_deck",
+    "J": "fx_5"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "A"
+    ]
+   },
+   "probe_id": "sp_nb_pay_artwork",
+   "world_id": "sp_nb_pay_artwork@N10-high"
+  },
+  "Q-2A0D": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "category": "same_person_diff_work",
+   "letters": {
+    "A": "ws_gifts",
+    "B": "fx_3",
+    "C": "fx_1",
+    "D": "ws_alice_contract",
+    "E": "fx_5",
+    "F": "fx_4",
+    "G": "ws_alice_lunch",
+    "H": "fx_2",
+    "I": "fx_6",
+    "J": "fx_0"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "probe_id": "sp_nb_agreement",
+   "world_id": "sp_nb_agreement@N10-high"
+  },
+  "Q-2H3Y": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "category": "slug_collision",
+   "letters": {
+    "A": "ws_gifts",
+    "B": "fx_5",
+    "C": "fx_3",
+    "D": "ws_cs",
+    "E": "fx_2",
+    "F": "fx_1",
+    "G": "ws_cpp",
+    "H": "fx_4",
+    "I": "fx_6",
+    "J": "fx_0"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "probe_id": "slug_nb_sharp_march",
+   "world_id": "slug_nb_sharp_march@N10-high"
+  },
+  "Q-6R6U": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "H"
+     ]
+    },
+    {
+     "kind": "ask",
+     "letters": []
+    }
+   ],
+   "category": "alias_resolution",
+   "letters": {
+    "A": "ws_rent",
+    "B": "fx_4",
+    "C": "fx_0",
+    "D": "fx_6",
+    "E": "fx_3",
+    "F": "fx_2",
+    "G": "fx_5",
+    "H": "ws_lease",
+    "I": "ws_gifts",
+    "J": "fx_1"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "H"
+    ]
+   },
+   "probe_id": "alias_nb_bbo",
+   "world_id": "alias_nb_bbo@N10-high"
+  },
+  "Q-8DAZ": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "C"
+     ]
+    },
+    {
+     "kind": "ask",
+     "letters": []
+    }
+   ],
+   "category": "alias_resolution",
+   "letters": {
+    "A": "fx_5",
+    "B": "fx_1",
+    "C": "ws_deploy",
+    "D": "fx_2",
+    "E": "fx_4",
+    "F": "fx_6",
+    "G": "fx_0",
+    "H": "fx_3",
+    "I": "ws_gifts",
+    "J": "ws_dinner"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "C"
+    ]
+   },
+   "probe_id": "alias_nb_rob",
+   "world_id": "alias_nb_rob@N10-high"
+  },
+  "Q-AJMZ": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "G"
+     ]
+    }
+   ],
+   "category": "name_drift",
+   "letters": {
+    "A": "fx_0",
+    "B": "fx_1",
+    "C": "fx_6",
+    "D": "fx_5",
+    "E": "fx_7",
+    "F": "ws_gifts",
+    "G": "ws_car_service",
+    "H": "fx_3",
+    "I": "fx_4",
+    "J": "fx_2",
+    "K": "ws_dent2"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "G"
+    ]
+   },
+   "probe_id": "drift_nb_mechanic",
+   "world_id": "drift_nb_mechanic@N10-high"
+  },
+  "Q-AV93": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "A"
+     ]
+    }
+   ],
+   "category": "owned_state",
+   "letters": {
+    "A": "ws_lease",
+    "B": "fx_0",
+    "C": "ws_alice_contract",
+    "D": "fx_3",
+    "E": "fx_5",
+    "F": "fx_6",
+    "G": "fx_1",
+    "H": "ws_gifts",
+    "I": "fx_2",
+    "J": "fx_4"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "A"
+    ]
+   },
+   "probe_id": "os_nb_fire_off",
+   "world_id": "os_nb_fire_off@N10-high"
+  },
+  "Q-BYMW": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "F"
+     ]
+    }
+   ],
+   "category": "alias_resolution",
+   "letters": {
+    "A": "fx_4",
+    "B": "fx_5",
+    "C": "fx_6",
+    "D": "fx_0",
+    "E": "fx_2",
+    "F": "ws_expense",
+    "G": "ws_uptime",
+    "H": "ws_acme",
+    "I": "fx_1",
+    "J": "fx_3"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "F"
+    ]
+   },
+   "probe_id": "alias_status_word",
+   "world_id": "alias_status_word@N10-high"
+  },
+  "Q-CH5X": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "B"
+     ]
+    }
+   ],
+   "category": "name_drift",
+   "letters": {
+    "A": "ws_news",
+    "B": "ws_vet",
+    "C": "fx_5",
+    "D": "fx_1",
+    "E": "fx_2",
+    "F": "ws_gifts",
+    "G": "fx_7",
+    "H": "fx_3",
+    "I": "fx_6",
+    "J": "fx_4",
+    "K": "fx_0"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "B"
+    ]
+   },
+   "probe_id": "drift_nb_pup",
+   "world_id": "drift_nb_pup@N10-high"
+  },
+  "Q-CZQE": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "H"
+     ]
+    }
+   ],
+   "category": "same_topic_diff_person",
+   "letters": {
+    "A": "fx_0",
+    "B": "fx_3",
+    "C": "ws_gifts",
+    "D": "fx_6",
+    "E": "fx_5",
+    "F": "fx_4",
+    "G": "ws_friend_lease",
+    "H": "ws_lease",
+    "I": "fx_1",
+    "J": "fx_2"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "H"
+    ]
+   },
+   "probe_id": "st_nb_owner",
+   "world_id": "st_nb_owner@N10-high"
+  },
+  "Q-F577": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "F"
+     ]
+    }
+   ],
+   "category": "same_person_diff_work",
+   "letters": {
+    "A": "fx_3",
+    "B": "fx_1",
+    "C": "fx_0",
+    "D": "ws_gifts",
+    "E": "fx_6",
+    "F": "ws_alice_lunch",
+    "G": "fx_2",
+    "H": "fx_4",
+    "I": "ws_alice_contract",
+    "J": "fx_5"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "F"
+    ]
+   },
+   "probe_id": "sp_nb_midday",
+   "world_id": "sp_nb_midday@N10-high"
+  },
+  "Q-G042": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "category": "owned_state",
+   "letters": {
+    "A": "ws_hd_plants",
+    "B": "fx_2",
+    "C": "fx_6",
+    "D": "ws_deploy",
+    "E": "fx_3",
+    "F": "fx_1",
+    "G": "fx_4",
+    "H": "fx_5",
+    "I": "fx_0",
+    "J": "ws_gifts"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "probe_id": "os_nb_nudge",
+   "world_id": "os_nb_nudge@N10-high"
+  },
+  "Q-HV8B": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "category": "done_keyed",
+   "letters": {
+    "A": "fx_1",
+    "B": "fx_6",
+    "C": "fx_5",
+    "D": "ws_passport",
+    "E": "ws_insurance",
+    "F": "fx_3",
+    "G": "fx_4",
+    "H": "fx_0",
+    "I": "fx_2",
+    "J": "ws_flight"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "probe_id": "dk_passport_alias",
+   "world_id": "dk_passport_alias@N10-high"
+  },
+  "Q-J9IK": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "I"
+     ]
+    }
+   ],
+   "category": "hub_key",
+   "letters": {
+    "A": "fx_3",
+    "B": "fx_2",
+    "C": "fx_1",
+    "D": "fx_5",
+    "E": "fx_0",
+    "F": "ws_maint",
+    "G": "ws_deposit",
+    "H": "fx_6",
+    "I": "ws_parking",
+    "J": "fx_4"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "I"
+    ]
+   },
+   "probe_id": "hub_nb_carpass",
+   "world_id": "hub_nb_carpass@N10-high"
+  },
+  "Q-L7JG": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "F"
+     ]
+    }
+   ],
+   "category": "paraphrase",
+   "letters": {
+    "A": "fx_2",
+    "B": "fx_0",
+    "C": "fx_1",
+    "D": "fx_4",
+    "E": "fx_6",
+    "F": "ws_offsite",
+    "G": "fx_3",
+    "H": "ws_gifts",
+    "I": "fx_5",
+    "J": "ws_flight"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "F"
+    ]
+   },
+   "probe_id": "para_nb_getaway",
+   "world_id": "para_nb_getaway@N10-high"
+  },
+  "Q-M47W": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "E"
+     ]
+    }
+   ],
+   "category": "slug_collision",
+   "letters": {
+    "A": "ws_cs",
+    "B": "fx_5",
+    "C": "fx_4",
+    "D": "fx_1",
+    "E": "ws_cpp",
+    "F": "ws_gifts",
+    "G": "fx_2",
+    "H": "fx_6",
+    "I": "fx_0",
+    "J": "fx_3"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "E"
+    ]
+   },
+   "probe_id": "slug_nb_plusplus",
+   "world_id": "slug_nb_plusplus@N10-high"
+  },
+  "Q-MA52": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "C"
+     ]
+    }
+   ],
+   "category": "paraphrase",
+   "letters": {
+    "A": "fx_5",
+    "B": "fx_1",
+    "C": "ws_dana_deck",
+    "D": "fx_2",
+    "E": "fx_6",
+    "F": "fx_0",
+    "G": "ws_dana_invoice",
+    "H": "ws_gifts",
+    "I": "fx_3",
+    "J": "fx_4"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "C"
+    ]
+   },
+   "probe_id": "para_nb_slides",
+   "world_id": "para_nb_slides@N10-high"
+  },
+  "Q-NQ5S": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "F"
+     ]
+    }
+   ],
+   "category": "alias_resolution",
+   "letters": {
+    "A": "ws_gifts",
+    "B": "fx_4",
+    "C": "fx_3",
+    "D": "fx_0",
+    "E": "fx_1",
+    "F": "ws_offsite",
+    "G": "ws_dentist",
+    "H": "fx_5",
+    "I": "fx_6",
+    "J": "fx_2"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "F"
+    ]
+   },
+   "probe_id": "alias_bright_idea",
+   "world_id": "alias_bright_idea@N10-high"
+  },
+  "Q-OIAH": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "B"
+     ]
+    }
+   ],
+   "category": "alias_resolution",
+   "letters": {
+    "A": "ws_passport",
+    "B": "ws_flight",
+    "C": "ws_insurance",
+    "D": "fx_3",
+    "E": "fx_2",
+    "F": "fx_4",
+    "G": "fx_1",
+    "H": "fx_0",
+    "I": "fx_6",
+    "J": "fx_5"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "B"
+    ]
+   },
+   "probe_id": "alias_passport_number",
+   "world_id": "alias_passport_number@N10-high"
+  },
+  "Q-RK1E": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "C"
+     ]
+    }
+   ],
+   "category": "same_topic_diff_person",
+   "letters": {
+    "A": "fx_2",
+    "B": "fx_4",
+    "C": "ws_friend_lease",
+    "D": "fx_3",
+    "E": "fx_6",
+    "F": "fx_1",
+    "G": "ws_gifts",
+    "H": "ws_lease",
+    "I": "fx_5",
+    "J": "fx_0"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "C"
+    ]
+   },
+   "probe_id": "st_nb_buddy",
+   "world_id": "st_nb_buddy@N10-high"
+  },
+  "Q-SXOU": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "category": "name_drift",
+   "letters": {
+    "A": "fx_1",
+    "B": "ws_gym",
+    "C": "fx_5",
+    "D": "ws_tutor",
+    "E": "fx_4",
+    "F": "fx_6",
+    "G": "fx_2",
+    "H": "fx_0",
+    "I": "ws_gifts",
+    "J": "fx_7",
+    "K": "fx_3"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "probe_id": "drift_nb_homework",
+   "world_id": "drift_nb_homework@N10-high"
+  },
+  "Q-UB52": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "category": "same_topic_diff_person",
+   "letters": {
+    "A": "ws_gifts",
+    "B": "fx_6",
+    "C": "fx_3",
+    "D": "ws_mia_dinner",
+    "E": "fx_0",
+    "F": "fx_4",
+    "G": "fx_1",
+    "H": "fx_2",
+    "I": "ws_dinner",
+    "J": "fx_5"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "probe_id": "st_nb_bignight",
+   "world_id": "st_nb_bignight@N10-high"
+  },
+  "Q-UWXE": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "category": "hub_key",
+   "letters": {
+    "A": "fx_4",
+    "B": "fx_6",
+    "C": "fx_1",
+    "D": "ws_deposit",
+    "E": "ws_parking",
+    "F": "fx_0",
+    "G": "ws_maint",
+    "H": "fx_3",
+    "I": "fx_2",
+    "J": "fx_5"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "probe_id": "hub_nb_cage",
+   "world_id": "hub_nb_cage@N10-high"
+  },
+  "Q-V02T": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "G"
+     ]
+    }
+   ],
+   "category": "paraphrase",
+   "letters": {
+    "A": "ws_acme",
+    "B": "ws_tax",
+    "C": "fx_1",
+    "D": "fx_0",
+    "E": "fx_3",
+    "F": "fx_6",
+    "G": "ws_expense",
+    "H": "fx_4",
+    "I": "fx_5",
+    "J": "fx_2"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "G"
+    ]
+   },
+   "probe_id": "para_reimbursement",
+   "world_id": "para_reimbursement@N10-high"
+  },
+  "Q-WC3M": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "J"
+     ]
+    }
+   ],
+   "category": "owned_state",
+   "letters": {
+    "A": "fx_4",
+    "B": "fx_0",
+    "C": "fx_2",
+    "D": "ws_gifts",
+    "E": "fx_3",
+    "F": "ws_northwind",
+    "G": "fx_6",
+    "H": "fx_5",
+    "I": "fx_1",
+    "J": "ws_acme"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "J"
+    ]
+   },
+   "probe_id": "os_nb_fifth",
+   "world_id": "os_nb_fifth@N10-high"
+  },
+  "Q-WJ0C": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "E"
+     ]
+    }
+   ],
+   "category": "slug_collision",
+   "letters": {
+    "A": "fx_6",
+    "B": "fx_2",
+    "C": "ws_gifts",
+    "D": "ws_cpp",
+    "E": "ws_cs",
+    "F": "fx_1",
+    "G": "fx_3",
+    "H": "fx_5",
+    "I": "fx_0",
+    "J": "fx_4"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "E"
+    ]
+   },
+   "probe_id": "slug_nb_sharp_yes",
+   "world_id": "slug_nb_sharp_yes@N10-high"
+  },
+  "Q-X6PB": {
+   "acceptable": [
+    {
+     "kind": "route",
+     "letters": [
+      "D"
+     ]
+    }
+   ],
+   "category": "hub_key",
+   "letters": {
+    "A": "fx_6",
+    "B": "fx_5",
+    "C": "fx_3",
+    "D": "ws_maint",
+    "E": "fx_4",
+    "F": "fx_1",
+    "G": "fx_2",
+    "H": "ws_parking",
+    "I": "fx_0",
+    "J": "ws_gifts"
+   },
+   "preferred": {
+    "kind": "route",
+    "letters": [
+     "D"
+    ]
+   },
+   "probe_id": "hub_nb_tap",
+   "world_id": "hub_nb_tap@N10-high"
+  }
+ },
+ "seed": 20261112,
+ "world": "N=10, high similarity"
+}
