@@ -1,6 +1,6 @@
 """Tier C-lite report: model-written briefs from scripted histories (NOT grown worlds).
 
-    python -m routing_eval.briefs_lite_report [--scripted-ref origin/worktree-eval-scenarios]
+    python -m routing_eval.briefs_lite_report [--scripted-ref HEAD]
 
 Pairs this branch's real-brief rows with the main session's scripted-brief rows (round2 ``main``,
 read with ``git show`` from the ref, never checked out) by (router, probe, n, sim); probe accuracy is the mean
@@ -246,7 +246,7 @@ def build(ref: str) -> dict:
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--scripted-ref", default="origin/worktree-eval-scenarios")
+    ap.add_argument("--scripted-ref", default="HEAD")
     a = ap.parse_args()
     rep = build(a.scripted_ref)
     (BL.OUT / "report.json").write_text(json.dumps(rep, indent=1, default=str), encoding="utf-8")

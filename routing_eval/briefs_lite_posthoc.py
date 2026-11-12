@@ -4,7 +4,7 @@ Requested by the project owner on 2026-11-12 after the model-brief-only results 
 Three arms paired by probe (accuracy = mean over 3 runs): scripted briefs + scripted statuses (round2
 ``main``), model-written briefs + scripted statuses, model-written briefs + model statuses.
 
-    python -m routing_eval.briefs_lite_posthoc [--scripted-ref origin/worktree-eval-scenarios]
+    python -m routing_eval.briefs_lite_posthoc [--scripted-ref HEAD]
 """
 
 from __future__ import annotations
@@ -102,7 +102,7 @@ def render(rep: dict) -> str:
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--scripted-ref", default="origin/worktree-eval-scenarios")
+    ap.add_argument("--scripted-ref", default="HEAD")
     a = ap.parse_args()
     rep = build(a.scripted_ref)
     (BL.OUT / "report-posthoc-status.json").write_text(json.dumps(rep, indent=1, default=str), encoding="utf-8")
