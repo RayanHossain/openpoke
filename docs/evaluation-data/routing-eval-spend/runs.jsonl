@@ -1,0 +1,1 @@
+{"ts": "2026-11-12T06:50:17+00:00", "status": "ok", "error": null, "note": "", "run": "rename-collisions", "calls": 457, "cost_usd": 0.317396, "prompt_tokens": 2585723, "completion_tokens": 117647, "over_100k": 0, "total_spent_usd": 2.341783, "by_purpose": {"rename-collisions": {"calls": 457, "cost": 0.317396, "prompt_tokens": 2585723, "completion_tokens": 117647}}}

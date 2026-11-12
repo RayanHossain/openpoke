@@ -253,7 +253,1894 @@
    "tools": []
   }
  ],
+ "instances": {
+  "alias_nb_bbo@N10-high": {
+   "fx_3": {
+    "message": "Send an email about dog walking with Bob Hale",
+    "name": "Bob Hale Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 9
+   }
+  },
+  "alias_nb_bbo@N30-high": {
+   "fx_10": {
+    "message": "Send an email about the park cleanup with Bob Hale",
+    "name": "Email to Bob Hale",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   },
+   "fx_3": {
+    "message": "Send an email about dog walking with Bob Hale",
+    "name": "Email to Bob Hale",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   },
+   "fx_8": {
+    "message": "Send an email about game night with Bob Hale",
+    "name": "Bob Hale Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   }
+  },
+  "alias_nb_bbo@N50-high": {
+   "fx_33": {
+    "message": "Send an email about the park cleanup with Bob Hale",
+    "name": "Bob Hale Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_36": {
+    "message": "Send an email about pet insurance with Bob Hale",
+    "name": "Bob Hale Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_37": {
+    "message": "Send an email about game night with Bob Hale",
+    "name": "Bob Hale Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_45": {
+    "message": "Send an email about blog post edits for Bob Hale",
+    "name": "Bob Hale Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   }
+  },
+  "alias_nb_rob@N30-high": {
+   "fx_15": {
+    "message": "Send an email about game night with Bob Okafor",
+    "name": "Email to Bob Okafor",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   },
+   "fx_2": {
+    "message": "Send an email about the park cleanup with Bob Okafor",
+    "name": "Email to Bob Okafor",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   },
+   "fx_9": {
+    "message": "Send an email about coffee with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Email",
+    "reused_existing_name": true,
+    "roster_size": 27
+   }
+  },
+  "alias_nb_rob@N50-high": {
+   "fx_0": {
+    "message": "Send an email about game night with Bob Okafor",
+    "name": "Bob Okafor Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 44
+   },
+   "fx_16": {
+    "message": "Send an email about pet insurance with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 44
+   },
+   "fx_21": {
+    "message": "Send an email about coffee with Bob Okafor",
+    "name": "Bob Okafor Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Email",
+    "reused_existing_name": true,
+    "roster_size": 44
+   },
+   "fx_22": {
+    "message": "Send an email about blog post edits for Bob Okafor",
+    "name": "Bob Okafor Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 44
+   },
+   "fx_41": {
+    "message": "Send an email about mail forwarding with Bob Okafor",
+    "name": "Email to Bob Okafor",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 44
+   },
+   "fx_45": {
+    "message": "Send an email about the park cleanup with Bob Okafor",
+    "name": "Bob Okafor Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 44
+   }
+  },
+  "alias_status_word@N50-low": {
+   "fx_11": {
+    "message": "Set a reminder about the furnace service with Olga Smirnova",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_14": {
+    "message": "Set a reminder about the furnace service with Tara Singh",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_40": {
+    "message": "Set a reminder about the furnace service with Ethan Brooks",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "dk_passport_alias@N50-low": {
+   "fx_28": {
+    "message": "Set a reminder about the furnace service with Paula Reyes",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_32": {
+    "message": "Set a reminder about the furnace service with Nina Petrova",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "dkl_budget@N30-high": {
+   "fx_20": {
+    "message": "Send an email about pet insurance with Priya Raman",
+    "name": "Priya Raman Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Priya Raman Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 28
+   },
+   "fx_24": {
+    "message": "Send an email about mail forwarding with Priya Raman",
+    "name": "Priya Raman Mail Forwarding Email",
+    "no_dispatch": false,
+    "previous": "Priya Raman Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 28
+   }
+  },
+  "dkl_budget@N50-high": {
+   "fx_13": {
+    "message": "Send an email about mail forwarding with Priya Raman",
+    "name": "Priya Raman Email Lookup",
+    "no_dispatch": false,
+    "previous": "Priya Raman Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_17": {
+    "message": "Send an email about blog post edits for Priya Raman",
+    "name": "Email to Priya Raman",
+    "no_dispatch": false,
+    "previous": "Priya Raman Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_36": {
+    "message": "Send an email about game night with Priya Raman",
+    "name": "Priya Raman Email Lookup",
+    "no_dispatch": false,
+    "previous": "Priya Raman Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "dkl_jury@N30-high": {
+   "fx_11": {
+    "message": "Send an email about game night with County Clerk",
+    "name": "County Clerk Game Night Email",
+    "no_dispatch": false,
+    "previous": "County Clerk Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 28
+   },
+   "fx_16": {
+    "message": "Send an email about dog walking with County Clerk",
+    "name": "Dog Walking Email to County Clerk",
+    "no_dispatch": false,
+    "previous": "County Clerk Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 29
+   }
+  },
+  "dkl_jury@N50-high": {
+   "fx_25": {
+    "message": "Send an email about dog walking with County Clerk",
+    "name": "County Clerk Email",
+    "no_dispatch": false,
+    "previous": "County Clerk Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_26": {
+    "message": "Send an email about game night with County Clerk",
+    "name": "County Clerk Email",
+    "no_dispatch": false,
+    "previous": "County Clerk Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "dkl_movers@N50-low": {
+   "fx_36": {
+    "message": "Send an email about game night with Hannah Weber",
+    "name": "Hannah Weber Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Hannah Weber Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "drift_dog_checkup@N50-low": {
+   "fx_38": {
+    "message": "Set a reminder about the furnace service with Rosa Garcia",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "drift_nb_mechanic@N50-low": {
+   "fx_17": {
+    "message": "Set a reminder about school pickup with Pedro Alves",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_19": {
+    "message": "Send an email about dog walking with Wes Turner",
+    "name": "Wes Turner Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Wes Turner Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "drift_oil_change@N50-low": {
+   "fx_45": {
+    "message": "Send an email about blog post edits for Bianca Rossi",
+    "name": "Bianca Rossi Blog Post Edits Email",
+    "no_dispatch": false,
+    "previous": "Bianca Rossi Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 49
+   }
+  },
+  "he_rsvp@N30-high": {
+   "fx_20": {
+    "message": "Send an email about the park cleanup with Sam Wright",
+    "name": "Sam Wright Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Sam Wright Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "he_rsvp@N50-high": {
+   "fx_13": {
+    "message": "Send an email about the park cleanup with Sam Wright",
+    "name": "Park Cleanup Email to Sam Wright",
+    "no_dispatch": false,
+    "previous": "Sam Wright Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 46
+   },
+   "fx_33": {
+    "message": "Send an email about dog walking with Sam Wright",
+    "name": "Sam Wright Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Sam Wright Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_42": {
+    "message": "Send an email about mail forwarding with Sam Wright",
+    "name": "Mail Forwarding Email to Sam Wright",
+    "no_dispatch": false,
+    "previous": "Sam Wright Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 47
+   },
+   "fx_9": {
+    "message": "Send an email about pet insurance with Sam Wright",
+    "name": "Sam Wright Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Sam Wright Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "he_rsvp@N50-low": {
+   "fx_29": {
+    "message": "Send an email about the park cleanup with Vera Holm",
+    "name": "Vera Holm Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Vera Holm Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "hub_nb_tap@N50-low": {
+   "fx_33": {
+    "message": "Send an email about blog post edits for Jonas Berg",
+    "name": "Jonas Berg Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Jonas Berg Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "hub_permit_watcher@N50-low": {
+   "fx_15": {
+    "message": "Set a reminder about school pickup with Ula Nowak",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_27": {
+    "message": "Set a reminder about school pickup with Rosa Garcia",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "hub_plumber@N30-high": {
+   "fx_13": {
+    "message": "Set a reminder about the furnace service with Rachel Adler",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 28
+   },
+   "fx_21": {
+    "message": "Set a reminder about the furnace service with Liam Walsh",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 28
+   }
+  },
+  "hub_plumber@N50-high": {
+   "fx_23": {
+    "message": "Set a reminder about the furnace service with Liam Walsh",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 44
+   },
+   "fx_29": {
+    "message": "Set a reminder about the furnace service with Vera Holm",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 44
+   },
+   "fx_35": {
+    "message": "Set a reminder about the furnace service with Olga Smirnova",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 44
+   },
+   "fx_37": {
+    "message": "Set a reminder about the furnace service with Elena Ivanova",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 44
+   },
+   "fx_41": {
+    "message": "Set a reminder about the furnace service with George Liu",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 44
+   },
+   "fx_9": {
+    "message": "Set a reminder about the furnace service with Ines Duarte",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 44
+   }
+  },
+  "hub_say_yes@N50-high": {
+   "fx_13": {
+    "message": "Set a reminder about the furnace service with Aaron Blake",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 42
+   },
+   "fx_19": {
+    "message": "Set a reminder about the furnace service with Ines Duarte",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 42
+   },
+   "fx_25": {
+    "message": "Set a reminder about the furnace service with Wes Turner",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 42
+   },
+   "fx_3": {
+    "message": "Set a reminder about the furnace service with Paula Reyes",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 42
+   },
+   "fx_41": {
+    "message": "Set a reminder about the furnace service with Laura Pinto",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 42
+   },
+   "fx_43": {
+    "message": "Set a reminder about the furnace service with George Liu",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 42
+   },
+   "fx_5": {
+    "message": "Set a reminder about the furnace service with Ula Nowak",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 42
+   },
+   "fx_7": {
+    "message": "Set a reminder about the furnace service with Oscar Lund",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 42
+   }
+  },
+  "ie_bob_lee_dinner@N50-low": {
+   "fx_6": {
+    "message": "Send an email about mail forwarding with Marco Silva",
+    "name": "Marco Silva Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Marco Silva Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "mt_deck_expense@N30-high": {
+   "fx_16": {
+    "message": "Send an email about blog post edits for Dana Ortiz",
+    "name": "Dana Ortiz Email",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 28
+   },
+   "fx_8": {
+    "message": "Send an email about pet insurance with Dana Ortiz",
+    "name": "Dana Ortiz Email",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 28
+   }
+  },
+  "mt_deck_expense@N50-high": {
+   "fx_21": {
+    "message": "Send an email about mail forwarding with Dana Ortiz",
+    "name": "Dana Ortiz Email Lookup",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_32": {
+    "message": "Send an email about dog walking with Dana Ortiz",
+    "name": "Dana Ortiz Email Lookup",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_8": {
+    "message": "Send an email about the park cleanup with Dana Ortiz",
+    "name": "Dana Ortiz Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "mt_lease_acme@N30-high": {
+   "fx_16": {
+    "message": "Send an email about blog post edits for Bob Hale",
+    "name": "Email to Bob Hale",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "mt_lease_acme@N50-high": {
+   "fx_17": {
+    "message": "Send an email about pet insurance with Bob Hale",
+    "name": "Email to Bob Hale",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_29": {
+    "message": "Send an email about mail forwarding with Bob Hale",
+    "name": "Email to Bob Hale",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_33": {
+    "message": "Send an email about dog walking with Bob Hale",
+    "name": "Bob Hale Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_42": {
+    "message": "Send an email about game night with Bob Hale",
+    "name": "Bob Hale Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   }
+  },
+  "mt_lease_acme@N50-low": {
+   "fx_23": {
+    "message": "Set a reminder about the furnace service with Umar Farouk",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_34": {
+    "message": "Set a reminder about the furnace service with Isaac Moreau",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_41": {
+    "message": "Send an email about dog walking with Aaron Blake",
+    "name": "Email to Aaron Blake",
+    "no_dispatch": false,
+    "previous": "Aaron Blake Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "nd_goodnight@N50-high": {
+   "fx_21": {
+    "message": "Send an email about the park cleanup with Bob Lee",
+    "name": "Park Cleanup Email to Bob Lee",
+    "no_dispatch": false,
+    "previous": "Bob Lee Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 48
+   },
+   "fx_33": {
+    "message": "Send an email about blog post edits for Bob Lee",
+    "name": "Bob Lee Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Lee Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "nd_goodnight@N50-low": {
+   "fx_34": {
+    "message": "Send an email about the park cleanup with Ula Nowak",
+    "name": "Ula Nowak Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Ula Nowak Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "nd_lol@N50-high": {
+   "fx_36": {
+    "message": "Send an email about dog walking with Alice Chen",
+    "name": "Alice Chen Dog Walking Email",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 49
+   }
+  },
+  "nd_thanks@N30-high": {
+   "fx_20": {
+    "message": "Send an email about game night with Mia Santos",
+    "name": "Mia Santos Email",
+    "no_dispatch": false,
+    "previous": "Mia Santos Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "nd_thanks@N50-high": {
+   "fx_22": {
+    "message": "Send an email about the park cleanup with Mia Santos",
+    "name": "Mia Santos Email",
+    "no_dispatch": false,
+    "previous": "Mia Santos Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_28": {
+    "message": "Send an email about blog post edits for Mia Santos",
+    "name": "Mia Santos Email",
+    "no_dispatch": false,
+    "previous": "Mia Santos Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_4": {
+    "message": "Send an email about dog walking with Mia Santos",
+    "name": "Mia Santos Email",
+    "no_dispatch": false,
+    "previous": "Mia Santos Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "os_move_reminder@N30-high": {
+   "fx_19": {
+    "message": "Send an email about blog post edits for Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "os_move_reminder@N50-high": {
+   "fx_20": {
+    "message": "Send an email about pet insurance with Bob Okafor",
+    "name": "Bob Okafor Pet Insurance Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 48
+   },
+   "fx_30": {
+    "message": "Send an email about blog post edits for Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_6": {
+    "message": "Send an email about game night with Bob Okafor",
+    "name": "Bob Okafor Game Night Draft",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 47
+   }
+  },
+  "os_nb_fire_off@N30-high": {
+   "fx_14": {
+    "message": "Send an email about game night with Bob Hale",
+    "name": "Bob Hale Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   },
+   "fx_15": {
+    "message": "Send an email about pet insurance with Bob Hale",
+    "name": "Bob Hale Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   },
+   "fx_19": {
+    "message": "Send an email about blog post edits for Bob Hale",
+    "name": "Bob Hale Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   }
+  },
+  "os_nb_fire_off@N50-high": {
+   "fx_17": {
+    "message": "Send an email about mail forwarding with Bob Hale",
+    "name": "Email to Bob Hale",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_28": {
+    "message": "Send an email about pet insurance with Bob Hale",
+    "name": "Bob Hale Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_46": {
+    "message": "Send an email about dog walking with Bob Hale",
+    "name": "Bob Hale Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_6": {
+    "message": "Send an email about blog post edits for Bob Hale",
+    "name": "Bob Hale Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   }
+  },
+  "os_nb_nudge@N10-high": {
+   "fx_2": {
+    "message": "Send an email about mail forwarding with Bob Okafor",
+    "name": "Email to Bob Okafor",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 9
+   }
+  },
+  "os_nb_nudge@N30-high": {
+   "fx_0": {
+    "message": "Send an email about pet insurance with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "os_nb_nudge@N50-high": {
+   "fx_25": {
+    "message": "Send an email about dog walking with Bob Okafor",
+    "name": "Email to Bob Okafor",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_37": {
+    "message": "Send an email about coffee with Bob Okafor",
+    "name": "Email to Bob Okafor",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Email",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_38": {
+    "message": "Send an email about blog post edits for Bob Okafor",
+    "name": "Blog Post Edits Email Draft",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 46
+   },
+   "fx_42": {
+    "message": "Send an email about game night with Bob Okafor",
+    "name": "Email to Bob Okafor",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "os_send_lease_draft@N30-high": {
+   "fx_12": {
+    "message": "Send an email about mail forwarding with Bob Hale",
+    "name": "Bob Hale Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   },
+   "fx_20": {
+    "message": "Send an email about the park cleanup with Bob Hale",
+    "name": "Bob Hale Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   },
+   "fx_5": {
+    "message": "Send an email about game night with Bob Hale",
+    "name": "Bob Hale Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   }
+  },
+  "os_send_lease_draft@N50-high": {
+   "fx_1": {
+    "message": "Send an email about game night with Bob Hale",
+    "name": "Bob Hale Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_23": {
+    "message": "Send an email about dog walking with Bob Hale",
+    "name": "Bob Hale Dog Walking Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 47
+   },
+   "fx_5": {
+    "message": "Send an email about mail forwarding with Bob Hale",
+    "name": "Bob Hale Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "os_send_lease_draft@N50-low": {
+   "fx_17": {
+    "message": "Set a reminder about school pickup with Hannah Weber",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "para_alice_bite@N30-high": {
+   "fx_0": {
+    "message": "Send an email about blog post edits for Alice Chen",
+    "name": "Alice Chen Email Lookup",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 28
+   },
+   "fx_2": {
+    "message": "Send an email about the park cleanup with Alice Chen",
+    "name": "Alice Chen Email Lookup",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 28
+   }
+  },
+  "para_alice_bite@N50-high": {
+   "fx_38": {
+    "message": "Send an email about mail forwarding with Alice Chen",
+    "name": "Alice Chen Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "para_nb_slides@N30-high": {
+   "fx_10": {
+    "message": "Send an email about dog walking with Dana Ortiz",
+    "name": "Dana Ortiz Email",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 28
+   },
+   "fx_25": {
+    "message": "Send an email about mail forwarding with Dana Ortiz",
+    "name": "Dana Ortiz Email",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 28
+   }
+  },
+  "para_nb_slides@N50-high": {
+   "fx_45": {
+    "message": "Send an email about blog post edits for Dana Ortiz",
+    "name": "Dana Ortiz Email",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_46": {
+    "message": "Send an email about the park cleanup with Dana Ortiz",
+    "name": "Dana Ortiz Email",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "para_team_retreat@N50-low": {
+   "fx_28": {
+    "message": "Set a reminder about the furnace service with Noah Fischer",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_40": {
+    "message": "Set a reminder about the furnace service with Ula Nowak",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_6": {
+    "message": "Send an email about the park cleanup with Grace Okoro",
+    "name": "Grace Okoro Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Grace Okoro Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "pf_refund@N50-low": {
+   "fx_17": {
+    "message": "Send an email about pet insurance with Aaron Blake",
+    "name": "Aaron Blake Pet Insurance Email",
+    "no_dispatch": false,
+    "previous": "Aaron Blake Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 48
+   },
+   "fx_42": {
+    "message": "Set a reminder about school pickup with Felix Wagner",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_7": {
+    "message": "Send an email about game night with Zoe Martin",
+    "name": "Zoe Martin Game Night Email",
+    "no_dispatch": false,
+    "previous": "Zoe Martin Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 47
+   }
+  },
+  "seed_bbo_lease@N50-high": {
+   "fx_26": {
+    "message": "Send an email about game night with Bob Hale",
+    "name": "Bob Hale Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_38": {
+    "message": "Send an email about blog post edits for Bob Hale",
+    "name": "Bob Hale Blog Post Edits Draft",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 46
+   },
+   "fx_4": {
+    "message": "Send an email about dog walking with Bob Hale",
+    "name": "Email to Bob Hale",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_8": {
+    "message": "Send an email about pet insurance with Bob Hale",
+    "name": "Bob Hale Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "seed_bob_dinner@N50-high": {
+   "fx_44": {
+    "message": "Send an email about mail forwarding with Bob Lee",
+    "name": "Bob Lee Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Lee Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "seed_bob_server_crash@N30-high": {
+   "fx_14": {
+    "message": "Send an email about blog post edits for Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "seed_bob_server_crash@N50-high": {
+   "fx_20": {
+    "message": "Send an email about coffee with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Email",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "seed_bob_server_crash@N50-low": {
+   "fx_39": {
+    "message": "Send an email about blog post edits for Elena Ivanova",
+    "name": "Elena Ivanova Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Elena Ivanova Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_5": {
+    "message": "Set a reminder about the furnace service with George Liu",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "seed_fourth_bob@N30-high": {
+   "fx_22": {
+    "message": "Send an email about the park cleanup with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "seed_fourth_bob@N50-high": {
+   "fx_18": {
+    "message": "Send an email about blog post edits for Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_8": {
+    "message": "Send an email about dog walking with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "seed_gift_list@N30-high": {
+   "fx_22": {
+    "message": "Send an email about blog post edits for Mia Santos",
+    "name": "Mia Santos Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Mia Santos Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "seed_gift_list@N50-high": {
+   "fx_0": {
+    "message": "Send an email about mail forwarding with Mia Santos",
+    "name": "Mia Santos Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Mia Santos Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "seed_gift_list@N50-low": {
+   "fx_18": {
+    "message": "Set a reminder about the furnace service with Quinn Harper",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_21": {
+    "message": "Set a reminder about school pickup with Ula Nowak",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "seed_rob_deploy@N30-high": {
+   "fx_14": {
+    "message": "Send an email about the park cleanup with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   },
+   "fx_18": {
+    "message": "Send an email about coffee with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Email",
+    "reused_existing_name": true,
+    "roster_size": 27
+   },
+   "fx_24": {
+    "message": "Send an email about blog post edits for Bob Okafor",
+    "name": "Bob Okafor Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 27
+   }
+  },
+  "seed_rob_deploy@N50-high": {
+   "fx_13": {
+    "message": "Send an email about game night with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 45
+   },
+   "fx_14": {
+    "message": "Send an email about blog post edits for Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 45
+   },
+   "fx_30": {
+    "message": "Send an email about coffee with Bob Okafor",
+    "name": "Bob Okafor Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Email",
+    "reused_existing_name": true,
+    "roster_size": 45
+   },
+   "fx_33": {
+    "message": "Send an email about dog walking with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 45
+   },
+   "fx_36": {
+    "message": "Send an email about mail forwarding with Bob Okafor",
+    "name": "Bob Okafor Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 45
+   }
+  },
+  "seed_rob_deploy@N50-low": {
+   "fx_39": {
+    "message": "Set a reminder about the furnace service with Jonas Berg",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "slug_cpp_decline@N50-low": {
+   "fx_15": {
+    "message": "Set a reminder about the furnace service with Isaac Moreau",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_25": {
+    "message": "Set a reminder about the furnace service with Zoe Martin",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "slug_nb_plusplus@N50-low": {
+   "fx_2": {
+    "message": "Send an email about mail forwarding with Jonas Berg",
+    "name": "Jonas Berg Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Jonas Berg Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "slug_nb_sharp_yes@N50-low": {
+   "fx_12": {
+    "message": "Set a reminder about school pickup with Fatima Khan",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_14": {
+    "message": "Set a reminder about school pickup with Zoe Martin",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "sp_alice_contract@N30-high": {
+   "fx_0": {
+    "message": "Send an email about game night with Alice Chen",
+    "name": "Alice Chen Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "sp_alice_contract@N50-high": {
+   "fx_24": {
+    "message": "Send an email about game night with Alice Chen",
+    "name": "Alice Chen Email Lookup",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_42": {
+    "message": "Send an email about blog post edits for Alice Chen",
+    "name": "Alice Chen Email Lookup",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_46": {
+    "message": "Send an email about dog walking with Alice Chen",
+    "name": "Alice Chen Email Lookup",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "sp_alice_contract@N50-low": {
+   "fx_45": {
+    "message": "Send an email about dog walking with Kira Sato",
+    "name": "Kira Sato Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Kira Sato Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "sp_alice_thursday@N30-high": {
+   "fx_26": {
+    "message": "Send an email about the park cleanup with Alice Chen",
+    "name": "Email to Alice Chen",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "sp_alice_thursday@N50-high": {
+   "fx_26": {
+    "message": "Send an email about the park cleanup with Alice Chen",
+    "name": "Alice Chen Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_32": {
+    "message": "Send an email about blog post edits for Alice Chen",
+    "name": null,
+    "no_dispatch": true,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 48
+   }
+  },
+  "sp_dana_bill@N50-high": {
+   "fx_12": {
+    "message": "Send an email about the park cleanup with Dana Ortiz",
+    "name": "Dana Ortiz Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "sp_nb_agreement@N30-high": {
+   "fx_25": {
+    "message": "Send an email about blog post edits for Alice Chen",
+    "name": "Email to Alice Chen",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "sp_nb_agreement@N50-high": {
+   "fx_15": {
+    "message": "Send an email about the park cleanup with Alice Chen",
+    "name": "Park Cleanup Email to Alice Chen",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 46
+   },
+   "fx_32": {
+    "message": "Send an email about mail forwarding with Alice Chen",
+    "name": "Alice Chen Email",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_40": {
+    "message": "Send an email about pet insurance with Alice Chen",
+    "name": "Alice Chen Email",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_8": {
+    "message": "Send an email about blog post edits for Alice Chen",
+    "name": "Alice Chen Email",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   }
+  },
+  "sp_nb_agreement@N50-low": {
+   "fx_39": {
+    "message": "Set a reminder about the furnace service with Paula Reyes",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "sp_nb_midday@N30-high": {
+   "fx_8": {
+    "message": "Send an email about pet insurance with Alice Chen",
+    "name": "Email to Alice Chen",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "sp_nb_midday@N50-high": {
+   "fx_25": {
+    "message": "Send an email about the park cleanup with Alice Chen",
+    "name": "Email to Alice Chen",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_26": {
+    "message": "Send an email about mail forwarding with Alice Chen",
+    "name": "Email to Alice Chen",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_3": {
+    "message": "Send an email about dog walking with Alice Chen",
+    "name": "Alice Chen Email Lookup",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "sp_nb_midday@N50-low": {
+   "fx_26": {
+    "message": "Set a reminder about school pickup with Kevin Osei",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "sp_nb_pay_artwork@N10-high": {
+   "fx_1": {
+    "message": "Send an email about mail forwarding with Dana Ortiz",
+    "name": "Email to Dana Ortiz",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 9
+   }
+  },
+  "sp_nb_pay_artwork@N50-high": {
+   "fx_30": {
+    "message": "Send an email about the park cleanup with Dana Ortiz",
+    "name": "Email to Dana Ortiz",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_37": {
+    "message": "Send an email about dog walking with Dana Ortiz",
+    "name": "Email to Dana Ortiz",
+    "no_dispatch": false,
+    "previous": "Dana Ortiz Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "st_anniversary@N50-high": {
+   "fx_27": {
+    "message": "Send an email about dog walking with Mia Santos",
+    "name": "Mia Santos Dog Walking Email Draft",
+    "no_dispatch": false,
+    "previous": "Mia Santos Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 48
+   },
+   "fx_36": {
+    "message": "Send an email about the park cleanup with Mia Santos",
+    "name": "Mia Santos Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Mia Santos Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "st_jordan_sublet@N50-high": {
+   "fx_26": {
+    "message": "Send an email about mail forwarding with Jordan Kim",
+    "name": "Jordan Kim Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Jordan Kim Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_40": {
+    "message": "Send an email about game night with Jordan Kim",
+    "name": "Jordan Kim Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Jordan Kim Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_46": {
+    "message": "Send an email about blog post edits for Jordan Kim",
+    "name": "Jordan Kim Blog Post Edits Email",
+    "no_dispatch": false,
+    "previous": "Jordan Kim Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 47
+   }
+  },
+  "st_landlord_paperwork@N30-high": {
+   "fx_15": {
+    "message": "Send an email about blog post edits for Bob Hale",
+    "name": "Bob Hale Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "st_landlord_paperwork@N50-high": {
+   "fx_0": {
+    "message": "Send an email about dog walking with Bob Hale",
+    "name": "Bob Hale Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_14": {
+    "message": "Send an email about blog post edits for Bob Hale",
+    "name": "Bob Hale Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_37": {
+    "message": "Send an email about pet insurance with Bob Hale",
+    "name": "Bob Hale Email",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "st_landlord_paperwork@N50-low": {
+   "fx_26": {
+    "message": "Set a reminder about school pickup with Noah Fischer",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_45": {
+    "message": "Set a reminder about the furnace service with Caleb Stone",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_5": {
+    "message": "Set a reminder about school pickup with Umar Farouk",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "st_nb_bignight@N30-high": {
+   "fx_2": {
+    "message": "Send an email about pet insurance with Mia Santos",
+    "name": "Email to Mia Santos",
+    "no_dispatch": false,
+    "previous": "Mia Santos Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "st_nb_bignight@N50-high": {
+   "fx_34": {
+    "message": "Send an email about pet insurance with Mia Santos",
+    "name": "Mia Santos Pet Insurance Email",
+    "no_dispatch": false,
+    "previous": "Mia Santos Contact Lookup",
+    "reused_existing_name": false,
+    "roster_size": 48
+   },
+   "fx_41": {
+    "message": "Send an email about blog post edits for Mia Santos",
+    "name": "Mia Santos Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Mia Santos Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "st_nb_bignight@N50-low": {
+   "fx_22": {
+    "message": "Set a reminder about school pickup with Tara Singh",
+    "name": "School Pickup Reminder",
+    "no_dispatch": false,
+    "previous": "School Pickup Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_24": {
+    "message": "Set a reminder about the furnace service with Noah Fischer",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "st_nb_buddy@N50-high": {
+   "fx_18": {
+    "message": "Send an email about mail forwarding with Jordan Kim",
+    "name": "Jordan Kim Email",
+    "no_dispatch": false,
+    "previous": "Jordan Kim Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_35": {
+    "message": "Send an email about the park cleanup with Jordan Kim",
+    "name": "Jordan Kim Email",
+    "no_dispatch": false,
+    "previous": "Jordan Kim Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "st_nb_owner@N30-high": {
+   "fx_23": {
+    "message": "Send an email about game night with Bob Hale",
+    "name": "Bob Hale Email Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "st_nb_owner@N50-high": {
+   "fx_2": {
+    "message": "Send an email about the park cleanup with Bob Hale",
+    "name": "Bob Hale Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_28": {
+    "message": "Send an email about game night with Bob Hale",
+    "name": "Bob Hale Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_34": {
+    "message": "Send an email about mail forwarding with Bob Hale",
+    "name": "Email to Bob Hale",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   },
+   "fx_8": {
+    "message": "Send an email about blog post edits for Bob Hale",
+    "name": "Bob Hale Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Hale Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 46
+   }
+  },
+  "ta_alice_follow@N30-high": {
+   "fx_16": {
+    "message": "Send an email about mail forwarding with Alice Chen",
+    "name": "Alice Chen Email Lookup",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 29
+   }
+  },
+  "ta_alice_follow@N50-high": {
+   "fx_30": {
+    "message": "Send an email about pet insurance with Alice Chen",
+    "name": "Alice Chen Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Alice Chen Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 49
+   }
+  },
+  "ta_alice_follow@N50-low": {
+   "fx_40": {
+    "message": "Set a reminder about the furnace service with Fatima Khan",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_5": {
+    "message": "Set a reminder about the furnace service with Julia Novak",
+    "name": "Furnace Service Reminder",
+    "no_dispatch": false,
+    "previous": "Furnace Service Reminder",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  },
+  "ta_bob_late@N10-high": {
+   "fx_4": {
+    "message": "Send an email about coffee with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Email",
+    "reused_existing_name": true,
+    "roster_size": 9
+   }
+  },
+  "ta_bob_late@N30-high": {
+   "fx_10": {
+    "message": "Send an email about blog post edits for Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 28
+   },
+   "fx_24": {
+    "message": "Send an email about game night with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 28
+   }
+  },
+  "ta_bob_late@N50-high": {
+   "fx_20": {
+    "message": "Send an email about dog walking with Bob Okafor",
+    "name": "Bob Okafor Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_38": {
+    "message": "Send an email about coffee with Bob Okafor",
+    "name": "Bob Okafor Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Email",
+    "reused_existing_name": true,
+    "roster_size": 47
+   },
+   "fx_6": {
+    "message": "Send an email about pet insurance with Bob Okafor",
+    "name": "Bob Okafor Email",
+    "no_dispatch": false,
+    "previous": "Bob Okafor Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 47
+   }
+  },
+  "ta_bob_late@N50-low": {
+   "fx_30": {
+    "message": "Send an email about pet insurance with Paula Reyes",
+    "name": "Paula Reyes Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Paula Reyes Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   },
+   "fx_7": {
+    "message": "Send an email about blog post edits for Pedro Alves",
+    "name": "Pedro Alves Contact Lookup",
+    "no_dispatch": false,
+    "previous": "Pedro Alves Contact Lookup",
+    "reused_existing_name": true,
+    "roster_size": 48
+   }
+  }
+ },
  "model": "anthropic/claude-haiku-5.5",
+ "rename_spend": {
+  "by_purpose": {
+   "rename-collisions": {
+    "calls": 457,
+    "completion_tokens": 117647,
+    "cost": 0.317396,
+    "prompt_tokens": 2585723
+   }
+  },
+  "calls": 457,
+  "completion_tokens": 117647,
+  "cost_usd": 0.317396,
+  "over_100k": 0,
+  "prompt_tokens": 2585723,
+  "run": "rename-collisions",
+  "total_spent_usd": 2.341783
+ },
  "retry_spend": {
   "by_purpose": {
    "names-retry": {
