@@ -22,7 +22,7 @@ The raw call JSONL (`routing-eval-raw/`) is the audit trail behind those decisio
   written before round-2 results were seen, committed after they existed; not applied as pre-registered.
 - Change log: `docs/evaluation-data/routing-eval-changes.md` — every probe, label or setting changed after a paid
   run, with the reason. Commits: `137d774` 01:32:59, `4411414` 01:40:43, `2527e0a` 01:58:25, `970cbbf` 02:03:12,
-  `33621ca` 02:28:37, `cef4ece` 02:53:40 (all 2026-11-12, -05:00).
+  `69784f8` 02:28:37, `62965a7` 02:53:40 (all 2026-11-12, -05:00).
 - Pinned versions: `docs/evaluation-data/routing-eval-tier-a/versions.json` — baseline `5b5f635935a64ab37884c025d70abb0ed731c094`,
   RAG router `22b8c253e27c5aad289979beecf972b025478b54` (with file sha256).
 

@@ -91,12 +91,14 @@ The web app proxies API calls to the Python server using the values in `.env`, s
 
 Details: [docs/routing-eval/README.md](docs/routing-eval/README.md) (3–50 agents, three routers, predictions committed first) and [docs/demo-old-vs-new.md](docs/demo-old-vs-new.md) (the earlier 32-request live comparison).
 
+Recompute every headline number offline (~10 s, no API keys): `python -m routing_eval.headlines`
+
 ## Running the tests
 ```bash
 pip install -r tests/requirements.txt
 python -m pytest
 ```
-Run them from the repo root inside the Quickstart virtualenv; they need no API keys and take a few seconds.
+Run them from the repo root inside the Quickstart virtualenv; they need no API keys and take a few seconds. 7 baseline tests skip unless you first run `scripts/setup_routing_eval_baseline.sh` (creates the original 5b5f635 checkout).
 
 ## Known limitations
 - The evaluation uses synthetic worlds and one model (Claude Haiku 5.5).

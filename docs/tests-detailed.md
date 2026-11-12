@@ -223,7 +223,7 @@ The whole comparison cost about **$1.60** on Haiku, including the pilot and smok
 - **Model:** Claude 3.5 Haiku was requested for the compliance eval but has been retired and is no longer on OpenRouter. Claude Haiku 5.5 was used instead.
 
 ## 8. Limitations
-- **Scale:** routing was only measured up to about 9 agents (the new version reached 8–9 in the live runs). Whether routing gets worse as agents accumulate, and whether this change fixes that, is still untested. The offline tests check which agents are shown with up to 30 agents, with scripted choices only.
+- **Scale:** Routing was later measured with 3–50 agents; see [routing-eval/README.md](routing-eval/README.md).
 - **Small sample:** 3 runs per version of one scenario, on one model (Haiku 5.5). The results are 26/39 vs 30/39 hard checkpoints, 11–12 vs 8–9 agents per run, 7 vs 0 blind reminder lookups and 6 vs 1 agents that never acted. That's a consistent direction in these runs, not a statistical result.
 - **One model, mostly:** cheaper models make more mistakes on both sides. The single Sonnet run per version was degraded by rate limiting (above), so it shows a direction, not a measurement.
 - **Forgiving fake Gmail:** its search is more lenient than real Gmail, so it doesn't fail for reasons unrelated to routing. It's identical for both versions.
