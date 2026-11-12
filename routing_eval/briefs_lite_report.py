@@ -126,6 +126,9 @@ def brief_stats(data: dict) -> dict:
             "kept_previous_brief_from_earlier_run": sum(1 for x in last_fail if x["brief"]),
             "empty_brief_registry_default": sum(1 for x in b if not x["brief"]),
             "last_run_report_trimmed": trimmed, "apology_pattern": sum(1 for x in b if x["apologises"]),
+            "apology_strict": sum(1 for x in b if re.search(
+                r"unintended|accidental|mistake|\berror\b|should not have|shouldn't have|apolog|without (?:a )?draft",
+                x["brief"], re.I)),
             "subject_only_body_mention": sum(1 for x in b if re.search(r"subject line|placeholder|only the subject",
                                                                          x["brief"], re.I)),
             "iterations_last_run": dict(Counter(x["attempts"][0].get("iterations") for x in b)),
@@ -170,7 +173,7 @@ def render(rep: dict) -> str:
           f"Causes: {s['failure_causes'] or 'none'}. Previous brief kept from an earlier run: "
           f"{s['kept_previous_brief_from_earlier_run']}; empty (registry default): {s['empty_brief_registry_default']}.",
           f"- Reports trimmed by parse_report (> 2 sentences / 280 chars; still stored): {s['last_run_report_trimmed']}.",
-          f"- Apology pattern: {s['apology_pattern']}; mention of the placeholder (subject-only) body: "
+          f"- Apology pattern: {s['apology_pattern']} (strict, without the word 'placeholder': {s['apology_strict']}); mention of the placeholder (subject-only) body: "
           f"{s['subject_only_body_mention']}.",
           f"- Iterations on the last run: {s['iterations_last_run']}; stubbed tool calls: {s['stubbed_tool_calls']}; "
           f"histories with a stubbed write: {s['histories_with_stubbed_write']}.",
