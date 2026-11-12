@@ -1,0 +1,18 @@
+{
+ "batch": "asbuilt_sweep",
+ "jobs": 999,
+ "done": 999,
+ "worker_exit_codes": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "harness_errors": 0,
+ "cost_usd": 0.1218
+}
