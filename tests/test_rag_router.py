@@ -245,6 +245,33 @@ def test_sync_route_turn_works_inside_running_event_loop():
     assert out["target_id"] == "ea_1"
 
 
+def test_debug_ranking_covers_all_agents_and_gives_recall_at_5_vs_8():
+    emb = ScoreEmbedder()
+    router = rr.RagRouter(embedder=emb, llm=FakeLLM('{"action": "route", "target_id": "ea_1"}'))
+    # gold agent ea_8 ranks 7th: missed at k=5, found at k=8
+    agents = scored_agents([0.99, 0.95, 0.9, 0.85, 0.8, 0.75, 0.3, 0.7])
+    out = router.route_turn("q", agents)
+
+    _assert_schema(out)  # public result unchanged: still exactly five keys
+    debug = router.last_debug
+    assert [a for a, _ in debug["ranking"]] == ["ea_1", "ea_2", "ea_3", "ea_4", "ea_5", "ea_6", "ea_8", "ea_7"]
+    assert debug["candidates"] == ["ea_1", "ea_2", "ea_3", "ea_4", "ea_5"]
+    assert (debug["top_k"], debug["threshold"], debug["embedder"]) == (5, 0.40, "score-stub")
+    rank = rr.gold_rank(debug, "ea_8")
+    assert rank == 7 and not rank <= 5 and rank <= 8
+    assert rr.gold_rank(debug, "ea_404") is None
+    assert rr.gold_rank(debug, "ea_7") == 8  # below threshold agents are still ranked
+    assert sum(len(c) for c in emb.calls) == len(agents) + 1  # ranking costs no extra embedding
+
+
+def test_debug_variant_returns_same_result_as_route_turn():
+    router = rr.RagRouter(embedder=ScoreEmbedder(), llm=FakeLLM('{"action": "route", "target_id": "ea_1"}'))
+    result, debug = asyncio.run(router.aroute_turn_with_debug("q", scored_agents([0.9, 0.2])))
+    _assert_schema(result)
+    assert (result["action"], result["target_id"]) == ("route", "ea_1")
+    assert debug is router.last_debug and debug["candidates"] == ["ea_1"]
+
+
 def test_module_level_route_turn_uses_default_router(monkeypatch):
     router = rr.RagRouter(embedder=rr.HashEmbedder(), llm=FakeLLM('{"action": "route", "target_id": "ea_1"}'))
     monkeypatch.setattr(rr, "_default_router", router)

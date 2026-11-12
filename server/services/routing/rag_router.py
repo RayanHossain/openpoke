@@ -371,6 +371,10 @@ class VectorIndex:
 
     def search(self, query: str, k: int = TOP_K, threshold: float = SIM_THRESHOLD) -> List[Hit]:
         """Top ``k`` agents with cosine similarity strictly above ``threshold``."""
+        return select_hits(self.rank(query), k=k, threshold=threshold)
+
+    def rank(self, query: str) -> List[Hit]:
+        """Every indexed agent, best first (no threshold, no k cut)."""
         with self._lock:
             if not self._entries:
                 return []
@@ -381,7 +385,25 @@ class VectorIndex:
                     break  # query and docs come from the same backend
             scored = [Hit(e.doc, cosine(qvec, e.vector)) for e in self._entries.values()]
         scored.sort(key=lambda h: (-h.score, h.doc.agent_id))  # id tiebreak keeps runs deterministic
-        return [h for h in scored if h.score > threshold][:k]
+        return scored
+
+
+def select_hits(ranking: Sequence[Hit], k: int = TOP_K, threshold: float = SIM_THRESHOLD) -> List[Hit]:
+    """The retrieval window: first ``k`` of ``ranking`` with score strictly above ``threshold``."""
+    return [h for h in ranking if h.score > threshold][:k]
+
+
+def gold_rank(debug: Dict[str, Any], agent_id: str) -> Optional[int]:
+    """1-based rank of ``agent_id`` in a turn's full ranking (before threshold/k), or None.
+
+    recall@k over a run = share of turns with ``gold_rank <= k``; compare k=5 vs k=8
+    from the same run without extra model calls. Note the threshold still applies:
+    use ``debug["ranking"]`` scores to see whether the gold agent also cleared it.
+    """
+    for i, (candidate, _score) in enumerate(debug.get("ranking", []), 1):
+        if candidate == agent_id:
+            return i
+    return None
 
 
 # --------------------------------------------------------------------------- #
@@ -467,14 +489,20 @@ class RagRouter:
         self.model = model or os.getenv("OPENPOKE_RAG_ROUTER_MODEL", DEFAULT_ROUTER_MODEL)
         self.top_k = top_k
         self.threshold = threshold
+        # Debug record of the latest turn (see aroute_turn_with_debug). Overwritten
+        # per turn; with concurrent turns, use the returned debug dict instead.
+        self.last_debug: Optional[Dict[str, Any]] = None
 
     @property
     def embedder_name(self) -> str:
         return self.index.embedder_name
 
-    def retrieve(self, message: str, active_agents: Sequence[Dict[str, Any]]) -> List[Hit]:
+    def rank_all(self, message: str, active_agents: Sequence[Dict[str, Any]]) -> List[Hit]:
         self.index.sync(active_agents)
-        return self.index.search(message, k=self.top_k, threshold=self.threshold)
+        return self.index.rank(message)
+
+    def retrieve(self, message: str, active_agents: Sequence[Dict[str, Any]]) -> List[Hit]:
+        return select_hits(self.rank_all(message, active_agents), k=self.top_k, threshold=self.threshold)
 
     async def _call_llm(self, **kwargs: Any) -> Dict[str, Any]:
         llm = self._llm
@@ -483,9 +511,30 @@ class RagRouter:
         return await llm(**kwargs)
 
     async def aroute_turn(self, incoming_message: str, active_agents: List[Dict[str, Any]]) -> Dict[str, Any]:
+        result, _debug = await self.aroute_turn_with_debug(incoming_message, active_agents)
+        return result
+
+    async def aroute_turn_with_debug(
+        self, incoming_message: str, active_agents: List[Dict[str, Any]]
+    ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+        """Same routing as ``aroute_turn``, plus a debug dict that is never sent to the model:
+
+        ``ranking``: every agent as (agent_id, cosine), best first, before threshold/k;
+        ``candidates``: agent ids actually shown to the model; ``embedder``, ``top_k``,
+        ``threshold``: the settings this turn ran with.
+        """
         started = time.perf_counter()
-        hits = await asyncio.to_thread(self.retrieve, incoming_message, list(active_agents or []))
+        ranking = await asyncio.to_thread(self.rank_all, incoming_message, list(active_agents or []))
+        hits = select_hits(ranking, k=self.top_k, threshold=self.threshold)
         retrieval_ms = (time.perf_counter() - started) * 1000.0
+        debug: Dict[str, Any] = {
+            "ranking": [(h.doc.agent_id, round(h.score, 6)) for h in ranking],
+            "candidates": [h.doc.agent_id for h in hits],
+            "embedder": self.embedder_name,
+            "top_k": self.top_k,
+            "threshold": self.threshold,
+        }
+        self.last_debug = debug
 
         result: Dict[str, Any] = {
             "action": "create",
@@ -495,7 +544,7 @@ class RagRouter:
             "retrieval_latency_ms": round(retrieval_ms, 3),
         }
         if not hits:
-            return result  # nothing cleared the threshold: no candidate to route to
+            return result, debug  # nothing cleared the threshold: no candidate to route to
 
         response = await self._call_llm(
             model=self.model,
@@ -505,7 +554,7 @@ class RagRouter:
         action, target = parse_decision(_message_text(response), [h.doc.agent_id for h in hits])
         prompt_tokens, completion_tokens = _usage(response)
         result.update(action=action, target_id=target, prompt_tokens=prompt_tokens, completion_tokens=completion_tokens)
-        return result
+        return result, debug
 
     def route_turn(self, incoming_message: str, active_agents: List[Dict[str, Any]]) -> Dict[str, Any]:
         return _run_sync(lambda: self.aroute_turn(incoming_message, active_agents))
@@ -545,5 +594,6 @@ def route_turn(incoming_message: str, active_agents: List[Dict[str, Any]]) -> Di
 __all__ = [
     "EMBED_DIM", "TOP_K", "SIM_THRESHOLD", "HashEmbedder", "OpenRouterEmbedder", "SentenceTransformerEmbedder",
     "ResilientEmbedder", "VectorIndex", "AgentDoc", "Hit", "RagRouter", "parse_decision", "cosine",
+    "select_hits", "gold_rank",
     "build_default_embedder", "get_rag_router", "route_turn", "aroute_turn",
 ]
