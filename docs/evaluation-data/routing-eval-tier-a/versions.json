@@ -1,0 +1,18 @@
+{
+ "baseline": {
+  "commit": "5b5f635935a64ab37884c025d70abb0ed731c094",
+  "source": "git checkout (scripts/setup_routing_eval_baseline.sh)"
+ },
+ "rag": {
+  "commit": "22b8c253e27c5aad289979beecf972b025478b54",
+  "branch": "worktree-rag-router",
+  "files_sha256": {
+   "server/services/routing/__init__.py": "d25806a77cdf0387f12b90e0a0807a0f6c0593b38615b12fff5950948610342f",
+   "server/services/routing/rag_router.py": "27c830421fdbaf127c91bd1103c67dbd16da304ed476d4fdc293cf6987c60702"
+  },
+  "source": "copied into server/services/routing/ (comparison arm only)"
+ },
+ "registry": {
+  "source": "this branch's server/"
+ }
+}

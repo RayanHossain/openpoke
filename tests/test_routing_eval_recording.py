@@ -82,3 +82,16 @@ def test_embedding_raw_keeps_digest_not_vectors():
     assert d["vectors_stored"] is False and d["usage"] == {"prompt_tokens": 7}
     assert [x["dimensions"] for x in d["data"]] == [384, 384] and all(len(x["sha256"]) == 64 for x in d["data"])
     assert '"embedding":' not in json.dumps(d)  # no vector field (the model name contains "embedding")
+
+
+def test_pinned_versions():
+    """The RAG router copy is byte-identical to worktree-rag-router @ 22b8c25; nothing in server/ imports it."""
+    from routing_eval import baseline, versions
+    versions.verify_rag_copy()
+    assert versions.BASELINE_COMMIT == baseline.BASELINE_COMMIT
+    root = Path(__file__).resolve().parent.parent / "server"
+    importers = [p for p in root.rglob("*.py") if "services/routing" not in str(p)
+                 and "services.routing" in p.read_text(encoding="utf-8", errors="ignore")]
+    assert importers == []
+    recorded = json.loads((root.parent / "docs/evaluation-data/routing-eval-tier-a/versions.json").read_text())
+    assert recorded["rag"]["commit"] == versions.RAG_COMMIT and recorded["baseline"]["commit"] == versions.BASELINE_COMMIT

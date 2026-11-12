@@ -4,7 +4,7 @@ Routers
   baseline  real 5b5f635 code in a child process (routing_eval.baseline), Haiku 5.5 forced
   registry  real main code in the live sandbox (routing_eval.live_sandbox), world loaded by SQL,
             world clock patched, ``_dispatch`` stubbed so no execution agent runs
-  rag       the real RAG router from worktree-rag-router (copied into the sandbox), parity or as-built
+  rag       the RAG router pinned from worktree-rag-router @ 22b8c25 (server/services/routing/), parity or as-built
             adapter, OPENPOKE_RAG_EMBEDDER=openrouter forced, debug["embedder"] checked every turn
 
 Decision extraction (§6): route/create from the tool calls (``send_message_to_agent`` /
@@ -30,9 +30,6 @@ from . import live, views
 from .policies import Decision
 from .schema import ProbeInstance, World
 
-RAG_BRANCH = "worktree-rag-router"
-
-
 def _embedding_digest(body: Dict[str, Any]) -> Dict[str, Any]:
     """Raw embeddings response without the vectors: each vector becomes its index, dimensions and
     sha256 (instruction 2026-11-12: vectors would add ~90 MB of JSONL per main run)."""
@@ -43,7 +40,6 @@ def _embedding_digest(body: Dict[str, Any]) -> Dict[str, Any]:
                    for d in body.get("data") or []]
     out["vectors_stored"] = False
     return out
-RAG_FILES = ("server/services/routing/__init__.py", "server/services/routing/rag_router.py")
 
 
 def asks(calls: List[Dict[str, Any]]) -> bool:
@@ -137,22 +133,15 @@ class BaselineRouter:
         return Decision(d.action, d.targets, tuple(info["candidates"]), info["prompt_tokens"]), info
 
 
-def _rag_sources() -> Dict[str, str]:
-    out = {}
-    for rel in RAG_FILES:
-        text = subprocess.run(["git", "show", f"{RAG_BRANCH}:{rel}"], cwd=live.REPO, check=True,
-                              capture_output=True, text=True).stdout
-        out[rel.removeprefix("server/")] = text
-    return out
-
-
 class LiveSandboxRouters:
     """Registry and RAG routers in one sandboxed copy of main's server/ (real key, real model)."""
 
     def __init__(self, ledger: live.Ledger, key: str):
         from . import live_sandbox as ls
         os.environ["OPENPOKE_RAG_EMBEDDER"] = "openrouter"  # forced (spec §6); set before the router is built
-        ls.bootstrap(key, extra_files=_rag_sources())
+        from .versions import verify_rag_copy
+        verify_rag_copy()  # the pinned RAG router copy in server/services/routing/ (22b8c25)
+        ls.bootstrap(key)  # the sandbox copies this branch's server/, RAG router included
         os.environ["OPENPOKE_RAG_EMBEDDER"] = "openrouter"  # bootstrap clears OPENPOKE_*; set again
         self.ls, self.ledger = ls, ledger
         self._rag = None
