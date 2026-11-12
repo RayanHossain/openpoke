@@ -84,7 +84,8 @@ def _worker(shard: int, shards: int, out_path: Path) -> None:
         resp = await real(**kwargs)
         u = live.usage_of(resp)
         ledger.record("summaries", "summarizer", u["model"] or kwargs.get("model"), u["prompt_tokens"],
-                      u["completion_tokens"], u["reported_cost"])
+                      u["completion_tokens"], u["reported_cost"],
+                      raw={"request": {k: v for k, v in kwargs.items() if k != "api_key"}, "response": resp})
         return resp
 
     summ.request_chat_completion = llm
@@ -110,6 +111,8 @@ def _worker(shard: int, shards: int, out_path: Path) -> None:
 
 
 def generate(workers: int = 6) -> Dict:
+    from . import live
+    agg = live.Ledger(run="summaries-batch")  # aggregate of the worker processes (their calls are in the ledger)
     n_jobs = len(needed())
     with tempfile.TemporaryDirectory() as tmp:
         procs = []
@@ -133,6 +136,12 @@ def generate(workers: int = 6) -> Dict:
     for wid, arms in merged.items():
         existing.setdefault(wid, {}).update(arms)
     SUMMARIES_FILE.write_text(json.dumps(existing, indent=1, sort_keys=True), encoding="utf-8")
+    agg.calls = sum(s["calls"] for s in spend)
+    agg.cost = sum(s["cost_usd"] for s in spend)
+    agg.prompt_tokens = sum(s["prompt_tokens"] for s in spend)
+    agg.completion_tokens = sum(s["completion_tokens"] for s in spend)
+    if failed:
+        raise RuntimeError(f"summary worker shards failed: {failed}")
     return {"jobs": n_jobs, "written": sum(len(a) for a in merged.values()), "failed_shards": failed,
             "calls": sum(s["calls"] for s in spend), "cost_usd": round(sum(s["cost_usd"] for s in spend), 6),
             "prompt_tokens": sum(s["prompt_tokens"] for s in spend),
@@ -147,7 +156,8 @@ if __name__ == "__main__":
         ap.add_argument("cmd")
         ap.add_argument("--workers", type=int, default=6)
         a = ap.parse_args()
-        print(json.dumps(generate(a.workers)))
+        from . import live
+        print(json.dumps(live.run_cli(generate, a.workers, paths=(SUMMARIES_FILE,))))
     elif sys.argv[1:2] == ["count"]:
         jobs = needed()
         print(len(jobs), "summaries needed;", sum(len(j[2]) for j in jobs), "entries total")

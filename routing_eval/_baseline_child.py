@@ -66,8 +66,10 @@ async def _turn(message: str, message_type: str, model: str) -> dict:
     async def llm(**kwargs):
         resp = await real_llm(**kwargs)
         u = resp.get("usage") or {}
+        request = {k: v for k, v in kwargs.items() if k != "api_key"}
         usage.append({"prompt_tokens": u.get("prompt_tokens", 0), "completion_tokens": u.get("completion_tokens", 0),
-                      "cost": u.get("cost"), "model": resp.get("model") or kwargs.get("model")})
+                      "cost": u.get("cost"), "model": resp.get("model") or kwargs.get("model"),
+                      "raw": {"request": request, "response": resp}})
         return resp
 
     real_handle = rt_mod.handle_tool_call

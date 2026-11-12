@@ -157,10 +157,12 @@ class LiveSandboxRouters:
             resp = real_post(url, *a, **k)
             if str(url).endswith("/embeddings"):
                 try:
-                    u = resp.json().get("usage") or {}
+                    body = resp.json()
+                    u = body.get("usage") or {}
                     texts = (k.get("json") or {}).get("input") or []
                     pt = int(u.get("prompt_tokens") or sum(len(t) for t in texts) // 4)
-                    ledger.record("rag-embeddings", "rag", live.EMBED_MODEL, pt, 0, u.get("cost"))
+                    ledger.record("rag-embeddings", "rag", live.EMBED_MODEL, pt, 0, u.get("cost"),
+                                  raw={"request": {"url": str(url), "json": k.get("json")}, "response": body})
                 except Exception:  # noqa: BLE001 - metering must not break the call
                     pass
             return resp
@@ -176,7 +178,8 @@ class LiveSandboxRouters:
             resp = await fn(**kwargs)
             u = live.usage_of(resp)
             ledger.record(purpose_ref["purpose"], router, u["model"] or kwargs["model"], u["prompt_tokens"],
-                          u["completion_tokens"], u["reported_cost"])
+                          u["completion_tokens"], u["reported_cost"],
+                          raw={"request": {k: v for k, v in kwargs.items() if k != "api_key"}, "response": resp})
             if capture is not None:
                 try:
                     capture.append(resp["choices"][0]["message"].get("content") or "")

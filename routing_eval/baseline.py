@@ -107,7 +107,7 @@ def ia_turn(world: Optional[World], message: str, source: str, *, ledger, purpos
     out = json.loads(proc.stdout.strip().splitlines()[-1])
     for u in out["usage"]:
         ledger.record(purpose, "baseline", u.get("model") or model, int(u.get("prompt_tokens") or 0),
-                      int(u.get("completion_tokens") or 0), u.get("cost"))
+                      int(u.get("completion_tokens") or 0), u.get("cost"), raw=u.pop("raw", None))
     return out
 
 

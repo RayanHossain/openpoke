@@ -166,13 +166,14 @@ def name_missing() -> Dict:
 
 
 if __name__ == "__main__":
+    from . import live
     if sys.argv[1:] == ["missing"]:
-        print(json.dumps(name_missing()))
+        print(json.dumps(live.run_cli(name_missing, paths=(NAMES_FILE,))))
     elif sys.argv[1:] == ["retry"]:
-        r = retry_failures()
+        r = live.run_cli(retry_failures, paths=(NAMES_FILE,))
         print(json.dumps(r["retry_spend"]), f"still failing={len(r['failures'])}", [f["key"] for f in r["failures"]])
     elif sys.argv[1:] == ["generate"]:
-        r = generate()
+        r = live.run_cli(generate, paths=(NAMES_FILE,))
         print(json.dumps(r["spend"]), f"failures={len(r['failures'])}")
     else:
         print(__doc__)

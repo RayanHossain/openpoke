@@ -43,6 +43,7 @@ class Scored:
     preferred: bool
     error: Optional[str]
     severity: int
+    creation_merges: int = 0  # baseline only: forced merges at creation in this world (weight 4 each)
 
 
 def _ws_of(world: World, refs: Iterable[str]) -> List[Set[str]]:
@@ -98,7 +99,25 @@ def _extra(inst: ProbeInstance, d: Decision, world: World) -> int:
     return sum(1 for c in _ws_of(world, d.targets) if not c & targets)
 
 
-def score(inst: ProbeInstance, decision: Decision, world: World) -> Scored:
+def creation_merges(world: World) -> int:
+    """Forced merges at creation for the baseline: agents whose creation names are identical are
+    one agent in 5b5f635 (its roster keeps one entry per exact name). A name shared by k agents is
+    k - 1 merges (rule logged in routing-eval-changes.md, 2026-11-12)."""
+    counts: Dict[str, int] = {}
+    for a in world.agents:
+        counts[a.name] = counts.get(a.name, 0) + 1
+    return sum(k - 1 for k in counts.values() if k > 1)
+
+
+def target_shares_name(inst: ProbeInstance, world: World) -> bool:
+    """True if a target workstream's agent has the same creation name as another agent in the world."""
+    names = [a.name for a in world.agents]
+    return any(names.count(world.agent_for_ws(t).name) > 1 for a in inst.acceptable for t in a.targets)
+
+
+def score(inst: ProbeInstance, decision: Decision, world: World, router: Optional[str] = None) -> Scored:
+    """Score one decision. ``router="baseline"`` adds the forced merges at creation (weight 4 each)
+    to the severity; accuracy and the route itself are scored as for every router."""
     correct = any(matches(a, decision, world) for a in inst.acceptable)
     preferred = matches(inst.preferred, decision, world)
     err = None if correct else _error(inst, decision, world)
@@ -106,7 +125,8 @@ def score(inst: ProbeInstance, decision: Decision, world: World) -> Scored:
     if err in ("missed_target", "extra_target"):
         weight = (WEIGHTS["missed_target"] * _missed(inst, decision, world)
                   + WEIGHTS["extra_target"] * _extra(inst, decision, world))
-    return Scored(inst, decision, correct, preferred, err, weight)
+    merges = creation_merges(world) if router == "baseline" else 0
+    return Scored(inst, decision, correct, preferred, err, weight + WEIGHTS["forced_merge"] * merges, merges)
 
 
 # --------------------------------------------------------------------------- #

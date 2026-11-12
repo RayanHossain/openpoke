@@ -133,3 +133,17 @@ def test_baseline_merged_name_is_one_agent():
     dinner, deploy = _ref(w, "ws_dinner"), _ref(w, "ws_deploy")
     assert score(i, Decision("route", (f"{dinner}+{deploy}",)), w).correct  # target is inside the merged agent
     assert not score(i, Decision("route", (deploy,)), w).correct
+
+
+def test_baseline_forced_merge_at_creation():
+    """Identical creation names = forced merge at creation (4 each) against the baseline only."""
+    from routing_eval.generator import generate
+    from routing_eval.scorer import creation_merges, target_shares_name
+    pairs, _ = generate(plan=((30, "high"),))
+    w, i = next((w, i) for w, i in pairs if creation_merges(w) and i.base_id == "seed_rob_deploy")
+    assert target_shares_name(i, w)
+    m = creation_merges(w)
+    d = Decision("create")
+    base, reg = score(i, d, w, router="baseline"), score(i, d, w, router="registry")
+    assert base.correct == reg.correct and base.error == reg.error  # the route itself is scored the same
+    assert base.severity == reg.severity + 4 * m and base.creation_merges == m and reg.creation_merges == 0

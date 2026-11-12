@@ -177,7 +177,7 @@ def project() -> Dict:
 
 if __name__ == "__main__":
     if sys.argv[1:] == ["run"]:
-        out = run()
+        out = live.run_cli(run, paths=(OUT,))
         print(json.dumps(out["spend"]), out["embedders_seen"])
     elif sys.argv[1:] == ["project"]:
         print(json.dumps(project(), indent=1))

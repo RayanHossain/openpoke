@@ -20,6 +20,9 @@ from typing import Any, Dict, Optional
 
 REPO = Path(__file__).resolve().parent.parent
 LEDGER = REPO / "docs" / "evaluation-data" / "routing-eval-spend" / "ledger.jsonl"
+RUNS = REPO / "docs" / "evaluation-data" / "routing-eval-spend" / "runs.jsonl"
+RAW_DIR = REPO / "docs" / "evaluation-data" / "routing-eval-raw"  # every paid call, raw, one JSONL file per run
+_SECRET_KEYS = {"api_key", "authorization", "Authorization", "headers"}
 CAP_USD = 25.0
 ROUTER_MODEL = "anthropic/claude-haiku-5.5"
 EMBED_MODEL = "openai/text-embedding-3-small"
@@ -29,6 +32,9 @@ PRICE = {
     EMBED_MODEL: {"prompt": 2e-8, "completion": 0.0, "over": 10**12, "prompt_over": 2e-8, "completion_over": 0.0},
 }
 PRINT_EVERY = 50
+
+
+_OPEN: list = []  # ledgers created in this process (run_cli commits each one)
 
 
 class BudgetExceeded(RuntimeError):
@@ -67,6 +73,17 @@ def usage_of(response: Dict[str, Any]) -> Dict[str, Any]:
             "reported_cost": u.get("cost"), "model": response.get("model")}
 
 
+def scrub(obj: Any) -> Any:
+    """Raw call records without secrets (api_key arguments, auth headers)."""
+    if isinstance(obj, dict):
+        return {k: ("<redacted>" if k in _SECRET_KEYS else scrub(v)) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [scrub(v) for v in obj]
+    if isinstance(obj, str) and obj.startswith("sk-or-"):
+        return "<redacted>"
+    return obj
+
+
 def spent_so_far(path: Path = LEDGER) -> float:
     if not path.is_file():
         return 0.0
@@ -89,6 +106,7 @@ class Ledger:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self.before = spent_so_far(self.path)
         self._lock = threading.Lock()
+        _OPEN.append(self)
 
     def check(self, remaining_estimate: float = 0.0) -> None:
         """Re-reads the shared ledger, so parallel processes see each other's spend."""
@@ -98,7 +116,10 @@ class Ledger:
                                  f"for the rest would exceed the ${self.cap:.2f} cap")
 
     def record(self, purpose: str, router: str, model: str, prompt_tokens: int, completion_tokens: int,
-               reported_cost: Optional[float] = None, extra: Optional[Dict[str, Any]] = None) -> float:
+               reported_cost: Optional[float] = None, extra: Optional[Dict[str, Any]] = None,
+               raw: Optional[Dict[str, Any]] = None) -> float:
+        """Ledger line for one paid call; ``raw`` = {"request": ..., "response": ...} saved verbatim
+        (minus secrets) to routing-eval-raw/<run>.jsonl (recording rules, 2026-11-12)."""
         computed = price(model or ROUTER_MODEL, prompt_tokens, completion_tokens)
         cost = float(reported_cost) if isinstance(reported_cost, (int, float)) else computed
         over = prompt_tokens > 100_000
@@ -107,6 +128,13 @@ class Ledger:
                "completion_tokens": completion_tokens, "cost_usd": round(cost, 8),
                "computed_cost_usd": round(computed, 8), "over_100k": over, **(extra or {})}
         with self._lock:
+            if raw is not None:
+                RAW_DIR.mkdir(parents=True, exist_ok=True)
+                line = {"ts": rec["ts"], "run": self.run, "purpose": purpose, "router": router, **scrub(raw)}
+                with (RAW_DIR / f"{self.run}.jsonl").open("a", encoding="utf-8") as fh:
+                    fh.write(json.dumps(line, default=str) + "\n")
+            else:
+                rec["raw_missing"] = True
             return self._add(rec, cost, prompt_tokens, completion_tokens, over, purpose)
 
     def _add(self, rec, cost, prompt_tokens, completion_tokens, over, purpose) -> float:
@@ -135,3 +163,45 @@ class Ledger:
                 "over_100k": self.over_100k, "total_spent_usd": round(self.before + self.cost, 6),
                 "by_purpose": {k: {kk: (round(vv, 6) if isinstance(vv, float) else vv) for kk, vv in v.items()}
                                for k, v in self.by_purpose.items()}}
+
+
+def finish_run(ledger: "Ledger", status: str, error: Optional[str] = None, paths: tuple = (),
+               note: str = "") -> None:
+    """Recording rule: after every paid run, including failed ones, append the run record to
+    runs.jsonl and commit + push the ledger, raw calls and the run's outputs."""
+    rec = {"ts": datetime.now(timezone.utc).isoformat(timespec="seconds"), "status": status, "error": error,
+           "note": note, **ledger.summary()}
+    RUNS.parent.mkdir(parents=True, exist_ok=True)
+    with RUNS.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(rec) + "\n")
+    files = [str(p) for p in (LEDGER, RUNS, RAW_DIR, *paths) if Path(p).exists()]
+    git = lambda *a: subprocess.run(["git", *a], cwd=REPO, capture_output=True, text=True)  # noqa: E731
+    git("add", "-f", *files)
+    if git("diff", "--cached", "--quiet").returncode == 0:
+        return
+    msg = (f"Routing eval paid run '{ledger.run}': {status}, {ledger.calls} calls, ${ledger.cost:.4f} "
+           f"(total ${ledger.before + ledger.cost:.4f} of ${ledger.cap:.2f})\n\n"
+           f"Recorded automatically after the run (recording rules).{(' Error: ' + error) if error else ''}\n\n"
+           "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>")
+    c = git("commit", "-q", "-m", msg)
+    if c.returncode != 0:
+        print(f"  ! commit failed: {c.stderr.strip()[:300]}", flush=True)
+        return
+    p = git("push", "-q", "origin", "HEAD")
+    if p.returncode != 0:
+        print(f"  ! push failed: {p.stderr.strip()[:300]}", flush=True)
+
+
+def run_cli(fn, *args, paths: tuple = (), note: str = "", **kwargs):
+    """Run a paid entry point; afterwards, whatever happened, record + commit + push every ledger it opened."""
+    start = len(_OPEN)
+    status, err = "ok", None
+    try:
+        return fn(*args, **kwargs)
+    except BaseException as exc:  # noqa: BLE001 - recorded, then re-raised
+        status, err = "failed", f"{type(exc).__name__}: {exc}"
+        raise
+    finally:
+        ledgers = _OPEN[start:] or [Ledger(run=f"{getattr(fn, '__name__', 'run')}-no-calls")]
+        for led in ledgers:
+            finish_run(led, status, err, paths, note)
