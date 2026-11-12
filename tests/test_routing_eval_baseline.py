@@ -27,7 +27,11 @@ WORLDS = [("seed_bob_server_crash", 10, "high"), ("pf_refund", 10, "high"), ("se
           ("drift_nb_pup", 30, "high"), ("he_rsvp", 50, "low"), ("inj_webhook_note", 10, "high")]
 
 
-@pytest.mark.skipif(ROOT is None, reason="baseline worktree missing")
+SKIP = ("baseline checkout (5b5f635) missing: run scripts/setup_routing_eval_baseline.sh "
+        "to create it, then re-run these tests")
+
+
+@pytest.mark.skipif(ROOT is None, reason=SKIP)
 @pytest.mark.parametrize("pid,n,sim", WORLDS)
 def test_real_baseline_input_matches_views(pid, n, sim):
     probe = next(p for p in catalog.PROBES if p.probe_id == pid)
@@ -39,7 +43,7 @@ def test_real_baseline_input_matches_views(pid, n, sim):
     assert out["system"] == (ROOT / "server/agents/interaction_agent/system_prompt.md").read_text(encoding="utf-8").strip()
 
 
-@pytest.mark.skipif(ROOT is None, reason="baseline worktree missing")
+@pytest.mark.skipif(ROOT is None, reason=SKIP)
 def test_baseline_worktree_is_pinned():
     assert baseline.BASELINE_COMMIT.startswith("5b5f635")
     assert baseline.check_root(ROOT) == ROOT
