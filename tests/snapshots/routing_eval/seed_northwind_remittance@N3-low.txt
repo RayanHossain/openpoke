@@ -1,0 +1,175 @@
+# world seed_northwind_remittance@N3-low (seed 3334762350); probe message source=watcher
+=== baseline: roster.json ===
+[
+  "Acme retainer invoice",
+  "Northwind monthly invoice",
+  "Northwind INV-2190 resend"
+]
+=== baseline: IA user message ===
+<conversation_history>
+<user_message timestamp="2026-08-13 15:00:00">Invoice Acme for the retainer on the 5th of every month</user_message>
+<agent_message timestamp="2026-08-13 15:00:00">[SUCCESS] Acme retainer invoice: Set reminder t_8 for the monthly Acme retainer invoice.</agent_message>
+<poke_reply timestamp="2026-08-13 15:00:00">Update: Set reminder t_8 for the monthly Acme retainer invoice.</poke_reply>
+<user_message timestamp="2026-09-02 15:00:00">Send Northwind their invoice on the 1st of every month</user_message>
+<agent_message timestamp="2026-09-02 15:00:00">[SUCCESS] Northwind monthly invoice: Set reminder t_7 for the monthly Northwind invoice.</agent_message>
+<poke_reply timestamp="2026-09-02 15:00:00">Update: Set reminder t_7 for the monthly Northwind invoice.</poke_reply>
+<user_message timestamp="2026-10-02 15:00:00">Resend September invoice INV-2190 to Northwind</user_message>
+<agent_message timestamp="2026-10-02 15:00:00">[SUCCESS] Northwind INV-2190 resend: Drafted an email to Northwind Accounts about resending invoice INV-2190 to Northwind (draft r-inv-2190).</agent_message>
+<poke_reply timestamp="2026-10-02 15:00:00">Update: Drafted an email to Northwind Accounts about resending invoice INV-2190 to Northwind (draft r-inv-2190).</poke_reply>
+<user_message timestamp="2026-10-07 15:00:00">Send the draft about resending invoice INV-2190 to Northwind</user_message>
+<agent_message timestamp="2026-10-07 15:00:00">[SUCCESS] Northwind INV-2190 resend: Sent the email about resending invoice INV-2190 to Northwind.</agent_message>
+<poke_reply timestamp="2026-10-07 15:00:00">Update: Sent the email about resending invoice INV-2190 to Northwind.</poke_reply>
+<user_message timestamp="2026-11-01 15:00:00">Draft November invoice INV-2291 for Northwind</user_message>
+<agent_message timestamp="2026-11-01 15:00:00">[SUCCESS] Northwind monthly invoice: Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).</agent_message>
+<poke_reply timestamp="2026-11-01 15:00:00">Update: Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).</poke_reply>
+<user_message timestamp="2026-11-01 17:24:00">Send the draft about the monthly Northwind invoice</user_message>
+<agent_message timestamp="2026-11-01 17:24:00">[SUCCESS] Northwind monthly invoice: Sent the email about the monthly Northwind invoice.</agent_message>
+<poke_reply timestamp="2026-11-01 17:24:00">Update: Sent the email about the monthly Northwind invoice.</poke_reply>
+<user_message timestamp="2026-11-05 15:00:00">Draft retainer invoice INV-A-118 for Acme</user_message>
+<agent_message timestamp="2026-11-05 15:00:00">[SUCCESS] Acme retainer invoice: Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).</agent_message>
+<poke_reply timestamp="2026-11-05 15:00:00">Update: Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).</poke_reply>
+<user_message timestamp="2026-11-05 17:24:00">Send the draft about the monthly Acme retainer invoice</user_message>
+<agent_message timestamp="2026-11-05 17:24:00">[SUCCESS] Acme retainer invoice: Sent the email about the monthly Acme retainer invoice.</agent_message>
+<poke_reply timestamp="2026-11-05 17:24:00">Update: Sent the email about the monthly Acme retainer invoice.</poke_reply>
+</conversation_history>
+
+<active_agents>
+<agent name="Acme retainer invoice" />
+<agent name="Northwind monthly invoice" />
+<agent name="Northwind INV-2190 resend" />
+</active_agents>
+
+<new_agent_message>
+Important email watcher notification:
+From: Northwind Accounts <accounts@northwind.example>
+Subject: Remittance advice - INV-2291
+Summary: Payment of $4,800.00 against INV-2291 is scheduled for Nov 14. No action requested.
+</new_agent_message>
+=== registry: IA user message ===
+<conversation_history>
+<user_message timestamp="2026-08-13 15:00:00">Invoice Acme for the retainer on the 5th of every month</user_message>
+<agent_message timestamp="2026-08-13 15:00:00">[SUCCESS] ea_1 (Acme retainer invoice): Set reminder t_8 for the monthly Acme retainer invoice.</agent_message>
+<poke_reply timestamp="2026-08-13 15:00:00">Update: Set reminder t_8 for the monthly Acme retainer invoice.</poke_reply>
+<user_message timestamp="2026-09-02 15:00:00">Send Northwind their invoice on the 1st of every month</user_message>
+<agent_message timestamp="2026-09-02 15:00:00">[SUCCESS] ea_2 (Northwind monthly invoice): Set reminder t_7 for the monthly Northwind invoice.</agent_message>
+<poke_reply timestamp="2026-09-02 15:00:00">Update: Set reminder t_7 for the monthly Northwind invoice.</poke_reply>
+<user_message timestamp="2026-10-02 15:00:00">Resend September invoice INV-2190 to Northwind</user_message>
+<agent_message timestamp="2026-10-02 15:00:00">[SUCCESS] ea_3 (Northwind INV-2190 resend): Drafted an email to Northwind Accounts about resending invoice INV-2190 to Northwind (draft r-inv-2190).</agent_message>
+<poke_reply timestamp="2026-10-02 15:00:00">Update: Drafted an email to Northwind Accounts about resending invoice INV-2190 to Northwind (draft r-inv-2190).</poke_reply>
+<user_message timestamp="2026-10-07 15:00:00">Send the draft about resending invoice INV-2190 to Northwind</user_message>
+<agent_message timestamp="2026-10-07 15:00:00">[SUCCESS] ea_3 (Northwind INV-2190 resend): Sent the email about resending invoice INV-2190 to Northwind.</agent_message>
+<poke_reply timestamp="2026-10-07 15:00:00">Update: Sent the email about resending invoice INV-2190 to Northwind.</poke_reply>
+<user_message timestamp="2026-11-01 15:00:00">Draft November invoice INV-2291 for Northwind</user_message>
+<agent_message timestamp="2026-11-01 15:00:00">[SUCCESS] ea_2 (Northwind monthly invoice): Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).</agent_message>
+<poke_reply timestamp="2026-11-01 15:00:00">Update: Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).</poke_reply>
+<user_message timestamp="2026-11-01 17:24:00">Send the draft about the monthly Northwind invoice</user_message>
+<agent_message timestamp="2026-11-01 17:24:00">[SUCCESS] ea_2 (Northwind monthly invoice): Sent the email about the monthly Northwind invoice.</agent_message>
+<poke_reply timestamp="2026-11-01 17:24:00">Update: Sent the email about the monthly Northwind invoice.</poke_reply>
+<user_message timestamp="2026-11-05 15:00:00">Draft retainer invoice INV-A-118 for Acme</user_message>
+<agent_message timestamp="2026-11-05 15:00:00">[SUCCESS] ea_1 (Acme retainer invoice): Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).</agent_message>
+<poke_reply timestamp="2026-11-05 15:00:00">Update: Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).</poke_reply>
+<user_message timestamp="2026-11-05 17:24:00">Send the draft about the monthly Acme retainer invoice</user_message>
+<agent_message timestamp="2026-11-05 17:24:00">[SUCCESS] ea_1 (Acme retainer invoice): Sent the email about the monthly Acme retainer invoice.</agent_message>
+<poke_reply timestamp="2026-11-05 17:24:00">Update: Sent the email about the monthly Acme retainer invoice.</poke_reply>
+</conversation_history>
+
+<active_agents>
+ea_1 | Acme retainer invoice | ap@acme.example | open: trigger t_8 | 5d waiting_external | Sends the monthly Acme retainer invoice (t_8). INV-A-118 was sent an…
+ea_2 | Northwind monthly invoice | accounts@northwind.exam… | open: trigger t_7 | 9d waiting_external | Sends Northwind's invoice on the 1st (t_7) and chases p…
+ea_3 | Northwind INV-2190 resend | accounts@northwind.exam… | open: none | 35d done | Resent September invoice INV-2190 to Northwind. It was paid.
+</active_agents>
+
+<new_agent_message>
+Important email watcher notification:
+From: Northwind Accounts <accounts@northwind.example>
+Subject: Remittance advice - INV-2291
+Summary: Payment of $4,800.00 against INV-2291 is scheduled for Nov 14. No action requested.
+</new_agent_message>
+=== rag as_built: roster dicts ===
+[
+  {
+    "agent_id": "ea_1",
+    "name": "Acme retainer invoice",
+    "topic": "Sends the monthly Acme retainer invoice (t_8). INV-A-118 was sent and awaits payment from Acme AP.",
+    "active_tasks": [
+      "trigger t_8"
+    ],
+    "past_action_notes": [
+      "Set reminder t_8 for the monthly Acme retainer invoice.",
+      "Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).",
+      "Sent the email about the monthly Acme retainer invoice."
+    ]
+  },
+  {
+    "agent_id": "ea_2",
+    "name": "Northwind monthly invoice",
+    "topic": "Sends Northwind's invoice on the 1st (t_7) and chases payment. November invoice INV-2291 is outstanding.",
+    "active_tasks": [
+      "trigger t_7"
+    ],
+    "past_action_notes": [
+      "Set reminder t_7 for the monthly Northwind invoice.",
+      "Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).",
+      "Sent the email about the monthly Northwind invoice."
+    ]
+  },
+  {
+    "agent_id": "ea_3",
+    "name": "Northwind INV-2190 resend",
+    "topic": "Resent September invoice INV-2190 to Northwind. It was paid.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Drafted an email to Northwind Accounts about resending invoice INV-2190 to Northwind (draft r-inv-2190).",
+      "Sent the email about resending invoice INV-2190 to Northwind."
+    ]
+  }
+]
+=== rag as_built: query ===
+Important email watcher notification:
+From: Northwind Accounts <accounts@northwind.example>
+Subject: Remittance advice - INV-2291
+Summary: Payment of $4,800.00 against INV-2291 is scheduled for Nov 14. No action requested.
+=== rag enriched: roster dicts ===
+[
+  {
+    "agent_id": "ea_1",
+    "name": "Acme retainer invoice",
+    "topic": "Sends the monthly Acme retainer invoice (t_8). INV-A-118 was sent and awaits payment from Acme AP. | status: waiting_external | last active: 5d ago | keys: address:ap@acme.example, draft:r-inv-a118, thread:th_inv_a118, trigger:8",
+    "active_tasks": [
+      "trigger t_8"
+    ],
+    "past_action_notes": [
+      "user: Invoice Acme for the retainer on the 5th of every month / agent: Set reminder t_8 for the monthly Acme retainer invoice.",
+      "user: Draft retainer invoice INV-A-118 for Acme / agent: Drafted an email to Acme Accounts Payable about the monthly Acme retainer invoice (draft r-inv-a118).",
+      "user: Send the draft about the monthly Acme retainer invoice / agent: Sent the email about the monthly Acme retainer invoice."
+    ]
+  },
+  {
+    "agent_id": "ea_2",
+    "name": "Northwind monthly invoice",
+    "topic": "Sends Northwind's invoice on the 1st (t_7) and chases payment. November invoice INV-2291 is outstanding. | status: waiting_external | last active: 9d ago | keys: address:accounts@northwind.example, draft:r-inv-2291, thread:th_inv_2291, trigger:7",
+    "active_tasks": [
+      "trigger t_7"
+    ],
+    "past_action_notes": [
+      "user: Send Northwind their invoice on the 1st of every month / agent: Set reminder t_7 for the monthly Northwind invoice.",
+      "user: Draft November invoice INV-2291 for Northwind / agent: Drafted an email to Northwind Accounts about the monthly Northwind invoice (draft r-inv-2291).",
+      "user: Send the draft about the monthly Northwind invoice / agent: Sent the email about the monthly Northwind invoice."
+    ]
+  },
+  {
+    "agent_id": "ea_3",
+    "name": "Northwind INV-2190 resend",
+    "topic": "Resent September invoice INV-2190 to Northwind. It was paid. | status: done | last active: 35d ago | keys: address:accounts@northwind.example, draft:r-inv-2190, thread:th_inv_2190",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Resend September invoice INV-2190 to Northwind / agent: Drafted an email to Northwind Accounts about resending invoice INV-2190 to Northwind (draft r-inv-2190).",
+      "user: Send the draft about resending invoice INV-2190 to Northwind / agent: Sent the email about resending invoice INV-2190 to Northwind."
+    ]
+  }
+]
+=== rag enriched: query ===
+Important email watcher notification:
+From: Northwind Accounts <accounts@northwind.example>
+Subject: Remittance advice - INV-2291
+Summary: Payment of $4,800.00 against INV-2291 is scheduled for Nov 14. No action requested.

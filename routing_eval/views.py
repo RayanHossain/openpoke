@@ -111,6 +111,41 @@ def write_conversation(world: World, conv_dir: Path, arm: str) -> Dict[str, Any]
     return {"entries": len(entries), "folded": cut, "last_folded_at": last_at}
 
 
+def transcript(world: World, arm: str) -> str:
+    """What the IA reads as history: runtime._load_conversation_transcript with summarization on,
+    i.e. WorkingMemoryLog.render_transcript (identical code at 5b5f635 and main)."""
+    entries = conversation_entries(world, arm)
+    cut = folded_count(len(entries))
+    parts: List[str] = []
+    summary = summary_text(world).strip()
+    if summary:
+        parts.append(f"<conversation_summary>{escape(summary, quote=False)}</conversation_summary>")
+    for tag, ts, payload in entries[cut:]:
+        parts.append(f'<{tag} timestamp="{ts}">{escape(payload, quote=False)}</{tag}>')
+    return "\n".join(parts)
+
+
+def message_type(source: str) -> str:
+    """User turns arrive via execute(); watcher/webhook/trigger events via handle_agent_message()."""
+    return "user" if source == "user" else "agent"
+
+
+def baseline_ia_message(world: World, message: str, source: str) -> str:
+    """The IA user message at 5b5f635 (agent.py:20-65): history, <agent name=.../> roster, new turn."""
+    roster: List[str] = []
+    for a in world.agents:
+        if a.name not in roster:
+            roster.append(a.name)
+    history = transcript(world, "baseline").strip() or "None"
+    agents = "\n".join(f'<agent name="{escape(n or "agent", quote=True)}" />' for n in roster) or "None"
+    tag = "new_agent_message" if message_type(source) == "agent" else "new_user_message"
+    return "\n\n".join([
+        f"<conversation_history>\n{history}\n</conversation_history>",
+        f"<active_agents>\n{agents}\n</active_agents>",
+        f"<{tag}>\n{message.strip()}\n</{tag}>",
+    ])
+
+
 # --------------------------------------------------------------------------- #
 # baseline (5b5f635): roster.json names + conversation/working memory
 # --------------------------------------------------------------------------- #

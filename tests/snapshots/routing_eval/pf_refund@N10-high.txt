@@ -1,0 +1,305 @@
+# world pf_refund@N10-high (seed 2651728518); probe message source=user
+=== baseline: roster.json ===
+[
+  "Charity gala with Soundwave",
+  "Mail forwarding with Soundwave",
+  "Reimbursement for Soundwave",
+  "NDA review for Soundwave",
+  "Toronto flight booking",
+  "Payment plan with Soundwave",
+  "Will paperwork with Soundwave",
+  "Utility account with Soundwave",
+  "Headphones refund",
+  "Holiday gift list"
+]
+=== baseline: IA user message ===
+<conversation_history>
+<conversation_summary>Earlier in the conversation:
+- The user asked for help with the charity gala with Soundwave Store.
+- The user asked for help with mail forwarding with Soundwave Store.
+- The user asked for help with Soundwave Store's reimbursement.
+- The user asked for help with the NDA from Soundwave Store.
+- The user asked for help with the Toronto conference flights.
+- The user asked for help with the payment plan with Soundwave Store.
+- The user asked for help with the will paperwork with Soundwave Store.
+- The user asked for help with the utility account with Soundwave Store.
+- The user asked for help with the headphones refund.
+- The user asked for help with the family holiday gift list.</conversation_summary>
+<poke_reply timestamp="2026-11-11 14:57:07">👍</poke_reply>
+<user_message timestamp="2026-11-11 14:57:07">lol</user_message>
+<poke_reply timestamp="2026-11-11 14:57:07">😄</poke_reply>
+<user_message timestamp="2026-11-11 14:57:07">nice, thanks</user_message>
+<poke_reply timestamp="2026-11-11 14:57:07">You got it.</poke_reply>
+<user_message timestamp="2026-11-11 14:57:07">ok cool</user_message>
+<poke_reply timestamp="2026-11-11 14:57:07">👍</poke_reply>
+<user_message timestamp="2026-11-11 14:57:07">thanks!</user_message>
+<poke_reply timestamp="2026-11-11 14:57:07">Anytime.</poke_reply>
+<user_message timestamp="2026-11-11 14:57:07">what time is it in Tokyo?</user_message>
+<poke_reply timestamp="2026-11-11 14:57:07">Just after midnight there.</poke_reply>
+</conversation_history>
+
+<active_agents>
+<agent name="Charity gala with Soundwave" />
+<agent name="Mail forwarding with Soundwave" />
+<agent name="Reimbursement for Soundwave" />
+<agent name="NDA review for Soundwave" />
+<agent name="Toronto flight booking" />
+<agent name="Payment plan with Soundwave" />
+<agent name="Will paperwork with Soundwave" />
+<agent name="Utility account with Soundwave" />
+<agent name="Headphones refund" />
+<agent name="Holiday gift list" />
+</active_agents>
+
+<new_user_message>
+any update on the refund?
+</new_user_message>
+=== registry: IA user message ===
+<conversation_history>
+<conversation_summary>Earlier in the conversation:
+- The user asked for help with the charity gala with Soundwave Store.
+- The user asked for help with mail forwarding with Soundwave Store.
+- The user asked for help with Soundwave Store's reimbursement.
+- The user asked for help with the NDA from Soundwave Store.
+- The user asked for help with the Toronto conference flights.
+- The user asked for help with the payment plan with Soundwave Store.
+- The user asked for help with the will paperwork with Soundwave Store.
+- The user asked for help with the utility account with Soundwave Store.
+- The user asked for help with the headphones refund.
+- The user asked for help with the family holiday gift list.</conversation_summary>
+<poke_reply timestamp="2026-11-11 14:57:07">👍</poke_reply>
+<user_message timestamp="2026-11-11 14:57:07">lol</user_message>
+<poke_reply timestamp="2026-11-11 14:57:07">😄</poke_reply>
+<user_message timestamp="2026-11-11 14:57:07">nice, thanks</user_message>
+<poke_reply timestamp="2026-11-11 14:57:07">You got it.</poke_reply>
+<user_message timestamp="2026-11-11 14:57:07">ok cool</user_message>
+<poke_reply timestamp="2026-11-11 14:57:07">👍</poke_reply>
+<user_message timestamp="2026-11-11 14:57:07">thanks!</user_message>
+<poke_reply timestamp="2026-11-11 14:57:07">Anytime.</poke_reply>
+<user_message timestamp="2026-11-11 14:57:07">what time is it in Tokyo?</user_message>
+<poke_reply timestamp="2026-11-11 14:57:07">Just after midnight there.</poke_reply>
+</conversation_history>
+
+<active_agents>
+ea_10 | Holiday gift list | - | open: none | 28m | Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.
+ea_9 | Headphones refund | support@soundwave.examp… | open: none | 3d waiting_external | Asked Soundwave Store for a refund on the broken headphones. Waiting o…
+ea_4 | NDA review for Soundwave | support@soundwave.examp… | open: draft r-fx3 | 20d waiting_external | The NDA from Soundwave Store. Waiting on Soundwave's re…
+ea_3 | Reimbursement for Soundwave | support@soundwave.examp… | open: none | 21d | Soundwave Store's reimbursement. In progress.
+(4 of 10 agents shown)
+</active_agents>
+
+<new_user_message>
+any update on the refund?
+</new_user_message>
+=== rag as_built: roster dicts ===
+[
+  {
+    "agent_id": "ea_1",
+    "name": "Charity gala with Soundwave",
+    "topic": "The charity gala with Soundwave Store. Finished; nothing open.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about the charity gala with Soundwave Store.",
+      "The charity gala with Soundwave Store. Finished; nothing open."
+    ]
+  },
+  {
+    "agent_id": "ea_2",
+    "name": "Mail forwarding with Soundwave",
+    "topic": "Mail forwarding with Soundwave Store. Finished; nothing open.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about mail forwarding with Soundwave Store.",
+      "Mail forwarding with Soundwave Store. Finished; nothing open."
+    ]
+  },
+  {
+    "agent_id": "ea_3",
+    "name": "Reimbursement for Soundwave",
+    "topic": "Soundwave Store's reimbursement. In progress.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about Soundwave Store's reimbursement.",
+      "Soundwave Store's reimbursement. In progress."
+    ]
+  },
+  {
+    "agent_id": "ea_4",
+    "name": "NDA review for Soundwave",
+    "topic": "The NDA from Soundwave Store. Waiting on Soundwave's reply.",
+    "active_tasks": [
+      "draft r-fx3"
+    ],
+    "past_action_notes": [
+      "Drafted an email about the NDA from Soundwave Store (draft r-fx3).",
+      "The NDA from Soundwave Store. Waiting on Soundwave's reply."
+    ]
+  },
+  {
+    "agent_id": "ea_5",
+    "name": "Toronto flight booking",
+    "topic": "Booked the Toronto round trip for the conference.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Emailed Maple Air about the Toronto conference flights.",
+      "Booked the Toronto round trip for the conference."
+    ]
+  },
+  {
+    "agent_id": "ea_6",
+    "name": "Payment plan with Soundwave",
+    "topic": "The payment plan with Soundwave Store. Finished; nothing open.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Drafted an email about the payment plan with Soundwave Store (draft r-fx5).",
+      "Sent the email about the payment plan with Soundwave Store."
+    ]
+  },
+  {
+    "agent_id": "ea_7",
+    "name": "Will paperwork with Soundwave",
+    "topic": "The will paperwork with Soundwave Store. Finished; nothing open.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about the will paperwork with Soundwave Store.",
+      "The will paperwork with Soundwave Store. Finished; nothing open."
+    ]
+  },
+  {
+    "agent_id": "ea_8",
+    "name": "Utility account with Soundwave",
+    "topic": "The utility account with Soundwave Store. Finished; nothing open.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about the utility account with Soundwave Store.",
+      "The utility account with Soundwave Store. Finished; nothing open."
+    ]
+  },
+  {
+    "agent_id": "ea_9",
+    "name": "Headphones refund",
+    "topic": "Asked Soundwave Store for a refund on the broken headphones. Waiting on their reply.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Emailed Soundwave Store about the headphones refund."
+    ]
+  },
+  {
+    "agent_id": "ea_10",
+    "name": "Holiday gift list",
+    "topic": "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.",
+      "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen."
+    ]
+  }
+]
+=== rag as_built: query ===
+any update on the refund?
+=== rag enriched: roster dicts ===
+[
+  {
+    "agent_id": "ea_1",
+    "name": "Charity gala with Soundwave",
+    "topic": "The charity gala with Soundwave Store. Finished; nothing open. | status: done | last active: 34d ago | keys: address:support@soundwave.example, thread:th_fx0",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Send an email about the charity gala with Soundwave Store / agent: Sent an email about the charity gala with Soundwave Store.",
+      "user: Any news on the charity gala with Soundwave Store? / agent: The charity gala with Soundwave Store. Finished; nothing open."
+    ]
+  },
+  {
+    "agent_id": "ea_2",
+    "name": "Mail forwarding with Soundwave",
+    "topic": "Mail forwarding with Soundwave Store. Finished; nothing open. | status: done | last active: 29d ago | keys: address:support@soundwave.example, thread:th_fx2",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Send an email about mail forwarding with Soundwave Store / agent: Sent an email about mail forwarding with Soundwave Store.",
+      "user: Any news on mail forwarding with Soundwave Store? / agent: Mail forwarding with Soundwave Store. Finished; nothing open."
+    ]
+  },
+  {
+    "agent_id": "ea_3",
+    "name": "Reimbursement for Soundwave",
+    "topic": "Soundwave Store's reimbursement. In progress. | status: active | last active: 21d ago | keys: address:support@soundwave.example, thread:th_fx1",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Send an email about Soundwave Store's reimbursement / agent: Sent an email about Soundwave Store's reimbursement.",
+      "user: Any news on Soundwave Store's reimbursement? / agent: Soundwave Store's reimbursement. In progress."
+    ]
+  },
+  {
+    "agent_id": "ea_4",
+    "name": "NDA review for Soundwave",
+    "topic": "The NDA from Soundwave Store. Waiting on Soundwave's reply. | status: waiting_external | last active: 20d ago | keys: address:support@soundwave.example, draft:r-fx3, thread:th_fx3",
+    "active_tasks": [
+      "draft r-fx3"
+    ],
+    "past_action_notes": [
+      "user: Draft a note about the NDA from Soundwave Store / agent: Drafted an email about the NDA from Soundwave Store (draft r-fx3).",
+      "user: Any news on the NDA from Soundwave Store? / agent: The NDA from Soundwave Store. Waiting on Soundwave's reply."
+    ]
+  },
+  {
+    "agent_id": "ea_5",
+    "name": "Toronto flight booking",
+    "topic": "Booked the Toronto round trip for the conference. | status: done | last active: 18d ago | keys: address:noreply@mapleair.example, thread:th_yyz_2210",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Book a round trip to Toronto for the conference / agent: Emailed Maple Air about the Toronto conference flights.",
+      "user: Any news on the Toronto conference flights? / agent: Booked the Toronto round trip for the conference."
+    ]
+  },
+  {
+    "agent_id": "ea_6",
+    "name": "Payment plan with Soundwave",
+    "topic": "The payment plan with Soundwave Store. Finished; nothing open. | status: done | last active: 9d ago | keys: address:support@soundwave.example, draft:r-fx5, thread:th_fx5",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Draft a note about the payment plan with Soundwave Store / agent: Drafted an email about the payment plan with Soundwave Store (draft r-fx5).",
+      "user: Send the draft about the payment plan with Soundwave Store / agent: Sent the email about the payment plan with Soundwave Store."
+    ]
+  },
+  {
+    "agent_id": "ea_7",
+    "name": "Will paperwork with Soundwave",
+    "topic": "The will paperwork with Soundwave Store. Finished; nothing open. | status: done | last active: 6d ago | keys: address:support@soundwave.example, thread:th_fx4",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Send an email about the will paperwork with Soundwave Store / agent: Sent an email about the will paperwork with Soundwave Store.",
+      "user: Any news on the will paperwork with Soundwave Store? / agent: The will paperwork with Soundwave Store. Finished; nothing open."
+    ]
+  },
+  {
+    "agent_id": "ea_8",
+    "name": "Utility account with Soundwave",
+    "topic": "The utility account with Soundwave Store. Finished; nothing open. | status: done | last active: 5d ago | keys: address:support@soundwave.example, thread:th_fx6",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Send an email about the utility account with Soundwave Store / agent: Sent an email about the utility account with Soundwave Store.",
+      "user: Any news on the utility account with Soundwave Store? / agent: The utility account with Soundwave Store. Finished; nothing open."
+    ]
+  },
+  {
+    "agent_id": "ea_9",
+    "name": "Headphones refund",
+    "topic": "Asked Soundwave Store for a refund on the broken headphones. Waiting on their reply. | status: waiting_external | last active: 3d ago | keys: address:support@soundwave.example, thread:th_refund",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Ask Soundwave for a refund on the broken headphones / agent: Emailed Soundwave Store about the headphones refund."
+    ]
+  },
+  {
+    "agent_id": "ea_10",
+    "name": "Holiday gift list",
+    "topic": "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen. | status: active | last active: 28m ago | keys: none",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Start a holiday gift list for the family / agent: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.",
+      "user: Any news on the family holiday gift list? / agent: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen."
+    ]
+  }
+]
+=== rag enriched: query ===
+any update on the refund?

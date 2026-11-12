@@ -1,0 +1,384 @@
+# world drift_oil_change@N10-high (seed 1994606457); probe message source=user
+=== baseline: roster.json ===
+[
+  "Payment plan with Becker",
+  "Reimbursement for Becker",
+  "Mail forwarding with Becker",
+  "Utility account with Becker",
+  "Invoice follow-up with Becker",
+  "Furniture order from Becker",
+  "Conference talk with Becker",
+  "Car insurance renewal",
+  "Bulk order with Becker",
+  "Dentist checkup booking"
+]
+=== baseline: IA user message ===
+<conversation_history>
+<user_message timestamp="2026-09-25 05:38:24">Draft a note about the payment plan with Becker Auto</user_message>
+<agent_message timestamp="2026-09-25 05:38:24">[SUCCESS] Payment plan with Becker: Drafted an email about the payment plan with Becker Auto (draft r-fx0).</agent_message>
+<poke_reply timestamp="2026-09-25 05:38:24">Update: Drafted an email about the payment plan with Becker Auto (draft r-fx0).</poke_reply>
+<user_message timestamp="2026-09-28 13:48:00">Send an email about Becker Auto's reimbursement</user_message>
+<agent_message timestamp="2026-09-28 13:48:00">[SUCCESS] Reimbursement for Becker: Sent an email about Becker Auto's reimbursement.</agent_message>
+<poke_reply timestamp="2026-09-28 13:48:00">Update: Sent an email about Becker Auto's reimbursement.</poke_reply>
+<user_message timestamp="2026-09-29 14:45:36">Send an email about mail forwarding with Becker Auto</user_message>
+<agent_message timestamp="2026-09-29 14:45:36">[SUCCESS] Mail forwarding with Becker: Sent an email about mail forwarding with Becker Auto.</agent_message>
+<poke_reply timestamp="2026-09-29 14:45:36">Update: Sent an email about mail forwarding with Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-01 07:04:48">Any news on the payment plan with Becker Auto?</user_message>
+<agent_message timestamp="2026-10-01 07:04:48">[SUCCESS] Payment plan with Becker: The payment plan with Becker Auto. In progress.</agent_message>
+<poke_reply timestamp="2026-10-01 07:04:48">Update: The payment plan with Becker Auto. In progress.</poke_reply>
+<user_message timestamp="2026-10-01 13:19:12">Send an email about the utility account with Becker Auto</user_message>
+<agent_message timestamp="2026-10-01 13:19:12">[SUCCESS] Utility account with Becker: Sent an email about the utility account with Becker Auto.</agent_message>
+<poke_reply timestamp="2026-10-01 13:19:12">Update: Sent an email about the utility account with Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-01 19:04:48">Send an email about the invoice follow-up with Becker Auto</user_message>
+<agent_message timestamp="2026-10-01 19:04:48">[SUCCESS] Invoice follow-up with Becker: Sent an email about the invoice follow-up with Becker Auto.</agent_message>
+<poke_reply timestamp="2026-10-01 19:04:48">Update: Sent an email about the invoice follow-up with Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-01 19:33:36">Any news on the utility account with Becker Auto?</user_message>
+<agent_message timestamp="2026-10-01 19:33:36">[SUCCESS] Utility account with Becker: The utility account with Becker Auto. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-10-01 19:33:36">Update: The utility account with Becker Auto. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-10-02 09:57:36">Any news on Becker Auto's reimbursement?</user_message>
+<agent_message timestamp="2026-10-02 09:57:36">[SUCCESS] Reimbursement for Becker: Becker Auto's reimbursement. Waiting on the user to decide.</agent_message>
+<poke_reply timestamp="2026-10-02 09:57:36">Update: Becker Auto's reimbursement. Waiting on the user to decide.</poke_reply>
+<user_message timestamp="2026-10-02 22:40:48">Send an email about the furniture order from Becker Auto</user_message>
+<agent_message timestamp="2026-10-02 22:40:48">[SUCCESS] Furniture order from Becker: Sent an email about the furniture order from Becker Auto.</agent_message>
+<poke_reply timestamp="2026-10-02 22:40:48">Update: Sent an email about the furniture order from Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-04 09:14:24">Any news on mail forwarding with Becker Auto?</user_message>
+<agent_message timestamp="2026-10-04 09:14:24">[SUCCESS] Mail forwarding with Becker: Mail forwarding with Becker Auto. Waiting on Becker's reply.</agent_message>
+<poke_reply timestamp="2026-10-04 09:14:24">Update: Mail forwarding with Becker Auto. Waiting on Becker's reply.</poke_reply>
+<user_message timestamp="2026-10-05 06:21:36">Any news on the furniture order from Becker Auto?</user_message>
+<agent_message timestamp="2026-10-05 06:21:36">[SUCCESS] Furniture order from Becker: The furniture order from Becker Auto. Waiting on Becker's reply.</agent_message>
+<poke_reply timestamp="2026-10-05 06:21:36">Update: The furniture order from Becker Auto. Waiting on Becker's reply.</poke_reply>
+<user_message timestamp="2026-10-05 18:21:36">Any news on the invoice follow-up with Becker Auto?</user_message>
+<agent_message timestamp="2026-10-05 18:21:36">[SUCCESS] Invoice follow-up with Becker: The invoice follow-up with Becker Auto. Waiting on the user to decide.</agent_message>
+<poke_reply timestamp="2026-10-05 18:21:36">Update: The invoice follow-up with Becker Auto. Waiting on the user to decide.</poke_reply>
+<user_message timestamp="2026-10-25 14:16:48">Send an email about the conference talk with Becker Auto</user_message>
+<agent_message timestamp="2026-10-25 14:16:48">[SUCCESS] Conference talk with Becker: Sent an email about the conference talk with Becker Auto.</agent_message>
+<poke_reply timestamp="2026-10-25 14:16:48">Update: Sent an email about the conference talk with Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-27 03:14:24">Any news on the conference talk with Becker Auto?</user_message>
+<agent_message timestamp="2026-10-27 03:14:24">[SUCCESS] Conference talk with Becker: The conference talk with Becker Auto. In progress.</agent_message>
+<poke_reply timestamp="2026-10-27 03:14:24">Update: The conference talk with Becker Auto. In progress.</poke_reply>
+<user_message timestamp="2026-10-27 15:00:00">Get car insurance renewal quotes</user_message>
+<agent_message timestamp="2026-10-27 15:00:00">[SUCCESS] Car insurance renewal: Emailed Shield Insurance about the car insurance renewal quotes.</agent_message>
+<poke_reply timestamp="2026-10-27 15:00:00">Update: Emailed Shield Insurance about the car insurance renewal quotes.</poke_reply>
+<user_message timestamp="2026-10-28 10:40:48">Draft a note about the bulk order with Becker Auto</user_message>
+<agent_message timestamp="2026-10-28 10:40:48">[SUCCESS] Bulk order with Becker: Drafted an email about the bulk order with Becker Auto (draft r-fx4).</agent_message>
+<poke_reply timestamp="2026-10-28 10:40:48">Update: Drafted an email about the bulk order with Becker Auto (draft r-fx4).</poke_reply>
+<user_message timestamp="2026-10-28 23:24:00">Send the draft about the bulk order with Becker Auto</user_message>
+<agent_message timestamp="2026-10-28 23:24:00">[SUCCESS] Bulk order with Becker: Sent the email about the bulk order with Becker Auto.</agent_message>
+<poke_reply timestamp="2026-10-28 23:24:00">Update: Sent the email about the bulk order with Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-30 15:00:00">Book my dentist checkup</user_message>
+<agent_message timestamp="2026-10-30 15:00:00">[SUCCESS] Dentist checkup booking: Emailed Bright Smile Dental about the dentist checkup.</agent_message>
+<poke_reply timestamp="2026-10-30 15:00:00">Update: Emailed Bright Smile Dental about the dentist checkup.</poke_reply>
+<user_message timestamp="2026-10-31 15:00:00">Any news on the car insurance renewal quotes?</user_message>
+<agent_message timestamp="2026-10-31 15:00:00">[SUCCESS] Car insurance renewal: Gathered three car insurance renewal quotes. The user kept the current insurer.</agent_message>
+<poke_reply timestamp="2026-10-31 15:00:00">Update: Gathered three car insurance renewal quotes. The user kept the current insurer.</poke_reply>
+<user_message timestamp="2026-11-09 15:00:00">Book an oil change for Saturday</user_message>
+<agent_message timestamp="2026-11-09 15:00:00">[SUCCESS] Dentist checkup booking: Emailed Becker Auto about the Saturday oil change.</agent_message>
+<poke_reply timestamp="2026-11-09 15:00:00">Update: Emailed Becker Auto about the Saturday oil change.</poke_reply>
+</conversation_history>
+
+<active_agents>
+<agent name="Payment plan with Becker" />
+<agent name="Reimbursement for Becker" />
+<agent name="Mail forwarding with Becker" />
+<agent name="Utility account with Becker" />
+<agent name="Invoice follow-up with Becker" />
+<agent name="Furniture order from Becker" />
+<agent name="Conference talk with Becker" />
+<agent name="Car insurance renewal" />
+<agent name="Bulk order with Becker" />
+<agent name="Dentist checkup booking" />
+</active_agents>
+
+<new_user_message>
+did the garage confirm the oil change for Saturday?
+</new_user_message>
+=== registry: IA user message ===
+<conversation_history>
+<user_message timestamp="2026-09-25 05:38:24">Draft a note about the payment plan with Becker Auto</user_message>
+<agent_message timestamp="2026-09-25 05:38:24">[SUCCESS] ea_1 (Payment plan with Becker): Drafted an email about the payment plan with Becker Auto (draft r-fx0).</agent_message>
+<poke_reply timestamp="2026-09-25 05:38:24">Update: Drafted an email about the payment plan with Becker Auto (draft r-fx0).</poke_reply>
+<user_message timestamp="2026-09-28 13:48:00">Send an email about Becker Auto's reimbursement</user_message>
+<agent_message timestamp="2026-09-28 13:48:00">[SUCCESS] ea_2 (Reimbursement for Becker): Sent an email about Becker Auto's reimbursement.</agent_message>
+<poke_reply timestamp="2026-09-28 13:48:00">Update: Sent an email about Becker Auto's reimbursement.</poke_reply>
+<user_message timestamp="2026-09-29 14:45:36">Send an email about mail forwarding with Becker Auto</user_message>
+<agent_message timestamp="2026-09-29 14:45:36">[SUCCESS] ea_3 (Mail forwarding with Becker): Sent an email about mail forwarding with Becker Auto.</agent_message>
+<poke_reply timestamp="2026-09-29 14:45:36">Update: Sent an email about mail forwarding with Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-01 07:04:48">Any news on the payment plan with Becker Auto?</user_message>
+<agent_message timestamp="2026-10-01 07:04:48">[SUCCESS] ea_1 (Payment plan with Becker): The payment plan with Becker Auto. In progress.</agent_message>
+<poke_reply timestamp="2026-10-01 07:04:48">Update: The payment plan with Becker Auto. In progress.</poke_reply>
+<user_message timestamp="2026-10-01 13:19:12">Send an email about the utility account with Becker Auto</user_message>
+<agent_message timestamp="2026-10-01 13:19:12">[SUCCESS] ea_4 (Utility account with Becker): Sent an email about the utility account with Becker Auto.</agent_message>
+<poke_reply timestamp="2026-10-01 13:19:12">Update: Sent an email about the utility account with Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-01 19:04:48">Send an email about the invoice follow-up with Becker Auto</user_message>
+<agent_message timestamp="2026-10-01 19:04:48">[SUCCESS] ea_5 (Invoice follow-up with Becker): Sent an email about the invoice follow-up with Becker Auto.</agent_message>
+<poke_reply timestamp="2026-10-01 19:04:48">Update: Sent an email about the invoice follow-up with Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-01 19:33:36">Any news on the utility account with Becker Auto?</user_message>
+<agent_message timestamp="2026-10-01 19:33:36">[SUCCESS] ea_4 (Utility account with Becker): The utility account with Becker Auto. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-10-01 19:33:36">Update: The utility account with Becker Auto. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-10-02 09:57:36">Any news on Becker Auto's reimbursement?</user_message>
+<agent_message timestamp="2026-10-02 09:57:36">[SUCCESS] ea_2 (Reimbursement for Becker): Becker Auto's reimbursement. Waiting on the user to decide.</agent_message>
+<poke_reply timestamp="2026-10-02 09:57:36">Update: Becker Auto's reimbursement. Waiting on the user to decide.</poke_reply>
+<user_message timestamp="2026-10-02 22:40:48">Send an email about the furniture order from Becker Auto</user_message>
+<agent_message timestamp="2026-10-02 22:40:48">[SUCCESS] ea_6 (Furniture order from Becker): Sent an email about the furniture order from Becker Auto.</agent_message>
+<poke_reply timestamp="2026-10-02 22:40:48">Update: Sent an email about the furniture order from Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-04 09:14:24">Any news on mail forwarding with Becker Auto?</user_message>
+<agent_message timestamp="2026-10-04 09:14:24">[SUCCESS] ea_3 (Mail forwarding with Becker): Mail forwarding with Becker Auto. Waiting on Becker's reply.</agent_message>
+<poke_reply timestamp="2026-10-04 09:14:24">Update: Mail forwarding with Becker Auto. Waiting on Becker's reply.</poke_reply>
+<user_message timestamp="2026-10-05 06:21:36">Any news on the furniture order from Becker Auto?</user_message>
+<agent_message timestamp="2026-10-05 06:21:36">[SUCCESS] ea_6 (Furniture order from Becker): The furniture order from Becker Auto. Waiting on Becker's reply.</agent_message>
+<poke_reply timestamp="2026-10-05 06:21:36">Update: The furniture order from Becker Auto. Waiting on Becker's reply.</poke_reply>
+<user_message timestamp="2026-10-05 18:21:36">Any news on the invoice follow-up with Becker Auto?</user_message>
+<agent_message timestamp="2026-10-05 18:21:36">[SUCCESS] ea_5 (Invoice follow-up with Becker): The invoice follow-up with Becker Auto. Waiting on the user to decide.</agent_message>
+<poke_reply timestamp="2026-10-05 18:21:36">Update: The invoice follow-up with Becker Auto. Waiting on the user to decide.</poke_reply>
+<user_message timestamp="2026-10-25 14:16:48">Send an email about the conference talk with Becker Auto</user_message>
+<agent_message timestamp="2026-10-25 14:16:48">[SUCCESS] ea_7 (Conference talk with Becker): Sent an email about the conference talk with Becker Auto.</agent_message>
+<poke_reply timestamp="2026-10-25 14:16:48">Update: Sent an email about the conference talk with Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-27 03:14:24">Any news on the conference talk with Becker Auto?</user_message>
+<agent_message timestamp="2026-10-27 03:14:24">[SUCCESS] ea_7 (Conference talk with Becker): The conference talk with Becker Auto. In progress.</agent_message>
+<poke_reply timestamp="2026-10-27 03:14:24">Update: The conference talk with Becker Auto. In progress.</poke_reply>
+<user_message timestamp="2026-10-27 15:00:00">Get car insurance renewal quotes</user_message>
+<agent_message timestamp="2026-10-27 15:00:00">[SUCCESS] ea_8 (Car insurance renewal): Emailed Shield Insurance about the car insurance renewal quotes.</agent_message>
+<poke_reply timestamp="2026-10-27 15:00:00">Update: Emailed Shield Insurance about the car insurance renewal quotes.</poke_reply>
+<user_message timestamp="2026-10-28 10:40:48">Draft a note about the bulk order with Becker Auto</user_message>
+<agent_message timestamp="2026-10-28 10:40:48">[SUCCESS] ea_9 (Bulk order with Becker): Drafted an email about the bulk order with Becker Auto (draft r-fx4).</agent_message>
+<poke_reply timestamp="2026-10-28 10:40:48">Update: Drafted an email about the bulk order with Becker Auto (draft r-fx4).</poke_reply>
+<user_message timestamp="2026-10-28 23:24:00">Send the draft about the bulk order with Becker Auto</user_message>
+<agent_message timestamp="2026-10-28 23:24:00">[SUCCESS] ea_9 (Bulk order with Becker): Sent the email about the bulk order with Becker Auto.</agent_message>
+<poke_reply timestamp="2026-10-28 23:24:00">Update: Sent the email about the bulk order with Becker Auto.</poke_reply>
+<user_message timestamp="2026-10-30 15:00:00">Book my dentist checkup</user_message>
+<agent_message timestamp="2026-10-30 15:00:00">[SUCCESS] ea_10 (Dentist checkup booking): Emailed Bright Smile Dental about the dentist checkup.</agent_message>
+<poke_reply timestamp="2026-10-30 15:00:00">Update: Emailed Bright Smile Dental about the dentist checkup.</poke_reply>
+<user_message timestamp="2026-10-31 15:00:00">Any news on the car insurance renewal quotes?</user_message>
+<agent_message timestamp="2026-10-31 15:00:00">[SUCCESS] ea_8 (Car insurance renewal): Gathered three car insurance renewal quotes. The user kept the current insurer.</agent_message>
+<poke_reply timestamp="2026-10-31 15:00:00">Update: Gathered three car insurance renewal quotes. The user kept the current insurer.</poke_reply>
+<user_message timestamp="2026-11-09 15:00:00">Book an oil change for Saturday</user_message>
+<agent_message timestamp="2026-11-09 15:00:00">[SUCCESS] ea_10 (Dentist checkup booking): Emailed Becker Auto about the Saturday oil change.</agent_message>
+<poke_reply timestamp="2026-11-09 15:00:00">Update: Emailed Becker Auto about the Saturday oil change.</poke_reply>
+</conversation_history>
+
+<active_agents>
+ea_10 | Dentist checkup booking | frontdesk@brightsmilede… +1 | open: none | 2d waiting_external | Owns the dentist checkup at Bright Smile Dental and Saturday…
+ea_7 | Conference talk with Becker | service@beckerauto.exam… | open: none | 15d | The conference talk with Becker Auto. In progress.
+ea_5 | Invoice follow-up with Becker | service@beckerauto.exam… | open: none | 36d waiting_user | The invoice follow-up with Becker Auto. Waiting on the user t…
+ea_6 | Furniture order from Becker | service@beckerauto.exam… | open: none | 37d waiting_external | The furniture order from Becker Auto. Waiting on Becker's r…
+ea_3 | Mail forwarding with Becker | service@beckerauto.exam… | open: none | 38d waiting_external | Mail forwarding with Becker Auto. Waiting on Becker's reply.
+(5 of 10 agents shown)
+</active_agents>
+
+<new_user_message>
+did the garage confirm the oil change for Saturday?
+</new_user_message>
+=== rag as_built: roster dicts ===
+[
+  {
+    "agent_id": "ea_1",
+    "name": "Payment plan with Becker",
+    "topic": "The payment plan with Becker Auto. In progress.",
+    "active_tasks": [
+      "draft r-fx0"
+    ],
+    "past_action_notes": [
+      "Drafted an email about the payment plan with Becker Auto (draft r-fx0).",
+      "The payment plan with Becker Auto. In progress."
+    ]
+  },
+  {
+    "agent_id": "ea_2",
+    "name": "Reimbursement for Becker",
+    "topic": "Becker Auto's reimbursement. Waiting on the user to decide.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about Becker Auto's reimbursement.",
+      "Becker Auto's reimbursement. Waiting on the user to decide."
+    ]
+  },
+  {
+    "agent_id": "ea_3",
+    "name": "Mail forwarding with Becker",
+    "topic": "Mail forwarding with Becker Auto. Waiting on Becker's reply.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about mail forwarding with Becker Auto.",
+      "Mail forwarding with Becker Auto. Waiting on Becker's reply."
+    ]
+  },
+  {
+    "agent_id": "ea_4",
+    "name": "Utility account with Becker",
+    "topic": "The utility account with Becker Auto. Finished; nothing open.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about the utility account with Becker Auto.",
+      "The utility account with Becker Auto. Finished; nothing open."
+    ]
+  },
+  {
+    "agent_id": "ea_5",
+    "name": "Invoice follow-up with Becker",
+    "topic": "The invoice follow-up with Becker Auto. Waiting on the user to decide.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about the invoice follow-up with Becker Auto.",
+      "The invoice follow-up with Becker Auto. Waiting on the user to decide."
+    ]
+  },
+  {
+    "agent_id": "ea_6",
+    "name": "Furniture order from Becker",
+    "topic": "The furniture order from Becker Auto. Waiting on Becker's reply.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about the furniture order from Becker Auto.",
+      "The furniture order from Becker Auto. Waiting on Becker's reply."
+    ]
+  },
+  {
+    "agent_id": "ea_7",
+    "name": "Conference talk with Becker",
+    "topic": "The conference talk with Becker Auto. In progress.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about the conference talk with Becker Auto.",
+      "The conference talk with Becker Auto. In progress."
+    ]
+  },
+  {
+    "agent_id": "ea_8",
+    "name": "Car insurance renewal",
+    "topic": "Gathered three car insurance renewal quotes. The user kept the current insurer.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Emailed Shield Insurance about the car insurance renewal quotes.",
+      "Gathered three car insurance renewal quotes. The user kept the current insurer."
+    ]
+  },
+  {
+    "agent_id": "ea_9",
+    "name": "Bulk order with Becker",
+    "topic": "The bulk order with Becker Auto. Finished; nothing open.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Drafted an email about the bulk order with Becker Auto (draft r-fx4).",
+      "Sent the email about the bulk order with Becker Auto."
+    ]
+  },
+  {
+    "agent_id": "ea_10",
+    "name": "Dentist checkup booking",
+    "topic": "Owns the dentist checkup at Bright Smile Dental and Saturday's oil change with Becker Auto, which awaits confirmation.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Emailed Bright Smile Dental about the dentist checkup.",
+      "Emailed Becker Auto about the Saturday oil change."
+    ]
+  }
+]
+=== rag as_built: query ===
+did the garage confirm the oil change for Saturday?
+=== rag enriched: roster dicts ===
+[
+  {
+    "agent_id": "ea_1",
+    "name": "Payment plan with Becker",
+    "topic": "The payment plan with Becker Auto. In progress. | status: active | last active: 41d ago | keys: address:service@beckerauto.example, draft:r-fx0, thread:th_fx0",
+    "active_tasks": [
+      "draft r-fx0"
+    ],
+    "past_action_notes": [
+      "user: Draft a note about the payment plan with Becker Auto / agent: Drafted an email about the payment plan with Becker Auto (draft r-fx0).",
+      "user: Any news on the payment plan with Becker Auto? / agent: The payment plan with Becker Auto. In progress."
+    ]
+  },
+  {
+    "agent_id": "ea_2",
+    "name": "Reimbursement for Becker",
+    "topic": "Becker Auto's reimbursement. Waiting on the user to decide. | status: waiting_user | last active: 40d ago | keys: address:service@beckerauto.example, thread:th_fx7",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Send an email about Becker Auto's reimbursement / agent: Sent an email about Becker Auto's reimbursement.",
+      "user: Any news on Becker Auto's reimbursement? / agent: Becker Auto's reimbursement. Waiting on the user to decide."
+    ]
+  },
+  {
+    "agent_id": "ea_3",
+    "name": "Mail forwarding with Becker",
+    "topic": "Mail forwarding with Becker Auto. Waiting on Becker's reply. | status: waiting_external | last active: 38d ago | keys: address:service@beckerauto.example, thread:th_fx3",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Send an email about mail forwarding with Becker Auto / agent: Sent an email about mail forwarding with Becker Auto.",
+      "user: Any news on mail forwarding with Becker Auto? / agent: Mail forwarding with Becker Auto. Waiting on Becker's reply."
+    ]
+  },
+  {
+    "agent_id": "ea_4",
+    "name": "Utility account with Becker",
+    "topic": "The utility account with Becker Auto. Finished; nothing open. | status: done | last active: 40d ago | keys: address:service@beckerauto.example, thread:th_fx1",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Send an email about the utility account with Becker Auto / agent: Sent an email about the utility account with Becker Auto.",
+      "user: Any news on the utility account with Becker Auto? / agent: The utility account with Becker Auto. Finished; nothing open."
+    ]
+  },
+  {
+    "agent_id": "ea_5",
+    "name": "Invoice follow-up with Becker",
+    "topic": "The invoice follow-up with Becker Auto. Waiting on the user to decide. | status: waiting_user | last active: 36d ago | keys: address:service@beckerauto.example, thread:th_fx6",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Send an email about the invoice follow-up with Becker Auto / agent: Sent an email about the invoice follow-up with Becker Auto.",
+      "user: Any news on the invoice follow-up with Becker Auto? / agent: The invoice follow-up with Becker Auto. Waiting on the user to decide."
+    ]
+  },
+  {
+    "agent_id": "ea_6",
+    "name": "Furniture order from Becker",
+    "topic": "The furniture order from Becker Auto. Waiting on Becker's reply. | status: waiting_external | last active: 37d ago | keys: address:service@beckerauto.example, thread:th_fx5",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Send an email about the furniture order from Becker Auto / agent: Sent an email about the furniture order from Becker Auto.",
+      "user: Any news on the furniture order from Becker Auto? / agent: The furniture order from Becker Auto. Waiting on Becker's reply."
+    ]
+  },
+  {
+    "agent_id": "ea_7",
+    "name": "Conference talk with Becker",
+    "topic": "The conference talk with Becker Auto. In progress. | status: active | last active: 15d ago | keys: address:service@beckerauto.example, thread:th_fx2",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Send an email about the conference talk with Becker Auto / agent: Sent an email about the conference talk with Becker Auto.",
+      "user: Any news on the conference talk with Becker Auto? / agent: The conference talk with Becker Auto. In progress."
+    ]
+  },
+  {
+    "agent_id": "ea_8",
+    "name": "Car insurance renewal",
+    "topic": "Gathered three car insurance renewal quotes. The user kept the current insurer. | status: done | last active: 11d ago | keys: address:quotes@shieldins.example, thread:th_ins_331",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Get car insurance renewal quotes / agent: Emailed Shield Insurance about the car insurance renewal quotes.",
+      "user: Any news on the car insurance renewal quotes? / agent: Gathered three car insurance renewal quotes. The user kept the current insurer."
+    ]
+  },
+  {
+    "agent_id": "ea_9",
+    "name": "Bulk order with Becker",
+    "topic": "The bulk order with Becker Auto. Finished; nothing open. | status: done | last active: 13d ago | keys: address:service@beckerauto.example, draft:r-fx4, thread:th_fx4",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Draft a note about the bulk order with Becker Auto / agent: Drafted an email about the bulk order with Becker Auto (draft r-fx4).",
+      "user: Send the draft about the bulk order with Becker Auto / agent: Sent the email about the bulk order with Becker Auto."
+    ]
+  },
+  {
+    "agent_id": "ea_10",
+    "name": "Dentist checkup booking",
+    "topic": "Owns the dentist checkup at Bright Smile Dental and Saturday's oil change with Becker Auto, which awaits confirmation. | status: waiting_external | last active: 2d ago | keys: address:frontdesk@brightsmiledental.example, address:service@beckerauto.example, thread:th_dent_chk, thread:th_oil",
+    "active_tasks": [],
+    "past_action_notes": [
+      "user: Book my dentist checkup / agent: Emailed Bright Smile Dental about the dentist checkup.",
+      "user: Book an oil change for Saturday / agent: Emailed Becker Auto about the Saturday oil change."
+    ]
+  }
+]
+=== rag enriched: query ===
+did the garage confirm the oil change for Saturday?

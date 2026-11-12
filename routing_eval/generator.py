@@ -206,11 +206,16 @@ def _addresses(ws: Workstream) -> List[str]:
     return [catalog.PEOPLE[p].address for p in ws.people]
 
 
+def _who(ws: Workstream, prefix: str) -> str:
+    """'<prefix> <names> ' unless the topic already names them (avoids 'Bob ... with Bob')."""
+    names = _names(ws)
+    return "" if any(catalog.PEOPLE[p].name in ws.topic for p in ws.people) else f"{prefix}{names} "
+
+
 def _default_message(ws: Workstream, step: StepSpec) -> str:
-    who = _names(ws)
     return {
-        "reply": f"Email {who} about {ws.topic}",
-        "draft": f"Draft a note to {who} about {ws.topic}",
+        "reply": f"Email {_names(ws)} about {ws.topic}" if _who(ws, "x") else f"Send an email about {ws.topic}",
+        "draft": f"Draft a note {_who(ws, 'to ')}about {ws.topic}",
         "send": f"Send the draft about {ws.topic}",
         "remind": f"Set a reminder about {ws.topic}",
         "search": f"Find the latest email about {ws.topic}",
@@ -219,10 +224,9 @@ def _default_message(ws: Workstream, step: StepSpec) -> str:
 
 
 def _ea_text(ws: Workstream, step: StepSpec) -> str:
-    who = _names(ws)
     return {
-        "reply": f"Emailed {who} about {ws.topic}.",
-        "draft": f"Drafted an email to {who} about {ws.topic} (draft {ws.draft}).",
+        "reply": f"Emailed {_who(ws, '')}about {ws.topic}." if _who(ws, "x") else f"Sent an email about {ws.topic}.",
+        "draft": f"Drafted an email {_who(ws, 'to ')}about {ws.topic} (draft {ws.draft}).",
         "send": f"Sent the email about {ws.topic}.",
         "remind": f"Set reminder t_{ws.trigger} for {ws.topic}.",
         "search": f"Found the email thread about {ws.topic}.",
