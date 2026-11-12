@@ -16,3 +16,12 @@ Table: `g1.md`; full numbers (per category, per overlap stratum, per N/similarit
 12 of 18 categories were easy, 10 for lexical alone (pooled 72%). 41 of 44 route probes shared a content word with
 the target's label or brief. Led to D-006: apply the rule by category kind and add a `no_overlap` stratum instead of
 rewording every probe.
+
+## Run 3 (2026-11-12, after the filler-pool and weight follow-up): PASS
+- Filler pool: organisation targets now draw "same person" fillers from 70 org-plausible templates
+  (catalog.ORG_TEMPLATES), and candidates are enumerated per axis instead of random retries.
+  High-similarity fallback: 0.0% at N = 3, 10, 30 and 50 (was 0 / 0 / 15.6 / 27.1%).
+- Weights: no response on a create or ask probe = dropped request (4); each extra agent on a
+  multi_target route = wrong route, informational (4). No unweighted error types remain.
+- lexical at thresholds 0.5 / 1.0 / 2.0: pooled 49% / 48% / 43%; best no_overlap discrimination
+  stratum 0% at every threshold, so the G1 verdict does not depend on the threshold.

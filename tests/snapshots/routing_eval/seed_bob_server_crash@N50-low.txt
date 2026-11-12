@@ -1,247 +1,243 @@
 # world seed_bob_server_crash@N50-low (seed 1795126061); probe message source=user
 === baseline: roster.json ===
 [
-  "Phone screen repair with Grace",
-  "Tennis lessons with Paula",
-  "Camera return to Vera",
-  "Grandparents visit with Vera",
-  "Brand guidelines with Ines",
-  "Photo shoot with Aaron",
-  "Conference talk with Tara",
-  "Bulk order with Noah",
-  "Roof leak with George",
-  "Food bank shifts with Julia",
-  "Recruiter call with Marco",
-  "Utility account with Caleb",
-  "Team roadmap with George",
-  "Garden design with Diego",
-  "Logo refresh with Elena",
-  "Charity gala with Kevin",
-  "Conference talk with Kevin",
-  "Pet insurance with Hannah",
-  "Logo refresh with Maya",
-  "Tennis lessons with Yusuf",
-  "Food bank shifts with Simon",
-  "Yoga classes with Theo",
-  "Roof leak with Julia",
-  "Physio appointment with Noah",
-  "Food bank shifts with Marco",
-  "Photo shoot with Liam",
-  "Website mockups with Xenia",
-  "Window cleaning with Felix",
-  "Language lessons with Ines",
-  "Furnace service with Bianca",
-  "Utility account with Noah",
-  "Bulk order with Zoe",
-  "Language lessons with Felix",
-  "Will paperwork with Ines",
-  "Dog walking with Tara",
-  "Family reunion with Diego",
-  "Invoice follow-up with Isaac",
-  "Physio appointment with Vera",
-  "Headcount plan with Kira",
-  "Cat sitting with Aaron",
-  "Interview loop for Oscar",
-  "Family reunion with Aaron",
-  "Invoice follow-up with Maya",
-  "Invoice follow-up with Quinn",
-  "Website mockups with Jonas",
+  "Payment plan with Vera",
+  "Phone screen repair with Aaron",
+  "School pickup with Caleb",
+  "Parking spot from Diego",
+  "Photo shoot with Nina",
+  "Car wash plan with Marco",
+  "Park cleanup with Quinn",
+  "Website mockups with Quinn",
+  "Mentoring with Xenia",
+  "NDA review for Caleb",
+  "Weekly digest from Theo",
+  "Cat sitting with Felix",
+  "Cat sitting with Fatima",
+  "Payment plan with Diego",
+  "Cat sitting with Noah",
+  "Price alert for Yusuf",
+  "Pet insurance with Pedro",
+  "Online course with Jonas",
+  "Payment plan with Rachel",
+  "Furniture order from Umar",
+  "Logo refresh with Simon",
+  "Hotel booking with Oscar",
+  "Dog walking with Elena",
+  "Yoga classes with Hannah",
+  "Phone screen repair with Yusuf",
+  "Price alert for Quinn",
+  "Camera return to Wes",
+  "Disk usage alert with Bianca",
+  "Camera return to Pedro",
+  "Blog post edits for Elena",
+  "Airport pickup for Ula",
+  "Hotel booking with Fatima",
+  "Food bank shifts with Vera",
+  "Camera return to Bianca",
+  "Yoga classes with Noah",
+  "Library card with Simon",
+  "Library card with Kevin",
+  "Quarterly goals with Julia",
+  "Furnace service with Aaron",
+  "Mail forwarding with Simon",
+  "Furnace service with George",
+  "Tennis lessons with Grace",
+  "Cat sitting with Jonas",
+  "Family reunion with Kevin",
   "Lease renewal with Bob",
-  "Park cleanup with Nina",
+  "NDA review for Pedro",
+  "Cat sitting with Paula",
   "Reunion dinner with Bob Lee",
-  "Cat sitting with Bianca",
-  "Deploy + gateway crash w/ Bob"
+  "Deploy + gateway crash w/ Bob",
+  "Tire change with Julia"
 ]
 === baseline: IA user message ===
 <conversation_history>
 <conversation_summary>Earlier in the conversation:
-- The user asked for help with the phone screen repair with Grace Okoro.
-- The user asked for help with tennis lessons with Paula Reyes.
-- The user asked for help with the camera return to Vera Holm.
-- The user asked for help with the grandparents visit with Vera Holm.
-- The user asked for help with the brand guidelines with Ines Duarte.
-- The user asked for help with the photo shoot with Aaron Blake.
-- The user asked for help with the conference talk with Tara Singh.
-- The user asked for help with the bulk order with Noah Fischer.
-- The user asked for help with the roof leak with George Liu.
-- The user asked for help with food bank shifts with Julia Novak.
-- The user asked for help with the recruiter call with Marco Silva.
-- The user asked for help with the utility account with Caleb Stone.
-- The user asked for help with the team roadmap with George Liu.
-- The user asked for help with the garden design with Diego Ramos.
-- The user asked for help with the logo refresh with Elena Ivanova.
-- The user asked for help with the charity gala with Kevin Osei.
-- The user asked for help with the conference talk with Kevin Osei.
-- The user asked for help with pet insurance with Hannah Weber.
-- The user asked for help with the logo refresh with Maya Cohen.
-- The user asked for help with tennis lessons with Yusuf Demir.
-- The user asked for help with food bank shifts with Simon Clarke.
-- The user asked for help with yoga classes with Theo Laurent.
-- The user asked for help with the roof leak with Julia Novak.
-- The user asked for help with the physio appointment with Noah Fischer.
-- The user asked for help with food bank shifts with Marco Silva.
-- The user asked for help with the photo shoot with Liam Walsh.
-- The user asked for help with website mockups with Xenia Park.
-- The user asked for help with window cleaning with Felix Wagner.
-- The user asked for help with language lessons with Ines Duarte.
-- The user asked for help with the furnace service with Bianca Rossi.
-- The user asked for help with the utility account with Noah Fischer.
-- The user asked for help with the bulk order with Zoe Martin.
-- The user asked for help with language lessons with Felix Wagner.
-- The user asked for help with the will paperwork with Ines Duarte.
-- The user asked for help with dog walking with Tara Singh.
-- The user asked for help with the family reunion with Diego Ramos.
-- The user asked for help with the invoice follow-up with Isaac Moreau.</conversation_summary>
-<poke_reply timestamp="2026-10-26 22:40:48">Update: Language lessons with Ines Duarte. In progress.</poke_reply>
-<user_message timestamp="2026-10-27 14:02:24">Send an email about the physio appointment with Vera Holm</user_message>
-<agent_message timestamp="2026-10-27 14:02:24">[SUCCESS] Physio appointment with Vera: Sent an email about the physio appointment with Vera Holm.</agent_message>
-<poke_reply timestamp="2026-10-27 14:02:24">Update: Sent an email about the physio appointment with Vera Holm.</poke_reply>
-<user_message timestamp="2026-10-27 19:33:36">Any news on the utility account with Noah Fischer?</user_message>
-<agent_message timestamp="2026-10-27 19:33:36">[SUCCESS] Utility account with Noah: The utility account with Noah Fischer. Waiting on Noah's reply.</agent_message>
-<poke_reply timestamp="2026-10-27 19:33:36">Update: The utility account with Noah Fischer. Waiting on Noah's reply.</poke_reply>
-<user_message timestamp="2026-10-29 03:00:00">Any news on language lessons with Felix Wagner?</user_message>
-<agent_message timestamp="2026-10-29 03:00:00">[SUCCESS] Language lessons with Felix: Language lessons with Felix Wagner. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-10-29 03:00:00">Update: Language lessons with Felix Wagner. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-10-29 04:12:00">Any news on the will paperwork with Ines Duarte?</user_message>
-<agent_message timestamp="2026-10-29 04:12:00">[SUCCESS] Will paperwork with Ines: The will paperwork with Ines Duarte. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-10-29 04:12:00">Update: The will paperwork with Ines Duarte. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-10-29 06:36:00">Any news on dog walking with Tara Singh?</user_message>
-<agent_message timestamp="2026-10-29 06:36:00">[SUCCESS] Dog walking with Tara: Dog walking with Tara Singh. In progress.</agent_message>
-<poke_reply timestamp="2026-10-29 06:36:00">Update: Dog walking with Tara Singh. In progress.</poke_reply>
-<user_message timestamp="2026-10-30 00:21:36">Any news on the invoice follow-up with Isaac Moreau?</user_message>
-<agent_message timestamp="2026-10-30 00:21:36">[SUCCESS] Invoice follow-up with Isaac: The invoice follow-up with Isaac Moreau. Waiting on Isaac's reply.</agent_message>
-<poke_reply timestamp="2026-10-30 00:21:36">Update: The invoice follow-up with Isaac Moreau. Waiting on Isaac's reply.</poke_reply>
-<user_message timestamp="2026-10-30 01:33:36">Any news on the bulk order with Zoe Martin?</user_message>
-<agent_message timestamp="2026-10-30 01:33:36">[SUCCESS] Bulk order with Zoe: The bulk order with Zoe Martin. In progress.</agent_message>
-<poke_reply timestamp="2026-10-30 01:33:36">Update: The bulk order with Zoe Martin. In progress.</poke_reply>
-<user_message timestamp="2026-10-30 09:28:48">Draft a note about the headcount plan with Kira Sato</user_message>
-<agent_message timestamp="2026-10-30 09:28:48">[SUCCESS] Headcount plan with Kira: Drafted an email about the headcount plan with Kira Sato (draft r-fx8).</agent_message>
-<poke_reply timestamp="2026-10-30 09:28:48">Update: Drafted an email about the headcount plan with Kira Sato (draft r-fx8).</poke_reply>
-<user_message timestamp="2026-10-30 22:55:12">Send an email about cat sitting with Aaron Blake</user_message>
-<agent_message timestamp="2026-10-30 22:55:12">[SUCCESS] Cat sitting with Aaron: Sent an email about cat sitting with Aaron Blake.</agent_message>
-<poke_reply timestamp="2026-10-30 22:55:12">Update: Sent an email about cat sitting with Aaron Blake.</poke_reply>
-<user_message timestamp="2026-11-01 11:38:24">Send an email about the interview loop for Oscar Lund</user_message>
-<agent_message timestamp="2026-11-01 11:38:24">[SUCCESS] Interview loop for Oscar: Sent an email about the interview loop for Oscar Lund.</agent_message>
-<poke_reply timestamp="2026-11-01 11:38:24">Update: Sent an email about the interview loop for Oscar Lund.</poke_reply>
-<user_message timestamp="2026-11-01 14:16:48">Any news on the family reunion with Diego Ramos?</user_message>
-<agent_message timestamp="2026-11-01 14:16:48">[SUCCESS] Family reunion with Diego: The family reunion with Diego Ramos. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-11-01 14:16:48">Update: The family reunion with Diego Ramos. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-11-02 17:24:00">Send an email about the family reunion with Aaron Blake</user_message>
-<agent_message timestamp="2026-11-02 17:24:00">[SUCCESS] Family reunion with Aaron: Sent an email about the family reunion with Aaron Blake.</agent_message>
-<poke_reply timestamp="2026-11-02 17:24:00">Update: Sent an email about the family reunion with Aaron Blake.</poke_reply>
-<user_message timestamp="2026-11-03 00:50:24">Any news on cat sitting with Aaron Blake?</user_message>
-<agent_message timestamp="2026-11-03 00:50:24">[SUCCESS] Cat sitting with Aaron: Cat sitting with Aaron Blake. Waiting on Aaron's reply.</agent_message>
-<poke_reply timestamp="2026-11-03 00:50:24">Update: Cat sitting with Aaron Blake. Waiting on Aaron's reply.</poke_reply>
-<user_message timestamp="2026-11-03 12:50:24">Any news on the physio appointment with Vera Holm?</user_message>
-<agent_message timestamp="2026-11-03 12:50:24">[SUCCESS] Physio appointment with Vera: The physio appointment with Vera Holm. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-11-03 12:50:24">Update: The physio appointment with Vera Holm. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-11-04 03:14:24">Send the draft about the headcount plan with Kira Sato</user_message>
-<agent_message timestamp="2026-11-04 03:14:24">[SUCCESS] Headcount plan with Kira: Sent the email about the headcount plan with Kira Sato.</agent_message>
-<poke_reply timestamp="2026-11-04 03:14:24">Update: Sent the email about the headcount plan with Kira Sato.</poke_reply>
-<user_message timestamp="2026-11-04 04:55:12">Send an email about the invoice follow-up with Maya Cohen</user_message>
-<agent_message timestamp="2026-11-04 04:55:12">[SUCCESS] Invoice follow-up with Maya: Sent an email about the invoice follow-up with Maya Cohen.</agent_message>
-<poke_reply timestamp="2026-11-04 04:55:12">Update: Sent an email about the invoice follow-up with Maya Cohen.</poke_reply>
-<user_message timestamp="2026-11-04 13:04:48">Send an email about the invoice follow-up with Quinn Harper</user_message>
-<agent_message timestamp="2026-11-04 13:04:48">[SUCCESS] Invoice follow-up with Quinn: Sent an email about the invoice follow-up with Quinn Harper.</agent_message>
-<poke_reply timestamp="2026-11-04 13:04:48">Update: Sent an email about the invoice follow-up with Quinn Harper.</poke_reply>
-<user_message timestamp="2026-11-04 13:33:36">Send an email about website mockups with Jonas Berg</user_message>
-<agent_message timestamp="2026-11-04 13:33:36">[SUCCESS] Website mockups with Jonas: Sent an email about website mockups with Jonas Berg.</agent_message>
-<poke_reply timestamp="2026-11-04 13:33:36">Update: Sent an email about website mockups with Jonas Berg.</poke_reply>
-<user_message timestamp="2026-11-06 17:52:48">Any news on the interview loop for Oscar Lund?</user_message>
-<agent_message timestamp="2026-11-06 17:52:48">[SUCCESS] Interview loop for Oscar: The interview loop for Oscar Lund. Waiting on Oscar's reply.</agent_message>
-<poke_reply timestamp="2026-11-06 17:52:48">Update: The interview loop for Oscar Lund. Waiting on Oscar's reply.</poke_reply>
-<user_message timestamp="2026-11-07 10:26:24">Any news on the invoice follow-up with Maya Cohen?</user_message>
-<agent_message timestamp="2026-11-07 10:26:24">[SUCCESS] Invoice follow-up with Maya: The invoice follow-up with Maya Cohen. In progress.</agent_message>
-<poke_reply timestamp="2026-11-07 10:26:24">Update: The invoice follow-up with Maya Cohen. In progress.</poke_reply>
+- The user asked for help with the payment plan with Vera Holm.
+- The user asked for help with the phone screen repair with Aaron Blake.
+- The user asked for help with school pickup with Caleb Stone.
+- The user asked for help with the parking spot rental from Diego Ramos.
+- The user asked for help with the photo shoot with Nina Petrova.
+- The user asked for help with the car wash plan with Marco Silva.
+- The user asked for help with the park cleanup with Quinn Harper.
+- The user asked for help with website mockups with Quinn Harper.
+- The user asked for help with mentoring with Xenia Park.
+- The user asked for help with the NDA from Caleb Stone.
+- The user asked for help with the weekly digest from Theo Laurent.
+- The user asked for help with cat sitting with Felix Wagner.
+- The user asked for help with cat sitting with Fatima Khan.
+- The user asked for help with the payment plan with Diego Ramos.
+- The user asked for help with cat sitting with Noah Fischer.
+- The user asked for help with the price alert for Yusuf Demir.
+- The user asked for help with pet insurance with Pedro Alves.
+- The user asked for help with the online course with Jonas Berg.
+- The user asked for help with the payment plan with Rachel Adler.
+- The user asked for help with the furniture order from Umar Farouk.
+- The user asked for help with the logo refresh with Simon Clarke.
+- The user asked for help with the hotel booking with Oscar Lund.
+- The user asked for help with dog walking with Elena Ivanova.
+- The user asked for help with yoga classes with Hannah Weber.
+- The user asked for help with the phone screen repair with Yusuf Demir.
+- The user asked for help with the price alert for Quinn Harper.
+- The user asked for help with the camera return to Wes Turner.
+- The user asked for help with the disk usage alert with Bianca Rossi.
+- The user asked for help with the camera return to Pedro Alves.
+- The user asked for help with blog post edits for Elena Ivanova.
+- The user asked for help with the airport pickup for Ula Nowak.
+- The user asked for help with the hotel booking with Fatima Khan.
+- The user asked for help with food bank shifts with Vera Holm.
+- The user asked for help with the camera return to Bianca Rossi.
+- The user asked for help with yoga classes with Noah Fischer.
+- The user asked for help with the library card renewal with Simon Clarke.</conversation_summary>
+<poke_reply timestamp="2026-10-27 11:09:36">Update: Sent an email about the library card renewal with Simon Clarke.</poke_reply>
+<user_message timestamp="2026-10-28 00:50:24">Any news on yoga classes with Noah Fischer?</user_message>
+<agent_message timestamp="2026-10-28 00:50:24">[SUCCESS] Yoga classes with Noah: Yoga classes with Noah Fischer. Waiting on the user to decide.</agent_message>
+<poke_reply timestamp="2026-10-28 00:50:24">Update: Yoga classes with Noah Fischer. Waiting on the user to decide.</poke_reply>
+<user_message timestamp="2026-10-28 23:38:24">Any news on food bank shifts with Vera Holm?</user_message>
+<agent_message timestamp="2026-10-28 23:38:24">[SUCCESS] Food bank shifts with Vera: Food bank shifts with Vera Holm. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-10-28 23:38:24">Update: Food bank shifts with Vera Holm. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-10-30 04:26:24">Send an email about the library card renewal with Kevin Osei</user_message>
+<agent_message timestamp="2026-10-30 04:26:24">[SUCCESS] Library card with Kevin: Sent an email about the library card renewal with Kevin Osei.</agent_message>
+<poke_reply timestamp="2026-10-30 04:26:24">Update: Sent an email about the library card renewal with Kevin Osei.</poke_reply>
+<user_message timestamp="2026-10-30 05:09:36">Send an email about quarterly goals with Julia Novak</user_message>
+<agent_message timestamp="2026-10-30 05:09:36">[SUCCESS] Quarterly goals with Julia: Sent an email about quarterly goals with Julia Novak.</agent_message>
+<poke_reply timestamp="2026-10-30 05:09:36">Update: Sent an email about quarterly goals with Julia Novak.</poke_reply>
+<user_message timestamp="2026-10-30 10:55:12">Set a reminder about the furnace service with Aaron Blake</user_message>
+<agent_message timestamp="2026-10-30 10:55:12">[SUCCESS] Furnace service with Aaron: Set reminder t_513 for the furnace service with Aaron Blake.</agent_message>
+<poke_reply timestamp="2026-10-30 10:55:12">Update: Set reminder t_513 for the furnace service with Aaron Blake.</poke_reply>
+<user_message timestamp="2026-10-31 03:57:36">Any news on the camera return to Bianca Rossi?</user_message>
+<agent_message timestamp="2026-10-31 03:57:36">[SUCCESS] Camera return to Bianca: The camera return to Bianca Rossi. Waiting on Bianca's reply.</agent_message>
+<poke_reply timestamp="2026-10-31 03:57:36">Update: The camera return to Bianca Rossi. Waiting on Bianca's reply.</poke_reply>
+<user_message timestamp="2026-10-31 16:40:48">Send an email about mail forwarding with Simon Clarke</user_message>
+<agent_message timestamp="2026-10-31 16:40:48">[SUCCESS] Mail forwarding with Simon: Sent an email about mail forwarding with Simon Clarke.</agent_message>
+<poke_reply timestamp="2026-10-31 16:40:48">Update: Sent an email about mail forwarding with Simon Clarke.</poke_reply>
+<user_message timestamp="2026-11-01 08:02:24">Any news on the library card renewal with Kevin Osei?</user_message>
+<agent_message timestamp="2026-11-01 08:02:24">[SUCCESS] Library card with Kevin: The library card renewal with Kevin Osei. Waiting on Kevin's reply.</agent_message>
+<poke_reply timestamp="2026-11-01 08:02:24">Update: The library card renewal with Kevin Osei. Waiting on Kevin's reply.</poke_reply>
+<user_message timestamp="2026-11-01 19:33:36">Any news on the furnace service with Aaron Blake?</user_message>
+<agent_message timestamp="2026-11-01 19:33:36">[SUCCESS] Furnace service with Aaron: The furnace service with Aaron Blake. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-01 19:33:36">Update: The furnace service with Aaron Blake. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-02 13:33:36">Set a reminder about the furnace service with George Liu</user_message>
+<agent_message timestamp="2026-11-02 13:33:36">[SUCCESS] Furnace service with George: Set reminder t_505 for the furnace service with George Liu.</agent_message>
+<poke_reply timestamp="2026-11-02 13:33:36">Update: Set reminder t_505 for the furnace service with George Liu.</poke_reply>
+<user_message timestamp="2026-11-02 16:26:24">Any news on the library card renewal with Simon Clarke?</user_message>
+<agent_message timestamp="2026-11-02 16:26:24">[SUCCESS] Library card with Simon: The library card renewal with Simon Clarke. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-02 16:26:24">Update: The library card renewal with Simon Clarke. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-03 20:16:48">Send an email about tennis lessons with Grace Okoro</user_message>
+<agent_message timestamp="2026-11-03 20:16:48">[SUCCESS] Tennis lessons with Grace: Sent an email about tennis lessons with Grace Okoro.</agent_message>
+<poke_reply timestamp="2026-11-03 20:16:48">Update: Sent an email about tennis lessons with Grace Okoro.</poke_reply>
+<user_message timestamp="2026-11-04 01:04:48">Any news on the furnace service with George Liu?</user_message>
+<agent_message timestamp="2026-11-04 01:04:48">[SUCCESS] Furnace service with George: The furnace service with George Liu. Waiting on the user to decide.</agent_message>
+<poke_reply timestamp="2026-11-04 01:04:48">Update: The furnace service with George Liu. Waiting on the user to decide.</poke_reply>
+<user_message timestamp="2026-11-04 10:26:24">Send an email about cat sitting with Jonas Berg</user_message>
+<agent_message timestamp="2026-11-04 10:26:24">[SUCCESS] Cat sitting with Jonas: Sent an email about cat sitting with Jonas Berg.</agent_message>
+<poke_reply timestamp="2026-11-04 10:26:24">Update: Sent an email about cat sitting with Jonas Berg.</poke_reply>
+<user_message timestamp="2026-11-04 14:16:48">Any news on cat sitting with Jonas Berg?</user_message>
+<agent_message timestamp="2026-11-04 14:16:48">[SUCCESS] Cat sitting with Jonas: Cat sitting with Jonas Berg. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-04 14:16:48">Update: Cat sitting with Jonas Berg. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-04 22:26:24">Any news on quarterly goals with Julia Novak?</user_message>
+<agent_message timestamp="2026-11-04 22:26:24">[SUCCESS] Quarterly goals with Julia: Quarterly goals with Julia Novak. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-04 22:26:24">Update: Quarterly goals with Julia Novak. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-06 07:33:36">Send an email about the family reunion with Kevin Osei</user_message>
+<agent_message timestamp="2026-11-06 07:33:36">[SUCCESS] Family reunion with Kevin: Sent an email about the family reunion with Kevin Osei.</agent_message>
+<poke_reply timestamp="2026-11-06 07:33:36">Update: Sent an email about the family reunion with Kevin Osei.</poke_reply>
 <user_message timestamp="2026-11-07 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
 <agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] Lease renewal with Bob: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
 <poke_reply timestamp="2026-11-07 15:00:00">Update: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</poke_reply>
-<user_message timestamp="2026-11-08 19:33:36">Send an email about the park cleanup with Nina Petrova</user_message>
-<agent_message timestamp="2026-11-08 19:33:36">[SUCCESS] Park cleanup with Nina: Sent an email about the park cleanup with Nina Petrova.</agent_message>
-<poke_reply timestamp="2026-11-08 19:33:36">Update: Sent an email about the park cleanup with Nina Petrova.</poke_reply>
-<user_message timestamp="2026-11-08 20:16:48">Any news on the family reunion with Aaron Blake?</user_message>
-<agent_message timestamp="2026-11-08 20:16:48">[SUCCESS] Family reunion with Aaron: The family reunion with Aaron Blake. Waiting on the user to decide.</agent_message>
-<poke_reply timestamp="2026-11-08 20:16:48">Update: The family reunion with Aaron Blake. Waiting on the user to decide.</poke_reply>
+<user_message timestamp="2026-11-07 20:16:48">Draft a note about the NDA from Pedro Alves</user_message>
+<agent_message timestamp="2026-11-07 20:16:48">[SUCCESS] NDA review for Pedro: Drafted an email about the NDA from Pedro Alves (draft r-fx12).</agent_message>
+<poke_reply timestamp="2026-11-07 20:16:48">Update: Drafted an email about the NDA from Pedro Alves (draft r-fx12).</poke_reply>
+<user_message timestamp="2026-11-07 22:55:12">Any news on mail forwarding with Simon Clarke?</user_message>
+<agent_message timestamp="2026-11-07 22:55:12">[SUCCESS] Mail forwarding with Simon: Mail forwarding with Simon Clarke. In progress.</agent_message>
+<poke_reply timestamp="2026-11-07 22:55:12">Update: Mail forwarding with Simon Clarke. In progress.</poke_reply>
+<user_message timestamp="2026-11-08 00:07:12">Send an email about cat sitting with Paula Reyes</user_message>
+<agent_message timestamp="2026-11-08 00:07:12">[SUCCESS] Cat sitting with Paula: Sent an email about cat sitting with Paula Reyes.</agent_message>
+<poke_reply timestamp="2026-11-08 00:07:12">Update: Sent an email about cat sitting with Paula Reyes.</poke_reply>
 <user_message timestamp="2026-11-09 15:00:00">Ask Bob Lee which Friday works for our reunion dinner</user_message>
 <agent_message timestamp="2026-11-09 15:00:00">[SUCCESS] Reunion dinner with Bob Lee: Sent an email about the reunion dinner with Bob Lee.</agent_message>
 <poke_reply timestamp="2026-11-09 15:00:00">Update: Sent an email about the reunion dinner with Bob Lee.</poke_reply>
-<user_message timestamp="2026-11-10 03:43:12">Any news on the park cleanup with Nina Petrova?</user_message>
-<agent_message timestamp="2026-11-10 03:43:12">[SUCCESS] Park cleanup with Nina: The park cleanup with Nina Petrova. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-11-10 03:43:12">Update: The park cleanup with Nina Petrova. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-11-10 10:55:12">Send an email about cat sitting with Bianca Rossi</user_message>
-<agent_message timestamp="2026-11-10 10:55:12">[SUCCESS] Cat sitting with Bianca: Sent an email about cat sitting with Bianca Rossi.</agent_message>
-<poke_reply timestamp="2026-11-10 10:55:12">Update: Sent an email about cat sitting with Bianca Rossi.</poke_reply>
-<user_message timestamp="2026-11-10 10:55:12">Any news on the invoice follow-up with Quinn Harper?</user_message>
-<agent_message timestamp="2026-11-10 10:55:12">[SUCCESS] Invoice follow-up with Quinn: The invoice follow-up with Quinn Harper. Waiting on Quinn's reply.</agent_message>
-<poke_reply timestamp="2026-11-10 10:55:12">Update: The invoice follow-up with Quinn Harper. Waiting on Quinn's reply.</poke_reply>
+<user_message timestamp="2026-11-10 01:04:48">Send the draft about the NDA from Pedro Alves</user_message>
+<agent_message timestamp="2026-11-10 01:04:48">[SUCCESS] NDA review for Pedro: Sent the email about the NDA from Pedro Alves.</agent_message>
+<poke_reply timestamp="2026-11-10 01:04:48">Update: Sent the email about the NDA from Pedro Alves.</poke_reply>
+<user_message timestamp="2026-11-10 08:16:48">Any news on cat sitting with Paula Reyes?</user_message>
+<agent_message timestamp="2026-11-10 08:16:48">[SUCCESS] Cat sitting with Paula: Cat sitting with Paula Reyes. In progress.</agent_message>
+<poke_reply timestamp="2026-11-10 08:16:48">Update: Cat sitting with Paula Reyes. In progress.</poke_reply>
+<user_message timestamp="2026-11-10 13:19:12">Any news on tennis lessons with Grace Okoro?</user_message>
+<agent_message timestamp="2026-11-10 13:19:12">[SUCCESS] Tennis lessons with Grace: Tennis lessons with Grace Okoro. Waiting on Grace's reply.</agent_message>
+<poke_reply timestamp="2026-11-10 13:19:12">Update: Tennis lessons with Grace Okoro. Waiting on Grace's reply.</poke_reply>
 <user_message timestamp="2026-11-10 15:00:00">Email Bob Okafor about last night's api-gateway crash and whether the hotfix ships today</user_message>
 <agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] Deploy + gateway crash w/ Bob: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.</agent_message>
 <poke_reply timestamp="2026-11-10 15:00:00">Update: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.</poke_reply>
 <user_message timestamp="2026-11-10 15:00:00">Any news on the reunion dinner with Bob Lee?</user_message>
 <agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] Reunion dinner with Bob Lee: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.</agent_message>
 <poke_reply timestamp="2026-11-10 15:00:00">Update: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.</poke_reply>
-<user_message timestamp="2026-11-10 23:52:48">Any news on cat sitting with Bianca Rossi?</user_message>
-<agent_message timestamp="2026-11-10 23:52:48">[SUCCESS] Cat sitting with Bianca: Cat sitting with Bianca Rossi. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-11-10 23:52:48">Update: Cat sitting with Bianca Rossi. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-11-11 09:43:12">Any news on website mockups with Jonas Berg?</user_message>
-<agent_message timestamp="2026-11-11 09:43:12">[SUCCESS] Website mockups with Jonas: Website mockups with Jonas Berg. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-11-11 09:43:12">Update: Website mockups with Jonas Berg. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-10 21:57:36">Send an email about the tire change with Julia Novak</user_message>
+<agent_message timestamp="2026-11-10 21:57:36">[SUCCESS] Tire change with Julia: Sent an email about the tire change with Julia Novak.</agent_message>
+<poke_reply timestamp="2026-11-10 21:57:36">Update: Sent an email about the tire change with Julia Novak.</poke_reply>
+<user_message timestamp="2026-11-11 06:07:12">Any news on the tire change with Julia Novak?</user_message>
+<agent_message timestamp="2026-11-11 06:07:12">[SUCCESS] Tire change with Julia: The tire change with Julia Novak. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-11 06:07:12">Update: The tire change with Julia Novak. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-11 08:02:24">Any news on the family reunion with Kevin Osei?</user_message>
+<agent_message timestamp="2026-11-11 08:02:24">[SUCCESS] Family reunion with Kevin: The family reunion with Kevin Osei. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-11 08:02:24">Update: The family reunion with Kevin Osei. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-11-11 13:04:48">Remind me at 6pm to check the hotfix deploy</user_message>
 <agent_message timestamp="2026-11-11 13:04:48">[SUCCESS] Deploy + gateway crash w/ Bob: Set reminder t_21 for the api-gateway crash and hotfix deploy.</agent_message>
 <poke_reply timestamp="2026-11-11 13:04:48">Update: Set reminder t_21 for the api-gateway crash and hotfix deploy.</poke_reply>
 </conversation_history>
 
 <active_agents>
-<agent name="Phone screen repair with Grace" />
-<agent name="Tennis lessons with Paula" />
-<agent name="Camera return to Vera" />
-<agent name="Grandparents visit with Vera" />
-<agent name="Brand guidelines with Ines" />
-<agent name="Photo shoot with Aaron" />
-<agent name="Conference talk with Tara" />
-<agent name="Bulk order with Noah" />
-<agent name="Roof leak with George" />
-<agent name="Food bank shifts with Julia" />
-<agent name="Recruiter call with Marco" />
-<agent name="Utility account with Caleb" />
-<agent name="Team roadmap with George" />
-<agent name="Garden design with Diego" />
-<agent name="Logo refresh with Elena" />
-<agent name="Charity gala with Kevin" />
-<agent name="Conference talk with Kevin" />
-<agent name="Pet insurance with Hannah" />
-<agent name="Logo refresh with Maya" />
-<agent name="Tennis lessons with Yusuf" />
-<agent name="Food bank shifts with Simon" />
-<agent name="Yoga classes with Theo" />
-<agent name="Roof leak with Julia" />
-<agent name="Physio appointment with Noah" />
-<agent name="Food bank shifts with Marco" />
-<agent name="Photo shoot with Liam" />
-<agent name="Website mockups with Xenia" />
-<agent name="Window cleaning with Felix" />
-<agent name="Language lessons with Ines" />
-<agent name="Furnace service with Bianca" />
-<agent name="Utility account with Noah" />
-<agent name="Bulk order with Zoe" />
-<agent name="Language lessons with Felix" />
-<agent name="Will paperwork with Ines" />
-<agent name="Dog walking with Tara" />
-<agent name="Family reunion with Diego" />
-<agent name="Invoice follow-up with Isaac" />
-<agent name="Physio appointment with Vera" />
-<agent name="Headcount plan with Kira" />
-<agent name="Cat sitting with Aaron" />
-<agent name="Interview loop for Oscar" />
-<agent name="Family reunion with Aaron" />
-<agent name="Invoice follow-up with Maya" />
-<agent name="Invoice follow-up with Quinn" />
-<agent name="Website mockups with Jonas" />
+<agent name="Payment plan with Vera" />
+<agent name="Phone screen repair with Aaron" />
+<agent name="School pickup with Caleb" />
+<agent name="Parking spot from Diego" />
+<agent name="Photo shoot with Nina" />
+<agent name="Car wash plan with Marco" />
+<agent name="Park cleanup with Quinn" />
+<agent name="Website mockups with Quinn" />
+<agent name="Mentoring with Xenia" />
+<agent name="NDA review for Caleb" />
+<agent name="Weekly digest from Theo" />
+<agent name="Cat sitting with Felix" />
+<agent name="Cat sitting with Fatima" />
+<agent name="Payment plan with Diego" />
+<agent name="Cat sitting with Noah" />
+<agent name="Price alert for Yusuf" />
+<agent name="Pet insurance with Pedro" />
+<agent name="Online course with Jonas" />
+<agent name="Payment plan with Rachel" />
+<agent name="Furniture order from Umar" />
+<agent name="Logo refresh with Simon" />
+<agent name="Hotel booking with Oscar" />
+<agent name="Dog walking with Elena" />
+<agent name="Yoga classes with Hannah" />
+<agent name="Phone screen repair with Yusuf" />
+<agent name="Price alert for Quinn" />
+<agent name="Camera return to Wes" />
+<agent name="Disk usage alert with Bianca" />
+<agent name="Camera return to Pedro" />
+<agent name="Blog post edits for Elena" />
+<agent name="Airport pickup for Ula" />
+<agent name="Hotel booking with Fatima" />
+<agent name="Food bank shifts with Vera" />
+<agent name="Camera return to Bianca" />
+<agent name="Yoga classes with Noah" />
+<agent name="Library card with Simon" />
+<agent name="Library card with Kevin" />
+<agent name="Quarterly goals with Julia" />
+<agent name="Furnace service with Aaron" />
+<agent name="Mail forwarding with Simon" />
+<agent name="Furnace service with George" />
+<agent name="Tennis lessons with Grace" />
+<agent name="Cat sitting with Jonas" />
+<agent name="Family reunion with Kevin" />
 <agent name="Lease renewal with Bob" />
-<agent name="Park cleanup with Nina" />
+<agent name="NDA review for Pedro" />
+<agent name="Cat sitting with Paula" />
 <agent name="Reunion dinner with Bob Lee" />
-<agent name="Cat sitting with Bianca" />
 <agent name="Deploy + gateway crash w/ Bob" />
+<agent name="Tire change with Julia" />
 </active_agents>
 
 <new_user_message>
@@ -250,149 +246,146 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
 === registry: IA user message ===
 <conversation_history>
 <conversation_summary>Earlier in the conversation:
-- The user asked for help with the phone screen repair with Grace Okoro.
-- The user asked for help with tennis lessons with Paula Reyes.
-- The user asked for help with the camera return to Vera Holm.
-- The user asked for help with the grandparents visit with Vera Holm.
-- The user asked for help with the brand guidelines with Ines Duarte.
-- The user asked for help with the photo shoot with Aaron Blake.
-- The user asked for help with the conference talk with Tara Singh.
-- The user asked for help with the bulk order with Noah Fischer.
-- The user asked for help with the roof leak with George Liu.
-- The user asked for help with food bank shifts with Julia Novak.
-- The user asked for help with the recruiter call with Marco Silva.
-- The user asked for help with the utility account with Caleb Stone.
-- The user asked for help with the team roadmap with George Liu.
-- The user asked for help with the garden design with Diego Ramos.
-- The user asked for help with the logo refresh with Elena Ivanova.
-- The user asked for help with the charity gala with Kevin Osei.
-- The user asked for help with the conference talk with Kevin Osei.
-- The user asked for help with pet insurance with Hannah Weber.
-- The user asked for help with the logo refresh with Maya Cohen.
-- The user asked for help with tennis lessons with Yusuf Demir.
-- The user asked for help with food bank shifts with Simon Clarke.
-- The user asked for help with yoga classes with Theo Laurent.
-- The user asked for help with the roof leak with Julia Novak.
-- The user asked for help with the physio appointment with Noah Fischer.
-- The user asked for help with food bank shifts with Marco Silva.
-- The user asked for help with the photo shoot with Liam Walsh.
-- The user asked for help with website mockups with Xenia Park.
-- The user asked for help with window cleaning with Felix Wagner.
-- The user asked for help with language lessons with Ines Duarte.
-- The user asked for help with the furnace service with Bianca Rossi.
-- The user asked for help with the utility account with Noah Fischer.
-- The user asked for help with the bulk order with Zoe Martin.
-- The user asked for help with language lessons with Felix Wagner.
-- The user asked for help with the will paperwork with Ines Duarte.
-- The user asked for help with dog walking with Tara Singh.
-- The user asked for help with the family reunion with Diego Ramos.
-- The user asked for help with the invoice follow-up with Isaac Moreau.</conversation_summary>
-<poke_reply timestamp="2026-10-26 22:40:48">Update: Language lessons with Ines Duarte. In progress.</poke_reply>
-<user_message timestamp="2026-10-27 14:02:24">Send an email about the physio appointment with Vera Holm</user_message>
-<agent_message timestamp="2026-10-27 14:02:24">[SUCCESS] ea_38 (Physio appointment with Vera): Sent an email about the physio appointment with Vera Holm.</agent_message>
-<poke_reply timestamp="2026-10-27 14:02:24">Update: Sent an email about the physio appointment with Vera Holm.</poke_reply>
-<user_message timestamp="2026-10-27 19:33:36">Any news on the utility account with Noah Fischer?</user_message>
-<agent_message timestamp="2026-10-27 19:33:36">[SUCCESS] ea_31 (Utility account with Noah): The utility account with Noah Fischer. Waiting on Noah's reply.</agent_message>
-<poke_reply timestamp="2026-10-27 19:33:36">Update: The utility account with Noah Fischer. Waiting on Noah's reply.</poke_reply>
-<user_message timestamp="2026-10-29 03:00:00">Any news on language lessons with Felix Wagner?</user_message>
-<agent_message timestamp="2026-10-29 03:00:00">[SUCCESS] ea_33 (Language lessons with Felix): Language lessons with Felix Wagner. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-10-29 03:00:00">Update: Language lessons with Felix Wagner. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-10-29 04:12:00">Any news on the will paperwork with Ines Duarte?</user_message>
-<agent_message timestamp="2026-10-29 04:12:00">[SUCCESS] ea_34 (Will paperwork with Ines): The will paperwork with Ines Duarte. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-10-29 04:12:00">Update: The will paperwork with Ines Duarte. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-10-29 06:36:00">Any news on dog walking with Tara Singh?</user_message>
-<agent_message timestamp="2026-10-29 06:36:00">[SUCCESS] ea_35 (Dog walking with Tara): Dog walking with Tara Singh. In progress.</agent_message>
-<poke_reply timestamp="2026-10-29 06:36:00">Update: Dog walking with Tara Singh. In progress.</poke_reply>
-<user_message timestamp="2026-10-30 00:21:36">Any news on the invoice follow-up with Isaac Moreau?</user_message>
-<agent_message timestamp="2026-10-30 00:21:36">[SUCCESS] ea_37 (Invoice follow-up with Isaac): The invoice follow-up with Isaac Moreau. Waiting on Isaac's reply.</agent_message>
-<poke_reply timestamp="2026-10-30 00:21:36">Update: The invoice follow-up with Isaac Moreau. Waiting on Isaac's reply.</poke_reply>
-<user_message timestamp="2026-10-30 01:33:36">Any news on the bulk order with Zoe Martin?</user_message>
-<agent_message timestamp="2026-10-30 01:33:36">[SUCCESS] ea_32 (Bulk order with Zoe): The bulk order with Zoe Martin. In progress.</agent_message>
-<poke_reply timestamp="2026-10-30 01:33:36">Update: The bulk order with Zoe Martin. In progress.</poke_reply>
-<user_message timestamp="2026-10-30 09:28:48">Draft a note about the headcount plan with Kira Sato</user_message>
-<agent_message timestamp="2026-10-30 09:28:48">[SUCCESS] ea_39 (Headcount plan with Kira): Drafted an email about the headcount plan with Kira Sato (draft r-fx8).</agent_message>
-<poke_reply timestamp="2026-10-30 09:28:48">Update: Drafted an email about the headcount plan with Kira Sato (draft r-fx8).</poke_reply>
-<user_message timestamp="2026-10-30 22:55:12">Send an email about cat sitting with Aaron Blake</user_message>
-<agent_message timestamp="2026-10-30 22:55:12">[SUCCESS] ea_40 (Cat sitting with Aaron): Sent an email about cat sitting with Aaron Blake.</agent_message>
-<poke_reply timestamp="2026-10-30 22:55:12">Update: Sent an email about cat sitting with Aaron Blake.</poke_reply>
-<user_message timestamp="2026-11-01 11:38:24">Send an email about the interview loop for Oscar Lund</user_message>
-<agent_message timestamp="2026-11-01 11:38:24">[SUCCESS] ea_41 (Interview loop for Oscar): Sent an email about the interview loop for Oscar Lund.</agent_message>
-<poke_reply timestamp="2026-11-01 11:38:24">Update: Sent an email about the interview loop for Oscar Lund.</poke_reply>
-<user_message timestamp="2026-11-01 14:16:48">Any news on the family reunion with Diego Ramos?</user_message>
-<agent_message timestamp="2026-11-01 14:16:48">[SUCCESS] ea_36 (Family reunion with Diego): The family reunion with Diego Ramos. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-11-01 14:16:48">Update: The family reunion with Diego Ramos. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-11-02 17:24:00">Send an email about the family reunion with Aaron Blake</user_message>
-<agent_message timestamp="2026-11-02 17:24:00">[SUCCESS] ea_42 (Family reunion with Aaron): Sent an email about the family reunion with Aaron Blake.</agent_message>
-<poke_reply timestamp="2026-11-02 17:24:00">Update: Sent an email about the family reunion with Aaron Blake.</poke_reply>
-<user_message timestamp="2026-11-03 00:50:24">Any news on cat sitting with Aaron Blake?</user_message>
-<agent_message timestamp="2026-11-03 00:50:24">[SUCCESS] ea_40 (Cat sitting with Aaron): Cat sitting with Aaron Blake. Waiting on Aaron's reply.</agent_message>
-<poke_reply timestamp="2026-11-03 00:50:24">Update: Cat sitting with Aaron Blake. Waiting on Aaron's reply.</poke_reply>
-<user_message timestamp="2026-11-03 12:50:24">Any news on the physio appointment with Vera Holm?</user_message>
-<agent_message timestamp="2026-11-03 12:50:24">[SUCCESS] ea_38 (Physio appointment with Vera): The physio appointment with Vera Holm. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-11-03 12:50:24">Update: The physio appointment with Vera Holm. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-11-04 03:14:24">Send the draft about the headcount plan with Kira Sato</user_message>
-<agent_message timestamp="2026-11-04 03:14:24">[SUCCESS] ea_39 (Headcount plan with Kira): Sent the email about the headcount plan with Kira Sato.</agent_message>
-<poke_reply timestamp="2026-11-04 03:14:24">Update: Sent the email about the headcount plan with Kira Sato.</poke_reply>
-<user_message timestamp="2026-11-04 04:55:12">Send an email about the invoice follow-up with Maya Cohen</user_message>
-<agent_message timestamp="2026-11-04 04:55:12">[SUCCESS] ea_43 (Invoice follow-up with Maya): Sent an email about the invoice follow-up with Maya Cohen.</agent_message>
-<poke_reply timestamp="2026-11-04 04:55:12">Update: Sent an email about the invoice follow-up with Maya Cohen.</poke_reply>
-<user_message timestamp="2026-11-04 13:04:48">Send an email about the invoice follow-up with Quinn Harper</user_message>
-<agent_message timestamp="2026-11-04 13:04:48">[SUCCESS] ea_44 (Invoice follow-up with Quinn): Sent an email about the invoice follow-up with Quinn Harper.</agent_message>
-<poke_reply timestamp="2026-11-04 13:04:48">Update: Sent an email about the invoice follow-up with Quinn Harper.</poke_reply>
-<user_message timestamp="2026-11-04 13:33:36">Send an email about website mockups with Jonas Berg</user_message>
-<agent_message timestamp="2026-11-04 13:33:36">[SUCCESS] ea_45 (Website mockups with Jonas): Sent an email about website mockups with Jonas Berg.</agent_message>
-<poke_reply timestamp="2026-11-04 13:33:36">Update: Sent an email about website mockups with Jonas Berg.</poke_reply>
-<user_message timestamp="2026-11-06 17:52:48">Any news on the interview loop for Oscar Lund?</user_message>
-<agent_message timestamp="2026-11-06 17:52:48">[SUCCESS] ea_41 (Interview loop for Oscar): The interview loop for Oscar Lund. Waiting on Oscar's reply.</agent_message>
-<poke_reply timestamp="2026-11-06 17:52:48">Update: The interview loop for Oscar Lund. Waiting on Oscar's reply.</poke_reply>
-<user_message timestamp="2026-11-07 10:26:24">Any news on the invoice follow-up with Maya Cohen?</user_message>
-<agent_message timestamp="2026-11-07 10:26:24">[SUCCESS] ea_43 (Invoice follow-up with Maya): The invoice follow-up with Maya Cohen. In progress.</agent_message>
-<poke_reply timestamp="2026-11-07 10:26:24">Update: The invoice follow-up with Maya Cohen. In progress.</poke_reply>
+- The user asked for help with the payment plan with Vera Holm.
+- The user asked for help with the phone screen repair with Aaron Blake.
+- The user asked for help with school pickup with Caleb Stone.
+- The user asked for help with the parking spot rental from Diego Ramos.
+- The user asked for help with the photo shoot with Nina Petrova.
+- The user asked for help with the car wash plan with Marco Silva.
+- The user asked for help with the park cleanup with Quinn Harper.
+- The user asked for help with website mockups with Quinn Harper.
+- The user asked for help with mentoring with Xenia Park.
+- The user asked for help with the NDA from Caleb Stone.
+- The user asked for help with the weekly digest from Theo Laurent.
+- The user asked for help with cat sitting with Felix Wagner.
+- The user asked for help with cat sitting with Fatima Khan.
+- The user asked for help with the payment plan with Diego Ramos.
+- The user asked for help with cat sitting with Noah Fischer.
+- The user asked for help with the price alert for Yusuf Demir.
+- The user asked for help with pet insurance with Pedro Alves.
+- The user asked for help with the online course with Jonas Berg.
+- The user asked for help with the payment plan with Rachel Adler.
+- The user asked for help with the furniture order from Umar Farouk.
+- The user asked for help with the logo refresh with Simon Clarke.
+- The user asked for help with the hotel booking with Oscar Lund.
+- The user asked for help with dog walking with Elena Ivanova.
+- The user asked for help with yoga classes with Hannah Weber.
+- The user asked for help with the phone screen repair with Yusuf Demir.
+- The user asked for help with the price alert for Quinn Harper.
+- The user asked for help with the camera return to Wes Turner.
+- The user asked for help with the disk usage alert with Bianca Rossi.
+- The user asked for help with the camera return to Pedro Alves.
+- The user asked for help with blog post edits for Elena Ivanova.
+- The user asked for help with the airport pickup for Ula Nowak.
+- The user asked for help with the hotel booking with Fatima Khan.
+- The user asked for help with food bank shifts with Vera Holm.
+- The user asked for help with the camera return to Bianca Rossi.
+- The user asked for help with yoga classes with Noah Fischer.
+- The user asked for help with the library card renewal with Simon Clarke.</conversation_summary>
+<poke_reply timestamp="2026-10-27 11:09:36">Update: Sent an email about the library card renewal with Simon Clarke.</poke_reply>
+<user_message timestamp="2026-10-28 00:50:24">Any news on yoga classes with Noah Fischer?</user_message>
+<agent_message timestamp="2026-10-28 00:50:24">[SUCCESS] ea_35 (Yoga classes with Noah): Yoga classes with Noah Fischer. Waiting on the user to decide.</agent_message>
+<poke_reply timestamp="2026-10-28 00:50:24">Update: Yoga classes with Noah Fischer. Waiting on the user to decide.</poke_reply>
+<user_message timestamp="2026-10-28 23:38:24">Any news on food bank shifts with Vera Holm?</user_message>
+<agent_message timestamp="2026-10-28 23:38:24">[SUCCESS] ea_33 (Food bank shifts with Vera): Food bank shifts with Vera Holm. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-10-28 23:38:24">Update: Food bank shifts with Vera Holm. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-10-30 04:26:24">Send an email about the library card renewal with Kevin Osei</user_message>
+<agent_message timestamp="2026-10-30 04:26:24">[SUCCESS] ea_37 (Library card with Kevin): Sent an email about the library card renewal with Kevin Osei.</agent_message>
+<poke_reply timestamp="2026-10-30 04:26:24">Update: Sent an email about the library card renewal with Kevin Osei.</poke_reply>
+<user_message timestamp="2026-10-30 05:09:36">Send an email about quarterly goals with Julia Novak</user_message>
+<agent_message timestamp="2026-10-30 05:09:36">[SUCCESS] ea_38 (Quarterly goals with Julia): Sent an email about quarterly goals with Julia Novak.</agent_message>
+<poke_reply timestamp="2026-10-30 05:09:36">Update: Sent an email about quarterly goals with Julia Novak.</poke_reply>
+<user_message timestamp="2026-10-30 10:55:12">Set a reminder about the furnace service with Aaron Blake</user_message>
+<agent_message timestamp="2026-10-30 10:55:12">[SUCCESS] ea_39 (Furnace service with Aaron): Set reminder t_513 for the furnace service with Aaron Blake.</agent_message>
+<poke_reply timestamp="2026-10-30 10:55:12">Update: Set reminder t_513 for the furnace service with Aaron Blake.</poke_reply>
+<user_message timestamp="2026-10-31 03:57:36">Any news on the camera return to Bianca Rossi?</user_message>
+<agent_message timestamp="2026-10-31 03:57:36">[SUCCESS] ea_34 (Camera return to Bianca): The camera return to Bianca Rossi. Waiting on Bianca's reply.</agent_message>
+<poke_reply timestamp="2026-10-31 03:57:36">Update: The camera return to Bianca Rossi. Waiting on Bianca's reply.</poke_reply>
+<user_message timestamp="2026-10-31 16:40:48">Send an email about mail forwarding with Simon Clarke</user_message>
+<agent_message timestamp="2026-10-31 16:40:48">[SUCCESS] ea_40 (Mail forwarding with Simon): Sent an email about mail forwarding with Simon Clarke.</agent_message>
+<poke_reply timestamp="2026-10-31 16:40:48">Update: Sent an email about mail forwarding with Simon Clarke.</poke_reply>
+<user_message timestamp="2026-11-01 08:02:24">Any news on the library card renewal with Kevin Osei?</user_message>
+<agent_message timestamp="2026-11-01 08:02:24">[SUCCESS] ea_37 (Library card with Kevin): The library card renewal with Kevin Osei. Waiting on Kevin's reply.</agent_message>
+<poke_reply timestamp="2026-11-01 08:02:24">Update: The library card renewal with Kevin Osei. Waiting on Kevin's reply.</poke_reply>
+<user_message timestamp="2026-11-01 19:33:36">Any news on the furnace service with Aaron Blake?</user_message>
+<agent_message timestamp="2026-11-01 19:33:36">[SUCCESS] ea_39 (Furnace service with Aaron): The furnace service with Aaron Blake. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-01 19:33:36">Update: The furnace service with Aaron Blake. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-02 13:33:36">Set a reminder about the furnace service with George Liu</user_message>
+<agent_message timestamp="2026-11-02 13:33:36">[SUCCESS] ea_41 (Furnace service with George): Set reminder t_505 for the furnace service with George Liu.</agent_message>
+<poke_reply timestamp="2026-11-02 13:33:36">Update: Set reminder t_505 for the furnace service with George Liu.</poke_reply>
+<user_message timestamp="2026-11-02 16:26:24">Any news on the library card renewal with Simon Clarke?</user_message>
+<agent_message timestamp="2026-11-02 16:26:24">[SUCCESS] ea_36 (Library card with Simon): The library card renewal with Simon Clarke. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-02 16:26:24">Update: The library card renewal with Simon Clarke. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-03 20:16:48">Send an email about tennis lessons with Grace Okoro</user_message>
+<agent_message timestamp="2026-11-03 20:16:48">[SUCCESS] ea_42 (Tennis lessons with Grace): Sent an email about tennis lessons with Grace Okoro.</agent_message>
+<poke_reply timestamp="2026-11-03 20:16:48">Update: Sent an email about tennis lessons with Grace Okoro.</poke_reply>
+<user_message timestamp="2026-11-04 01:04:48">Any news on the furnace service with George Liu?</user_message>
+<agent_message timestamp="2026-11-04 01:04:48">[SUCCESS] ea_41 (Furnace service with George): The furnace service with George Liu. Waiting on the user to decide.</agent_message>
+<poke_reply timestamp="2026-11-04 01:04:48">Update: The furnace service with George Liu. Waiting on the user to decide.</poke_reply>
+<user_message timestamp="2026-11-04 10:26:24">Send an email about cat sitting with Jonas Berg</user_message>
+<agent_message timestamp="2026-11-04 10:26:24">[SUCCESS] ea_43 (Cat sitting with Jonas): Sent an email about cat sitting with Jonas Berg.</agent_message>
+<poke_reply timestamp="2026-11-04 10:26:24">Update: Sent an email about cat sitting with Jonas Berg.</poke_reply>
+<user_message timestamp="2026-11-04 14:16:48">Any news on cat sitting with Jonas Berg?</user_message>
+<agent_message timestamp="2026-11-04 14:16:48">[SUCCESS] ea_43 (Cat sitting with Jonas): Cat sitting with Jonas Berg. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-04 14:16:48">Update: Cat sitting with Jonas Berg. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-04 22:26:24">Any news on quarterly goals with Julia Novak?</user_message>
+<agent_message timestamp="2026-11-04 22:26:24">[SUCCESS] ea_38 (Quarterly goals with Julia): Quarterly goals with Julia Novak. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-04 22:26:24">Update: Quarterly goals with Julia Novak. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-06 07:33:36">Send an email about the family reunion with Kevin Osei</user_message>
+<agent_message timestamp="2026-11-06 07:33:36">[SUCCESS] ea_44 (Family reunion with Kevin): Sent an email about the family reunion with Kevin Osei.</agent_message>
+<poke_reply timestamp="2026-11-06 07:33:36">Update: Sent an email about the family reunion with Kevin Osei.</poke_reply>
 <user_message timestamp="2026-11-07 15:00:00">Ask Bob Hale for the revised lease renewal paperwork</user_message>
-<agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] ea_46 (Lease renewal with Bob): Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
+<agent_message timestamp="2026-11-07 15:00:00">[SUCCESS] ea_45 (Lease renewal with Bob): Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</agent_message>
 <poke_reply timestamp="2026-11-07 15:00:00">Update: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).</poke_reply>
-<user_message timestamp="2026-11-08 19:33:36">Send an email about the park cleanup with Nina Petrova</user_message>
-<agent_message timestamp="2026-11-08 19:33:36">[SUCCESS] ea_47 (Park cleanup with Nina): Sent an email about the park cleanup with Nina Petrova.</agent_message>
-<poke_reply timestamp="2026-11-08 19:33:36">Update: Sent an email about the park cleanup with Nina Petrova.</poke_reply>
-<user_message timestamp="2026-11-08 20:16:48">Any news on the family reunion with Aaron Blake?</user_message>
-<agent_message timestamp="2026-11-08 20:16:48">[SUCCESS] ea_42 (Family reunion with Aaron): The family reunion with Aaron Blake. Waiting on the user to decide.</agent_message>
-<poke_reply timestamp="2026-11-08 20:16:48">Update: The family reunion with Aaron Blake. Waiting on the user to decide.</poke_reply>
+<user_message timestamp="2026-11-07 20:16:48">Draft a note about the NDA from Pedro Alves</user_message>
+<agent_message timestamp="2026-11-07 20:16:48">[SUCCESS] ea_46 (NDA review for Pedro): Drafted an email about the NDA from Pedro Alves (draft r-fx12).</agent_message>
+<poke_reply timestamp="2026-11-07 20:16:48">Update: Drafted an email about the NDA from Pedro Alves (draft r-fx12).</poke_reply>
+<user_message timestamp="2026-11-07 22:55:12">Any news on mail forwarding with Simon Clarke?</user_message>
+<agent_message timestamp="2026-11-07 22:55:12">[SUCCESS] ea_40 (Mail forwarding with Simon): Mail forwarding with Simon Clarke. In progress.</agent_message>
+<poke_reply timestamp="2026-11-07 22:55:12">Update: Mail forwarding with Simon Clarke. In progress.</poke_reply>
+<user_message timestamp="2026-11-08 00:07:12">Send an email about cat sitting with Paula Reyes</user_message>
+<agent_message timestamp="2026-11-08 00:07:12">[SUCCESS] ea_47 (Cat sitting with Paula): Sent an email about cat sitting with Paula Reyes.</agent_message>
+<poke_reply timestamp="2026-11-08 00:07:12">Update: Sent an email about cat sitting with Paula Reyes.</poke_reply>
 <user_message timestamp="2026-11-09 15:00:00">Ask Bob Lee which Friday works for our reunion dinner</user_message>
 <agent_message timestamp="2026-11-09 15:00:00">[SUCCESS] ea_48 (Reunion dinner with Bob Lee): Sent an email about the reunion dinner with Bob Lee.</agent_message>
 <poke_reply timestamp="2026-11-09 15:00:00">Update: Sent an email about the reunion dinner with Bob Lee.</poke_reply>
-<user_message timestamp="2026-11-10 03:43:12">Any news on the park cleanup with Nina Petrova?</user_message>
-<agent_message timestamp="2026-11-10 03:43:12">[SUCCESS] ea_47 (Park cleanup with Nina): The park cleanup with Nina Petrova. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-11-10 03:43:12">Update: The park cleanup with Nina Petrova. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-11-10 10:55:12">Send an email about cat sitting with Bianca Rossi</user_message>
-<agent_message timestamp="2026-11-10 10:55:12">[SUCCESS] ea_49 (Cat sitting with Bianca): Sent an email about cat sitting with Bianca Rossi.</agent_message>
-<poke_reply timestamp="2026-11-10 10:55:12">Update: Sent an email about cat sitting with Bianca Rossi.</poke_reply>
-<user_message timestamp="2026-11-10 10:55:12">Any news on the invoice follow-up with Quinn Harper?</user_message>
-<agent_message timestamp="2026-11-10 10:55:12">[SUCCESS] ea_44 (Invoice follow-up with Quinn): The invoice follow-up with Quinn Harper. Waiting on Quinn's reply.</agent_message>
-<poke_reply timestamp="2026-11-10 10:55:12">Update: The invoice follow-up with Quinn Harper. Waiting on Quinn's reply.</poke_reply>
+<user_message timestamp="2026-11-10 01:04:48">Send the draft about the NDA from Pedro Alves</user_message>
+<agent_message timestamp="2026-11-10 01:04:48">[SUCCESS] ea_46 (NDA review for Pedro): Sent the email about the NDA from Pedro Alves.</agent_message>
+<poke_reply timestamp="2026-11-10 01:04:48">Update: Sent the email about the NDA from Pedro Alves.</poke_reply>
+<user_message timestamp="2026-11-10 08:16:48">Any news on cat sitting with Paula Reyes?</user_message>
+<agent_message timestamp="2026-11-10 08:16:48">[SUCCESS] ea_47 (Cat sitting with Paula): Cat sitting with Paula Reyes. In progress.</agent_message>
+<poke_reply timestamp="2026-11-10 08:16:48">Update: Cat sitting with Paula Reyes. In progress.</poke_reply>
+<user_message timestamp="2026-11-10 13:19:12">Any news on tennis lessons with Grace Okoro?</user_message>
+<agent_message timestamp="2026-11-10 13:19:12">[SUCCESS] ea_42 (Tennis lessons with Grace): Tennis lessons with Grace Okoro. Waiting on Grace's reply.</agent_message>
+<poke_reply timestamp="2026-11-10 13:19:12">Update: Tennis lessons with Grace Okoro. Waiting on Grace's reply.</poke_reply>
 <user_message timestamp="2026-11-10 15:00:00">Email Bob Okafor about last night's api-gateway crash and whether the hotfix ships today</user_message>
-<agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] ea_50 (Deploy + gateway crash w/ Bob): Emailed Bob Okafor about the api-gateway crash and hotfix deploy.</agent_message>
+<agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] ea_49 (Deploy + gateway crash w/ Bob): Emailed Bob Okafor about the api-gateway crash and hotfix deploy.</agent_message>
 <poke_reply timestamp="2026-11-10 15:00:00">Update: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.</poke_reply>
 <user_message timestamp="2026-11-10 15:00:00">Any news on the reunion dinner with Bob Lee?</user_message>
 <agent_message timestamp="2026-11-10 15:00:00">[SUCCESS] ea_48 (Reunion dinner with Bob Lee): Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.</agent_message>
 <poke_reply timestamp="2026-11-10 15:00:00">Update: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.</poke_reply>
-<user_message timestamp="2026-11-10 23:52:48">Any news on cat sitting with Bianca Rossi?</user_message>
-<agent_message timestamp="2026-11-10 23:52:48">[SUCCESS] ea_49 (Cat sitting with Bianca): Cat sitting with Bianca Rossi. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-11-10 23:52:48">Update: Cat sitting with Bianca Rossi. Finished; nothing open.</poke_reply>
-<user_message timestamp="2026-11-11 09:43:12">Any news on website mockups with Jonas Berg?</user_message>
-<agent_message timestamp="2026-11-11 09:43:12">[SUCCESS] ea_45 (Website mockups with Jonas): Website mockups with Jonas Berg. Finished; nothing open.</agent_message>
-<poke_reply timestamp="2026-11-11 09:43:12">Update: Website mockups with Jonas Berg. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-10 21:57:36">Send an email about the tire change with Julia Novak</user_message>
+<agent_message timestamp="2026-11-10 21:57:36">[SUCCESS] ea_50 (Tire change with Julia): Sent an email about the tire change with Julia Novak.</agent_message>
+<poke_reply timestamp="2026-11-10 21:57:36">Update: Sent an email about the tire change with Julia Novak.</poke_reply>
+<user_message timestamp="2026-11-11 06:07:12">Any news on the tire change with Julia Novak?</user_message>
+<agent_message timestamp="2026-11-11 06:07:12">[SUCCESS] ea_50 (Tire change with Julia): The tire change with Julia Novak. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-11 06:07:12">Update: The tire change with Julia Novak. Finished; nothing open.</poke_reply>
+<user_message timestamp="2026-11-11 08:02:24">Any news on the family reunion with Kevin Osei?</user_message>
+<agent_message timestamp="2026-11-11 08:02:24">[SUCCESS] ea_44 (Family reunion with Kevin): The family reunion with Kevin Osei. Finished; nothing open.</agent_message>
+<poke_reply timestamp="2026-11-11 08:02:24">Update: The family reunion with Kevin Osei. Finished; nothing open.</poke_reply>
 <user_message timestamp="2026-11-11 13:04:48">Remind me at 6pm to check the hotfix deploy</user_message>
-<agent_message timestamp="2026-11-11 13:04:48">[SUCCESS] ea_50 (Deploy + gateway crash w/ Bob): Set reminder t_21 for the api-gateway crash and hotfix deploy.</agent_message>
+<agent_message timestamp="2026-11-11 13:04:48">[SUCCESS] ea_49 (Deploy + gateway crash w/ Bob): Set reminder t_21 for the api-gateway crash and hotfix deploy.</agent_message>
 <poke_reply timestamp="2026-11-11 13:04:48">Update: Set reminder t_21 for the api-gateway crash and hotfix deploy.</poke_reply>
 </conversation_history>
 
 <active_agents>
-ea_50 | Deploy + gateway crash w/ Bob | bob.okafor@acme.example | open: trigger t_21 | 1h | Coordinating last night's api-gateway crash and today's hotfix depl…
+ea_49 | Deploy + gateway crash w/ Bob | bob.okafor@acme.example | open: trigger t_21 | 1h | Coordinating last night's api-gateway crash and today's hotfix depl…
 ea_48 | Reunion dinner with Bob Lee | bob.lee@friends.example | open: none | 1d waiting_user | Bob Lee can do any Friday this month. Waiting on the user to pic…
-ea_46 | Lease renewal with Bob | bob.hale@harborviewprop… | open: draft r-lease-02 | 4d waiting_user | Drafted a note asking Bob Hale, the landlord, for the re…
-ea_44 | Invoice follow-up with Quinn | quinn.harper@pool.examp… | open: none | 1d waiting_external | The invoice follow-up with Quinn Harper. Waiting on Quinn'…
-ea_42 | Family reunion with Aaron | aaron.blake@pool.example | open: none | 2d waiting_user | The family reunion with Aaron Blake. Waiting on the user to decid…
-(5 of 50 agents shown)
+ea_45 | Lease renewal with Bob | bob.hale@harborviewprop… | open: draft r-lease-02 | 4d waiting_user | Drafted a note asking Bob Hale, the landlord, for the re…
+ea_42 | Tennis lessons with Grace | grace.okoro@pool.example | open: none | 1d waiting_external | Tennis lessons with Grace Okoro. Waiting on Grace's reply.
+ea_47 | Cat sitting with Paula | paula.reyes@pool.example | open: none | 1d | Cat sitting with Paula Reyes. In progress.
+ea_40 | Mail forwarding with Simon | simon.clarke@pool.examp… | open: none | 3d | Mail forwarding with Simon Clarke. In progress.
+(6 of 50 agents shown)
 </active_agents>
 
 <new_user_message>
@@ -402,464 +395,455 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
 [
   {
     "agent_id": "ea_1",
-    "name": "Phone screen repair with Grace",
-    "topic": "The phone screen repair with Grace Okoro. Finished; nothing open.",
+    "name": "Payment plan with Vera",
+    "topic": "The payment plan with Vera Holm. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the phone screen repair with Grace Okoro.",
-      "The phone screen repair with Grace Okoro. Finished; nothing open."
+      "Drafted an email about the payment plan with Vera Holm (draft r-fx17).",
+      "Sent the email about the payment plan with Vera Holm."
     ]
   },
   {
     "agent_id": "ea_2",
-    "name": "Tennis lessons with Paula",
-    "topic": "Tennis lessons with Paula Reyes. Waiting on Paula's reply.",
+    "name": "Phone screen repair with Aaron",
+    "topic": "The phone screen repair with Aaron Blake. Waiting on Aaron's reply.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about tennis lessons with Paula Reyes.",
-      "Tennis lessons with Paula Reyes. Waiting on Paula's reply."
+      "Sent an email about the phone screen repair with Aaron Blake.",
+      "The phone screen repair with Aaron Blake. Waiting on Aaron's reply."
     ]
   },
   {
     "agent_id": "ea_3",
-    "name": "Camera return to Vera",
-    "topic": "The camera return to Vera Holm. Waiting on Vera's reply.",
+    "name": "School pickup with Caleb",
+    "topic": "School pickup with Caleb Stone. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the camera return to Vera Holm.",
-      "The camera return to Vera Holm. Waiting on Vera's reply."
+      "Set reminder t_545 for school pickup with Caleb Stone.",
+      "School pickup with Caleb Stone. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_4",
-    "name": "Grandparents visit with Vera",
-    "topic": "The grandparents visit with Vera Holm. In progress.",
+    "name": "Parking spot from Diego",
+    "topic": "The parking spot rental from Diego Ramos. Waiting on Diego's reply.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the grandparents visit with Vera Holm.",
-      "The grandparents visit with Vera Holm. In progress."
+      "Sent an email about the parking spot rental from Diego Ramos.",
+      "The parking spot rental from Diego Ramos. Waiting on Diego's reply."
     ]
   },
   {
     "agent_id": "ea_5",
-    "name": "Brand guidelines with Ines",
-    "topic": "The brand guidelines with Ines Duarte. Waiting on Ines's reply.",
-    "active_tasks": [
-      "draft r-fx35"
-    ],
+    "name": "Photo shoot with Nina",
+    "topic": "The photo shoot with Nina Petrova. In progress.",
+    "active_tasks": [],
     "past_action_notes": [
-      "Drafted an email about the brand guidelines with Ines Duarte (draft r-fx35).",
-      "The brand guidelines with Ines Duarte. Waiting on Ines's reply."
+      "Sent an email about the photo shoot with Nina Petrova.",
+      "The photo shoot with Nina Petrova. In progress."
     ]
   },
   {
     "agent_id": "ea_6",
-    "name": "Photo shoot with Aaron",
-    "topic": "The photo shoot with Aaron Blake. Finished; nothing open.",
+    "name": "Car wash plan with Marco",
+    "topic": "The car wash plan with Marco Silva. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the photo shoot with Aaron Blake.",
-      "The photo shoot with Aaron Blake. Finished; nothing open."
+      "Sent an email about the car wash plan with Marco Silva.",
+      "The car wash plan with Marco Silva. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_7",
-    "name": "Conference talk with Tara",
-    "topic": "The conference talk with Tara Singh. Waiting on Tara's reply.",
+    "name": "Park cleanup with Quinn",
+    "topic": "The park cleanup with Quinn Harper. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the conference talk with Tara Singh.",
-      "The conference talk with Tara Singh. Waiting on Tara's reply."
+      "Sent an email about the park cleanup with Quinn Harper.",
+      "The park cleanup with Quinn Harper. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_8",
-    "name": "Bulk order with Noah",
-    "topic": "The bulk order with Noah Fischer. Waiting on Noah's reply.",
-    "active_tasks": [
-      "draft r-fx7"
-    ],
+    "name": "Website mockups with Quinn",
+    "topic": "Website mockups with Quinn Harper. Finished; nothing open.",
+    "active_tasks": [],
     "past_action_notes": [
-      "Drafted an email about the bulk order with Noah Fischer (draft r-fx7).",
-      "The bulk order with Noah Fischer. Waiting on Noah's reply."
+      "Sent an email about website mockups with Quinn Harper."
     ]
   },
   {
     "agent_id": "ea_9",
-    "name": "Roof leak with George",
-    "topic": "The roof leak with George Liu. Finished; nothing open.",
+    "name": "Mentoring with Xenia",
+    "topic": "Mentoring with Xenia Park. Waiting on Xenia's reply.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the roof leak with George Liu.",
-      "The roof leak with George Liu. Finished; nothing open."
+      "Sent an email about mentoring with Xenia Park.",
+      "Mentoring with Xenia Park. Waiting on Xenia's reply."
     ]
   },
   {
     "agent_id": "ea_10",
-    "name": "Food bank shifts with Julia",
-    "topic": "Food bank shifts with Julia Novak. Finished; nothing open.",
+    "name": "NDA review for Caleb",
+    "topic": "The NDA from Caleb Stone. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about food bank shifts with Julia Novak.",
-      "Food bank shifts with Julia Novak. Finished; nothing open."
+      "Drafted an email about the NDA from Caleb Stone (draft r-fx37).",
+      "Sent the email about the NDA from Caleb Stone."
     ]
   },
   {
     "agent_id": "ea_11",
-    "name": "Recruiter call with Marco",
-    "topic": "The recruiter call with Marco Silva. Finished; nothing open.",
-    "active_tasks": [],
+    "name": "Weekly digest from Theo",
+    "topic": "The weekly digest from Theo Laurent. Waiting on Theo's reply.",
+    "active_tasks": [
+      "trigger t_524"
+    ],
     "past_action_notes": [
-      "Sent an email about the recruiter call with Marco Silva.",
-      "The recruiter call with Marco Silva. Finished; nothing open."
+      "Set reminder t_524 for the weekly digest from Theo Laurent.",
+      "The weekly digest from Theo Laurent. Waiting on Theo's reply."
     ]
   },
   {
     "agent_id": "ea_12",
-    "name": "Utility account with Caleb",
-    "topic": "The utility account with Caleb Stone. Waiting on Caleb's reply.",
+    "name": "Cat sitting with Felix",
+    "topic": "Cat sitting with Felix Wagner. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the utility account with Caleb Stone.",
-      "The utility account with Caleb Stone. Waiting on Caleb's reply."
+      "Sent an email about cat sitting with Felix Wagner.",
+      "Cat sitting with Felix Wagner. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_13",
-    "name": "Team roadmap with George",
-    "topic": "The team roadmap with George Liu. Finished; nothing open.",
+    "name": "Cat sitting with Fatima",
+    "topic": "Cat sitting with Fatima Khan. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the team roadmap with George Liu.",
-      "The team roadmap with George Liu. Finished; nothing open."
+      "Sent an email about cat sitting with Fatima Khan.",
+      "Cat sitting with Fatima Khan. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_14",
-    "name": "Garden design with Diego",
-    "topic": "The garden design with Diego Ramos. Finished; nothing open.",
-    "active_tasks": [],
+    "name": "Payment plan with Diego",
+    "topic": "The payment plan with Diego Ramos. Waiting on Diego's reply.",
+    "active_tasks": [
+      "draft r-fx9"
+    ],
     "past_action_notes": [
-      "Sent an email about the garden design with Diego Ramos.",
-      "The garden design with Diego Ramos. Finished; nothing open."
+      "Drafted an email about the payment plan with Diego Ramos (draft r-fx9).",
+      "The payment plan with Diego Ramos. Waiting on Diego's reply."
     ]
   },
   {
     "agent_id": "ea_15",
-    "name": "Logo refresh with Elena",
-    "topic": "The logo refresh with Elena Ivanova. Finished; nothing open.",
+    "name": "Cat sitting with Noah",
+    "topic": "Cat sitting with Noah Fischer. Waiting on Noah's reply.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the logo refresh with Elena Ivanova.",
-      "The logo refresh with Elena Ivanova. Finished; nothing open."
+      "Sent an email about cat sitting with Noah Fischer.",
+      "Cat sitting with Noah Fischer. Waiting on Noah's reply."
     ]
   },
   {
     "agent_id": "ea_16",
-    "name": "Charity gala with Kevin",
-    "topic": "The charity gala with Kevin Osei. Finished; nothing open.",
+    "name": "Price alert for Yusuf",
+    "topic": "The price alert for Yusuf Demir. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the charity gala with Kevin Osei.",
-      "The charity gala with Kevin Osei. Finished; nothing open."
+      "Set reminder t_520 for the price alert for Yusuf Demir.",
+      "The price alert for Yusuf Demir. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_17",
-    "name": "Conference talk with Kevin",
-    "topic": "The conference talk with Kevin Osei. Finished; nothing open.",
+    "name": "Pet insurance with Pedro",
+    "topic": "Pet insurance with Pedro Alves. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the conference talk with Kevin Osei.",
-      "The conference talk with Kevin Osei. Finished; nothing open."
+      "Sent an email about pet insurance with Pedro Alves.",
+      "Pet insurance with Pedro Alves. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_18",
-    "name": "Pet insurance with Hannah",
-    "topic": "Pet insurance with Hannah Weber. Waiting on Hannah's reply.",
+    "name": "Online course with Jonas",
+    "topic": "The online course with Jonas Berg. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about pet insurance with Hannah Weber.",
-      "Pet insurance with Hannah Weber. Waiting on Hannah's reply."
+      "Sent an email about the online course with Jonas Berg.",
+      "The online course with Jonas Berg. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_19",
-    "name": "Logo refresh with Maya",
-    "topic": "The logo refresh with Maya Cohen. In progress.",
-    "active_tasks": [],
+    "name": "Payment plan with Rachel",
+    "topic": "The payment plan with Rachel Adler. Waiting on the user to decide.",
+    "active_tasks": [
+      "draft r-fx10"
+    ],
     "past_action_notes": [
-      "Sent an email about the logo refresh with Maya Cohen.",
-      "The logo refresh with Maya Cohen. In progress."
+      "Drafted an email about the payment plan with Rachel Adler (draft r-fx10).",
+      "The payment plan with Rachel Adler. Waiting on the user to decide."
     ]
   },
   {
     "agent_id": "ea_20",
-    "name": "Tennis lessons with Yusuf",
-    "topic": "Tennis lessons with Yusuf Demir. Finished; nothing open.",
+    "name": "Furniture order from Umar",
+    "topic": "The furniture order from Umar Farouk. In progress.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about tennis lessons with Yusuf Demir.",
-      "Tennis lessons with Yusuf Demir. Finished; nothing open."
+      "Sent an email about the furniture order from Umar Farouk.",
+      "The furniture order from Umar Farouk. In progress."
     ]
   },
   {
     "agent_id": "ea_21",
-    "name": "Food bank shifts with Simon",
-    "topic": "Food bank shifts with Simon Clarke. Finished; nothing open.",
+    "name": "Logo refresh with Simon",
+    "topic": "The logo refresh with Simon Clarke. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about food bank shifts with Simon Clarke.",
-      "Food bank shifts with Simon Clarke. Finished; nothing open."
+      "Sent an email about the logo refresh with Simon Clarke.",
+      "The logo refresh with Simon Clarke. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_22",
-    "name": "Yoga classes with Theo",
-    "topic": "Yoga classes with Theo Laurent. Finished; nothing open.",
+    "name": "Hotel booking with Oscar",
+    "topic": "The hotel booking with Oscar Lund. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about yoga classes with Theo Laurent.",
-      "Yoga classes with Theo Laurent. Finished; nothing open."
+      "Sent an email about the hotel booking with Oscar Lund.",
+      "The hotel booking with Oscar Lund. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_23",
-    "name": "Roof leak with Julia",
-    "topic": "The roof leak with Julia Novak. Waiting on the user to decide.",
+    "name": "Dog walking with Elena",
+    "topic": "Dog walking with Elena Ivanova. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the roof leak with Julia Novak.",
-      "The roof leak with Julia Novak. Waiting on the user to decide."
+      "Sent an email about dog walking with Elena Ivanova.",
+      "Dog walking with Elena Ivanova. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_24",
-    "name": "Physio appointment with Noah",
-    "topic": "The physio appointment with Noah Fischer. Finished; nothing open.",
+    "name": "Yoga classes with Hannah",
+    "topic": "Yoga classes with Hannah Weber. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the physio appointment with Noah Fischer.",
-      "The physio appointment with Noah Fischer. Finished; nothing open."
+      "Sent an email about yoga classes with Hannah Weber.",
+      "Yoga classes with Hannah Weber. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_25",
-    "name": "Food bank shifts with Marco",
-    "topic": "Food bank shifts with Marco Silva. Finished; nothing open.",
+    "name": "Phone screen repair with Yusuf",
+    "topic": "The phone screen repair with Yusuf Demir. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about food bank shifts with Marco Silva.",
-      "Food bank shifts with Marco Silva. Finished; nothing open."
+      "Sent an email about the phone screen repair with Yusuf Demir.",
+      "The phone screen repair with Yusuf Demir. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_26",
-    "name": "Photo shoot with Liam",
-    "topic": "The photo shoot with Liam Walsh. Finished; nothing open.",
-    "active_tasks": [],
+    "name": "Price alert for Quinn",
+    "topic": "The price alert for Quinn Harper. Waiting on Quinn's reply.",
+    "active_tasks": [
+      "trigger t_542"
+    ],
     "past_action_notes": [
-      "Sent an email about the photo shoot with Liam Walsh.",
-      "The photo shoot with Liam Walsh. Finished; nothing open."
+      "Set reminder t_542 for the price alert for Quinn Harper.",
+      "The price alert for Quinn Harper. Waiting on Quinn's reply."
     ]
   },
   {
     "agent_id": "ea_27",
-    "name": "Website mockups with Xenia",
-    "topic": "Website mockups with Xenia Park. Finished; nothing open.",
+    "name": "Camera return to Wes",
+    "topic": "The camera return to Wes Turner. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about website mockups with Xenia Park.",
-      "Website mockups with Xenia Park. Finished; nothing open."
+      "Sent an email about the camera return to Wes Turner.",
+      "The camera return to Wes Turner. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_28",
-    "name": "Window cleaning with Felix",
-    "topic": "Window cleaning with Felix Wagner. In progress.",
+    "name": "Disk usage alert with Bianca",
+    "topic": "The disk usage alert with Bianca Rossi. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about window cleaning with Felix Wagner.",
-      "Window cleaning with Felix Wagner. In progress."
+      "Set reminder t_535 for the disk usage alert with Bianca Rossi.",
+      "The disk usage alert with Bianca Rossi. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_29",
-    "name": "Language lessons with Ines",
-    "topic": "Language lessons with Ines Duarte. In progress.",
+    "name": "Camera return to Pedro",
+    "topic": "The camera return to Pedro Alves. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about language lessons with Ines Duarte.",
-      "Language lessons with Ines Duarte. In progress."
+      "Sent an email about the camera return to Pedro Alves.",
+      "The camera return to Pedro Alves. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_30",
-    "name": "Furnace service with Bianca",
-    "topic": "The furnace service with Bianca Rossi. Waiting on Bianca's reply.",
-    "active_tasks": [
-      "trigger t_533"
-    ],
+    "name": "Blog post edits for Elena",
+    "topic": "Blog post edits for Elena Ivanova. Waiting on Elena's reply.",
+    "active_tasks": [],
     "past_action_notes": [
-      "Set reminder t_533 for the furnace service with Bianca Rossi.",
-      "The furnace service with Bianca Rossi. Waiting on Bianca's reply."
+      "Sent an email about blog post edits for Elena Ivanova.",
+      "Blog post edits for Elena Ivanova. Waiting on Elena's reply."
     ]
   },
   {
     "agent_id": "ea_31",
-    "name": "Utility account with Noah",
-    "topic": "The utility account with Noah Fischer. Waiting on Noah's reply.",
+    "name": "Airport pickup for Ula",
+    "topic": "The airport pickup for Ula Nowak. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the utility account with Noah Fischer.",
-      "The utility account with Noah Fischer. Waiting on Noah's reply."
+      "Set reminder t_511 for the airport pickup for Ula Nowak.",
+      "The airport pickup for Ula Nowak. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_32",
-    "name": "Bulk order with Zoe",
-    "topic": "The bulk order with Zoe Martin. In progress.",
-    "active_tasks": [
-      "draft r-fx13"
-    ],
+    "name": "Hotel booking with Fatima",
+    "topic": "The hotel booking with Fatima Khan. Finished; nothing open.",
+    "active_tasks": [],
     "past_action_notes": [
-      "Drafted an email about the bulk order with Zoe Martin (draft r-fx13).",
-      "The bulk order with Zoe Martin. In progress."
+      "Sent an email about the hotel booking with Fatima Khan.",
+      "The hotel booking with Fatima Khan. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_33",
-    "name": "Language lessons with Felix",
-    "topic": "Language lessons with Felix Wagner. Finished; nothing open.",
+    "name": "Food bank shifts with Vera",
+    "topic": "Food bank shifts with Vera Holm. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about language lessons with Felix Wagner.",
-      "Language lessons with Felix Wagner. Finished; nothing open."
+      "Sent an email about food bank shifts with Vera Holm.",
+      "Food bank shifts with Vera Holm. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_34",
-    "name": "Will paperwork with Ines",
-    "topic": "The will paperwork with Ines Duarte. Finished; nothing open.",
+    "name": "Camera return to Bianca",
+    "topic": "The camera return to Bianca Rossi. Waiting on Bianca's reply.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the will paperwork with Ines Duarte.",
-      "The will paperwork with Ines Duarte. Finished; nothing open."
+      "Sent an email about the camera return to Bianca Rossi.",
+      "The camera return to Bianca Rossi. Waiting on Bianca's reply."
     ]
   },
   {
     "agent_id": "ea_35",
-    "name": "Dog walking with Tara",
-    "topic": "Dog walking with Tara Singh. In progress.",
+    "name": "Yoga classes with Noah",
+    "topic": "Yoga classes with Noah Fischer. Waiting on the user to decide.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about dog walking with Tara Singh.",
-      "Dog walking with Tara Singh. In progress."
+      "Sent an email about yoga classes with Noah Fischer.",
+      "Yoga classes with Noah Fischer. Waiting on the user to decide."
     ]
   },
   {
     "agent_id": "ea_36",
-    "name": "Family reunion with Diego",
-    "topic": "The family reunion with Diego Ramos. Finished; nothing open.",
+    "name": "Library card with Simon",
+    "topic": "The library card renewal with Simon Clarke. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the family reunion with Diego Ramos.",
-      "The family reunion with Diego Ramos. Finished; nothing open."
+      "Sent an email about the library card renewal with Simon Clarke.",
+      "The library card renewal with Simon Clarke. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_37",
-    "name": "Invoice follow-up with Isaac",
-    "topic": "The invoice follow-up with Isaac Moreau. Waiting on Isaac's reply.",
+    "name": "Library card with Kevin",
+    "topic": "The library card renewal with Kevin Osei. Waiting on Kevin's reply.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the invoice follow-up with Isaac Moreau.",
-      "The invoice follow-up with Isaac Moreau. Waiting on Isaac's reply."
+      "Sent an email about the library card renewal with Kevin Osei.",
+      "The library card renewal with Kevin Osei. Waiting on Kevin's reply."
     ]
   },
   {
     "agent_id": "ea_38",
-    "name": "Physio appointment with Vera",
-    "topic": "The physio appointment with Vera Holm. Finished; nothing open.",
+    "name": "Quarterly goals with Julia",
+    "topic": "Quarterly goals with Julia Novak. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the physio appointment with Vera Holm.",
-      "The physio appointment with Vera Holm. Finished; nothing open."
+      "Sent an email about quarterly goals with Julia Novak.",
+      "Quarterly goals with Julia Novak. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_39",
-    "name": "Headcount plan with Kira",
-    "topic": "The headcount plan with Kira Sato. Finished; nothing open.",
+    "name": "Furnace service with Aaron",
+    "topic": "The furnace service with Aaron Blake. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Drafted an email about the headcount plan with Kira Sato (draft r-fx8).",
-      "Sent the email about the headcount plan with Kira Sato."
+      "Set reminder t_513 for the furnace service with Aaron Blake.",
+      "The furnace service with Aaron Blake. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_40",
-    "name": "Cat sitting with Aaron",
-    "topic": "Cat sitting with Aaron Blake. Waiting on Aaron's reply.",
+    "name": "Mail forwarding with Simon",
+    "topic": "Mail forwarding with Simon Clarke. In progress.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about cat sitting with Aaron Blake.",
-      "Cat sitting with Aaron Blake. Waiting on Aaron's reply."
+      "Sent an email about mail forwarding with Simon Clarke.",
+      "Mail forwarding with Simon Clarke. In progress."
     ]
   },
   {
     "agent_id": "ea_41",
-    "name": "Interview loop for Oscar",
-    "topic": "The interview loop for Oscar Lund. Waiting on Oscar's reply.",
-    "active_tasks": [],
+    "name": "Furnace service with George",
+    "topic": "The furnace service with George Liu. Waiting on the user to decide.",
+    "active_tasks": [
+      "trigger t_505"
+    ],
     "past_action_notes": [
-      "Sent an email about the interview loop for Oscar Lund.",
-      "The interview loop for Oscar Lund. Waiting on Oscar's reply."
+      "Set reminder t_505 for the furnace service with George Liu.",
+      "The furnace service with George Liu. Waiting on the user to decide."
     ]
   },
   {
     "agent_id": "ea_42",
-    "name": "Family reunion with Aaron",
-    "topic": "The family reunion with Aaron Blake. Waiting on the user to decide.",
+    "name": "Tennis lessons with Grace",
+    "topic": "Tennis lessons with Grace Okoro. Waiting on Grace's reply.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the family reunion with Aaron Blake.",
-      "The family reunion with Aaron Blake. Waiting on the user to decide."
+      "Sent an email about tennis lessons with Grace Okoro.",
+      "Tennis lessons with Grace Okoro. Waiting on Grace's reply."
     ]
   },
   {
     "agent_id": "ea_43",
-    "name": "Invoice follow-up with Maya",
-    "topic": "The invoice follow-up with Maya Cohen. In progress.",
+    "name": "Cat sitting with Jonas",
+    "topic": "Cat sitting with Jonas Berg. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the invoice follow-up with Maya Cohen.",
-      "The invoice follow-up with Maya Cohen. In progress."
+      "Sent an email about cat sitting with Jonas Berg.",
+      "Cat sitting with Jonas Berg. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_44",
-    "name": "Invoice follow-up with Quinn",
-    "topic": "The invoice follow-up with Quinn Harper. Waiting on Quinn's reply.",
+    "name": "Family reunion with Kevin",
+    "topic": "The family reunion with Kevin Osei. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the invoice follow-up with Quinn Harper.",
-      "The invoice follow-up with Quinn Harper. Waiting on Quinn's reply."
+      "Sent an email about the family reunion with Kevin Osei.",
+      "The family reunion with Kevin Osei. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_45",
-    "name": "Website mockups with Jonas",
-    "topic": "Website mockups with Jonas Berg. Finished; nothing open.",
-    "active_tasks": [],
-    "past_action_notes": [
-      "Sent an email about website mockups with Jonas Berg.",
-      "Website mockups with Jonas Berg. Finished; nothing open."
-    ]
-  },
-  {
-    "agent_id": "ea_46",
     "name": "Lease renewal with Bob",
     "topic": "Drafted a note asking Bob Hale, the landlord, for the revised 12-month lease renewal paperwork. Draft r-lease-02 is not sent yet.",
     "active_tasks": [
@@ -870,13 +854,23 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
     ]
   },
   {
-    "agent_id": "ea_47",
-    "name": "Park cleanup with Nina",
-    "topic": "The park cleanup with Nina Petrova. Finished; nothing open.",
+    "agent_id": "ea_46",
+    "name": "NDA review for Pedro",
+    "topic": "The NDA from Pedro Alves. Finished; nothing open.",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the park cleanup with Nina Petrova.",
-      "The park cleanup with Nina Petrova. Finished; nothing open."
+      "Drafted an email about the NDA from Pedro Alves (draft r-fx12).",
+      "Sent the email about the NDA from Pedro Alves."
+    ]
+  },
+  {
+    "agent_id": "ea_47",
+    "name": "Cat sitting with Paula",
+    "topic": "Cat sitting with Paula Reyes. In progress.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about cat sitting with Paula Reyes.",
+      "Cat sitting with Paula Reyes. In progress."
     ]
   },
   {
@@ -891,16 +885,6 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_49",
-    "name": "Cat sitting with Bianca",
-    "topic": "Cat sitting with Bianca Rossi. Finished; nothing open.",
-    "active_tasks": [],
-    "past_action_notes": [
-      "Sent an email about cat sitting with Bianca Rossi.",
-      "Cat sitting with Bianca Rossi. Finished; nothing open."
-    ]
-  },
-  {
-    "agent_id": "ea_50",
     "name": "Deploy + gateway crash w/ Bob",
     "topic": "Coordinating last night's api-gateway crash and today's hotfix deploy with Bob Okafor. Deploy check reminder t_21 is set.",
     "active_tasks": [
@@ -910,6 +894,16 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
       "Emailed Bob Okafor about the api-gateway crash and hotfix deploy.",
       "Set reminder t_21 for the api-gateway crash and hotfix deploy."
     ]
+  },
+  {
+    "agent_id": "ea_50",
+    "name": "Tire change with Julia",
+    "topic": "The tire change with Julia Novak. Finished; nothing open.",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about the tire change with Julia Novak.",
+      "The tire change with Julia Novak. Finished; nothing open."
+    ]
   }
 ]
 === rag as_built: query ===
@@ -918,464 +912,455 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
 [
   {
     "agent_id": "ea_1",
-    "name": "Phone screen repair with Grace",
-    "topic": "The phone screen repair with Grace Okoro. Finished; nothing open. | status: done | last active: 44d ago | keys: address:grace.okoro@pool.example, thread:th_fx38",
+    "name": "Payment plan with Vera",
+    "topic": "The payment plan with Vera Holm. Finished; nothing open. | status: done | last active: 41d ago | keys: address:vera.holm@pool.example, draft:r-fx17, thread:th_fx17",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the phone screen repair with Grace Okoro.",
-      "The phone screen repair with Grace Okoro. Finished; nothing open."
+      "Drafted an email about the payment plan with Vera Holm (draft r-fx17).",
+      "Sent the email about the payment plan with Vera Holm."
     ]
   },
   {
     "agent_id": "ea_2",
-    "name": "Tennis lessons with Paula",
-    "topic": "Tennis lessons with Paula Reyes. Waiting on Paula's reply. | status: waiting_external | last active: 44d ago | keys: address:paula.reyes@pool.example, thread:th_fx40",
+    "name": "Phone screen repair with Aaron",
+    "topic": "The phone screen repair with Aaron Blake. Waiting on Aaron's reply. | status: waiting_external | last active: 43d ago | keys: address:aaron.blake@pool.example, thread:th_fx30",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about tennis lessons with Paula Reyes.",
-      "Tennis lessons with Paula Reyes. Waiting on Paula's reply."
+      "Sent an email about the phone screen repair with Aaron Blake.",
+      "The phone screen repair with Aaron Blake. Waiting on Aaron's reply."
     ]
   },
   {
     "agent_id": "ea_3",
-    "name": "Camera return to Vera",
-    "topic": "The camera return to Vera Holm. Waiting on Vera's reply. | status: waiting_external | last active: 42d ago | keys: address:vera.holm@pool.example, thread:th_fx10",
+    "name": "School pickup with Caleb",
+    "topic": "School pickup with Caleb Stone. Finished; nothing open. | status: done | last active: 41d ago | keys: trigger:545",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the camera return to Vera Holm.",
-      "The camera return to Vera Holm. Waiting on Vera's reply."
+      "Set reminder t_545 for school pickup with Caleb Stone.",
+      "School pickup with Caleb Stone. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_4",
-    "name": "Grandparents visit with Vera",
-    "topic": "The grandparents visit with Vera Holm. In progress. | status: active | last active: 44d ago | keys: address:vera.holm@pool.example, thread:th_fx6",
+    "name": "Parking spot from Diego",
+    "topic": "The parking spot rental from Diego Ramos. Waiting on Diego's reply. | status: waiting_external | last active: 37d ago | keys: address:diego.ramos@pool.example, thread:th_fx25",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the grandparents visit with Vera Holm.",
-      "The grandparents visit with Vera Holm. In progress."
+      "Sent an email about the parking spot rental from Diego Ramos.",
+      "The parking spot rental from Diego Ramos. Waiting on Diego's reply."
     ]
   },
   {
     "agent_id": "ea_5",
-    "name": "Brand guidelines with Ines",
-    "topic": "The brand guidelines with Ines Duarte. Waiting on Ines's reply. | status: waiting_external | last active: 40d ago | keys: address:ines.duarte@pool.example, draft:r-fx35, thread:th_fx35",
-    "active_tasks": [
-      "draft r-fx35"
-    ],
+    "name": "Photo shoot with Nina",
+    "topic": "The photo shoot with Nina Petrova. In progress. | status: active | last active: 35d ago | keys: address:nina.petrova@pool.example, thread:th_fx46",
+    "active_tasks": [],
     "past_action_notes": [
-      "Drafted an email about the brand guidelines with Ines Duarte (draft r-fx35).",
-      "The brand guidelines with Ines Duarte. Waiting on Ines's reply."
+      "Sent an email about the photo shoot with Nina Petrova.",
+      "The photo shoot with Nina Petrova. In progress."
     ]
   },
   {
     "agent_id": "ea_6",
-    "name": "Photo shoot with Aaron",
-    "topic": "The photo shoot with Aaron Blake. Finished; nothing open. | status: done | last active: 40d ago | keys: address:aaron.blake@pool.example, thread:th_fx43",
+    "name": "Car wash plan with Marco",
+    "topic": "The car wash plan with Marco Silva. Finished; nothing open. | status: done | last active: 42d ago | keys: address:marco.silva@pool.example, thread:th_fx4",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the photo shoot with Aaron Blake.",
-      "The photo shoot with Aaron Blake. Finished; nothing open."
+      "Sent an email about the car wash plan with Marco Silva.",
+      "The car wash plan with Marco Silva. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_7",
-    "name": "Conference talk with Tara",
-    "topic": "The conference talk with Tara Singh. Waiting on Tara's reply. | status: waiting_external | last active: 41d ago | keys: address:tara.singh@pool.example, thread:th_fx16",
+    "name": "Park cleanup with Quinn",
+    "topic": "The park cleanup with Quinn Harper. Finished; nothing open. | status: done | last active: 38d ago | keys: address:quinn.harper@pool.example, thread:th_fx2",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the conference talk with Tara Singh.",
-      "The conference talk with Tara Singh. Waiting on Tara's reply."
+      "Sent an email about the park cleanup with Quinn Harper.",
+      "The park cleanup with Quinn Harper. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_8",
-    "name": "Bulk order with Noah",
-    "topic": "The bulk order with Noah Fischer. Waiting on Noah's reply. | status: waiting_external | last active: 38d ago | keys: address:noah.fischer@pool.example, draft:r-fx7, thread:th_fx7",
-    "active_tasks": [
-      "draft r-fx7"
-    ],
+    "name": "Website mockups with Quinn",
+    "topic": "Website mockups with Quinn Harper. Finished; nothing open. | status: done | last active: 37d ago | keys: address:quinn.harper@pool.example, thread:th_fx15",
+    "active_tasks": [],
     "past_action_notes": [
-      "Drafted an email about the bulk order with Noah Fischer (draft r-fx7).",
-      "The bulk order with Noah Fischer. Waiting on Noah's reply."
+      "Sent an email about website mockups with Quinn Harper."
     ]
   },
   {
     "agent_id": "ea_9",
-    "name": "Roof leak with George",
-    "topic": "The roof leak with George Liu. Finished; nothing open. | status: done | last active: 40d ago | keys: address:george.liu@pool.example, thread:th_fx3",
+    "name": "Mentoring with Xenia",
+    "topic": "Mentoring with Xenia Park. Waiting on Xenia's reply. | status: waiting_external | last active: 32d ago | keys: address:xenia.park@pool.example, thread:th_fx26",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the roof leak with George Liu.",
-      "The roof leak with George Liu. Finished; nothing open."
+      "Sent an email about mentoring with Xenia Park.",
+      "Mentoring with Xenia Park. Waiting on Xenia's reply."
     ]
   },
   {
     "agent_id": "ea_10",
-    "name": "Food bank shifts with Julia",
-    "topic": "Food bank shifts with Julia Novak. Finished; nothing open. | status: done | last active: 40d ago | keys: address:julia.novak@pool.example, thread:th_fx9",
+    "name": "NDA review for Caleb",
+    "topic": "The NDA from Caleb Stone. Finished; nothing open. | status: done | last active: 36d ago | keys: address:caleb.stone@pool.example, draft:r-fx37, thread:th_fx37",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about food bank shifts with Julia Novak.",
-      "Food bank shifts with Julia Novak. Finished; nothing open."
+      "Drafted an email about the NDA from Caleb Stone (draft r-fx37).",
+      "Sent the email about the NDA from Caleb Stone."
     ]
   },
   {
     "agent_id": "ea_11",
-    "name": "Recruiter call with Marco",
-    "topic": "The recruiter call with Marco Silva. Finished; nothing open. | status: done | last active: 40d ago | keys: address:marco.silva@pool.example, thread:th_fx36",
-    "active_tasks": [],
+    "name": "Weekly digest from Theo",
+    "topic": "The weekly digest from Theo Laurent. Waiting on Theo's reply. | status: waiting_external | last active: 29d ago | keys: trigger:524",
+    "active_tasks": [
+      "trigger t_524"
+    ],
     "past_action_notes": [
-      "Sent an email about the recruiter call with Marco Silva.",
-      "The recruiter call with Marco Silva. Finished; nothing open."
+      "Set reminder t_524 for the weekly digest from Theo Laurent.",
+      "The weekly digest from Theo Laurent. Waiting on Theo's reply."
     ]
   },
   {
     "agent_id": "ea_12",
-    "name": "Utility account with Caleb",
-    "topic": "The utility account with Caleb Stone. Waiting on Caleb's reply. | status: waiting_external | last active: 35d ago | keys: address:caleb.stone@pool.example, thread:th_fx39",
+    "name": "Cat sitting with Felix",
+    "topic": "Cat sitting with Felix Wagner. Finished; nothing open. | status: done | last active: 31d ago | keys: address:felix.wagner@pool.example, thread:th_fx1",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the utility account with Caleb Stone.",
-      "The utility account with Caleb Stone. Waiting on Caleb's reply."
+      "Sent an email about cat sitting with Felix Wagner.",
+      "Cat sitting with Felix Wagner. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_13",
-    "name": "Team roadmap with George",
-    "topic": "The team roadmap with George Liu. Finished; nothing open. | status: done | last active: 36d ago | keys: address:george.liu@pool.example, thread:th_fx41",
+    "name": "Cat sitting with Fatima",
+    "topic": "Cat sitting with Fatima Khan. Finished; nothing open. | status: done | last active: 33d ago | keys: address:fatima.khan@pool.example, thread:th_fx7",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the team roadmap with George Liu.",
-      "The team roadmap with George Liu. Finished; nothing open."
+      "Sent an email about cat sitting with Fatima Khan.",
+      "Cat sitting with Fatima Khan. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_14",
-    "name": "Garden design with Diego",
-    "topic": "The garden design with Diego Ramos. Finished; nothing open. | status: done | last active: 40d ago | keys: address:diego.ramos@pool.example, thread:th_fx15",
-    "active_tasks": [],
+    "name": "Payment plan with Diego",
+    "topic": "The payment plan with Diego Ramos. Waiting on Diego's reply. | status: waiting_external | last active: 30d ago | keys: address:diego.ramos@pool.example, draft:r-fx9, thread:th_fx9",
+    "active_tasks": [
+      "draft r-fx9"
+    ],
     "past_action_notes": [
-      "Sent an email about the garden design with Diego Ramos.",
-      "The garden design with Diego Ramos. Finished; nothing open."
+      "Drafted an email about the payment plan with Diego Ramos (draft r-fx9).",
+      "The payment plan with Diego Ramos. Waiting on Diego's reply."
     ]
   },
   {
     "agent_id": "ea_15",
-    "name": "Logo refresh with Elena",
-    "topic": "The logo refresh with Elena Ivanova. Finished; nothing open. | status: done | last active: 35d ago | keys: address:elena.ivanova@pool.example, thread:th_fx17",
+    "name": "Cat sitting with Noah",
+    "topic": "Cat sitting with Noah Fischer. Waiting on Noah's reply. | status: waiting_external | last active: 34d ago | keys: address:noah.fischer@pool.example, thread:th_fx27",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the logo refresh with Elena Ivanova.",
-      "The logo refresh with Elena Ivanova. Finished; nothing open."
+      "Sent an email about cat sitting with Noah Fischer.",
+      "Cat sitting with Noah Fischer. Waiting on Noah's reply."
     ]
   },
   {
     "agent_id": "ea_16",
-    "name": "Charity gala with Kevin",
-    "topic": "The charity gala with Kevin Osei. Finished; nothing open. | status: done | last active: 37d ago | keys: address:kevin.osei@pool.example, thread:th_fx31",
+    "name": "Price alert for Yusuf",
+    "topic": "The price alert for Yusuf Demir. Finished; nothing open. | status: done | last active: 28d ago | keys: trigger:520",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the charity gala with Kevin Osei.",
-      "The charity gala with Kevin Osei. Finished; nothing open."
+      "Set reminder t_520 for the price alert for Yusuf Demir.",
+      "The price alert for Yusuf Demir. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_17",
-    "name": "Conference talk with Kevin",
-    "topic": "The conference talk with Kevin Osei. Finished; nothing open. | status: done | last active: 28d ago | keys: address:kevin.osei@pool.example, thread:th_fx18",
+    "name": "Pet insurance with Pedro",
+    "topic": "Pet insurance with Pedro Alves. Finished; nothing open. | status: done | last active: 26d ago | keys: address:pedro.alves@pool.example, thread:th_fx33",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the conference talk with Kevin Osei.",
-      "The conference talk with Kevin Osei. Finished; nothing open."
+      "Sent an email about pet insurance with Pedro Alves.",
+      "Pet insurance with Pedro Alves. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_18",
-    "name": "Pet insurance with Hannah",
-    "topic": "Pet insurance with Hannah Weber. Waiting on Hannah's reply. | status: waiting_external | last active: 30d ago | keys: address:hannah.weber@pool.example, thread:th_fx34",
+    "name": "Online course with Jonas",
+    "topic": "The online course with Jonas Berg. Finished; nothing open. | status: done | last active: 22d ago | keys: address:jonas.berg@pool.example, thread:th_fx29",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about pet insurance with Hannah Weber.",
-      "Pet insurance with Hannah Weber. Waiting on Hannah's reply."
+      "Sent an email about the online course with Jonas Berg.",
+      "The online course with Jonas Berg. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_19",
-    "name": "Logo refresh with Maya",
-    "topic": "The logo refresh with Maya Cohen. In progress. | status: active | last active: 26d ago | keys: address:maya.cohen@pool.example, thread:th_fx32",
-    "active_tasks": [],
+    "name": "Payment plan with Rachel",
+    "topic": "The payment plan with Rachel Adler. Waiting on the user to decide. | status: waiting_user | last active: 29d ago | keys: address:rachel.adler@pool.example, draft:r-fx10, thread:th_fx10",
+    "active_tasks": [
+      "draft r-fx10"
+    ],
     "past_action_notes": [
-      "Sent an email about the logo refresh with Maya Cohen.",
-      "The logo refresh with Maya Cohen. In progress."
+      "Drafted an email about the payment plan with Rachel Adler (draft r-fx10).",
+      "The payment plan with Rachel Adler. Waiting on the user to decide."
     ]
   },
   {
     "agent_id": "ea_20",
-    "name": "Tennis lessons with Yusuf",
-    "topic": "Tennis lessons with Yusuf Demir. Finished; nothing open. | status: done | last active: 28d ago | keys: address:yusuf.demir@pool.example, thread:th_fx12",
+    "name": "Furniture order from Umar",
+    "topic": "The furniture order from Umar Farouk. In progress. | status: active | last active: 27d ago | keys: address:umar.farouk@pool.example, thread:th_fx32",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about tennis lessons with Yusuf Demir.",
-      "Tennis lessons with Yusuf Demir. Finished; nothing open."
+      "Sent an email about the furniture order from Umar Farouk.",
+      "The furniture order from Umar Farouk. In progress."
     ]
   },
   {
     "agent_id": "ea_21",
-    "name": "Food bank shifts with Simon",
-    "topic": "Food bank shifts with Simon Clarke. Finished; nothing open. | status: done | last active: 20d ago | keys: address:simon.clarke@pool.example, thread:th_fx44",
+    "name": "Logo refresh with Simon",
+    "topic": "The logo refresh with Simon Clarke. Finished; nothing open. | status: done | last active: 27d ago | keys: address:simon.clarke@pool.example, thread:th_fx31",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about food bank shifts with Simon Clarke.",
-      "Food bank shifts with Simon Clarke. Finished; nothing open."
+      "Sent an email about the logo refresh with Simon Clarke.",
+      "The logo refresh with Simon Clarke. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_22",
-    "name": "Yoga classes with Theo",
-    "topic": "Yoga classes with Theo Laurent. Finished; nothing open. | status: done | last active: 19d ago | keys: address:theo.laurent@pool.example, thread:th_fx0",
+    "name": "Hotel booking with Oscar",
+    "topic": "The hotel booking with Oscar Lund. Finished; nothing open. | status: done | last active: 20d ago | keys: address:oscar.lund@pool.example, thread:th_fx22",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about yoga classes with Theo Laurent.",
-      "Yoga classes with Theo Laurent. Finished; nothing open."
+      "Sent an email about the hotel booking with Oscar Lund.",
+      "The hotel booking with Oscar Lund. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_23",
-    "name": "Roof leak with Julia",
-    "topic": "The roof leak with Julia Novak. Waiting on the user to decide. | status: waiting_user | last active: 23d ago | keys: address:julia.novak@pool.example, thread:th_fx26",
+    "name": "Dog walking with Elena",
+    "topic": "Dog walking with Elena Ivanova. Finished; nothing open. | status: done | last active: 20d ago | keys: address:elena.ivanova@pool.example, thread:th_fx19",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the roof leak with Julia Novak.",
-      "The roof leak with Julia Novak. Waiting on the user to decide."
+      "Sent an email about dog walking with Elena Ivanova.",
+      "Dog walking with Elena Ivanova. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_24",
-    "name": "Physio appointment with Noah",
-    "topic": "The physio appointment with Noah Fischer. Finished; nothing open. | status: done | last active: 20d ago | keys: address:noah.fischer@pool.example, thread:th_fx23",
+    "name": "Yoga classes with Hannah",
+    "topic": "Yoga classes with Hannah Weber. Finished; nothing open. | status: done | last active: 23d ago | keys: address:hannah.weber@pool.example, thread:th_fx40",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the physio appointment with Noah Fischer.",
-      "The physio appointment with Noah Fischer. Finished; nothing open."
+      "Sent an email about yoga classes with Hannah Weber.",
+      "Yoga classes with Hannah Weber. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_25",
-    "name": "Food bank shifts with Marco",
-    "topic": "Food bank shifts with Marco Silva. Finished; nothing open. | status: done | last active: 19d ago | keys: address:marco.silva@pool.example, thread:th_fx22",
+    "name": "Phone screen repair with Yusuf",
+    "topic": "The phone screen repair with Yusuf Demir. Finished; nothing open. | status: done | last active: 20d ago | keys: address:yusuf.demir@pool.example, thread:th_fx28",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about food bank shifts with Marco Silva.",
-      "Food bank shifts with Marco Silva. Finished; nothing open."
+      "Sent an email about the phone screen repair with Yusuf Demir.",
+      "The phone screen repair with Yusuf Demir. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_26",
-    "name": "Photo shoot with Liam",
-    "topic": "The photo shoot with Liam Walsh. Finished; nothing open. | status: done | last active: 22d ago | keys: address:liam.walsh@pool.example, thread:th_fx4",
-    "active_tasks": [],
+    "name": "Price alert for Quinn",
+    "topic": "The price alert for Quinn Harper. Waiting on Quinn's reply. | status: waiting_external | last active: 17d ago | keys: trigger:542",
+    "active_tasks": [
+      "trigger t_542"
+    ],
     "past_action_notes": [
-      "Sent an email about the photo shoot with Liam Walsh.",
-      "The photo shoot with Liam Walsh. Finished; nothing open."
+      "Set reminder t_542 for the price alert for Quinn Harper.",
+      "The price alert for Quinn Harper. Waiting on Quinn's reply."
     ]
   },
   {
     "agent_id": "ea_27",
-    "name": "Website mockups with Xenia",
-    "topic": "Website mockups with Xenia Park. Finished; nothing open. | status: done | last active: 20d ago | keys: address:xenia.park@pool.example, thread:th_fx30",
+    "name": "Camera return to Wes",
+    "topic": "The camera return to Wes Turner. Finished; nothing open. | status: done | last active: 20d ago | keys: address:wes.turner@pool.example, thread:th_fx36",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about website mockups with Xenia Park.",
-      "Website mockups with Xenia Park. Finished; nothing open."
+      "Sent an email about the camera return to Wes Turner.",
+      "The camera return to Wes Turner. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_28",
-    "name": "Window cleaning with Felix",
-    "topic": "Window cleaning with Felix Wagner. In progress. | status: active | last active: 18d ago | keys: address:felix.wagner@pool.example, thread:th_fx27",
+    "name": "Disk usage alert with Bianca",
+    "topic": "The disk usage alert with Bianca Rossi. Finished; nothing open. | status: done | last active: 16d ago | keys: trigger:535",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about window cleaning with Felix Wagner.",
-      "Window cleaning with Felix Wagner. In progress."
+      "Set reminder t_535 for the disk usage alert with Bianca Rossi.",
+      "The disk usage alert with Bianca Rossi. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_29",
-    "name": "Language lessons with Ines",
-    "topic": "Language lessons with Ines Duarte. In progress. | status: active | last active: 15d ago | keys: address:ines.duarte@pool.example, thread:th_fx19",
+    "name": "Camera return to Pedro",
+    "topic": "The camera return to Pedro Alves. Finished; nothing open. | status: done | last active: 20d ago | keys: address:pedro.alves@pool.example, thread:th_fx16",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about language lessons with Ines Duarte.",
-      "Language lessons with Ines Duarte. In progress."
+      "Sent an email about the camera return to Pedro Alves.",
+      "The camera return to Pedro Alves. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_30",
-    "name": "Furnace service with Bianca",
-    "topic": "The furnace service with Bianca Rossi. Waiting on Bianca's reply. | status: waiting_external | last active: 17d ago | keys: trigger:533",
-    "active_tasks": [
-      "trigger t_533"
-    ],
+    "name": "Blog post edits for Elena",
+    "topic": "Blog post edits for Elena Ivanova. Waiting on Elena's reply. | status: waiting_external | last active: 19d ago | keys: address:elena.ivanova@pool.example, thread:th_fx39",
+    "active_tasks": [],
     "past_action_notes": [
-      "Set reminder t_533 for the furnace service with Bianca Rossi.",
-      "The furnace service with Bianca Rossi. Waiting on Bianca's reply."
+      "Sent an email about blog post edits for Elena Ivanova.",
+      "Blog post edits for Elena Ivanova. Waiting on Elena's reply."
     ]
   },
   {
     "agent_id": "ea_31",
-    "name": "Utility account with Noah",
-    "topic": "The utility account with Noah Fischer. Waiting on Noah's reply. | status: waiting_external | last active: 14d ago | keys: address:noah.fischer@pool.example, thread:th_fx29",
+    "name": "Airport pickup for Ula",
+    "topic": "The airport pickup for Ula Nowak. Finished; nothing open. | status: done | last active: 17d ago | keys: trigger:511",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the utility account with Noah Fischer.",
-      "The utility account with Noah Fischer. Waiting on Noah's reply."
+      "Set reminder t_511 for the airport pickup for Ula Nowak.",
+      "The airport pickup for Ula Nowak. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_32",
-    "name": "Bulk order with Zoe",
-    "topic": "The bulk order with Zoe Martin. In progress. | status: active | last active: 12d ago | keys: address:zoe.martin@pool.example, draft:r-fx13, thread:th_fx13",
-    "active_tasks": [
-      "draft r-fx13"
-    ],
+    "name": "Hotel booking with Fatima",
+    "topic": "The hotel booking with Fatima Khan. Finished; nothing open. | status: done | last active: 15d ago | keys: address:fatima.khan@pool.example, thread:th_fx23",
+    "active_tasks": [],
     "past_action_notes": [
-      "Drafted an email about the bulk order with Zoe Martin (draft r-fx13).",
-      "The bulk order with Zoe Martin. In progress."
+      "Sent an email about the hotel booking with Fatima Khan.",
+      "The hotel booking with Fatima Khan. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_33",
-    "name": "Language lessons with Felix",
-    "topic": "Language lessons with Felix Wagner. Finished; nothing open. | status: done | last active: 13d ago | keys: address:felix.wagner@pool.example, thread:th_fx2",
+    "name": "Food bank shifts with Vera",
+    "topic": "Food bank shifts with Vera Holm. Finished; nothing open. | status: done | last active: 13d ago | keys: address:vera.holm@pool.example, thread:th_fx38",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about language lessons with Felix Wagner.",
-      "Language lessons with Felix Wagner. Finished; nothing open."
+      "Sent an email about food bank shifts with Vera Holm.",
+      "Food bank shifts with Vera Holm. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_34",
-    "name": "Will paperwork with Ines",
-    "topic": "The will paperwork with Ines Duarte. Finished; nothing open. | status: done | last active: 13d ago | keys: address:ines.duarte@pool.example, thread:th_fx25",
+    "name": "Camera return to Bianca",
+    "topic": "The camera return to Bianca Rossi. Waiting on Bianca's reply. | status: waiting_external | last active: 11d ago | keys: address:bianca.rossi@pool.example, thread:th_fx44",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the will paperwork with Ines Duarte.",
-      "The will paperwork with Ines Duarte. Finished; nothing open."
+      "Sent an email about the camera return to Bianca Rossi.",
+      "The camera return to Bianca Rossi. Waiting on Bianca's reply."
     ]
   },
   {
     "agent_id": "ea_35",
-    "name": "Dog walking with Tara",
-    "topic": "Dog walking with Tara Singh. In progress. | status: active | last active: 13d ago | keys: address:tara.singh@pool.example, thread:th_fx28",
+    "name": "Yoga classes with Noah",
+    "topic": "Yoga classes with Noah Fischer. Waiting on the user to decide. | status: waiting_user | last active: 14d ago | keys: address:noah.fischer@pool.example, thread:th_fx8",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about dog walking with Tara Singh.",
-      "Dog walking with Tara Singh. In progress."
+      "Sent an email about yoga classes with Noah Fischer.",
+      "Yoga classes with Noah Fischer. Waiting on the user to decide."
     ]
   },
   {
     "agent_id": "ea_36",
-    "name": "Family reunion with Diego",
-    "topic": "The family reunion with Diego Ramos. Finished; nothing open. | status: done | last active: 10d ago | keys: address:diego.ramos@pool.example, thread:th_fx14",
+    "name": "Library card with Simon",
+    "topic": "The library card renewal with Simon Clarke. Finished; nothing open. | status: done | last active: 8d ago | keys: address:simon.clarke@pool.example, thread:th_fx43",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the family reunion with Diego Ramos.",
-      "The family reunion with Diego Ramos. Finished; nothing open."
+      "Sent an email about the library card renewal with Simon Clarke.",
+      "The library card renewal with Simon Clarke. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_37",
-    "name": "Invoice follow-up with Isaac",
-    "topic": "The invoice follow-up with Isaac Moreau. Waiting on Isaac's reply. | status: waiting_external | last active: 12d ago | keys: address:isaac.moreau@pool.example, thread:th_fx42",
+    "name": "Library card with Kevin",
+    "topic": "The library card renewal with Kevin Osei. Waiting on Kevin's reply. | status: waiting_external | last active: 10d ago | keys: address:kevin.osei@pool.example, thread:th_fx34",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the invoice follow-up with Isaac Moreau.",
-      "The invoice follow-up with Isaac Moreau. Waiting on Isaac's reply."
+      "Sent an email about the library card renewal with Kevin Osei.",
+      "The library card renewal with Kevin Osei. Waiting on Kevin's reply."
     ]
   },
   {
     "agent_id": "ea_38",
-    "name": "Physio appointment with Vera",
-    "topic": "The physio appointment with Vera Holm. Finished; nothing open. | status: done | last active: 8d ago | keys: address:vera.holm@pool.example, thread:th_fx11",
+    "name": "Quarterly goals with Julia",
+    "topic": "Quarterly goals with Julia Novak. Finished; nothing open. | status: done | last active: 6d ago | keys: address:julia.novak@pool.example, thread:th_fx3",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the physio appointment with Vera Holm.",
-      "The physio appointment with Vera Holm. Finished; nothing open."
+      "Sent an email about quarterly goals with Julia Novak.",
+      "Quarterly goals with Julia Novak. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_39",
-    "name": "Headcount plan with Kira",
-    "topic": "The headcount plan with Kira Sato. Finished; nothing open. | status: done | last active: 7d ago | keys: address:kira.sato@pool.example, draft:r-fx8, thread:th_fx8",
+    "name": "Furnace service with Aaron",
+    "topic": "The furnace service with Aaron Blake. Finished; nothing open. | status: done | last active: 9d ago | keys: trigger:513",
     "active_tasks": [],
     "past_action_notes": [
-      "Drafted an email about the headcount plan with Kira Sato (draft r-fx8).",
-      "Sent the email about the headcount plan with Kira Sato."
+      "Set reminder t_513 for the furnace service with Aaron Blake.",
+      "The furnace service with Aaron Blake. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_40",
-    "name": "Cat sitting with Aaron",
-    "topic": "Cat sitting with Aaron Blake. Waiting on Aaron's reply. | status: waiting_external | last active: 8d ago | keys: address:aaron.blake@pool.example, thread:th_fx5",
+    "name": "Mail forwarding with Simon",
+    "topic": "Mail forwarding with Simon Clarke. In progress. | status: active | last active: 3d ago | keys: address:simon.clarke@pool.example, thread:th_fx6",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about cat sitting with Aaron Blake.",
-      "Cat sitting with Aaron Blake. Waiting on Aaron's reply."
+      "Sent an email about mail forwarding with Simon Clarke.",
+      "Mail forwarding with Simon Clarke. In progress."
     ]
   },
   {
     "agent_id": "ea_41",
-    "name": "Interview loop for Oscar",
-    "topic": "The interview loop for Oscar Lund. Waiting on Oscar's reply. | status: waiting_external | last active: 4d ago | keys: address:oscar.lund@pool.example, thread:th_fx21",
-    "active_tasks": [],
+    "name": "Furnace service with George",
+    "topic": "The furnace service with George Liu. Waiting on the user to decide. | status: waiting_user | last active: 7d ago | keys: trigger:505",
+    "active_tasks": [
+      "trigger t_505"
+    ],
     "past_action_notes": [
-      "Sent an email about the interview loop for Oscar Lund.",
-      "The interview loop for Oscar Lund. Waiting on Oscar's reply."
+      "Set reminder t_505 for the furnace service with George Liu.",
+      "The furnace service with George Liu. Waiting on the user to decide."
     ]
   },
   {
     "agent_id": "ea_42",
-    "name": "Family reunion with Aaron",
-    "topic": "The family reunion with Aaron Blake. Waiting on the user to decide. | status: waiting_user | last active: 2d ago | keys: address:aaron.blake@pool.example, thread:th_fx37",
+    "name": "Tennis lessons with Grace",
+    "topic": "Tennis lessons with Grace Okoro. Waiting on Grace's reply. | status: waiting_external | last active: 1d ago | keys: address:grace.okoro@pool.example, thread:th_fx41",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the family reunion with Aaron Blake.",
-      "The family reunion with Aaron Blake. Waiting on the user to decide."
+      "Sent an email about tennis lessons with Grace Okoro.",
+      "Tennis lessons with Grace Okoro. Waiting on Grace's reply."
     ]
   },
   {
     "agent_id": "ea_43",
-    "name": "Invoice follow-up with Maya",
-    "topic": "The invoice follow-up with Maya Cohen. In progress. | status: active | last active: 4d ago | keys: address:maya.cohen@pool.example, thread:th_fx45",
+    "name": "Cat sitting with Jonas",
+    "topic": "Cat sitting with Jonas Berg. Finished; nothing open. | status: done | last active: 7d ago | keys: address:jonas.berg@pool.example, thread:th_fx0",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the invoice follow-up with Maya Cohen.",
-      "The invoice follow-up with Maya Cohen. In progress."
+      "Sent an email about cat sitting with Jonas Berg.",
+      "Cat sitting with Jonas Berg. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_44",
-    "name": "Invoice follow-up with Quinn",
-    "topic": "The invoice follow-up with Quinn Harper. Waiting on Quinn's reply. | status: waiting_external | last active: 1d ago | keys: address:quinn.harper@pool.example, thread:th_fx24",
+    "name": "Family reunion with Kevin",
+    "topic": "The family reunion with Kevin Osei. Finished; nothing open. | status: done | last active: 6h ago | keys: address:kevin.osei@pool.example, thread:th_fx21",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the invoice follow-up with Quinn Harper.",
-      "The invoice follow-up with Quinn Harper. Waiting on Quinn's reply."
+      "Sent an email about the family reunion with Kevin Osei.",
+      "The family reunion with Kevin Osei. Finished; nothing open."
     ]
   },
   {
     "agent_id": "ea_45",
-    "name": "Website mockups with Jonas",
-    "topic": "Website mockups with Jonas Berg. Finished; nothing open. | status: done | last active: 5h ago | keys: address:jonas.berg@pool.example, thread:th_fx20",
-    "active_tasks": [],
-    "past_action_notes": [
-      "Sent an email about website mockups with Jonas Berg.",
-      "Website mockups with Jonas Berg. Finished; nothing open."
-    ]
-  },
-  {
-    "agent_id": "ea_46",
     "name": "Lease renewal with Bob",
     "topic": "Drafted a note asking Bob Hale, the landlord, for the revised 12-month lease renewal paperwork. Draft r-lease-02 is not sent yet. | status: waiting_user | last active: 4d ago | keys: address:bob.hale@harborviewproperties.example, draft:r-lease-02, thread:th_lease_7731",
     "active_tasks": [
@@ -1386,13 +1371,23 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
     ]
   },
   {
-    "agent_id": "ea_47",
-    "name": "Park cleanup with Nina",
-    "topic": "The park cleanup with Nina Petrova. Finished; nothing open. | status: done | last active: 1d ago | keys: address:nina.petrova@pool.example, thread:th_fx46",
+    "agent_id": "ea_46",
+    "name": "NDA review for Pedro",
+    "topic": "The NDA from Pedro Alves. Finished; nothing open. | status: done | last active: 1d ago | keys: address:pedro.alves@pool.example, draft:r-fx12, thread:th_fx12",
     "active_tasks": [],
     "past_action_notes": [
-      "Sent an email about the park cleanup with Nina Petrova.",
-      "The park cleanup with Nina Petrova. Finished; nothing open."
+      "Drafted an email about the NDA from Pedro Alves (draft r-fx12).",
+      "Sent the email about the NDA from Pedro Alves."
+    ]
+  },
+  {
+    "agent_id": "ea_47",
+    "name": "Cat sitting with Paula",
+    "topic": "Cat sitting with Paula Reyes. In progress. | status: active | last active: 1d ago | keys: address:paula.reyes@pool.example, thread:th_fx18",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about cat sitting with Paula Reyes.",
+      "Cat sitting with Paula Reyes. In progress."
     ]
   },
   {
@@ -1407,16 +1402,6 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
   },
   {
     "agent_id": "ea_49",
-    "name": "Cat sitting with Bianca",
-    "topic": "Cat sitting with Bianca Rossi. Finished; nothing open. | status: done | last active: 15h ago | keys: address:bianca.rossi@pool.example, thread:th_fx1",
-    "active_tasks": [],
-    "past_action_notes": [
-      "Sent an email about cat sitting with Bianca Rossi.",
-      "Cat sitting with Bianca Rossi. Finished; nothing open."
-    ]
-  },
-  {
-    "agent_id": "ea_50",
     "name": "Deploy + gateway crash w/ Bob",
     "topic": "Coordinating last night's api-gateway crash and today's hotfix deploy with Bob Okafor. Deploy check reminder t_21 is set. | status: active | last active: 1h ago | keys: address:bob.okafor@acme.example, thread:th_deploy_8812, trigger:21",
     "active_tasks": [
@@ -1426,25 +1411,35 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
       "Emailed Bob Okafor about the api-gateway crash and hotfix deploy.",
       "Set reminder t_21 for the api-gateway crash and hotfix deploy."
     ]
+  },
+  {
+    "agent_id": "ea_50",
+    "name": "Tire change with Julia",
+    "topic": "The tire change with Julia Novak. Finished; nothing open. | status: done | last active: 8h ago | keys: address:julia.novak@pool.example, thread:th_fx14",
+    "active_tasks": [],
+    "past_action_notes": [
+      "Sent an email about the tire change with Julia Novak.",
+      "The tire change with Julia Novak. Finished; nothing open."
+    ]
   }
 ]
 === rag parity: query ===
 Recent conversation:
-user: Email Bob Okafor about last night's api-gateway crash and whether the hotfix ships today
-agent result: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.
-assistant: Update: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.
-
 user: Any news on the reunion dinner with Bob Lee?
 agent result: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.
 assistant: Update: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.
 
-user: Any news on cat sitting with Bianca Rossi?
-agent result: Cat sitting with Bianca Rossi. Finished; nothing open.
-assistant: Update: Cat sitting with Bianca Rossi. Finished; nothing open.
+user: Send an email about the tire change with Julia Novak
+agent result: Sent an email about the tire change with Julia Novak.
+assistant: Update: Sent an email about the tire change with Julia Novak.
 
-user: Any news on website mockups with Jonas Berg?
-agent result: Website mockups with Jonas Berg. Finished; nothing open.
-assistant: Update: Website mockups with Jonas Berg. Finished; nothing open.
+user: Any news on the tire change with Julia Novak?
+agent result: The tire change with Julia Novak. Finished; nothing open.
+assistant: Update: The tire change with Julia Novak. Finished; nothing open.
+
+user: Any news on the family reunion with Kevin Osei?
+agent result: The family reunion with Kevin Osei. Finished; nothing open.
+assistant: Update: The family reunion with Kevin Osei. Finished; nothing open.
 
 user: Remind me at 6pm to check the hotfix deploy
 agent result: Set reminder t_21 for the api-gateway crash and hotfix deploy.

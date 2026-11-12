@@ -19,7 +19,7 @@ from typing import Dict, List
 
 from .generator import fallback_rate, generate
 from .keys_pure import keybook
-from .policies import LEXICAL_THRESHOLD, POLICIES
+from .policies import LEXICAL_SWEEP, LEXICAL_THRESHOLD, POLICIES, lexical
 from .schema import CATEGORIES, CATEGORY_KIND, WORLD_PLAN
 from .scorer import by, score, summarize, tag_groups
 from .validate import validate
@@ -31,10 +31,13 @@ def run() -> Dict[str, object]:
     validate()  # a broken dataset aborts the run (spec §6)
     pairs, skipped = generate()
     results: Dict[str, List] = {name: [] for name in POLICIES}
+    sweep: Dict[float, List] = {t: [] for t in LEXICAL_SWEEP}
     for world, inst in pairs:
         book = keybook(world)
         for name, policy in POLICIES.items():
             results[name].append(score(inst, policy(world, inst.message, book), world))
+        for t in LEXICAL_SWEEP:
+            sweep[t].append(score(inst, lexical(world, inst.message, book, threshold=t), world))
 
     per_cat = {name: by(rows, lambda r: r.instance.category) for name, rows in results.items()}
     per_stratum = {name: by(rows, lambda r: f"{r.instance.category}|{r.instance.tags['overlap']}")
@@ -55,6 +58,17 @@ def run() -> Dict[str, object]:
     pooled_easy = [p for p in POLICIES if pooled[p]["accuracy"] >= EASY_AT]
     passed = not pooled_easy and all(v["verdict"] != "FAIL" for v in verdicts.values())
     fb = fallback_rate(pairs)
+    lexical_sweep = {}
+    for t, rows in sweep.items():
+        strata = by(rows, lambda r: f"{r.instance.category}|{r.instance.tags['overlap']}")
+        cats = by(rows, lambda r: r.instance.category)
+        lexical_sweep[t] = {
+            "pooled": summarize(rows),
+            "no_overlap_fail": [c for c in CATEGORIES if CATEGORY_KIND[c] == "discrimination"
+                                and strata.get(f"{c}|no_overlap", {}).get("accuracy", 0) >= EASY_AT],
+            "per_stratum": strata,
+            "per_category": cats,
+        }
     return {
         "passed": passed,
         "pooled_easy": pooled_easy,
@@ -70,6 +84,7 @@ def run() -> Dict[str, object]:
         "per_plan": {name: by(rows, lambda r: f"N{r.instance.n}-{r.instance.sim}") for name, rows in results.items()},
         "per_group": {name: by(rows, lambda r: tag_groups(r.instance)) for name, rows in results.items()},
         "pooled": pooled,
+        "lexical_sweep": lexical_sweep,
     }
 
 
@@ -132,6 +147,17 @@ def to_markdown(out: Dict[str, object]) -> str:
     for n, s in out["plan"]:
         k = f"N{n}-{s}"
         lines.append(f"| {k} | " + " | ".join(f"{out['per_plan'][p][k]['accuracy']:.0%}" for p in names) + " |")
+    lines += ["", "## lexical at other thresholds (reported, not gated)", "",
+              "| threshold | pooled | no_overlap max | overlap max | exempt/pooled-only categories >= 80% | no_overlap FAIL |",
+              "|---|---|---|---|---|---|"]
+    for t, sw in out["lexical_sweep"].items():
+        disc = [c for c in CATEGORIES if CATEGORY_KIND[c] == "discrimination"]
+        nmax = max(sw["per_stratum"].get(f"{c}|no_overlap", {}).get("accuracy", 0) for c in disc)
+        omax = max(sw["per_stratum"].get(f"{c}|overlap", {}).get("accuracy", 0) for c in disc)
+        hi = [c for c in CATEGORIES if CATEGORY_KIND[c] != "discrimination"
+              and sw["per_category"].get(c, {}).get("accuracy", 0) >= EASY_AT]
+        lines.append(f"| {t} | {sw['pooled']['accuracy']:.0%} | {nmax:.0%} | {omax:.0%} | "
+                     f"{', '.join(hi) or '-'} | {', '.join(sw['no_overlap_fail']) or 'none'} |")
     lines += ["", "## High-similarity filler fallback per N", "",
               "Share of high-similarity fillers that fell back to unrelated ones (the similar pool runs out).", "",
               "| N | fell back | high-similarity fillers | rate |", "|---|---|---|---|"]

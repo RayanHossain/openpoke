@@ -91,9 +91,9 @@ def _pick_status(rng: random.Random) -> str:
 
 
 def _make_filler(k: int, template: Tuple[str, str, str], family: str, person: Person,
-                 rng: random.Random) -> Workstream:
+                 rng: random.Random, org: bool = False) -> Workstream:
     label_t, topic_t, action = template
-    first = person.name.split()[0]
+    first = person.name if org else person.name.split()[0]
     label = label_t.format(first=first, full=person.name)
     topic = topic_t.format(first=first, full=person.name)
     status = _pick_status(rng)
@@ -130,6 +130,31 @@ def _primary_target(probe: BaseProbe) -> str:
     return probe.targets[0] if probe.targets else probe.core[0]
 
 
+def _is_org(person: Person) -> bool:
+    return person.pid in _ORG_PIDS or person.hub or " " not in person.name
+
+
+def _candidates(axis: str, target: Workstream, core_families: Set[str], pool: List[Person],
+                rng: random.Random) -> List[Tuple[Tuple[str, str, str], str, Person, bool]]:
+    """Every (template, family, person, is_org) a filler on this axis could use, in a seeded order."""
+    people = catalog.PEOPLE
+    out = []
+    if axis == "person":
+        person = people[target.people[0]]
+        org = _is_org(person)
+        table = catalog.ORG_TEMPLATES if org else catalog.FILLER_TEMPLATES
+        for family, templates in table.items():
+            if family != target.family:
+                out += [(t, family, person, org) for t in templates]
+    elif axis == "topic":
+        out = [(t, target.family, p, False) for t in catalog.FILLER_TEMPLATES[target.family] for p in pool]
+    else:
+        out = [(t, f, p, False) for f in catalog.FAMILIES if f not in core_families
+               for t in catalog.FILLER_TEMPLATES[f] for p in pool]
+    rng.shuffle(out)
+    return out
+
+
 def _make_fillers(probe: BaseProbe, core: List[Workstream], n: int, sim: str,
                   rng: random.Random) -> Tuple[List[Workstream], Dict[str, str]]:
     need = n - _agents_in(core)
@@ -151,33 +176,21 @@ def _make_fillers(probe: BaseProbe, core: List[Workstream], n: int, sim: str,
         overlap = len(msg_words & content_words(ws_text(ws), drop=core_names | _name_words(people[p] for p in ws.people)))
         return overlap == 0 or overlap < target_overlap
 
+    axes = list(probe.high_sim_axes) if sim == "high" else []
+    queues = {a: _candidates(a, target, core_families, pool, rng) for a in (*axes, "low")}
     fillers: List[Workstream] = []
     axis_of: Dict[str, str] = {}
-    axes = list(probe.high_sim_axes) if sim == "high" else []
     k = 0
-    attempts = 0
+    turn = 0
     while len(fillers) < need:
-        attempts += 1
-        if attempts > 20000:
+        live = [a for a in axes if queues[a]]
+        axis = live[turn % len(live)] if live else "low"  # an exhausted similar pool falls back to low
+        turn += 1
+        if not queues[axis]:
             raise CannotPlace(f"{probe.probe_id}: ran out of fillers at N={n}/{sim}")
-        axis = axes[len(fillers) % len(axes)] if axes else "low"
-        if axis == "person":
-            person = people[target.people[0]]
-            fams = [f for f in catalog.FAMILIES if f != target.family]
-            if " " not in person.name or person.hub or person.pid in _ORG_PIDS:
-                fams = [f for f in fams if f in catalog.ORG_FAMILIES]
-            family = rng.choice(fams)
-        elif axis == "topic":
-            family = target.family
-            person = rng.choice(pool)
-        else:
-            family = rng.choice([f for f in catalog.FAMILIES if f not in core_families])
-            person = rng.choice(pool)
-        template = rng.choice(catalog.FILLER_TEMPLATES[family])
-        ws = _make_filler(k, template, family, person, rng)
+        template, family, person, org = queues[axis].pop()
+        ws = _make_filler(k, template, family, person, rng, org=org)
         if not acceptable(ws):
-            if axes and attempts % 50 == 0:  # an exhausted similar pool falls back to low
-                axes = [a for a in axes if a != axis]
             continue
         k += 1
         used_labels.add(ws.label)

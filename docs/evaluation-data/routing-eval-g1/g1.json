@@ -139,14 +139,14 @@
    "rate": 0.0
   },
   "30": {
-   "fell_back": 349,
+   "fell_back": 0,
    "high_sim_fillers": 2235,
-   "rate": 0.15615212527964206
+   "rate": 0.0
   },
   "50": {
-   "fell_back": 1054,
+   "fell_back": 0,
    "high_sim_fillers": 3895,
-   "rate": 0.27060333761232347
+   "rate": 0.0
   }
  },
  "per_category": {
@@ -426,15 +426,15 @@
    },
    "paraphrase": {
     "n": 30,
-    "accuracy": 0.23333333333333334,
+    "accuracy": 0.2,
     "ci95": [
-     0.1,
-     0.4
+     0.06666666666666667,
+     0.36666666666666664
     ],
-    "preferred": 0.23333333333333334,
-    "severity": 92,
+    "preferred": 0.2,
+    "severity": 96,
     "errors": {
-     "wrong_route_info": 23
+     "wrong_route_info": 24
     }
    },
    "inbound_event": {
@@ -479,28 +479,28 @@
    },
    "same_topic_diff_person": {
     "n": 30,
-    "accuracy": 0.06666666666666667,
+    "accuracy": 0.03333333333333333,
     "ci95": [
      0.0,
-     0.16666666666666666
+     0.1
     ],
-    "preferred": 0.06666666666666667,
-    "severity": 112,
+    "preferred": 0.03333333333333333,
+    "severity": 116,
     "errors": {
-     "wrong_route_info": 28
+     "wrong_route_info": 29
     }
    },
    "hub_key": {
     "n": 30,
-    "accuracy": 0.1,
+    "accuracy": 0.03333333333333333,
     "ci95": [
      0.0,
-     0.23333333333333334
+     0.1
     ],
-    "preferred": 0.1,
-    "severity": 108,
+    "preferred": 0.03333333333333333,
+    "severity": 116,
     "errors": {
-     "wrong_route_info": 27
+     "wrong_route_info": 29
     }
    },
    "done_keyless": {
@@ -576,10 +576,10 @@
      0.0
     ],
     "preferred": 0.0,
-    "severity": 80,
+    "severity": 74,
     "errors": {
-     "wrong_route_info": 9,
-     "missed_target": 2,
+     "wrong_route_info": 6,
+     "missed_target": 5,
      "wrong_route_state": 4
     }
    },
@@ -611,15 +611,15 @@
    },
    "name_drift": {
     "n": 30,
-    "accuracy": 0.2,
+    "accuracy": 0.16666666666666666,
     "ci95": [
-     0.06666666666666667,
-     0.36666666666666664
+     0.03333333333333333,
+     0.3
     ],
-    "preferred": 0.2,
-    "severity": 96,
+    "preferred": 0.16666666666666666,
+    "severity": 100,
     "errors": {
-     "wrong_route_info": 24
+     "wrong_route_info": 25
     }
    }
   },
@@ -632,10 +632,10 @@
      0.0
     ],
     "preferred": 0.0,
-    "severity": 155,
+    "severity": 160,
     "errors": {
-     "wrong_route_info": 20,
-     "duplicate_create": 25
+     "wrong_route_info": 25,
+     "duplicate_create": 20
     }
    },
    "done_keyed": {
@@ -680,16 +680,16 @@
    },
    "inbound_event": {
     "n": 20,
-    "accuracy": 0.25,
+    "accuracy": 0.5,
     "ci95": [
-     0.1,
-     0.45
+     0.3,
+     0.7
     ],
-    "preferred": 0.25,
-    "severity": 53,
+    "preferred": 0.5,
+    "severity": 35,
     "errors": {
-     "duplicate_create": 7,
-     "wrong_route_info": 8
+     "wrong_route_info": 5,
+     "duplicate_create": 5
     }
    },
    "slug_collision": {
@@ -893,10 +893,9 @@
      1.0
     ],
     "preferred": 0.85,
-    "severity": 10,
+    "severity": 9,
     "errors": {
-     "duplicate_create": 2,
-     "wrong_route_info": 1
+     "duplicate_create": 3
     }
    },
    "genuinely_new": {
@@ -952,15 +951,15 @@
    },
    "same_person_diff_work": {
     "n": 30,
-    "accuracy": 0.4666666666666667,
+    "accuracy": 0.43333333333333335,
     "ci95": [
      0.26666666666666666,
-     0.6666666666666666
+     0.6333333333333333
     ],
-    "preferred": 0.4666666666666667,
-    "severity": 49,
+    "preferred": 0.43333333333333335,
+    "severity": 53,
     "errors": {
-     "wrong_route_info": 1,
+     "wrong_route_info": 2,
      "duplicate_create": 15
     }
    },
@@ -986,10 +985,10 @@
      0.5
     ],
     "preferred": 0.3333333333333333,
-    "severity": 66,
+    "severity": 65,
     "errors": {
-     "duplicate_create": 14,
-     "wrong_route_info": 6
+     "duplicate_create": 15,
+     "wrong_route_info": 5
     }
    },
    "done_keyless": {
@@ -1211,15 +1210,15 @@
    },
    "hub_key": {
     "n": 30,
-    "accuracy": 0.13333333333333333,
+    "accuracy": 0.06666666666666667,
     "ci95": [
-     0.03333333333333333,
-     0.26666666666666666
+     0.0,
+     0.16666666666666666
     ],
-    "preferred": 0.13333333333333333,
-    "severity": 84,
+    "preferred": 0.06666666666666667,
+    "severity": 92,
     "errors": {
-     "wrong_route_info": 6,
+     "wrong_route_info": 8,
      "duplicate_create": 20
     }
    },
@@ -1760,15 +1759,15 @@
    },
    "paraphrase|no_overlap": {
     "n": 15,
-    "accuracy": 0.13333333333333333,
+    "accuracy": 0.06666666666666667,
     "ci95": [
      0.0,
-     0.3333333333333333
+     0.2
     ],
-    "preferred": 0.13333333333333333,
-    "severity": 52,
+    "preferred": 0.06666666666666667,
+    "severity": 56,
     "errors": {
-     "wrong_route_info": 13
+     "wrong_route_info": 14
     }
    },
    "slug_collision|overlap": {
@@ -1800,28 +1799,28 @@
    },
    "same_topic_diff_person|overlap": {
     "n": 15,
-    "accuracy": 0.13333333333333333,
+    "accuracy": 0.06666666666666667,
     "ci95": [
      0.0,
-     0.3333333333333333
+     0.2
     ],
-    "preferred": 0.13333333333333333,
-    "severity": 52,
+    "preferred": 0.06666666666666667,
+    "severity": 56,
     "errors": {
-     "wrong_route_info": 13
+     "wrong_route_info": 14
     }
    },
    "hub_key|overlap": {
     "n": 15,
-    "accuracy": 0.2,
+    "accuracy": 0.06666666666666667,
     "ci95": [
      0.0,
-     0.4
+     0.2
     ],
-    "preferred": 0.2,
-    "severity": 48,
+    "preferred": 0.06666666666666667,
+    "severity": 56,
     "errors": {
-     "wrong_route_info": 12
+     "wrong_route_info": 14
     }
    },
    "done_keyless|overlap": {
@@ -1910,10 +1909,10 @@
      0.0
     ],
     "preferred": 0.0,
-    "severity": 80,
+    "severity": 74,
     "errors": {
-     "wrong_route_info": 9,
-     "missed_target": 2,
+     "wrong_route_info": 6,
+     "missed_target": 5,
      "wrong_route_state": 4
     }
    },
@@ -1945,15 +1944,15 @@
    },
    "name_drift|overlap": {
     "n": 15,
-    "accuracy": 0.4,
+    "accuracy": 0.3333333333333333,
     "ci95": [
-     0.2,
-     0.6666666666666666
+     0.13333333333333333,
+     0.6
     ],
-    "preferred": 0.4,
-    "severity": 36,
+    "preferred": 0.3333333333333333,
+    "severity": 40,
     "errors": {
-     "wrong_route_info": 9
+     "wrong_route_info": 10
     }
    },
    "slug_collision|no_overlap": {
@@ -2106,16 +2105,16 @@
    },
    "inbound_event|overlap": {
     "n": 20,
-    "accuracy": 0.25,
+    "accuracy": 0.5,
     "ci95": [
-     0.1,
-     0.45
+     0.3,
+     0.7
     ],
-    "preferred": 0.25,
-    "severity": 53,
+    "preferred": 0.5,
+    "severity": 35,
     "errors": {
-     "duplicate_create": 7,
-     "wrong_route_info": 8
+     "wrong_route_info": 5,
+     "duplicate_create": 5
     }
    },
    "paraphrase|no_overlap": {
@@ -2367,10 +2366,10 @@
      0.0
     ],
     "preferred": 0.0,
-    "severity": 65,
+    "severity": 70,
     "errors": {
-     "duplicate_create": 15,
-     "wrong_route_info": 5
+     "wrong_route_info": 10,
+     "duplicate_create": 10
     }
    },
    "hub_key|no_overlap": {
@@ -2436,10 +2435,9 @@
      1.0
     ],
     "preferred": 0.85,
-    "severity": 10,
+    "severity": 9,
     "errors": {
-     "duplicate_create": 2,
-     "wrong_route_info": 1
+     "duplicate_create": 3
     }
    },
    "genuinely_new|overlap": {
@@ -2508,15 +2506,15 @@
    },
    "same_person_diff_work|overlap": {
     "n": 15,
-    "accuracy": 0.9333333333333333,
+    "accuracy": 0.8666666666666667,
     "ci95": [
-     0.8,
+     0.6666666666666666,
      1.0
     ],
-    "preferred": 0.9333333333333333,
-    "severity": 4,
+    "preferred": 0.8666666666666667,
+    "severity": 8,
     "errors": {
-     "wrong_route_info": 1
+     "wrong_route_info": 2
     }
    },
    "same_topic_diff_person|overlap": {
@@ -2540,10 +2538,10 @@
      0.8666666666666667
     ],
     "preferred": 0.6666666666666666,
-    "severity": 17,
+    "severity": 16,
     "errors": {
-     "duplicate_create": 3,
-     "wrong_route_info": 2
+     "duplicate_create": 4,
+     "wrong_route_info": 1
     }
    },
    "done_keyless|overlap": {
@@ -2881,15 +2879,15 @@
    },
    "hub_key|overlap": {
     "n": 15,
-    "accuracy": 0.26666666666666666,
+    "accuracy": 0.13333333333333333,
     "ci95": [
-     0.06666666666666667,
-     0.5333333333333333
+     0.0,
+     0.3333333333333333
     ],
-    "preferred": 0.26666666666666666,
-    "severity": 39,
+    "preferred": 0.13333333333333333,
+    "severity": 47,
     "errors": {
-     "wrong_route_info": 6,
+     "wrong_route_info": 8,
      "duplicate_create": 5
     }
    },
@@ -3207,31 +3205,32 @@
    },
    "N10-high": {
     "n": 83,
-    "accuracy": 0.12048192771084337,
+    "accuracy": 0.0963855421686747,
     "ci95": [
-     0.04819277108433735,
-     0.1927710843373494
+     0.03614457831325301,
+     0.1686746987951807
     ],
-    "preferred": 0.12048192771084337,
-    "severity": 325,
+    "preferred": 0.0963855421686747,
+    "severity": 331,
     "errors": {
-     "wrong_route_info": 60,
+     "wrong_route_info": 61,
      "forced_merge": 3,
      "wrong_route_state": 7,
+     "missed_target": 1,
      "dispatch_on_no_dispatch": 3
     }
    },
    "N30-high": {
     "n": 83,
-    "accuracy": 0.07228915662650602,
+    "accuracy": 0.060240963855421686,
     "ci95": [
-     0.024096385542168676,
-     0.13253012048192772
+     0.012048192771084338,
+     0.12048192771084337
     ],
-    "preferred": 0.07228915662650602,
-    "severity": 347,
+    "preferred": 0.060240963855421686,
+    "severity": 351,
     "errors": {
-     "wrong_route_info": 63,
+     "wrong_route_info": 64,
      "forced_merge": 3,
      "wrong_route_state": 8,
      "dispatch_on_no_dispatch": 3
@@ -3239,33 +3238,35 @@
    },
    "N50-high": {
     "n": 83,
-    "accuracy": 0.07228915662650602,
+    "accuracy": 0.060240963855421686,
     "ci95": [
-     0.024096385542168676,
-     0.13253012048192772
+     0.012048192771084338,
+     0.12048192771084337
     ],
-    "preferred": 0.07228915662650602,
-    "severity": 347,
+    "preferred": 0.060240963855421686,
+    "severity": 349,
     "errors": {
      "wrong_route_info": 63,
      "forced_merge": 3,
      "wrong_route_state": 8,
+     "missed_target": 1,
      "dispatch_on_no_dispatch": 3
     }
    },
    "N50-low": {
     "n": 83,
-    "accuracy": 0.07228915662650602,
+    "accuracy": 0.060240963855421686,
     "ci95": [
-     0.024096385542168676,
-     0.13253012048192772
+     0.012048192771084338,
+     0.12048192771084337
     ],
-    "preferred": 0.07228915662650602,
-    "severity": 347,
+    "preferred": 0.060240963855421686,
+    "severity": 349,
     "errors": {
      "wrong_route_info": 63,
      "forced_merge": 3,
      "wrong_route_state": 8,
+     "missed_target": 1,
      "dispatch_on_no_dispatch": 3
     }
    }
@@ -3273,16 +3274,16 @@
   "person_match": {
    "N3-high": {
     "n": 80,
-    "accuracy": 0.175,
+    "accuracy": 0.1875,
     "ci95": [
-     0.0875,
-     0.2625
+     0.1125,
+     0.275
     ],
-    "preferred": 0.175,
-    "severity": 203,
+    "preferred": 0.1875,
+    "severity": 201,
     "errors": {
-     "wrong_route_info": 12,
-     "duplicate_create": 48,
+     "wrong_route_info": 13,
+     "duplicate_create": 46,
      "forced_merge": 1,
      "missed_target": 2,
      "dispatch_on_no_dispatch": 3
@@ -3290,16 +3291,16 @@
    },
    "N10-high": {
     "n": 83,
-    "accuracy": 0.07228915662650602,
+    "accuracy": 0.0963855421686747,
     "ci95": [
-     0.024096385542168676,
-     0.12048192771084337
+     0.03614457831325301,
+     0.1566265060240964
     ],
-    "preferred": 0.07228915662650602,
-    "severity": 254,
+    "preferred": 0.0963855421686747,
+    "severity": 247,
     "errors": {
-     "wrong_route_info": 22,
-     "duplicate_create": 49,
+     "wrong_route_info": 21,
+     "duplicate_create": 48,
      "forced_merge": 1,
      "wrong_route_state": 1,
      "missed_target": 1,
@@ -3308,16 +3309,16 @@
    },
    "N30-high": {
     "n": 83,
-    "accuracy": 0.07228915662650602,
+    "accuracy": 0.08433734939759036,
     "ci95": [
      0.024096385542168676,
-     0.12048192771084337
+     0.14457831325301204
     ],
-    "preferred": 0.07228915662650602,
-    "severity": 254,
+    "preferred": 0.08433734939759036,
+    "severity": 251,
     "errors": {
      "wrong_route_info": 22,
-     "duplicate_create": 49,
+     "duplicate_create": 48,
      "forced_merge": 1,
      "wrong_route_state": 1,
      "missed_target": 1,
@@ -3332,10 +3333,10 @@
      0.14457831325301204
     ],
     "preferred": 0.08433734939759036,
-    "severity": 250,
+    "severity": 251,
     "errors": {
-     "wrong_route_info": 21,
-     "duplicate_create": 49,
+     "wrong_route_info": 22,
+     "duplicate_create": 48,
      "forced_merge": 1,
      "wrong_route_state": 1,
      "missed_target": 1,
@@ -3344,16 +3345,16 @@
    },
    "N50-low": {
     "n": 83,
-    "accuracy": 0.1686746987951807,
+    "accuracy": 0.18072289156626506,
     "ci95": [
-     0.08433734939759036,
-     0.25301204819277107
+     0.0963855421686747,
+     0.26506024096385544
     ],
-    "preferred": 0.1686746987951807,
-    "severity": 212,
+    "preferred": 0.18072289156626506,
+    "severity": 210,
     "errors": {
-     "wrong_route_info": 12,
-     "duplicate_create": 51,
+     "wrong_route_info": 13,
+     "duplicate_create": 49,
      "forced_merge": 1,
      "missed_target": 2,
      "dispatch_on_no_dispatch": 3
@@ -3399,17 +3400,17 @@
    },
    "N30-high": {
     "n": 83,
-    "accuracy": 0.4939759036144578,
+    "accuracy": 0.4819277108433735,
     "ci95": [
-     0.3855421686746988,
-     0.6024096385542169
+     0.37349397590361444,
+     0.5903614457831325
     ],
-    "preferred": 0.4939759036144578,
-    "severity": 133,
+    "preferred": 0.4819277108433735,
+    "severity": 137,
     "errors": {
      "forced_merge": 2,
      "duplicate_create": 26,
-     "wrong_route_info": 7,
+     "wrong_route_info": 8,
      "missed_target": 3,
      "dispatch_on_no_dispatch": 3,
      "wrong_route_state": 1
@@ -3423,11 +3424,11 @@
      0.5903614457831325
     ],
     "preferred": 0.4819277108433735,
-    "severity": 139,
+    "severity": 137,
     "errors": {
      "forced_merge": 2,
-     "duplicate_create": 24,
-     "wrong_route_info": 10,
+     "duplicate_create": 26,
+     "wrong_route_info": 8,
      "missed_target": 3,
      "dispatch_on_no_dispatch": 3,
      "wrong_route_state": 1
@@ -3470,31 +3471,31 @@
    },
    "N10-high": {
     "n": 83,
-    "accuracy": 0.14457831325301204,
+    "accuracy": 0.13253012048192772,
     "ci95": [
-     0.07228915662650602,
-     0.2289156626506024
+     0.060240963855421686,
+     0.20481927710843373
     ],
-    "preferred": 0.14457831325301204,
-    "severity": 208,
+    "preferred": 0.13253012048192772,
+    "severity": 212,
     "errors": {
      "duplicate_create": 67,
-     "wrong_route_info": 1,
+     "wrong_route_info": 2,
      "dispatch_on_no_dispatch": 3
     }
    },
    "N30-high": {
     "n": 83,
-    "accuracy": 0.14457831325301204,
+    "accuracy": 0.13253012048192772,
     "ci95": [
-     0.07228915662650602,
-     0.2289156626506024
+     0.060240963855421686,
+     0.20481927710843373
     ],
-    "preferred": 0.14457831325301204,
-    "severity": 208,
+    "preferred": 0.13253012048192772,
+    "severity": 212,
     "errors": {
      "duplicate_create": 67,
-     "wrong_route_info": 1,
+     "wrong_route_info": 2,
      "dispatch_on_no_dispatch": 3
     }
    },
@@ -3588,31 +3589,31 @@
   "most_recent": {
    "keyed": {
     "n": 120,
-    "accuracy": 0.15,
+    "accuracy": 0.11666666666666667,
     "ci95": [
-     0.09166666666666666,
-     0.21666666666666667
+     0.06666666666666667,
+     0.175
     ],
-    "preferred": 0.15,
-    "severity": 476,
+    "preferred": 0.11666666666666667,
+    "severity": 492,
     "errors": {
      "wrong_route_info": 88,
-     "wrong_route_state": 12,
-     "missed_target": 2
+     "wrong_route_state": 13,
+     "missed_target": 5
     }
    },
    "keyless": {
     "n": 242,
-    "accuracy": 0.09917355371900827,
+    "accuracy": 0.09504132231404959,
     "ci95": [
      0.06198347107438017,
-     0.14049586776859505
+     0.1322314049586777
     ],
-    "preferred": 0.09917355371900827,
-    "severity": 1016,
+    "preferred": 0.09504132231404959,
+    "severity": 1014,
     "errors": {
-     "wrong_route_info": 194,
-     "wrong_route_state": 24
+     "wrong_route_info": 196,
+     "wrong_route_state": 23
     }
    },
    "ambiguous": {
@@ -3633,7 +3634,7 @@
     "accuracy": 0.17777777777777778,
     "ci95": [
      0.06666666666666667,
-     0.28888888888888886
+     0.3111111111111111
     ],
     "preferred": 0.17777777777777778,
     "severity": 362,
@@ -3646,17 +3647,17 @@
   "person_match": {
    "keyed": {
     "n": 120,
-    "accuracy": 0.2916666666666667,
+    "accuracy": 0.3333333333333333,
     "ci95": [
-     0.20833333333333334,
-     0.375
+     0.25,
+     0.4166666666666667
     ],
-    "preferred": 0.2916666666666667,
-    "severity": 332,
+    "preferred": 0.3333333333333333,
+    "severity": 314,
     "errors": {
-     "wrong_route_info": 63,
-     "duplicate_create": 12,
+     "wrong_route_info": 60,
      "wrong_route_state": 3,
+     "duplicate_create": 10,
      "missed_target": 7
     }
    },
@@ -3668,10 +3669,10 @@
      0.02066115702479339
     ],
     "preferred": 0.008264462809917356,
-    "severity": 736,
+    "severity": 741,
     "errors": {
-     "duplicate_create": 224,
-     "wrong_route_info": 16
+     "duplicate_create": 219,
+     "wrong_route_info": 21
     }
    },
    "ambiguous": {
@@ -3713,25 +3714,25 @@
      0.8666666666666667
     ],
     "preferred": 0.8,
-    "severity": 61,
+    "severity": 60,
     "errors": {
-     "duplicate_create": 5,
-     "wrong_route_info": 4,
+     "duplicate_create": 6,
+     "wrong_route_info": 3,
      "missed_target": 15
     }
    },
    "keyless": {
     "n": 242,
-    "accuracy": 0.4090909090909091,
+    "accuracy": 0.4049586776859504,
     "ci95": [
-     0.3512396694214876,
+     0.34710743801652894,
      0.47107438016528924
     ],
-    "preferred": 0.4090909090909091,
-    "severity": 487,
+    "preferred": 0.4049586776859504,
+    "severity": 491,
     "errors": {
      "duplicate_create": 115,
-     "wrong_route_info": 23,
+     "wrong_route_info": 24,
      "wrong_route_state": 5
     }
    },
@@ -3743,10 +3744,10 @@
      0.35
     ],
     "preferred": 0.225,
-    "severity": 100,
+    "severity": 99,
     "errors": {
-     "duplicate_create": 24,
-     "wrong_route_info": 7
+     "duplicate_create": 25,
+     "wrong_route_info": 6
     }
    },
    "state_bearing": {
@@ -3768,16 +3769,16 @@
   "key_only": {
    "keyed": {
     "n": 120,
-    "accuracy": 0.36666666666666664,
+    "accuracy": 0.35,
     "ci95": [
-     0.2833333333333333,
-     0.4583333333333333
+     0.26666666666666666,
+     0.43333333333333335
     ],
-    "preferred": 0.36666666666666664,
-    "severity": 234,
+    "preferred": 0.35,
+    "severity": 242,
     "errors": {
      "duplicate_create": 70,
-     "wrong_route_info": 6
+     "wrong_route_info": 8
     }
    },
    "keyless": {
@@ -3838,33 +3839,33 @@
   },
   "most_recent": {
    "n": 412,
-   "accuracy": 0.10194174757281553,
+   "accuracy": 0.08980582524271845,
    "ci95": [
-    0.07281553398058252,
-    0.13106796116504854
+    0.06553398058252427,
+    0.11650485436893204
    ],
-   "preferred": 0.10194174757281553,
-   "severity": 1647,
+   "preferred": 0.08980582524271845,
+   "severity": 1661,
    "errors": {
-    "wrong_route_info": 302,
+    "wrong_route_info": 304,
     "forced_merge": 15,
     "wrong_route_state": 36,
-    "missed_target": 2,
+    "missed_target": 5,
     "dispatch_on_no_dispatch": 15
    }
   },
   "person_match": {
    "n": 412,
-   "accuracy": 0.11407766990291263,
+   "accuracy": 0.1262135922330097,
    "ci95": [
-    0.0825242718446602,
-    0.14805825242718446
+    0.09466019417475728,
+    0.16262135922330098
    ],
-   "preferred": 0.11407766990291263,
-   "severity": 1173,
+   "preferred": 0.1262135922330097,
+   "severity": 1160,
    "errors": {
-    "wrong_route_info": 89,
-    "duplicate_create": 246,
+    "wrong_route_info": 91,
+    "duplicate_create": 239,
     "forced_merge": 5,
     "wrong_route_state": 3,
     "missed_target": 7,
@@ -3873,17 +3874,17 @@
   },
   "lexical": {
    "n": 412,
-   "accuracy": 0.4854368932038835,
+   "accuracy": 0.4830097087378641,
    "ci95": [
     0.4368932038834951,
-    0.5364077669902912
+    0.5339805825242718
    ],
-   "preferred": 0.4854368932038835,
-   "severity": 670,
+   "preferred": 0.4830097087378641,
+   "severity": 672,
    "errors": {
-    "duplicate_create": 133,
+    "duplicate_create": 135,
     "forced_merge": 10,
-    "wrong_route_info": 34,
+    "wrong_route_info": 33,
     "missed_target": 15,
     "dispatch_on_no_dispatch": 15,
     "wrong_route_state": 5
@@ -3891,17 +3892,1852 @@
   },
   "key_only": {
    "n": 412,
-   "accuracy": 0.14320388349514562,
+   "accuracy": 0.1383495145631068,
    "ci95": [
-    0.10922330097087378,
-    0.17475728155339806
+    0.10679611650485436,
+    0.16990291262135923
    ],
-   "preferred": 0.14320388349514562,
-   "severity": 1035,
+   "preferred": 0.1383495145631068,
+   "severity": 1043,
    "errors": {
     "duplicate_create": 332,
-    "wrong_route_info": 6,
+    "wrong_route_info": 8,
     "dispatch_on_no_dispatch": 15
+   }
+  }
+ },
+ "lexical_sweep": {
+  "0.5": {
+   "pooled": {
+    "n": 412,
+    "accuracy": 0.49271844660194175,
+    "ci95": [
+     0.44660194174757284,
+     0.5412621359223301
+    ],
+    "preferred": 0.49271844660194175,
+    "severity": 677,
+    "errors": {
+     "forced_merge": 13,
+     "wrong_route_info": 47,
+     "duplicate_create": 114,
+     "missed_target": 15,
+     "dispatch_on_no_dispatch": 15,
+     "wrong_route_state": 5
+    }
+   },
+   "no_overlap_fail": [],
+   "per_stratum": {
+    "alias_resolution|overlap": {
+     "n": 25,
+     "accuracy": 0.8,
+     "ci95": [
+      0.64,
+      0.96
+     ],
+     "preferred": 0.8,
+     "severity": 20,
+     "errors": {
+      "wrong_route_info": 5
+     }
+    },
+    "done_keyed|overlap": {
+     "n": 20,
+     "accuracy": 0.85,
+     "ci95": [
+      0.7,
+      1.0
+     ],
+     "preferred": 0.85,
+     "severity": 9,
+     "errors": {
+      "duplicate_create": 3
+     }
+    },
+    "genuinely_new|overlap": {
+     "n": 15,
+     "accuracy": 0.13333333333333333,
+     "ci95": [
+      0.0,
+      0.3333333333333333
+     ],
+     "preferred": 0.13333333333333333,
+     "severity": 52,
+     "errors": {
+      "forced_merge": 13
+     }
+    },
+    "paraphrase|overlap": {
+     "n": 15,
+     "accuracy": 0.8,
+     "ci95": [
+      0.6,
+      1.0
+     ],
+     "preferred": 0.8,
+     "severity": 12,
+     "errors": {
+      "wrong_route_info": 3
+     }
+    },
+    "inbound_event|overlap": {
+     "n": 20,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "paraphrase|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "slug_collision|overlap": {
+     "n": 15,
+     "accuracy": 0.8,
+     "ci95": [
+      0.6,
+      1.0
+     ],
+     "preferred": 0.8,
+     "severity": 12,
+     "errors": {
+      "wrong_route_info": 3
+     }
+    },
+    "same_person_diff_work|overlap": {
+     "n": 15,
+     "accuracy": 0.8666666666666667,
+     "ci95": [
+      0.6666666666666666,
+      1.0
+     ],
+     "preferred": 0.8666666666666667,
+     "severity": 8,
+     "errors": {
+      "wrong_route_info": 2
+     }
+    },
+    "same_topic_diff_person|overlap": {
+     "n": 15,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "hub_key|overlap": {
+     "n": 15,
+     "accuracy": 0.6666666666666666,
+     "ci95": [
+      0.4,
+      0.8666666666666667
+     ],
+     "preferred": 0.6666666666666666,
+     "severity": 18,
+     "errors": {
+      "duplicate_create": 2,
+      "wrong_route_info": 3
+     }
+    },
+    "done_keyless|overlap": {
+     "n": 10,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "done_keyless|no_overlap": {
+     "n": 5,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 15,
+     "errors": {
+      "duplicate_create": 5
+     }
+    },
+    "hot_set_eviction|overlap": {
+     "n": 12,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "post_fold|overlap": {
+     "n": 15,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "owned_state|overlap": {
+     "n": 15,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "truly_ambiguous|overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 56,
+     "errors": {
+      "duplicate_create": 4,
+      "wrong_route_info": 11
+     }
+    },
+    "multi_target|overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 30,
+     "errors": {
+      "missed_target": 15
+     }
+    },
+    "no_dispatch|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 15,
+     "errors": {
+      "dispatch_on_no_dispatch": 15
+     }
+    },
+    "injected|overlap": {
+     "n": 15,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "name_drift|overlap": {
+     "n": 15,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "slug_collision|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "same_person_diff_work|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "same_topic_diff_person|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 50,
+     "errors": {
+      "duplicate_create": 10,
+      "wrong_route_info": 5
+     }
+    },
+    "alias_resolution|no_overlap": {
+     "n": 20,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 70,
+     "errors": {
+      "wrong_route_info": 10,
+      "duplicate_create": 10
+     }
+    },
+    "hub_key|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 50,
+     "errors": {
+      "wrong_route_info": 5,
+      "duplicate_create": 10
+     }
+    },
+    "name_drift|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "owned_state|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 80,
+     "errors": {
+      "duplicate_create": 10,
+      "wrong_route_state": 5
+     }
+    }
+   },
+   "per_category": {
+    "alias_resolution": {
+     "n": 45,
+     "accuracy": 0.4444444444444444,
+     "ci95": [
+      0.28888888888888886,
+      0.6
+     ],
+     "preferred": 0.4444444444444444,
+     "severity": 90,
+     "errors": {
+      "wrong_route_info": 15,
+      "duplicate_create": 10
+     }
+    },
+    "done_keyed": {
+     "n": 20,
+     "accuracy": 0.85,
+     "ci95": [
+      0.7,
+      1.0
+     ],
+     "preferred": 0.85,
+     "severity": 9,
+     "errors": {
+      "duplicate_create": 3
+     }
+    },
+    "genuinely_new": {
+     "n": 15,
+     "accuracy": 0.13333333333333333,
+     "ci95": [
+      0.0,
+      0.3333333333333333
+     ],
+     "preferred": 0.13333333333333333,
+     "severity": 52,
+     "errors": {
+      "forced_merge": 13
+     }
+    },
+    "paraphrase": {
+     "n": 30,
+     "accuracy": 0.4,
+     "ci95": [
+      0.23333333333333334,
+      0.6
+     ],
+     "preferred": 0.4,
+     "severity": 57,
+     "errors": {
+      "wrong_route_info": 3,
+      "duplicate_create": 15
+     }
+    },
+    "inbound_event": {
+     "n": 20,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "slug_collision": {
+     "n": 30,
+     "accuracy": 0.4,
+     "ci95": [
+      0.23333333333333334,
+      0.5666666666666667
+     ],
+     "preferred": 0.4,
+     "severity": 57,
+     "errors": {
+      "wrong_route_info": 3,
+      "duplicate_create": 15
+     }
+    },
+    "same_person_diff_work": {
+     "n": 30,
+     "accuracy": 0.43333333333333335,
+     "ci95": [
+      0.26666666666666666,
+      0.6333333333333333
+     ],
+     "preferred": 0.43333333333333335,
+     "severity": 53,
+     "errors": {
+      "wrong_route_info": 2,
+      "duplicate_create": 15
+     }
+    },
+    "same_topic_diff_person": {
+     "n": 30,
+     "accuracy": 0.5,
+     "ci95": [
+      0.3333333333333333,
+      0.6666666666666666
+     ],
+     "preferred": 0.5,
+     "severity": 50,
+     "errors": {
+      "duplicate_create": 10,
+      "wrong_route_info": 5
+     }
+    },
+    "hub_key": {
+     "n": 30,
+     "accuracy": 0.3333333333333333,
+     "ci95": [
+      0.16666666666666666,
+      0.5
+     ],
+     "preferred": 0.3333333333333333,
+     "severity": 68,
+     "errors": {
+      "duplicate_create": 12,
+      "wrong_route_info": 8
+     }
+    },
+    "done_keyless": {
+     "n": 15,
+     "accuracy": 0.6666666666666666,
+     "ci95": [
+      0.4,
+      0.8666666666666667
+     ],
+     "preferred": 0.6666666666666666,
+     "severity": 15,
+     "errors": {
+      "duplicate_create": 5
+     }
+    },
+    "hot_set_eviction": {
+     "n": 12,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "post_fold": {
+     "n": 15,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "owned_state": {
+     "n": 30,
+     "accuracy": 0.5,
+     "ci95": [
+      0.3333333333333333,
+      0.6666666666666666
+     ],
+     "preferred": 0.5,
+     "severity": 80,
+     "errors": {
+      "duplicate_create": 10,
+      "wrong_route_state": 5
+     }
+    },
+    "truly_ambiguous": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 56,
+     "errors": {
+      "duplicate_create": 4,
+      "wrong_route_info": 11
+     }
+    },
+    "multi_target": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 30,
+     "errors": {
+      "missed_target": 15
+     }
+    },
+    "no_dispatch": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 15,
+     "errors": {
+      "dispatch_on_no_dispatch": 15
+     }
+    },
+    "injected": {
+     "n": 15,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "name_drift": {
+     "n": 30,
+     "accuracy": 0.5,
+     "ci95": [
+      0.3333333333333333,
+      0.6666666666666666
+     ],
+     "preferred": 0.5,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    }
+   }
+  },
+  "1.0": {
+   "pooled": {
+    "n": 412,
+    "accuracy": 0.4830097087378641,
+    "ci95": [
+     0.4368932038834951,
+     0.5339805825242718
+    ],
+    "preferred": 0.4830097087378641,
+    "severity": 672,
+    "errors": {
+     "duplicate_create": 135,
+     "forced_merge": 10,
+     "wrong_route_info": 33,
+     "missed_target": 15,
+     "dispatch_on_no_dispatch": 15,
+     "wrong_route_state": 5
+    }
+   },
+   "no_overlap_fail": [],
+   "per_stratum": {
+    "alias_resolution|overlap": {
+     "n": 25,
+     "accuracy": 0.76,
+     "ci95": [
+      0.56,
+      0.92
+     ],
+     "preferred": 0.76,
+     "severity": 23,
+     "errors": {
+      "duplicate_create": 1,
+      "wrong_route_info": 5
+     }
+    },
+    "done_keyed|overlap": {
+     "n": 20,
+     "accuracy": 0.85,
+     "ci95": [
+      0.7,
+      1.0
+     ],
+     "preferred": 0.85,
+     "severity": 9,
+     "errors": {
+      "duplicate_create": 3
+     }
+    },
+    "genuinely_new|overlap": {
+     "n": 15,
+     "accuracy": 0.3333333333333333,
+     "ci95": [
+      0.13333333333333333,
+      0.6
+     ],
+     "preferred": 0.3333333333333333,
+     "severity": 40,
+     "errors": {
+      "forced_merge": 10
+     }
+    },
+    "paraphrase|overlap": {
+     "n": 15,
+     "accuracy": 0.7333333333333333,
+     "ci95": [
+      0.4666666666666667,
+      0.9333333333333333
+     ],
+     "preferred": 0.7333333333333333,
+     "severity": 12,
+     "errors": {
+      "duplicate_create": 4
+     }
+    },
+    "inbound_event|overlap": {
+     "n": 20,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "paraphrase|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "slug_collision|overlap": {
+     "n": 15,
+     "accuracy": 0.7333333333333333,
+     "ci95": [
+      0.4666666666666667,
+      0.9333333333333333
+     ],
+     "preferred": 0.7333333333333333,
+     "severity": 15,
+     "errors": {
+      "duplicate_create": 1,
+      "wrong_route_info": 3
+     }
+    },
+    "same_person_diff_work|overlap": {
+     "n": 15,
+     "accuracy": 0.8666666666666667,
+     "ci95": [
+      0.6666666666666666,
+      1.0
+     ],
+     "preferred": 0.8666666666666667,
+     "severity": 8,
+     "errors": {
+      "wrong_route_info": 2
+     }
+    },
+    "same_topic_diff_person|overlap": {
+     "n": 15,
+     "accuracy": 0.9333333333333333,
+     "ci95": [
+      0.8,
+      1.0
+     ],
+     "preferred": 0.9333333333333333,
+     "severity": 3,
+     "errors": {
+      "duplicate_create": 1
+     }
+    },
+    "hub_key|overlap": {
+     "n": 15,
+     "accuracy": 0.6666666666666666,
+     "ci95": [
+      0.4,
+      0.8666666666666667
+     ],
+     "preferred": 0.6666666666666666,
+     "severity": 16,
+     "errors": {
+      "duplicate_create": 4,
+      "wrong_route_info": 1
+     }
+    },
+    "done_keyless|overlap": {
+     "n": 10,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "done_keyless|no_overlap": {
+     "n": 5,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 15,
+     "errors": {
+      "duplicate_create": 5
+     }
+    },
+    "hot_set_eviction|overlap": {
+     "n": 12,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "post_fold|overlap": {
+     "n": 15,
+     "accuracy": 0.9333333333333333,
+     "ci95": [
+      0.8,
+      1.0
+     ],
+     "preferred": 0.9333333333333333,
+     "severity": 3,
+     "errors": {
+      "duplicate_create": 1
+     }
+    },
+    "owned_state|overlap": {
+     "n": 15,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "truly_ambiguous|overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 50,
+     "errors": {
+      "duplicate_create": 10,
+      "wrong_route_info": 5
+     }
+    },
+    "multi_target|overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 30,
+     "errors": {
+      "missed_target": 15
+     }
+    },
+    "no_dispatch|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 15,
+     "errors": {
+      "dispatch_on_no_dispatch": 15
+     }
+    },
+    "injected|overlap": {
+     "n": 15,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "name_drift|overlap": {
+     "n": 15,
+     "accuracy": 0.8666666666666667,
+     "ci95": [
+      0.6666666666666666,
+      1.0
+     ],
+     "preferred": 0.8666666666666667,
+     "severity": 6,
+     "errors": {
+      "duplicate_create": 2
+     }
+    },
+    "slug_collision|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "same_person_diff_work|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "same_topic_diff_person|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 50,
+     "errors": {
+      "duplicate_create": 10,
+      "wrong_route_info": 5
+     }
+    },
+    "alias_resolution|no_overlap": {
+     "n": 20,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 68,
+     "errors": {
+      "duplicate_create": 12,
+      "wrong_route_info": 8
+     }
+    },
+    "hub_key|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 49,
+     "errors": {
+      "duplicate_create": 11,
+      "wrong_route_info": 4
+     }
+    },
+    "name_drift|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "owned_state|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 80,
+     "errors": {
+      "duplicate_create": 10,
+      "wrong_route_state": 5
+     }
+    }
+   },
+   "per_category": {
+    "alias_resolution": {
+     "n": 45,
+     "accuracy": 0.4222222222222222,
+     "ci95": [
+      0.28888888888888886,
+      0.5777777777777777
+     ],
+     "preferred": 0.4222222222222222,
+     "severity": 91,
+     "errors": {
+      "duplicate_create": 13,
+      "wrong_route_info": 13
+     }
+    },
+    "done_keyed": {
+     "n": 20,
+     "accuracy": 0.85,
+     "ci95": [
+      0.7,
+      1.0
+     ],
+     "preferred": 0.85,
+     "severity": 9,
+     "errors": {
+      "duplicate_create": 3
+     }
+    },
+    "genuinely_new": {
+     "n": 15,
+     "accuracy": 0.3333333333333333,
+     "ci95": [
+      0.13333333333333333,
+      0.6
+     ],
+     "preferred": 0.3333333333333333,
+     "severity": 40,
+     "errors": {
+      "forced_merge": 10
+     }
+    },
+    "paraphrase": {
+     "n": 30,
+     "accuracy": 0.36666666666666664,
+     "ci95": [
+      0.2,
+      0.5333333333333333
+     ],
+     "preferred": 0.36666666666666664,
+     "severity": 57,
+     "errors": {
+      "duplicate_create": 19
+     }
+    },
+    "inbound_event": {
+     "n": 20,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "slug_collision": {
+     "n": 30,
+     "accuracy": 0.36666666666666664,
+     "ci95": [
+      0.16666666666666666,
+      0.5333333333333333
+     ],
+     "preferred": 0.36666666666666664,
+     "severity": 60,
+     "errors": {
+      "duplicate_create": 16,
+      "wrong_route_info": 3
+     }
+    },
+    "same_person_diff_work": {
+     "n": 30,
+     "accuracy": 0.43333333333333335,
+     "ci95": [
+      0.26666666666666666,
+      0.6333333333333333
+     ],
+     "preferred": 0.43333333333333335,
+     "severity": 53,
+     "errors": {
+      "wrong_route_info": 2,
+      "duplicate_create": 15
+     }
+    },
+    "same_topic_diff_person": {
+     "n": 30,
+     "accuracy": 0.4666666666666667,
+     "ci95": [
+      0.26666666666666666,
+      0.6333333333333333
+     ],
+     "preferred": 0.4666666666666667,
+     "severity": 53,
+     "errors": {
+      "duplicate_create": 11,
+      "wrong_route_info": 5
+     }
+    },
+    "hub_key": {
+     "n": 30,
+     "accuracy": 0.3333333333333333,
+     "ci95": [
+      0.16666666666666666,
+      0.5
+     ],
+     "preferred": 0.3333333333333333,
+     "severity": 65,
+     "errors": {
+      "duplicate_create": 15,
+      "wrong_route_info": 5
+     }
+    },
+    "done_keyless": {
+     "n": 15,
+     "accuracy": 0.6666666666666666,
+     "ci95": [
+      0.4,
+      0.8666666666666667
+     ],
+     "preferred": 0.6666666666666666,
+     "severity": 15,
+     "errors": {
+      "duplicate_create": 5
+     }
+    },
+    "hot_set_eviction": {
+     "n": 12,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "post_fold": {
+     "n": 15,
+     "accuracy": 0.9333333333333333,
+     "ci95": [
+      0.8,
+      1.0
+     ],
+     "preferred": 0.9333333333333333,
+     "severity": 3,
+     "errors": {
+      "duplicate_create": 1
+     }
+    },
+    "owned_state": {
+     "n": 30,
+     "accuracy": 0.5,
+     "ci95": [
+      0.3333333333333333,
+      0.6666666666666666
+     ],
+     "preferred": 0.5,
+     "severity": 80,
+     "errors": {
+      "duplicate_create": 10,
+      "wrong_route_state": 5
+     }
+    },
+    "truly_ambiguous": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 50,
+     "errors": {
+      "duplicate_create": 10,
+      "wrong_route_info": 5
+     }
+    },
+    "multi_target": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 30,
+     "errors": {
+      "missed_target": 15
+     }
+    },
+    "no_dispatch": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 15,
+     "errors": {
+      "dispatch_on_no_dispatch": 15
+     }
+    },
+    "injected": {
+     "n": 15,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "name_drift": {
+     "n": 30,
+     "accuracy": 0.43333333333333335,
+     "ci95": [
+      0.23333333333333334,
+      0.6
+     ],
+     "preferred": 0.43333333333333335,
+     "severity": 51,
+     "errors": {
+      "duplicate_create": 17
+     }
+    }
+   }
+  },
+  "2.0": {
+   "pooled": {
+    "n": 412,
+    "accuracy": 0.42961165048543687,
+    "ci95": [
+     0.38106796116504854,
+     0.48058252427184467
+    ],
+    "preferred": 0.42961165048543687,
+    "severity": 714,
+    "errors": {
+     "duplicate_create": 171,
+     "forced_merge": 7,
+     "wrong_route_info": 25,
+     "missed_target": 14,
+     "dispatch_on_no_dispatch": 15,
+     "wrong_route_state": 3
+    }
+   },
+   "no_overlap_fail": [],
+   "per_stratum": {
+    "alias_resolution|overlap": {
+     "n": 25,
+     "accuracy": 0.72,
+     "ci95": [
+      0.52,
+      0.88
+     ],
+     "preferred": 0.72,
+     "severity": 25,
+     "errors": {
+      "duplicate_create": 3,
+      "wrong_route_info": 4
+     }
+    },
+    "done_keyed|overlap": {
+     "n": 20,
+     "accuracy": 0.8,
+     "ci95": [
+      0.6,
+      0.95
+     ],
+     "preferred": 0.8,
+     "severity": 12,
+     "errors": {
+      "duplicate_create": 4
+     }
+    },
+    "genuinely_new|overlap": {
+     "n": 15,
+     "accuracy": 0.5333333333333333,
+     "ci95": [
+      0.26666666666666666,
+      0.8
+     ],
+     "preferred": 0.5333333333333333,
+     "severity": 28,
+     "errors": {
+      "forced_merge": 7
+     }
+    },
+    "paraphrase|overlap": {
+     "n": 15,
+     "accuracy": 0.6,
+     "ci95": [
+      0.3333333333333333,
+      0.8666666666666667
+     ],
+     "preferred": 0.6,
+     "severity": 18,
+     "errors": {
+      "duplicate_create": 6
+     }
+    },
+    "inbound_event|overlap": {
+     "n": 20,
+     "accuracy": 0.9,
+     "ci95": [
+      0.75,
+      1.0
+     ],
+     "preferred": 0.9,
+     "severity": 6,
+     "errors": {
+      "duplicate_create": 2
+     }
+    },
+    "paraphrase|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "slug_collision|overlap": {
+     "n": 15,
+     "accuracy": 0.6,
+     "ci95": [
+      0.3333333333333333,
+      0.8666666666666667
+     ],
+     "preferred": 0.6,
+     "severity": 20,
+     "errors": {
+      "duplicate_create": 4,
+      "wrong_route_info": 2
+     }
+    },
+    "same_person_diff_work|overlap": {
+     "n": 15,
+     "accuracy": 0.7333333333333333,
+     "ci95": [
+      0.4666666666666667,
+      0.9333333333333333
+     ],
+     "preferred": 0.7333333333333333,
+     "severity": 14,
+     "errors": {
+      "duplicate_create": 2,
+      "wrong_route_info": 2
+     }
+    },
+    "same_topic_diff_person|overlap": {
+     "n": 15,
+     "accuracy": 0.8666666666666667,
+     "ci95": [
+      0.6666666666666666,
+      1.0
+     ],
+     "preferred": 0.8666666666666667,
+     "severity": 6,
+     "errors": {
+      "duplicate_create": 2
+     }
+    },
+    "hub_key|overlap": {
+     "n": 15,
+     "accuracy": 0.6,
+     "ci95": [
+      0.3333333333333333,
+      0.8666666666666667
+     ],
+     "preferred": 0.6,
+     "severity": 19,
+     "errors": {
+      "duplicate_create": 5,
+      "wrong_route_info": 1
+     }
+    },
+    "done_keyless|overlap": {
+     "n": 10,
+     "accuracy": 0.8,
+     "ci95": [
+      0.5,
+      1.0
+     ],
+     "preferred": 0.8,
+     "severity": 6,
+     "errors": {
+      "duplicate_create": 2
+     }
+    },
+    "done_keyless|no_overlap": {
+     "n": 5,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 15,
+     "errors": {
+      "duplicate_create": 5
+     }
+    },
+    "hot_set_eviction|overlap": {
+     "n": 12,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "post_fold|overlap": {
+     "n": 15,
+     "accuracy": 0.6,
+     "ci95": [
+      0.3333333333333333,
+      0.8666666666666667
+     ],
+     "preferred": 0.6,
+     "severity": 18,
+     "errors": {
+      "duplicate_create": 6
+     }
+    },
+    "owned_state|overlap": {
+     "n": 15,
+     "accuracy": 0.8666666666666667,
+     "ci95": [
+      0.6666666666666666,
+      1.0
+     ],
+     "preferred": 0.8666666666666667,
+     "severity": 6,
+     "errors": {
+      "duplicate_create": 2
+     }
+    },
+    "truly_ambiguous|overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 49,
+     "errors": {
+      "duplicate_create": 11,
+      "wrong_route_info": 4
+     }
+    },
+    "multi_target|overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 31,
+     "errors": {
+      "missed_target": 14,
+      "duplicate_create": 1
+     }
+    },
+    "no_dispatch|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 15,
+     "errors": {
+      "dispatch_on_no_dispatch": 15
+     }
+    },
+    "injected|overlap": {
+     "n": 15,
+     "accuracy": 0.9333333333333333,
+     "ci95": [
+      0.8,
+      1.0
+     ],
+     "preferred": 0.9333333333333333,
+     "severity": 3,
+     "errors": {
+      "duplicate_create": 1
+     }
+    },
+    "name_drift|overlap": {
+     "n": 15,
+     "accuracy": 0.6666666666666666,
+     "ci95": [
+      0.4,
+      0.8666666666666667
+     ],
+     "preferred": 0.6666666666666666,
+     "severity": 15,
+     "errors": {
+      "duplicate_create": 5
+     }
+    },
+    "slug_collision|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "same_person_diff_work|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "same_topic_diff_person|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 48,
+     "errors": {
+      "duplicate_create": 12,
+      "wrong_route_info": 3
+     }
+    },
+    "alias_resolution|no_overlap": {
+     "n": 20,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 66,
+     "errors": {
+      "duplicate_create": 14,
+      "wrong_route_info": 6
+     }
+    },
+    "hub_key|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 48,
+     "errors": {
+      "duplicate_create": 12,
+      "wrong_route_info": 3
+     }
+    },
+    "name_drift|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 45,
+     "errors": {
+      "duplicate_create": 15
+     }
+    },
+    "owned_state|no_overlap": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 66,
+     "errors": {
+      "duplicate_create": 12,
+      "wrong_route_state": 3
+     }
+    }
+   },
+   "per_category": {
+    "alias_resolution": {
+     "n": 45,
+     "accuracy": 0.4,
+     "ci95": [
+      0.26666666666666666,
+      0.5555555555555556
+     ],
+     "preferred": 0.4,
+     "severity": 91,
+     "errors": {
+      "duplicate_create": 17,
+      "wrong_route_info": 10
+     }
+    },
+    "done_keyed": {
+     "n": 20,
+     "accuracy": 0.8,
+     "ci95": [
+      0.6,
+      0.95
+     ],
+     "preferred": 0.8,
+     "severity": 12,
+     "errors": {
+      "duplicate_create": 4
+     }
+    },
+    "genuinely_new": {
+     "n": 15,
+     "accuracy": 0.5333333333333333,
+     "ci95": [
+      0.26666666666666666,
+      0.8
+     ],
+     "preferred": 0.5333333333333333,
+     "severity": 28,
+     "errors": {
+      "forced_merge": 7
+     }
+    },
+    "paraphrase": {
+     "n": 30,
+     "accuracy": 0.3,
+     "ci95": [
+      0.13333333333333333,
+      0.4666666666666667
+     ],
+     "preferred": 0.3,
+     "severity": 63,
+     "errors": {
+      "duplicate_create": 21
+     }
+    },
+    "inbound_event": {
+     "n": 20,
+     "accuracy": 0.9,
+     "ci95": [
+      0.75,
+      1.0
+     ],
+     "preferred": 0.9,
+     "severity": 6,
+     "errors": {
+      "duplicate_create": 2
+     }
+    },
+    "slug_collision": {
+     "n": 30,
+     "accuracy": 0.3,
+     "ci95": [
+      0.13333333333333333,
+      0.4666666666666667
+     ],
+     "preferred": 0.3,
+     "severity": 65,
+     "errors": {
+      "duplicate_create": 19,
+      "wrong_route_info": 2
+     }
+    },
+    "same_person_diff_work": {
+     "n": 30,
+     "accuracy": 0.36666666666666664,
+     "ci95": [
+      0.2,
+      0.5333333333333333
+     ],
+     "preferred": 0.36666666666666664,
+     "severity": 59,
+     "errors": {
+      "duplicate_create": 17,
+      "wrong_route_info": 2
+     }
+    },
+    "same_topic_diff_person": {
+     "n": 30,
+     "accuracy": 0.43333333333333335,
+     "ci95": [
+      0.23333333333333334,
+      0.6
+     ],
+     "preferred": 0.43333333333333335,
+     "severity": 54,
+     "errors": {
+      "duplicate_create": 14,
+      "wrong_route_info": 3
+     }
+    },
+    "hub_key": {
+     "n": 30,
+     "accuracy": 0.3,
+     "ci95": [
+      0.13333333333333333,
+      0.4666666666666667
+     ],
+     "preferred": 0.3,
+     "severity": 67,
+     "errors": {
+      "duplicate_create": 17,
+      "wrong_route_info": 4
+     }
+    },
+    "done_keyless": {
+     "n": 15,
+     "accuracy": 0.5333333333333333,
+     "ci95": [
+      0.3333333333333333,
+      0.8
+     ],
+     "preferred": 0.5333333333333333,
+     "severity": 21,
+     "errors": {
+      "duplicate_create": 7
+     }
+    },
+    "hot_set_eviction": {
+     "n": 12,
+     "accuracy": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ],
+     "preferred": 1.0,
+     "severity": 0,
+     "errors": {}
+    },
+    "post_fold": {
+     "n": 15,
+     "accuracy": 0.6,
+     "ci95": [
+      0.3333333333333333,
+      0.8666666666666667
+     ],
+     "preferred": 0.6,
+     "severity": 18,
+     "errors": {
+      "duplicate_create": 6
+     }
+    },
+    "owned_state": {
+     "n": 30,
+     "accuracy": 0.43333333333333335,
+     "ci95": [
+      0.23333333333333334,
+      0.6
+     ],
+     "preferred": 0.43333333333333335,
+     "severity": 72,
+     "errors": {
+      "duplicate_create": 14,
+      "wrong_route_state": 3
+     }
+    },
+    "truly_ambiguous": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 49,
+     "errors": {
+      "duplicate_create": 11,
+      "wrong_route_info": 4
+     }
+    },
+    "multi_target": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 31,
+     "errors": {
+      "missed_target": 14,
+      "duplicate_create": 1
+     }
+    },
+    "no_dispatch": {
+     "n": 15,
+     "accuracy": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "preferred": 0.0,
+     "severity": 15,
+     "errors": {
+      "dispatch_on_no_dispatch": 15
+     }
+    },
+    "injected": {
+     "n": 15,
+     "accuracy": 0.9333333333333333,
+     "ci95": [
+      0.8,
+      1.0
+     ],
+     "preferred": 0.9333333333333333,
+     "severity": 3,
+     "errors": {
+      "duplicate_create": 1
+     }
+    },
+    "name_drift": {
+     "n": 30,
+     "accuracy": 0.3333333333333333,
+     "ci95": [
+      0.16666666666666666,
+      0.5
+     ],
+     "preferred": 0.3333333333333333,
+     "severity": 60,
+     "errors": {
+      "duplicate_create": 20
+     }
+    }
    }
   }
  }

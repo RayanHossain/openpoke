@@ -27,8 +27,8 @@ def _ref(world, ws):
 def test_severity_weights_are_the_spec_values():
     assert WEIGHTS == {"wrong_route_state": 10, "wrong_route_info": 4, "forced_merge": 4, "duplicate_create": 3,
                        "invalid_id": 2, "over_ask": 1, "dispatch_on_no_dispatch": 1,
-                       "dropped_request": 4, "missed_target": 2}  # last two: D-006
-    assert set(UNWEIGHTED) == {"missed_dispatch", "extra_target"}
+                       "dropped_request": 4, "missed_target": 2, "extra_target": 4}  # last three: D-006 + follow-up
+    assert UNWEIGHTED == ()
 
 
 def test_scoring_rules():
@@ -69,7 +69,19 @@ def test_scoring_rules():
     w, i = _case("ta_bob_late")
     s = score(i, Decision("create"), w)
     assert (s.error, s.severity) == ("duplicate_create", 3)  # create when ASK preferred
-    assert score(i, Decision("none"), w).error == "missed_dispatch"  # unweighted
+    s = score(i, Decision("none"), w)
+    assert (s.error, s.severity) == ("dropped_request", 4)  # no response on an ask probe
+
+    w, i = _case("seed_dog_sitter")
+    s = score(i, Decision("none"), w)
+    assert (s.error, s.severity) == ("dropped_request", 4)  # no response on a create probe
+
+    w, i = _case("mt_lunch_dinner")
+    both = (_ref(w, "ws_alice_lunch"), _ref(w, "ws_dinner"))
+    s = score(i, Decision("route", both + (_ref(w, "ws_deploy"),)), w)
+    assert (s.error, s.severity) == ("extra_target", 4)  # extra agent = wrong route, informational
+    s = score(i, Decision("route", (both[0], _ref(w, "ws_deploy"))), w)
+    assert (s.error, s.severity) == ("missed_target", 2 + 4)  # one missed, one extra
 
     w, i = _case("drift_oil_change")  # the dentist-named agent owns the oil change
     assert score(i, Decision("route", (_ref(w, "ws_dent2"),)), w).correct
@@ -102,6 +114,9 @@ def test_g1_runs_on_the_whole_dev_set():
     assert out["instances"] == 412 and len(out["skipped"]) == 3
     assert [tuple(x) for x in out["plan"]] == [(3, "high"), (10, "high"), (30, "high"), (50, "high"), (50, "low")]
     assert set(out["fallback_per_n"]) == {3, 10, 30, 50}
+    assert all(f["rate"] <= 0.10 for f in out["fallback_per_n"].values()), out["fallback_per_n"]
+    assert set(out["lexical_sweep"]) == {0.5, 1.0, 2.0}
+    assert all(not sw["no_overlap_fail"] for sw in out["lexical_sweep"].values())
     for c, v in out["verdicts"].items():
         if v["kind"] == "discrimination":
             assert v["verdict"] == "pass", (c, v)

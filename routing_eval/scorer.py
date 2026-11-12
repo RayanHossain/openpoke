@@ -28,13 +28,11 @@ WEIGHTS: Dict[str, int] = {
     "invalid_id": 2,
     "over_ask": 1,
     "dispatch_on_no_dispatch": 1,
-    "dropped_request": 4,
-    "missed_target": 2,  # per missed target (multi_target)
+    "dropped_request": 4,  # no response on a route, create or ask probe
+    "missed_target": 2,    # per missed target (multi_target)
+    "extra_target": 4,     # per extra agent on a multi_target route = wrong route, informational
 }
-# No weight in spec §7; kept in the raw error vector, reported separately:
-#   missed_dispatch  no dispatch on a create or ask probe
-#   extra_target     a multi_target route that also hit a workstream it should not have
-UNWEIGHTED = ("missed_dispatch", "extra_target")
+UNWEIGHTED: tuple = ()  # every error type now has a spec weight (D-006 + follow-up)
 
 
 @dataclass(frozen=True)
@@ -71,7 +69,7 @@ def _error(inst: ProbeInstance, d: Decision, world: World) -> Optional[str]:
     if d.action == "ask":
         return "over_ask"
     if d.action == "none":
-        return "dropped_request" if pref == "route" else "missed_dispatch"
+        return "dropped_request"
     if kinds == {"none"}:
         return "dispatch_on_no_dispatch"
     if d.action == "create":
@@ -92,13 +90,20 @@ def _missed(inst: ProbeInstance, d: Decision, world: World) -> int:
     return sum(1 for t in inst.preferred.targets if t not in chosen)
 
 
+def _extra(inst: ProbeInstance, d: Decision, world: World) -> int:
+    """Chosen agents that own none of the multi-target route's workstreams."""
+    targets = set(inst.preferred.targets)
+    return sum(1 for c in _ws_of(world, d.targets) if not c & targets)
+
+
 def score(inst: ProbeInstance, decision: Decision, world: World) -> Scored:
     correct = any(matches(a, decision, world) for a in inst.acceptable)
     preferred = matches(inst.preferred, decision, world)
     err = None if correct else _error(inst, decision, world)
     weight = WEIGHTS.get(err, 0) if err else 0
-    if err == "missed_target":
-        weight *= _missed(inst, decision, world)
+    if err in ("missed_target", "extra_target"):
+        weight = (WEIGHTS["missed_target"] * _missed(inst, decision, world)
+                  + WEIGHTS["extra_target"] * _extra(inst, decision, world))
     return Scored(inst, decision, correct, preferred, err, weight)
 
 

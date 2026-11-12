@@ -18,6 +18,7 @@ from .keys_pure import KeyBook, agents_for_keys, explicit_keys, keybook
 from .schema import World
 
 LEXICAL_THRESHOLD = 1.0   # spec §0 says "create below a threshold" without a value; fixed before any run
+LEXICAL_SWEEP = (0.5, 1.0, 2.0)  # reported in G1 alongside the gated value
 BM25_K1, BM25_B = 1.5, 0.75
 
 
@@ -92,12 +93,13 @@ def _bm25_scores(world: World, message: str) -> List[Tuple[float, str]]:
     return scores
 
 
-def lexical(world: World, message: str, book: Optional[KeyBook] = None) -> Decision:
-    """BM25 over label + brief, top-1; create below LEXICAL_THRESHOLD. Ties go to the most recent."""
+def lexical(world: World, message: str, book: Optional[KeyBook] = None,
+            threshold: float = LEXICAL_THRESHOLD) -> Decision:
+    """BM25 over label + brief, top-1; create below the threshold. Ties go to the most recent."""
     scores = _bm25_scores(world, message)
     last = {a.ref: a.last_active_at for a in world.agents}
     best_score, best = max(scores, key=lambda t: (t[0], last[t[1]]))
-    return _route(best) if best_score >= LEXICAL_THRESHOLD else CREATE
+    return _route(best) if best_score >= threshold else CREATE
 
 
 def key_only(world: World, message: str, book: Optional[KeyBook] = None) -> Decision:

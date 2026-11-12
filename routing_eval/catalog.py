@@ -87,9 +87,6 @@ POOL_PEOPLE: List[Person] = [
 
 PEOPLE: Dict[str, Person] = {p.pid: p for p in [*_CORE_PEOPLE, *POOL_PEOPLE]}
 
-# Senders whose name is an organisation; high-similarity "same person" fillers use
-# only these families for them so the generated work stays plausible.
-ORG_FAMILIES: Tuple[str, ...] = ("finance", "admin", "legal", "events", "shopping")
 
 
 # --------------------------------------------------------------------------- #
@@ -396,6 +393,82 @@ FILLER_TEMPLATES: Dict[str, Tuple[Tuple[str, str, str], ...]] = {
               ("Photo shoot with {first}", "the photo shoot with {full}", "reply")),
 }
 FAMILIES: Tuple[str, ...] = tuple(FILLER_TEMPLATES)
+
+# Organisation senders (no personal first name): high-similarity "same person" fillers use these
+# org-plausible templates; {first} is the organisation's full name here.
+ORG_TEMPLATES: Dict[str, Tuple[Tuple[str, str, str], ...]] = {
+    "finance": (("Billing question for {first}", "the billing question for {full}", "reply"),
+                ("Refund request to {first}", "the refund request to {full}", "reply"),
+                ("Overcharge dispute with {first}", "the overcharge dispute with {full}", "draft"),
+                ("Payment method update with {first}", "the payment method update with {full}", "reply"),
+                ("Annual fee waiver from {first}", "the annual fee waiver from {full}", "reply")),
+    "admin": (("Address change with {first}", "the address change with {full}", "reply"),
+              ("Account login help from {first}", "the account login help from {full}", "reply"),
+              ("Membership renewal with {first}", "the membership renewal with {full}", "remind"),
+              ("Paperless opt-in with {first}", "the paperless opt-in with {full}", "reply"),
+              ("Contact details update for {first}", "the contact details update for {full}", "reply")),
+    "legal": (("Terms update from {first}", "the terms update from {full}", "reply"),
+              ("Data deletion request to {first}", "the data deletion request to {full}", "draft"),
+              ("Complaint letter to {first}", "the complaint letter to {full}", "draft"),
+              ("Consent form for {first}", "the consent form for {full}", "reply"),
+              ("Liability waiver from {first}", "the liability waiver from {full}", "reply")),
+    "events": (("Ticket transfer with {first}", "the ticket transfer with {full}", "reply"),
+               ("Group booking with {first}", "the group booking with {full}", "reply"),
+               ("Venue tour with {first}", "the venue tour with {full}", "remind"),
+               ("Waitlist spot at {first}", "the waitlist spot at {full}", "reply"),
+               ("Season pass from {first}", "the season pass from {full}", "reply")),
+    "shopping": (("Order return to {first}", "the order return to {full}", "reply"),
+                 ("Gift card balance at {first}", "the gift card balance at {full}", "reply"),
+                 ("Backorder update from {first}", "the backorder update from {full}", "reply"),
+                 ("Price match with {first}", "the price match with {full}", "reply"),
+                 ("Loyalty points at {first}", "the loyalty points at {full}", "reply")),
+    "travel": (("Booking change with {first}", "the booking change with {full}", "reply"),
+               ("Lost luggage claim with {first}", "the lost luggage claim with {full}", "draft"),
+               ("Seat upgrade with {first}", "the seat upgrade with {full}", "reply"),
+               ("Travel voucher from {first}", "the travel voucher from {full}", "reply"),
+               ("Itinerary reminder from {first}", "the itinerary reminder from {full}", "remind")),
+    "media": (("Subscription pause with {first}", "the subscription pause with {full}", "reply"),
+              ("Press inquiry to {first}", "the press inquiry to {full}", "draft"),
+              ("Podcast sponsorship with {first}", "the podcast sponsorship with {full}", "reply"),
+              ("Photo license from {first}", "the photo license from {full}", "reply"),
+              ("Interview request from {first}", "the interview request from {full}", "reply")),
+    "repairs": (("Service visit from {first}", "the service visit from {full}", "remind"),
+                ("Repair estimate from {first}", "the repair estimate from {full}", "reply"),
+                ("Parts order from {first}", "the parts order from {full}", "reply"),
+                ("Warranty claim with {first}", "the warranty claim with {full}", "draft"),
+                ("Callback request to {first}", "the callback request to {full}", "reply")),
+    "health": (("Records request to {first}", "the records request to {full}", "draft"),
+               ("Coverage question for {first}", "the coverage question for {full}", "reply"),
+               ("Referral letter from {first}", "the referral letter from {full}", "reply"),
+               ("Lab results from {first}", "the lab results from {full}", "reply"),
+               ("Vaccination record at {first}", "the vaccination record at {full}", "reply")),
+    "hiring": (("Job posting with {first}", "the job posting with {full}", "draft"),
+               ("Application status with {first}", "the application status with {full}", "reply"),
+               ("Background check with {first}", "the background check with {full}", "reply"),
+               ("Internship fair with {first}", "the internship fair with {full}", "reply"),
+               ("Onboarding forms from {first}", "the onboarding forms from {full}", "reply")),
+    "education": (("Course enrollment with {first}", "the course enrollment with {full}", "reply"),
+                  ("Transcript request to {first}", "the transcript request to {full}", "draft"),
+                  ("Tuition invoice from {first}", "the tuition invoice from {full}", "reply"),
+                  ("Workshop seat at {first}", "the workshop seat at {full}", "reply"),
+                  ("Certificate copy from {first}", "the certificate copy from {full}", "reply")),
+    "home": (("Utility setup with {first}", "the utility setup with {full}", "reply"),
+             ("Delivery window with {first}", "the delivery window with {full}", "reply"),
+             ("Installation booking with {first}", "the installation booking with {full}", "remind"),
+             ("Inspection visit from {first}", "the inspection visit from {full}", "reply"),
+             ("Key pickup at {first}", "the key pickup at {full}", "reply")),
+    "car": (("Recall notice from {first}", "the recall notice from {full}", "reply"),
+            ("Rental car with {first}", "the rental car with {full}", "reply"),
+            ("Roadside assistance from {first}", "roadside assistance from {full}", "reply"),
+            ("Detailing appointment at {first}", "the detailing appointment at {full}", "remind"),
+            ("Loaner vehicle from {first}", "the loaner vehicle from {full}", "reply")),
+    "fitness": (("Class pass at {first}", "the class pass at {full}", "reply"),
+                ("Locker rental at {first}", "the locker rental at {full}", "reply"),
+                ("Trainer session at {first}", "the trainer session at {full}", "remind"),
+                ("Guest pass from {first}", "the guest pass from {full}", "reply"),
+                ("Freeze request to {first}", "the freeze request to {full}", "reply")),
+}
+ORG_FAMILIES: Tuple[str, ...] = tuple(ORG_TEMPLATES)
 
 # --------------------------------------------------------------------------- #
 # probes
