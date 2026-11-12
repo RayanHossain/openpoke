@@ -391,15 +391,20 @@ async def _gen(limit: Optional[int], run: str, max_iter: int, out: Path, keys: O
 # --------------------------------------------------------------------------- #
 # real-brief worlds
 # --------------------------------------------------------------------------- #
-def real_world(world: World, data: Dict[str, Any]) -> World:
-    """Same world, every agent's brief replaced by its model-written one (status etc. unchanged)."""
+def real_world(world: World, data: Dict[str, Any], with_status: bool = False) -> World:
+    """Same world, every agent's brief replaced by its model-written one. ``with_status`` (post-hoc
+    variant, 2026-11-12) also uses the status from the same report; otherwise statuses stay scripted."""
     by_use = {(w, r): k for k, b in data["briefs"].items() for w, r in b["uses"]}
     agents = []
     for a in world.agents:
         k = by_use.get((world.world_id, a.ref))
         if k is None:
             raise KeyError(f"no model-written brief for {world.world_id}/{a.ref}")
-        agents.append(replace(a, brief=data["briefs"][k]["brief"]))
+        b = data["briefs"][k]
+        a2 = replace(a, brief=b["brief"])
+        if with_status and b["model_status"]:  # None only if every run failed: registry default kept
+            a2 = replace(a2, status=b["model_status"])
+        agents.append(a2)
     return replace(world, agents=tuple(agents))
 
 
