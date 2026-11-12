@@ -197,7 +197,7 @@ any update on the refund?
 ]
 === rag as_built: query ===
 any update on the refund?
-=== rag enriched: roster dicts ===
+=== rag parity: roster dicts ===
 [
   {
     "agent_id": "ea_1",
@@ -205,8 +205,8 @@ any update on the refund?
     "topic": "The charity gala with Soundwave Store. Finished; nothing open. | status: done | last active: 34d ago | keys: address:support@soundwave.example, thread:th_fx0",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the charity gala with Soundwave Store / agent: Sent an email about the charity gala with Soundwave Store.",
-      "user: Any news on the charity gala with Soundwave Store? / agent: The charity gala with Soundwave Store. Finished; nothing open."
+      "Sent an email about the charity gala with Soundwave Store.",
+      "The charity gala with Soundwave Store. Finished; nothing open."
     ]
   },
   {
@@ -215,8 +215,8 @@ any update on the refund?
     "topic": "Mail forwarding with Soundwave Store. Finished; nothing open. | status: done | last active: 29d ago | keys: address:support@soundwave.example, thread:th_fx2",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about mail forwarding with Soundwave Store / agent: Sent an email about mail forwarding with Soundwave Store.",
-      "user: Any news on mail forwarding with Soundwave Store? / agent: Mail forwarding with Soundwave Store. Finished; nothing open."
+      "Sent an email about mail forwarding with Soundwave Store.",
+      "Mail forwarding with Soundwave Store. Finished; nothing open."
     ]
   },
   {
@@ -225,8 +225,8 @@ any update on the refund?
     "topic": "Soundwave Store's reimbursement. In progress. | status: active | last active: 21d ago | keys: address:support@soundwave.example, thread:th_fx1",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about Soundwave Store's reimbursement / agent: Sent an email about Soundwave Store's reimbursement.",
-      "user: Any news on Soundwave Store's reimbursement? / agent: Soundwave Store's reimbursement. In progress."
+      "Sent an email about Soundwave Store's reimbursement.",
+      "Soundwave Store's reimbursement. In progress."
     ]
   },
   {
@@ -237,8 +237,8 @@ any update on the refund?
       "draft r-fx3"
     ],
     "past_action_notes": [
-      "user: Draft a note about the NDA from Soundwave Store / agent: Drafted an email about the NDA from Soundwave Store (draft r-fx3).",
-      "user: Any news on the NDA from Soundwave Store? / agent: The NDA from Soundwave Store. Waiting on Soundwave's reply."
+      "Drafted an email about the NDA from Soundwave Store (draft r-fx3).",
+      "The NDA from Soundwave Store. Waiting on Soundwave's reply."
     ]
   },
   {
@@ -247,8 +247,8 @@ any update on the refund?
     "topic": "Booked the Toronto round trip for the conference. | status: done | last active: 18d ago | keys: address:noreply@mapleair.example, thread:th_yyz_2210",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Book a round trip to Toronto for the conference / agent: Emailed Maple Air about the Toronto conference flights.",
-      "user: Any news on the Toronto conference flights? / agent: Booked the Toronto round trip for the conference."
+      "Emailed Maple Air about the Toronto conference flights.",
+      "Booked the Toronto round trip for the conference."
     ]
   },
   {
@@ -257,8 +257,8 @@ any update on the refund?
     "topic": "The payment plan with Soundwave Store. Finished; nothing open. | status: done | last active: 9d ago | keys: address:support@soundwave.example, draft:r-fx5, thread:th_fx5",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Draft a note about the payment plan with Soundwave Store / agent: Drafted an email about the payment plan with Soundwave Store (draft r-fx5).",
-      "user: Send the draft about the payment plan with Soundwave Store / agent: Sent the email about the payment plan with Soundwave Store."
+      "Drafted an email about the payment plan with Soundwave Store (draft r-fx5).",
+      "Sent the email about the payment plan with Soundwave Store."
     ]
   },
   {
@@ -267,8 +267,8 @@ any update on the refund?
     "topic": "The will paperwork with Soundwave Store. Finished; nothing open. | status: done | last active: 6d ago | keys: address:support@soundwave.example, thread:th_fx4",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the will paperwork with Soundwave Store / agent: Sent an email about the will paperwork with Soundwave Store.",
-      "user: Any news on the will paperwork with Soundwave Store? / agent: The will paperwork with Soundwave Store. Finished; nothing open."
+      "Sent an email about the will paperwork with Soundwave Store.",
+      "The will paperwork with Soundwave Store. Finished; nothing open."
     ]
   },
   {
@@ -277,8 +277,8 @@ any update on the refund?
     "topic": "The utility account with Soundwave Store. Finished; nothing open. | status: done | last active: 5d ago | keys: address:support@soundwave.example, thread:th_fx6",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the utility account with Soundwave Store / agent: Sent an email about the utility account with Soundwave Store.",
-      "user: Any news on the utility account with Soundwave Store? / agent: The utility account with Soundwave Store. Finished; nothing open."
+      "Sent an email about the utility account with Soundwave Store.",
+      "The utility account with Soundwave Store. Finished; nothing open."
     ]
   },
   {
@@ -287,7 +287,7 @@ any update on the refund?
     "topic": "Asked Soundwave Store for a refund on the broken headphones. Waiting on their reply. | status: waiting_external | last active: 3d ago | keys: address:support@soundwave.example, thread:th_refund",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Ask Soundwave for a refund on the broken headphones / agent: Emailed Soundwave Store about the headphones refund."
+      "Emailed Soundwave Store about the headphones refund."
     ]
   },
   {
@@ -296,10 +296,27 @@ any update on the refund?
     "topic": "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen. | status: active | last active: 28m ago | keys: none",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Start a holiday gift list for the family / agent: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.",
-      "user: Any news on the family holiday gift list? / agent: Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen."
+      "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen.",
+      "Building the family holiday gift list with Mia's wishes. 6 of 9 items chosen."
     ]
   }
 ]
-=== rag enriched: query ===
+=== rag parity: query ===
+Recent conversation:
+user: lol
+assistant: 😄
+
+user: nice, thanks
+assistant: You got it.
+
+user: ok cool
+assistant: 👍
+
+user: thanks!
+assistant: Anytime.
+
+user: what time is it in Tokyo?
+assistant: Just after midnight there.
+
+New message:
 any update on the refund?

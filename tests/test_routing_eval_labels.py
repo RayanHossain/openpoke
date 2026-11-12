@@ -70,7 +70,9 @@ WORLD_MUTATIONS = [
     ("key claimed but absent", _with("dkl_budget", reference="key"), "reference=key but no target key"),
     ("keyless claimed but keyed", _with("seed_vendor_contract", category="done_keyless"),
      "done_keyless but the message resolves to the target"),
-    ("keyed claimed but keyless", _with("dkl_passport", category="done_keyed"), "done_keyed but the message carries no key"),
+    ("keyed claimed but keyless", _with("dkl_jury", category="done_keyed"), "done_keyed but the message carries no key"),
+    ("no_overlap stratum missing", [p for p in catalog.PROBES if not p.probe_id.startswith("slug_nb_")],
+     "no_overlap probes"),
 ]
 
 

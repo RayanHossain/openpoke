@@ -12,8 +12,10 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Literal, Optional, Tuple
 
 REFERENCE_NOW = datetime(2026, 11, 11, 15, 0, tzinfo=timezone.utc)
-N_LEVELS: Tuple[int, ...] = (3, 10, 30, 60)
+N_LEVELS: Tuple[int, ...] = (3, 10, 30, 50)
 SIM_LEVELS: Tuple[str, ...] = ("low", "high")
+# D-006 (spec §3): high-similarity distractors at every N; low similarity at N = 50 only.
+WORLD_PLAN: Tuple[Tuple[int, str], ...] = ((3, "high"), (10, "high"), (30, "high"), (50, "high"), (50, "low"))
 
 # Real system constants the generator must respect (checked in tests against the code).
 SUMMARY_THRESHOLD = 100  # server/config.py conversation_summary_threshold
@@ -53,6 +55,15 @@ CATEGORIES: Tuple[str, ...] = (
     "injected",
     "name_drift",
 )
+
+# G1 rule by kind of category (spec §0, D-006).
+CATEGORY_KIND: Dict[str, str] = {
+    **{c: "discrimination" for c in ("paraphrase", "slug_collision", "same_person_diff_work", "same_topic_diff_person",
+                                     "alias_resolution", "hub_key", "name_drift", "owned_state")},
+    **{c: "visibility" for c in ("done_keyless", "hot_set_eviction", "post_fold")},
+    **{c: "key_control" for c in ("inbound_event", "injected", "done_keyed")},
+    **{c: "create_none_ask" for c in ("genuinely_new", "no_dispatch", "truly_ambiguous", "multi_target")},
+}
 
 
 @dataclass(frozen=True)

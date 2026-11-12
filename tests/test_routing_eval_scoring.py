@@ -26,8 +26,9 @@ def _ref(world, ws):
 
 def test_severity_weights_are_the_spec_values():
     assert WEIGHTS == {"wrong_route_state": 10, "wrong_route_info": 4, "forced_merge": 4, "duplicate_create": 3,
-                       "invalid_id": 2, "over_ask": 1, "dispatch_on_no_dispatch": 1}
-    assert set(UNWEIGHTED) == {"missed_dispatch", "partial_multi"}
+                       "invalid_id": 2, "over_ask": 1, "dispatch_on_no_dispatch": 1,
+                       "dropped_request": 4, "missed_target": 2}  # last two: D-006
+    assert set(UNWEIGHTED) == {"missed_dispatch", "extra_target"}
 
 
 def test_scoring_rules():
@@ -38,7 +39,8 @@ def test_scoring_rules():
     assert score(i, Decision("create"), w).error == "duplicate_create"
     assert score(i, Decision("ask"), w).error == "over_ask"
     assert score(i, Decision("invalid"), w).severity == 2
-    assert score(i, Decision("none"), w).error == "missed_dispatch"
+    s = score(i, Decision("none"), w)
+    assert (s.error, s.severity) == ("dropped_request", 4)  # D-006
 
     w, i = _case("seed_rob_deploy")  # {route deploy, ask}, preferred route
     s = score(i, Decision("ask"), w)
@@ -58,7 +60,16 @@ def test_scoring_rules():
     w, i = _case("mt_lunch_dinner")
     both = (_ref(w, "ws_alice_lunch"), _ref(w, "ws_dinner"))
     assert score(i, Decision("route", both), w).correct
-    assert score(i, Decision("route", both[:1]), w).error == "partial_multi"
+    s = score(i, Decision("route", both[:1]), w)
+    assert (s.error, s.severity) == ("missed_target", 2)  # one missed target x 2
+    assert score(i, Decision("ask"), w).error == "over_ask"
+    s = score(i, Decision("route", (_ref(w, "ws_deploy"),)), w)
+    assert s.error in ("wrong_route_info", "wrong_route_state")  # hit no target at all
+
+    w, i = _case("ta_bob_late")
+    s = score(i, Decision("create"), w)
+    assert (s.error, s.severity) == ("duplicate_create", 3)  # create when ASK preferred
+    assert score(i, Decision("none"), w).error == "missed_dispatch"  # unweighted
 
     w, i = _case("drift_oil_change")  # the dentist-named agent owns the oil change
     assert score(i, Decision("route", (_ref(w, "ws_dent2"),)), w).correct
@@ -87,9 +98,15 @@ def test_policies_behave_as_specified():
 
 def test_g1_runs_on_the_whole_dev_set():
     out = g1.run()
-    assert out["instances"] == 450 and len(out["skipped"]) == 6
+    assert out["passed"], out["verdicts"]
+    assert out["instances"] == 412 and len(out["skipped"]) == 3
+    assert [tuple(x) for x in out["plan"]] == [(3, "high"), (10, "high"), (30, "high"), (50, "high"), (50, "low")]
+    assert set(out["fallback_per_n"]) == {3, 10, 30, 50}
+    for c, v in out["verdicts"].items():
+        if v["kind"] == "discrimination":
+            assert v["verdict"] == "pass", (c, v)
     for p in POLICIES:
         assert set(out["per_category"][p]) == set(CATEGORIES)
     assert out["pooled"]["always_create"]["accuracy"] < 0.1  # only genuinely_new creates
     md = g1.to_markdown(out)
-    assert md.count("\n| ") >= len(CATEGORIES)
+    assert "PASS" in md and md.count("\n| ") >= len(CATEGORIES)

@@ -31,7 +31,7 @@ from server.services.execution.agent_registry import is_agent_id  # noqa: E402
 from server.services.execution.keys import extract_from_text  # noqa: E402
 
 
-PAIRS, SKIPPED = generate(n_levels=(3, 10))
+PAIRS, SKIPPED = generate(plan=((3, "high"), (10, "high"), (50, "low")))
 
 
 def _load(tmp_path: Path, world, name: str):
@@ -125,16 +125,21 @@ def test_baseline_files_and_working_memory(tmp_path):
 def test_rag_roster_variants_and_embedder_guard():
     world = build_world(next(p for p in catalog.PROBES if p.probe_id == "dkl_movers"), 30, "high")
     as_built = views.rag_roster(world, "as_built")
-    enriched = views.rag_roster(world, "enriched")
-    assert len(as_built) == len(enriched) == world.n  # every agent, done included
+    parity = views.rag_roster(world, "parity")
+    assert len(as_built) == len(parity) == world.n  # every agent, done included
     assert any(a.status == "done" for a in world.agents)
-    assert all(set(d) == {"agent_id", "name", "topic", "active_tasks", "past_action_notes"} for d in as_built)
-    for a, b, agent in zip(as_built, enriched, world.agents):
+    assert all(set(d) == {"agent_id", "name", "topic", "active_tasks", "past_action_notes"} for d in as_built + parity)
+    for a, b, agent in zip(as_built, parity, world.agents):
         assert a["agent_id"] == b["agent_id"] == views.registry_id(agent) and a["name"] == b["name"] == agent.name
         assert a["topic"] == agent.brief and b["topic"].startswith(agent.brief + " | status: " + agent.status)
         assert "last active: " in b["topic"] and "keys: " in b["topic"]
-        assert len(b["past_action_notes"]) <= views.RAG_LAST_TURNS
-    assert views.rag_query("hello", "as_built") == views.rag_query("hello", "enriched") == "hello"
+        assert a["past_action_notes"] == b["past_action_notes"]
+    # query: as_built = message only; parity = last 5 conversation turns, then the message
+    assert views.rag_query(world, "hello", "as_built") == "hello"
+    q = views.rag_query(world, "hello", "parity")
+    assert q.startswith("Recent conversation:\n") and q.endswith("\n\nNew message:\nhello")
+    assert q.count("user: ") == views.RAG_LAST_TURNS
+    assert world.events[-1].user_message in q and world.events[-6].user_message not in q
     assert views.RAG_ENV == {"OPENPOKE_RAG_EMBEDDER": "openrouter"} and views.RAG_TIERS == ("A",)
     log = []
     assert views.check_rag_debug({"embedder": "openrouter:openai/text-embedding-3-small"}, log)
@@ -150,3 +155,15 @@ def test_registry_loader_refuses_the_real_server(monkeypatch):
     monkeypatch.setitem(sys.modules, "server", fake)
     with pytest.raises(RuntimeError, match="refusing"):
         views._require_sandbox()
+
+
+def test_spurious_org_aliases_collide():
+    """D-006: first words of organisation names become aliases; these probes measure it."""
+    expected = {"alias_status_word": "ws_uptime", "alias_bright_idea": "ws_dentist",
+                "alias_passport_number": "ws_passport", "dk_passport_alias": "ws_passport"}
+    for pid, spurious in expected.items():
+        p = next(x for x in catalog.PROBES if x.probe_id == pid)
+        w = build_world(p, 3, "high")
+        book = keybook(w)
+        hits = {ws for r in agents_for_keys(text_keys(p.message, book), book, w) for ws in w.agent(r).ws_ids}
+        assert spurious in hits, (pid, hits)

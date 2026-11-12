@@ -1,9 +1,10 @@
 """Scoring (eval-spec-v2 §5, §7): acceptable-set accuracy, preferred match, severity, bootstrap CIs.
 
-Severity weights are fixed by D-005 §11.4 and are not tuned here:
+Severity weights are fixed by D-005 and D-006 (spec §7) and are not tuned here:
   wrong route, state-bearing 10 | wrong route, informational 4 | forced merge 4 |
-  duplicate create 3 | invalid/unknown ID 2 | over-ask, or dispatch on no_dispatch 1
-"A wrong guess where ASK was preferred = wrong route."
+  duplicate create 3 | invalid/unknown ID 2 | over-ask, or dispatch on no_dispatch 1 |
+  no dispatch on a route probe (dropped request) 4 | each missed target in multi_target 2 |
+  create when ASK was preferred = duplicate create 3 | a wrong guess where ASK was preferred = wrong route
 
 Error types the spec gives no weight are kept in the raw error vector with weight 0
 and listed in ``UNWEIGHTED`` so reports show them instead of hiding them.
@@ -27,8 +28,13 @@ WEIGHTS: Dict[str, int] = {
     "invalid_id": 2,
     "over_ask": 1,
     "dispatch_on_no_dispatch": 1,
+    "dropped_request": 4,
+    "missed_target": 2,  # per missed target (multi_target)
 }
-UNWEIGHTED = ("missed_dispatch", "partial_multi")  # no weight in spec §7; reported separately
+# No weight in spec §7; kept in the raw error vector, reported separately:
+#   missed_dispatch  no dispatch on a create or ask probe
+#   extra_target     a multi_target route that also hit a workstream it should not have
+UNWEIGHTED = ("missed_dispatch", "extra_target")
 
 
 @dataclass(frozen=True)
@@ -65,7 +71,7 @@ def _error(inst: ProbeInstance, d: Decision, world: World) -> Optional[str]:
     if d.action == "ask":
         return "over_ask"
     if d.action == "none":
-        return "missed_dispatch"
+        return "dropped_request" if pref == "route" else "missed_dispatch"
     if kinds == {"none"}:
         return "dispatch_on_no_dispatch"
     if d.action == "create":
@@ -76,15 +82,24 @@ def _error(inst: ProbeInstance, d: Decision, world: World) -> Optional[str]:
     routes = [a for a in inst.acceptable if a.kind == "route"]
     chosen = set().union(*_ws_of(world, d.targets)) if d.targets else set()
     if any(len(a.targets) > 1 and chosen & set(a.targets) for a in routes):
-        return "partial_multi"
+        return "missed_target" if _missed(inst, d, world) else "extra_target"
     return "wrong_route_state" if inst.tags.get("state_bearing") else "wrong_route_info"
+
+
+def _missed(inst: ProbeInstance, d: Decision, world: World) -> int:
+    """Targets of the (multi-target) preferred route that no chosen agent owns."""
+    chosen = set().union(*_ws_of(world, d.targets)) if d.targets else set()
+    return sum(1 for t in inst.preferred.targets if t not in chosen)
 
 
 def score(inst: ProbeInstance, decision: Decision, world: World) -> Scored:
     correct = any(matches(a, decision, world) for a in inst.acceptable)
     preferred = matches(inst.preferred, decision, world)
     err = None if correct else _error(inst, decision, world)
-    return Scored(inst, decision, correct, preferred, err, WEIGHTS.get(err, 0) if err else 0)
+    weight = WEIGHTS.get(err, 0) if err else 0
+    if err == "missed_target":
+        weight *= _missed(inst, decision, world)
+    return Scored(inst, decision, correct, preferred, err, weight)
 
 
 # --------------------------------------------------------------------------- #

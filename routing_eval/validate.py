@@ -12,15 +12,17 @@ from typing import Dict, List, Optional, Sequence, Tuple
 
 from . import catalog
 from .generator import (
-    FILLER_TRIGGER_BASE, CannotPlace, build_world, content_words, generate, hot_set, instance, ws_text,
+    FILLER_TRIGGER_BASE, CannotPlace, build_world, content_words, generate, hot_set, instance, overlap_words, ws_text,
 )
 from .keys_pure import keybook
 from .schema import (
-    ACTION_KINDS, AGENT_STATUSES, CATEGORIES, N_LEVELS, REFERENCES, SHOW_ALL_MAX, SIM_LEVELS, SOURCES,
+    ACTION_KINDS, AGENT_STATUSES, CATEGORIES, CATEGORY_KIND, N_LEVELS, REFERENCES, SHOW_ALL_MAX, SIM_LEVELS, SOURCES,
+    WORLD_PLAN,
     STEP_ACTIONS, BaseProbe, ProbeInstance, World, Workstream,
 )
 
 MIN_PER_CATEGORY = 3
+NO_OVERLAP_SHARE = (0.35, 0.65)  # "about half" (spec §0, D-006)
 DONE_KEYLESS_MIN_DAYS = 28   # "a month later" (spec §2)
 MAX_BRIEF_CHARS = 280        # server/agents/execution_agent/report.py
 MAX_BRIEF_SENTENCES = 2
@@ -244,6 +246,19 @@ def _check_seeds(probes: Sequence[BaseProbe], errs: List[str]) -> None:
             errs.append(f"seed {seed.probe_id}: message differs from v1 {s.id}")
 
 
+def _check_strata(probes: Sequence[BaseProbe], errs: List[str]) -> None:
+    """D-006: each discrimination category is about half overlap, half no_overlap (spec §0)."""
+    for c in CATEGORIES:
+        if CATEGORY_KIND[c] != "discrimination":
+            continue
+        tags = [bool(overlap_words(p)) for p in probes if p.category == c]
+        no = tags.count(False)
+        if len(tags) and not (NO_OVERLAP_SHARE[0] <= no / len(tags) <= NO_OVERLAP_SHARE[1]):
+            errs.append(f"category {c}: {no}/{len(tags)} no_overlap probes, outside {NO_OVERLAP_SHARE}")
+        if no < MIN_PER_CATEGORY:
+            errs.append(f"category {c}: only {no} no_overlap probes (< {MIN_PER_CATEGORY})")
+
+
 def validate(probes: Optional[Sequence[BaseProbe]] = None, library: Optional[Dict[str, Workstream]] = None,
              *, worlds: bool = True, determinism_sample: int = 6) -> Dict[str, object]:
     probes = list(catalog.PROBES if probes is None else probes)
@@ -273,13 +288,13 @@ def validate(probes: Optional[Sequence[BaseProbe]] = None, library: Optional[Dic
             errs.append(f"probe {p_id} could not be placed at N={n}/{sim}: {why}")
     gaps = []
     for c in CATEGORIES:
-        for n in N_LEVELS:
-            for sim in SIM_LEVELS:
-                if coverage[(c, n, sim)] < MIN_PER_CATEGORY:
-                    if c in catalog.STRUCTURAL_EXCLUSIONS and n <= SHOW_ALL_MAX:
-                        gaps.append((c, n, sim, coverage[(c, n, sim)]))
-                        continue
-                    errs.append(f"category {c} has {coverage[(c, n, sim)]} probes at N={n}/{sim} (< {MIN_PER_CATEGORY})")
+        for n, sim in WORLD_PLAN:
+            if coverage[(c, n, sim)] < MIN_PER_CATEGORY:
+                if c in catalog.STRUCTURAL_EXCLUSIONS and n <= SHOW_ALL_MAX:
+                    gaps.append((c, n, sim, coverage[(c, n, sim)]))
+                    continue
+                errs.append(f"category {c} has {coverage[(c, n, sim)]} probes at N={n}/{sim} (< {MIN_PER_CATEGORY})")
+    _check_strata(probes, errs)
     # determinism: rebuilding a world gives the same world
     for p in probes[:determinism_sample]:
         for n in (N_LEVELS[0], N_LEVELS[-1]):

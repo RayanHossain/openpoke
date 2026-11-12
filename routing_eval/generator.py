@@ -19,7 +19,7 @@ from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple
 from . import catalog
 from .keys_pure import agents_for_keys, explicit_keys, keybook, resolve_aliases
 from .schema import (
-    HOT_SET_K, N_LEVELS, REFERENCE_NOW, SIM_LEVELS, SUMMARY_TAIL, SUMMARY_THRESHOLD,
+    HOT_SET_K, N_LEVELS, REFERENCE_NOW, SIM_LEVELS, SUMMARY_TAIL, SUMMARY_THRESHOLD, WORLD_PLAN,
     Agent, BaseProbe, Event, Person, ProbeInstance, StepSpec, ToolCall, World, Workstream,
 )
 
@@ -422,6 +422,7 @@ def instance(probe: BaseProbe, world: World) -> ProbeInstance:
         "target_folded": ws_fully_folded(world.events, probe.targets) if probe.targets else None,
         "in_hot_set": (tgt.ref in hot_set(world)) if tgt else None,
         "registry_shows_all": world.n <= 8,
+        "overlap": "overlap" if overlap_words(probe) else "no_overlap",
     }
     return ProbeInstance(
         probe_id=world.world_id, base_id=probe.probe_id, world_ref=world.world_id, message=probe.message,
@@ -430,18 +431,47 @@ def instance(probe: BaseProbe, world: World) -> ProbeInstance:
     )
 
 
-def generate(probes: Sequence[BaseProbe] = None, n_levels=N_LEVELS, sims=SIM_LEVELS):
-    """All placeable (world, instance) pairs, plus the (probe, N) pairs that could not be placed."""
+def generate(probes: Sequence[BaseProbe] = None, plan: Sequence[Tuple[int, str]] = WORLD_PLAN):
+    """All placeable (world, instance) pairs for the (N, similarity) plan, plus what could not be placed."""
     probes = list(catalog.PROBES if probes is None else probes)
     out: List[Tuple[World, ProbeInstance]] = []
     skipped: List[Tuple[str, int, str, str]] = []
     for p in probes:
-        for n in n_levels:
-            for sim in sims:
-                try:
-                    w = build_world(p, n, sim)
-                except CannotPlace as exc:
-                    skipped.append((p.probe_id, n, sim, str(exc)))
-                    continue
-                out.append((w, instance(p, w)))
+        for n, sim in plan:
+            try:
+                w = build_world(p, n, sim)
+            except CannotPlace as exc:
+                skipped.append((p.probe_id, n, sim, str(exc)))
+                continue
+            out.append((w, instance(p, w)))
     return out, skipped
+
+
+def overlap_words(probe: BaseProbe, lib=None) -> Set[str]:
+    """Content words (names included) the message shares with what routers see for the target:
+    the target agent's name (creating workstream's label) and its brief (last report).
+    Probes without a target compare against the workstreams that fit (distractor_ws)."""
+    lib = catalog.LIBRARY if lib is None else lib
+    refs = probe.targets or probe.distractor_ws or probe.core[:1]
+    msg = content_words(probe.message)
+    out: Set[str] = set()
+    for ws_id in refs:
+        ws = lib[ws_id]
+        creator = lib[ws.agent_of] if ws.agent_of else ws
+        # the agent's brief is its latest report: the latest-started workstream it owns
+        owned = [w for w in lib.values() if (w.agent_of or w.ws_id) == creator.ws_id]
+        latest = min(owned, key=lambda w: w.steps[-1].days_ago)
+        out |= msg & content_words(f"{creator.label} {latest.brief}")
+    return out
+
+
+def fallback_rate(pairs: Sequence[Tuple[World, ProbeInstance]]) -> Dict[int, Tuple[int, int]]:
+    """Per N: (high-similarity fillers that fell back to unrelated ones, high-similarity fillers)."""
+    out: Dict[int, List[int]] = {}
+    for w, _inst in pairs:
+        if w.sim != "high":
+            continue
+        fb = out.setdefault(w.n, [0, 0])
+        fb[0] += sum(1 for a in w.filler_axis.values() if a == "low")
+        fb[1] += len(w.filler_axis)
+    return {n: (v[0], v[1]) for n, v in sorted(out.items())}

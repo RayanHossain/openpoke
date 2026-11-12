@@ -275,7 +275,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
 ]
 === rag as_built: query ===
 email Bob about the server crash last night, ask if the hotfix is going out today
-=== rag enriched: roster dicts ===
+=== rag parity: roster dicts ===
 [
   {
     "agent_id": "ea_1",
@@ -285,8 +285,8 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
       "draft r-fx6"
     ],
     "past_action_notes": [
-      "user: Draft a note about the brand guidelines with Bob Okafor / agent: Drafted an email about the brand guidelines with Bob Okafor (draft r-fx6).",
-      "user: Any news on the brand guidelines with Bob Okafor? / agent: The brand guidelines with Bob Okafor. Waiting on Bob's reply."
+      "Drafted an email about the brand guidelines with Bob Okafor (draft r-fx6).",
+      "The brand guidelines with Bob Okafor. Waiting on Bob's reply."
     ]
   },
   {
@@ -295,8 +295,8 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
     "topic": "The car wash plan with Bob Okafor. Finished; nothing open. | status: done | last active: 36d ago | keys: address:bob.okafor@acme.example, thread:th_fx2",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the car wash plan with Bob Okafor / agent: Sent an email about the car wash plan with Bob Okafor.",
-      "user: Any news on the car wash plan with Bob Okafor? / agent: The car wash plan with Bob Okafor. Finished; nothing open."
+      "Sent an email about the car wash plan with Bob Okafor.",
+      "The car wash plan with Bob Okafor. Finished; nothing open."
     ]
   },
   {
@@ -305,8 +305,8 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
     "topic": "The database migration with Diego Ramos. Finished; nothing open. | status: done | last active: 35d ago | keys: address:diego.ramos@pool.example, thread:th_fx1",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the database migration with Diego Ramos / agent: Sent an email about the database migration with Diego Ramos.",
-      "user: Any news on the database migration with Diego Ramos? / agent: The database migration with Diego Ramos. Finished; nothing open."
+      "Sent an email about the database migration with Diego Ramos.",
+      "The database migration with Diego Ramos. Finished; nothing open."
     ]
   },
   {
@@ -315,8 +315,8 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
     "topic": "The library card renewal with Bob Okafor. Finished; nothing open. | status: done | last active: 35d ago | keys: address:bob.okafor@acme.example, thread:th_fx4",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the library card renewal with Bob Okafor / agent: Sent an email about the library card renewal with Bob Okafor.",
-      "user: Any news on the library card renewal with Bob Okafor? / agent: The library card renewal with Bob Okafor. Finished; nothing open."
+      "Sent an email about the library card renewal with Bob Okafor.",
+      "The library card renewal with Bob Okafor. Finished; nothing open."
     ]
   },
   {
@@ -325,8 +325,8 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
     "topic": "Blog post edits for Bob Okafor. Waiting on Bob's reply. | status: waiting_external | last active: 20d ago | keys: address:bob.okafor@acme.example, thread:th_fx0",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about blog post edits for Bob Okafor / agent: Sent an email about blog post edits for Bob Okafor.",
-      "user: Any news on blog post edits for Bob Okafor? / agent: Blog post edits for Bob Okafor. Waiting on Bob's reply."
+      "Sent an email about blog post edits for Bob Okafor.",
+      "Blog post edits for Bob Okafor. Waiting on Bob's reply."
     ]
   },
   {
@@ -335,8 +335,8 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
     "topic": "The code review with Julia Novak. Finished; nothing open. | status: done | last active: 13d ago | keys: address:julia.novak@pool.example, thread:th_fx3",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the code review with Julia Novak / agent: Sent an email about the code review with Julia Novak.",
-      "user: Any news on the code review with Julia Novak? / agent: The code review with Julia Novak. Finished; nothing open."
+      "Sent an email about the code review with Julia Novak.",
+      "The code review with Julia Novak. Finished; nothing open."
     ]
   },
   {
@@ -345,8 +345,8 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
     "topic": "The API rate limit question from Liam Walsh. Waiting on the user to decide. | status: waiting_user | last active: 4d ago | keys: address:liam.walsh@pool.example, thread:th_fx5",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the API rate limit question from Liam Walsh / agent: Sent an email about the API rate limit question from Liam Walsh.",
-      "user: Any news on the API rate limit question from Liam Walsh? / agent: The API rate limit question from Liam Walsh. Waiting on the user to decide."
+      "Sent an email about the API rate limit question from Liam Walsh.",
+      "The API rate limit question from Liam Walsh. Waiting on the user to decide."
     ]
   },
   {
@@ -357,7 +357,7 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
       "draft r-lease-02"
     ],
     "past_action_notes": [
-      "user: Ask Bob Hale for the revised lease renewal paperwork / agent: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02)."
+      "Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02)."
     ]
   },
   {
@@ -366,8 +366,8 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
     "topic": "Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant. | status: waiting_user | last active: 1d ago | keys: address:bob.lee@friends.example, thread:th_dinner_4410",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Ask Bob Lee which Friday works for our reunion dinner / agent: Sent an email about the reunion dinner with Bob Lee.",
-      "user: Any news on the reunion dinner with Bob Lee? / agent: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant."
+      "Sent an email about the reunion dinner with Bob Lee.",
+      "Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant."
     ]
   },
   {
@@ -378,10 +378,32 @@ email Bob about the server crash last night, ask if the hotfix is going out toda
       "trigger t_21"
     ],
     "past_action_notes": [
-      "user: Email Bob Okafor about last night's api-gateway crash and whether the hotfix ships today / agent: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.",
-      "user: Remind me at 6pm to check the hotfix deploy / agent: Set reminder t_21 for the api-gateway crash and hotfix deploy."
+      "Emailed Bob Okafor about the api-gateway crash and hotfix deploy.",
+      "Set reminder t_21 for the api-gateway crash and hotfix deploy."
     ]
   }
 ]
-=== rag enriched: query ===
+=== rag parity: query ===
+Recent conversation:
+user: Ask Bob Hale for the revised lease renewal paperwork
+agent result: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).
+assistant: Update: Drafted an email to Bob Hale about the lease renewal paperwork (draft r-lease-02).
+
+user: Ask Bob Lee which Friday works for our reunion dinner
+agent result: Sent an email about the reunion dinner with Bob Lee.
+assistant: Update: Sent an email about the reunion dinner with Bob Lee.
+
+user: Email Bob Okafor about last night's api-gateway crash and whether the hotfix ships today
+agent result: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.
+assistant: Update: Emailed Bob Okafor about the api-gateway crash and hotfix deploy.
+
+user: Any news on the reunion dinner with Bob Lee?
+agent result: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.
+assistant: Update: Bob Lee can do any Friday this month. Waiting on the user to pick a restaurant.
+
+user: Remind me at 6pm to check the hotfix deploy
+agent result: Set reminder t_21 for the api-gateway crash and hotfix deploy.
+assistant: Update: Set reminder t_21 for the api-gateway crash and hotfix deploy.
+
+New message:
 email Bob about the server crash last night, ask if the hotfix is going out today

@@ -32,11 +32,11 @@ from server.services.conversation.summarization.working_memory_log import Workin
 
 SNAP_DIR = Path(__file__).parent / "snapshots" / "routing_eval"
 SNAPSHOT_WORLDS = [
-    ("seed_bob_server_crash", 10, "low"), ("seed_bob_server_crash", 10, "high"),
+    ("seed_bob_server_crash", 10, "high"), ("seed_bob_server_crash", 50, "low"),
     ("pf_refund", 10, "high"), ("drift_oil_change", 10, "high"),
-    ("seed_northwind_remittance", 3, "low"),
+    ("seed_northwind_remittance", 3, "high"), ("os_nb_fifth", 3, "high"),
 ]
-PAIRS, _ = generate(n_levels=(10,))
+PAIRS, _ = generate(plan=((10, "high"),))
 _PREFIX_RE = re.compile(r"^\[SUCCESS\] (?:ea_\d+ \((?P<n1>.*?)\)|(?P<n2>.*?)): ", re.S)
 
 
@@ -72,7 +72,7 @@ def _strip_prefix(payload):
 def test_view_builders_take_only_the_world():
     """No arm-specific text inputs: each builder's only content input is the World."""
     for fn in (views.load_baseline, views.rag_roster, views.load_registry, views.conversation_entries,
-               views.transcript, views.baseline_ia_message, views.summary_text):
+               views.transcript, views.baseline_ia_message, views.summary_text, views.rag_query, views.last_turns):
         params = list(inspect.signature(fn).parameters)
         assert params[0] == "world", fn.__name__
         assert not {"brief", "label", "name", "notes", "text"} & set(params), fn.__name__
@@ -94,7 +94,7 @@ def test_every_arm_sees_the_same_world(tmp_path):
             docs = views.rag_roster(world, variant)
             assert [d["name"] for d in docs] == names
             assert all(d["topic"].startswith(briefs[d["name"]]) for d in docs)
-            assert views.rag_query(inst.message, variant) == inst.message
+            assert views.rag_query(world, inst.message, variant).endswith(inst.message)
         # same incoming message, same turn type
         tag = "new_agent_message" if views.message_type(inst.source) == "agent" else "new_user_message"
         for msg in (base_msg, reg_msg):
@@ -128,7 +128,7 @@ def _render(world, inst, tmp_path) -> str:
     ]
     for variant in views.RAG_VARIANTS:
         out += [f"=== rag {variant}: roster dicts ===", json.dumps(views.rag_roster(world, variant), indent=2),
-                f"=== rag {variant}: query ===", views.rag_query(inst.message, variant)]
+                f"=== rag {variant}: query ===", views.rag_query(world, inst.message, variant)]
     assert base.roster == tuple(roster)
     return "\n".join(out) + "\n"
 

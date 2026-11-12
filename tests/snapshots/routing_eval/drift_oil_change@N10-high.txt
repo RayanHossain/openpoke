@@ -275,7 +275,7 @@ did the garage confirm the oil change for Saturday?
 ]
 === rag as_built: query ===
 did the garage confirm the oil change for Saturday?
-=== rag enriched: roster dicts ===
+=== rag parity: roster dicts ===
 [
   {
     "agent_id": "ea_1",
@@ -285,8 +285,8 @@ did the garage confirm the oil change for Saturday?
       "draft r-fx0"
     ],
     "past_action_notes": [
-      "user: Draft a note about the payment plan with Becker Auto / agent: Drafted an email about the payment plan with Becker Auto (draft r-fx0).",
-      "user: Any news on the payment plan with Becker Auto? / agent: The payment plan with Becker Auto. In progress."
+      "Drafted an email about the payment plan with Becker Auto (draft r-fx0).",
+      "The payment plan with Becker Auto. In progress."
     ]
   },
   {
@@ -295,8 +295,8 @@ did the garage confirm the oil change for Saturday?
     "topic": "Becker Auto's reimbursement. Waiting on the user to decide. | status: waiting_user | last active: 40d ago | keys: address:service@beckerauto.example, thread:th_fx7",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about Becker Auto's reimbursement / agent: Sent an email about Becker Auto's reimbursement.",
-      "user: Any news on Becker Auto's reimbursement? / agent: Becker Auto's reimbursement. Waiting on the user to decide."
+      "Sent an email about Becker Auto's reimbursement.",
+      "Becker Auto's reimbursement. Waiting on the user to decide."
     ]
   },
   {
@@ -305,8 +305,8 @@ did the garage confirm the oil change for Saturday?
     "topic": "Mail forwarding with Becker Auto. Waiting on Becker's reply. | status: waiting_external | last active: 38d ago | keys: address:service@beckerauto.example, thread:th_fx3",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about mail forwarding with Becker Auto / agent: Sent an email about mail forwarding with Becker Auto.",
-      "user: Any news on mail forwarding with Becker Auto? / agent: Mail forwarding with Becker Auto. Waiting on Becker's reply."
+      "Sent an email about mail forwarding with Becker Auto.",
+      "Mail forwarding with Becker Auto. Waiting on Becker's reply."
     ]
   },
   {
@@ -315,8 +315,8 @@ did the garage confirm the oil change for Saturday?
     "topic": "The utility account with Becker Auto. Finished; nothing open. | status: done | last active: 40d ago | keys: address:service@beckerauto.example, thread:th_fx1",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the utility account with Becker Auto / agent: Sent an email about the utility account with Becker Auto.",
-      "user: Any news on the utility account with Becker Auto? / agent: The utility account with Becker Auto. Finished; nothing open."
+      "Sent an email about the utility account with Becker Auto.",
+      "The utility account with Becker Auto. Finished; nothing open."
     ]
   },
   {
@@ -325,8 +325,8 @@ did the garage confirm the oil change for Saturday?
     "topic": "The invoice follow-up with Becker Auto. Waiting on the user to decide. | status: waiting_user | last active: 36d ago | keys: address:service@beckerauto.example, thread:th_fx6",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the invoice follow-up with Becker Auto / agent: Sent an email about the invoice follow-up with Becker Auto.",
-      "user: Any news on the invoice follow-up with Becker Auto? / agent: The invoice follow-up with Becker Auto. Waiting on the user to decide."
+      "Sent an email about the invoice follow-up with Becker Auto.",
+      "The invoice follow-up with Becker Auto. Waiting on the user to decide."
     ]
   },
   {
@@ -335,8 +335,8 @@ did the garage confirm the oil change for Saturday?
     "topic": "The furniture order from Becker Auto. Waiting on Becker's reply. | status: waiting_external | last active: 37d ago | keys: address:service@beckerauto.example, thread:th_fx5",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the furniture order from Becker Auto / agent: Sent an email about the furniture order from Becker Auto.",
-      "user: Any news on the furniture order from Becker Auto? / agent: The furniture order from Becker Auto. Waiting on Becker's reply."
+      "Sent an email about the furniture order from Becker Auto.",
+      "The furniture order from Becker Auto. Waiting on Becker's reply."
     ]
   },
   {
@@ -345,8 +345,8 @@ did the garage confirm the oil change for Saturday?
     "topic": "The conference talk with Becker Auto. In progress. | status: active | last active: 15d ago | keys: address:service@beckerauto.example, thread:th_fx2",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Send an email about the conference talk with Becker Auto / agent: Sent an email about the conference talk with Becker Auto.",
-      "user: Any news on the conference talk with Becker Auto? / agent: The conference talk with Becker Auto. In progress."
+      "Sent an email about the conference talk with Becker Auto.",
+      "The conference talk with Becker Auto. In progress."
     ]
   },
   {
@@ -355,8 +355,8 @@ did the garage confirm the oil change for Saturday?
     "topic": "Gathered three car insurance renewal quotes. The user kept the current insurer. | status: done | last active: 11d ago | keys: address:quotes@shieldins.example, thread:th_ins_331",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Get car insurance renewal quotes / agent: Emailed Shield Insurance about the car insurance renewal quotes.",
-      "user: Any news on the car insurance renewal quotes? / agent: Gathered three car insurance renewal quotes. The user kept the current insurer."
+      "Emailed Shield Insurance about the car insurance renewal quotes.",
+      "Gathered three car insurance renewal quotes. The user kept the current insurer."
     ]
   },
   {
@@ -365,8 +365,8 @@ did the garage confirm the oil change for Saturday?
     "topic": "The bulk order with Becker Auto. Finished; nothing open. | status: done | last active: 13d ago | keys: address:service@beckerauto.example, draft:r-fx4, thread:th_fx4",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Draft a note about the bulk order with Becker Auto / agent: Drafted an email about the bulk order with Becker Auto (draft r-fx4).",
-      "user: Send the draft about the bulk order with Becker Auto / agent: Sent the email about the bulk order with Becker Auto."
+      "Drafted an email about the bulk order with Becker Auto (draft r-fx4).",
+      "Sent the email about the bulk order with Becker Auto."
     ]
   },
   {
@@ -375,10 +375,32 @@ did the garage confirm the oil change for Saturday?
     "topic": "Owns the dentist checkup at Bright Smile Dental and Saturday's oil change with Becker Auto, which awaits confirmation. | status: waiting_external | last active: 2d ago | keys: address:frontdesk@brightsmiledental.example, address:service@beckerauto.example, thread:th_dent_chk, thread:th_oil",
     "active_tasks": [],
     "past_action_notes": [
-      "user: Book my dentist checkup / agent: Emailed Bright Smile Dental about the dentist checkup.",
-      "user: Book an oil change for Saturday / agent: Emailed Becker Auto about the Saturday oil change."
+      "Emailed Bright Smile Dental about the dentist checkup.",
+      "Emailed Becker Auto about the Saturday oil change."
     ]
   }
 ]
-=== rag enriched: query ===
+=== rag parity: query ===
+Recent conversation:
+user: Draft a note about the bulk order with Becker Auto
+agent result: Drafted an email about the bulk order with Becker Auto (draft r-fx4).
+assistant: Update: Drafted an email about the bulk order with Becker Auto (draft r-fx4).
+
+user: Send the draft about the bulk order with Becker Auto
+agent result: Sent the email about the bulk order with Becker Auto.
+assistant: Update: Sent the email about the bulk order with Becker Auto.
+
+user: Book my dentist checkup
+agent result: Emailed Bright Smile Dental about the dentist checkup.
+assistant: Update: Emailed Bright Smile Dental about the dentist checkup.
+
+user: Any news on the car insurance renewal quotes?
+agent result: Gathered three car insurance renewal quotes. The user kept the current insurer.
+assistant: Update: Gathered three car insurance renewal quotes. The user kept the current insurer.
+
+user: Book an oil change for Saturday
+agent result: Emailed Becker Auto about the Saturday oil change.
+assistant: Update: Emailed Becker Auto about the Saturday oil change.
+
+New message:
 did the garage confirm the oil change for Saturday?

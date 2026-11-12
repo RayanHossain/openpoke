@@ -3,9 +3,10 @@
   baseline  roster.json (names) + conversation log + working-memory log, in the 5b5f635 layout
   registry  SQL rows (agents with past timestamps, keys, aliases, briefs), triggers.db rows, and the
             same conversation/working-memory history (the registry IA reads it too: runtime.py:228-234)
-  rag       roster dicts for the RAG router, two variants:
-              as_built  name/topic/tasks/notes only; query = message only
-              enriched  + status, age, keys and the agent's last 5 conversation turns
+  rag       roster dicts for the RAG router (spec §6), two variants:
+              as_built  name/topic/tasks/notes only; query = message only (reference)
+              parity    every agent with status, age and keys folded into its text fields;
+                        query = the last 5 conversation turns, then the message (scored)
 
 ``load_registry`` and ``world_clock`` need the *sandboxed* server package (tests/harness.py);
 they refuse to run against the repo's real ``server/``.
@@ -176,7 +177,7 @@ def load_baseline(world: World, data_dir: Path) -> BaselineView:
 RAG_ENV = {"OPENPOKE_RAG_EMBEDDER": "openrouter"}  # forced; never auto/sentence-transformers/hash
 RAG_FORBIDDEN_EMBEDDERS = ("hash-384",)             # rag_router.HashEmbedder.name (EMBED_DIM = 384)
 RAG_TIERS = ("A",)                                   # RAG runs in Tier A only
-RAG_VARIANTS = ("as_built", "enriched")
+RAG_VARIANTS = ("as_built", "parity")
 RAG_LAST_TURNS = 5
 
 
@@ -225,21 +226,34 @@ def rag_roster(world: World, variant: str) -> List[Dict[str, Any]]:
             "active_tasks": _open_items(world, a, book),
             "past_action_notes": [e.ea_text for e in turns],
         }
-        if variant == "enriched":
+        if variant == "parity":
             keys = ", ".join(f"{t}:{v}" for t, v in sorted(book.owned[a.ref]))
             doc["topic"] = (f"{a.brief} | status: {a.status} | last active: {age_text(world, a.last_active_at)} ago"
                             f" | keys: {keys or 'none'}")
-            doc["past_action_notes"] = [f"user: {e.user_message} / agent: {e.ea_text}"
-                                        for e in turns[-RAG_LAST_TURNS:]]
         out.append(doc)
     return out
 
 
-def rag_query(message: str, variant: str) -> str:
-    """Both variants send the message only (the router takes no conversation input)."""
+def last_turns(world: World, k: int = RAG_LAST_TURNS) -> List[str]:
+    """The last ``k`` conversation turns (step or chatter), oldest first, as plain text."""
+    out = []
+    for ev in world.events[-k:]:
+        lines = [f"user: {ev.user_message}"]
+        if ev.kind == "step":
+            lines.append(f"agent result: {ev.ea_text}")
+        lines.append(f"assistant: {ev.reply}")
+        out.append("\n".join(lines))
+    return out
+
+
+def rag_query(world: World, message: str, variant: str) -> str:
+    """as_built: the message only. parity: the last 5 turns prepended (the router accepts plain text)."""
     if variant not in RAG_VARIANTS:
         raise ValueError(variant)
-    return message
+    if variant == "as_built":
+        return message
+    turns = "\n\n".join(last_turns(world))
+    return f"Recent conversation:\n{turns}\n\nNew message:\n{message}" if turns else message
 
 
 # --------------------------------------------------------------------------- #
